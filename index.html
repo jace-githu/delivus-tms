@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickLog TMS - 실시간 배송관리</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            background: #1a1a1a;
+        }
+
+        .app-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* 사이드바 */
+        .sidebar {
+            width: 380px;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            color: white;
+            position: relative;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.collapsed {
+            transform: translateX(-340px);
+        }
+
+        .sidebar-toggle {
+            position: absolute;
+            right: -40px;
+            top: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(26, 26, 26, 0.9);
+            border: none;
+            border-radius: 0 8px 8px 0;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-toggle:hover {
+            background: rgba(102, 126, 234, 0.8);
+        }
+
+        /* 헤더 */
+        .header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .user-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .notification-btn {
+            position: relative;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .notification-btn:hover {
+            transform: scale(1.1);
+            background: #764ba2;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            background: #ff4757;
+            color: white;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            font-size: 0.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 통계 카드 */
+        .stats-section {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-title {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-icon {
+            font-size: 1rem;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-change {
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .positive { color: #2ed573; }
+        .negative { color: #ff4757; }
+
+        /* 컨트롤 섹션 */
+        .controls-section {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .driver-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: 1rem;
+            max-height: 120px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+        }
+
+        .driver-chips::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .driver-chips::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .driver-chips::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+        }
+
+        .driver-chip {
+            padding: 0.4rem 0.6rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: white;
+        }
+
+        .driver-chip:hover {
+            background: rgba(102, 126, 234, 0.3);
+        }
+
+        .driver-chip.selected {
+            background: #667eea;
+            border-color: #5a67d8;
+        }
+
+        .driver-status {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-active { background: #2ed573; }
+        .status-busy { background: #ffa502; }
+        .status-break { background: #ff4757; }
+
+        .control-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* 배송 현황 */
+        .delivery-section {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+        }
+
+        .delivery-section::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .delivery-section::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .delivery-section::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.2s ease;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+
+        .search-bar::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: #667eea;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .filter-tab {
+            padding: 0.4rem 0.8rem;
+            border: none;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-tab.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .filter-tab:not(.active):hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .delivery-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .delivery-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .delivery-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(3px);
+        }
+
+        .delivery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .delivery-id {
+            font-weight: bold;
+            font-size: 0.8rem;
+            color: #667eea;
+        }
+
+        .status-badge {
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.6rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-pending { background: rgba(255, 165, 2, 0.2); color: #ffa502; border: 1px solid #ffa502; }
+        .status-transit { background: rgba(102, 126, 234, 0.2); color: #667eea; border: 1px solid #667eea; }
+        .status-delivered { background: rgba(46, 213, 115, 0.2); color: #2ed573; border: 1px solid #2ed573; }
+        .status-delayed { background: rgba(255, 71, 87, 0.2); color: #ff4757; border: 1px solid #ff4757; }
+
+        .delivery-address {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .delivery-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .priority-high { color: #ff4757; font-weight: bold; }
+        .priority-normal { color: rgba(255, 255, 255, 0.6); }
+
+        /* 지도 영역 */
+        .map-container {
+            flex: 1;
+            position: relative;
+            height: 100vh;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 지도 위 플로팅 컨트롤 */
+        .map-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .floating-control {
+            background: rgba(26, 26, 26, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.75rem;
+            color: white;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .floating-control:hover {
+            background: rgba(102, 126, 234, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .alert-panel {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(255, 71, 87, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 71, 87, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            color: white;
+            z-index: 1000;
+            animation: slideUp 0.3s ease;
+        }
+
+        .alert-panel.warning {
+            background: rgba(255, 165, 2, 0.9);
+            border-color: rgba(255, 165, 2, 0.3);
+        }
+
+        .alert-panel.info {
+            background: rgba(102, 126, 234, 0.9);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .alert-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .alert-content {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .alert-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        .alert-close:hover {
+            opacity: 1;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 320px;
+            }
+            
+            .sidebar.collapsed {
+                transform: translateX(-280px);
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .map-overlay {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .alert-panel {
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+            }
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 사이드바 -->
+        <div class="sidebar" id="sidebar">
+            <button class="sidebar-toggle" onclick="toggleSidebar()">
+                <span id="toggleIcon">←</span>
+            </button>
+            
+            <!-- 헤더 -->
+            <div class="header">
+                <div class="logo">딜리래빗 TMS</div>
+                <div class="user-info">
+                    <span>관리자</span>
+                    <button class="notification-btn" onclick="showNotifications()">
+                        🔔
+                        <span class="notification-badge">3</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 통계 카드 -->
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">배송완료</span>
+                            <span class="stat-icon">📦</span>
+                        </div>
+                        <div class="stat-value" style="color: #2ed573;">3,247</div>
+                        <div class="stat-change positive">↗ +12.5%</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">배송중</span>
+                            <span class="stat-icon">🚚</span>
+                        </div>
+                        <div class="stat-value" style="color: #667eea;">542</div>
+                        <div class="stat-change positive">↗ +8.3%</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">지연</span>
+                            <span class="stat-icon">⚠️</span>
+                        </div>
+                        <div class="stat-value" style="color: #ff4757;">43</div>
+                        <div class="stat-change negative">↘ -15.2%</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">차량</span>
+                            <span class="stat-icon">🚛</span>
+                        </div>
+                        <div class="stat-value" style="color: #ffa502;">20</div>
+                        <div class="stat-change positive">↗ +0%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 컨트롤 섹션 -->
+            <div class="controls-section">
+                <div class="section-title">
+                    🗺️ 지도 컨트롤
+                </div>
+                
+                <div class="driver-chips" id="driverChips">
+                    <!-- 동적으로 생성됨 -->
+                </div>
+
+                <div class="control-buttons">
+                    <button class="btn btn-primary" onclick="optimizeAllRoutes()">전체 경로 최적화</button>
+                    <button class="btn btn-secondary" onclick="refreshMap()">실시간 새로고침</button>
+                    <button class="btn btn-secondary" onclick="toggleTraffic()">교통정보 표시</button>
+                    <button class="btn btn-secondary" onclick="toggleDangerZones()">위험지역 표시</button>
+                </div>
+            </div>
+
+            <!-- 배송 현황 -->
+            <div class="delivery-section">
+                <div class="section-title">
+                    📋 실시간 배송 현황
+                </div>
+                
+                <input type="text" class="search-bar" placeholder="운송장번호, 주소 검색..." onkeyup="filterDeliveries(this.value)">
+                
+                <div class="filter-tabs">
+                    <button class="filter-tab active" onclick="filterByStatus('all')">전체</button>
+                    <button class="filter-tab" onclick="filterByStatus('pending')">대기</button>
+                    <button class="filter-tab" onclick="filterByStatus('transit')">배송중</button>
+                    <button class="filter-tab" onclick="filterByStatus('delivered')">완료</button>
+                </div>
+
+                <div class="delivery-list" id="deliveryList">
+                    <!-- 동적으로 생성됨 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 지도 컨테이너 -->
+        <div class="map-container">
+            <div id="map"></div>
+            
+            <!-- 플로팅 컨트롤 -->
+            <div class="map-overlay">
+                <div class="floating-control" onclick="centerMap()">
+                    📍 지도 중심화
+                </div>
+                <div class="floating-control" onclick="toggleFullscreen()">
+                    ⛶ 전체화면
+                </div>
+            </div>
+            
+            <!-- 알림 패널 -->
+            <div class="alert-panel" id="alertPanel">
+                <button class="alert-close" onclick="hideAlert()">×</button>
+                <div class="alert-title">⚠️ 긴급 알림</div>
+                <div class="alert-content">
+                    강남구 일대 교통체증 발생 - 우회로 권장<br>
+                    지연 배송 3건 발생, 대응 필요
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // 랜덤 완료 시간 생성
+        function generateRandomTime() {
+            const hours = Math.floor(Math.random() * 8) + 9; // 9-17시
+            const minutes = Math.floor(Math.random() * 60);
+            return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+        }
+
+        // 예상 도착 시간 생성
+        function generateEstimatedTime() {
+            const hours = Math.floor(Math.random() * 4) + 14; // 14-17시
+            const minutes = Math.floor(Math.random() * 60);
+            return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+        }
+
+        // 배송지 생성 함수
+        function generateDeliveries(driverId, minCoord, maxCoord, count) {
+            const deliveries = [];
+            const statuses = ['delivered', 'transit', 'pending', 'delayed'];
+            const statusWeights = [0.6, 0.15, 0.2, 0.05]; // 완료 60%, 배송중 15%, 대기 20%, 지연 5%
+            
+            for (let i = 0; i < count; i++) {
+                // 가중치 기반 상태 선택
+                const random = Math.random();
+                let status = 'pending';
+                let cumulative = 0;
+                for (let j = 0; j < statusWeights.length; j++) {
+                    cumulative += statusWeights[j];
+                    if (random <= cumulative) {
+                        status = statuses[j];
+                        break;
+                    }
+                }
+
+                // 권역 내 랜덤 위치 생성
+                const lat = minCoord[0] + Math.random() * (maxCoord[0] - minCoord[0]);
+                const lng = minCoord[1] + Math.random() * (maxCoord[1] - minCoord[1]);
+                
+                // 지역별 주소 생성
+                const addresses = {
+                    kim: ['강남구 테헤란로', '강남구 역삼동', '강남구 삼성동', '강남구 대치동', '강남구 청담동'],
+                    lee: ['마포구 홍대입구', '마포구 서교동', '마포구 연남동', '마포구 합정동', '마포구 상수동'],
+                    park: ['송파구 잠실동', '송파구 신천동', '송파구 삼전동', '송파구 석촌동', '송파구 송파동'],
+                    choi: ['종로구 종로3가', '종로구 인사동', '종로구 혜화동', '종로구 삼청동', '종로구 안국동'],
+                    jung: ['서초구 서초동', '서초구 방배동', '서초구 양재동', '서초구 반포동', '서초구 내곡동'],
+                    kang: ['영등포구 여의도', '영등포구 당산동', '영등포구 문래동', '영등포구 신길동', '영등포구 대림동'],
+                    han: ['성북구 성북동', '성북구 돈암동', '성북구 정릉동', '성북구 장위동', '성북구 석관동'],
+                    oh: ['관악구 신림동', '관악구 봉천동', '관악구 남현동', '관악구 중앙동', '관악구 인헌동'],
+                    shin: ['구로구 신도림', '구로구 구로동', '구로구 가리봉', '구로구 개봉동', '구로구 오류동'],
+                    lim: ['강서구 화곡동', '강서구 등촌동', '강서구 염창동', '강서구 발산동', '강서구 공항동'],
+                    yoon: ['노원구 상계동', '노원구 중계동', '노원구 하계동', '노원구 공릉동', '노원구 월계동'],
+                    song: ['중랑구 면목동', '중랑구 상봉동', '중랑구 중화동', '중랑구 묵동', '중랑구 망우동'],
+                    moon: ['광진구 자양동', '광진구 구의동', '광진구 중곡동', '광진구 능동', '광진구 화양동'],
+                    baek: ['양천구 목동', '양천구 신정동', '양천구 신월동', '양천구 화곡동', '양천구 등촌동'],
+                    nam: ['서초구 잠원동', '서초구 반포동', '서초구 서초동', '서초구 방배동', '서초구 양재동'],
+                    go: ['성남시 분당구', '성남시 수정구', '성남시 중원구', '분당구 정자동', '분당구 서현동'],
+                    hong: ['수원시 영통구', '수원시 장안구', '수원시 권선구', '수원시 팔달구', '수원시 연무동'],
+                    woo: ['고양시 일산구', '고양시 덕양구', '일산동구', '일산서구', '고양시 화정동'],
+                    ahn: ['부천시 원미구', '부천시 소사구', '부천시 오정구', '부천시 중동', '부천시 상동'],
+                    jang: ['구리시 수택동', '구리시 인창동', '구리시 교문동', '구리시 토평동', '구리시 갈매동']
+                };
+                
+                const addressList = addresses[driverId] || ['서울시 중구'];
+                const randomAddress = addressList[Math.floor(Math.random() * addressList.length)];
+                const buildingNumber = Math.floor(Math.random() * 999) + 1;
+
+                deliveries.push({
+                    id: `QS2024-${String(10000 + i + (Object.keys(driversData || {}).indexOf(driverId) * 100)).padStart(6, '0')}`,
+                    position: [lat, lng],
+                    address: `${randomAddress} ${buildingNumber}`,
+                    status: status,
+                    priority: Math.random() > 0.8 ? 'high' : 'normal',
+                    completedAt: status === 'delivered' ? generateRandomTime() : null,
+                    estimatedTime: status !== 'delivered' ? generateEstimatedTime() : null
+                });
+            }
+            
+            return deliveries.sort((a, b) => {
+                const statusOrder = { 'transit': 0, 'delayed': 1, 'pending': 2, 'delivered': 3 };
+                return statusOrder[a.status] - statusOrder[b.status];
+            });
+        }
+
+        // 전역 변수
+        let map;
+        let driverMarkers = {};
+        let deliveryMarkers = {};
+        let routeLines = {};
+        let dangerZones = [];
+        let dangerZonesVisible = false;
+        let currentSelectedDriver = 'all';
+        let currentDetailDriver = null;
+        let sidebarCollapsed = false;
+
+        // 위험 지역 데이터
+        const dangerZoneData = [
+            {
+                name: '강남구 테헤란로',
+                center: [37.4988, 127.0368],
+                radius: 800,
+                level: 'high',
+                reason: '극심한 교통체증'
+            },
+            {
+                name: '홍대입구 일대',
+                center: [37.5563, 126.9239],
+                radius: 600,
+                level: 'medium',
+                reason: '주말 인파 집중'
+            },
+            {
+                name: '강변북로',
+                center: [37.5345, 127.0678],
+                radius: 1200,
+                level: 'medium',
+                reason: '사고 다발 구간'
+            },
+            {
+                name: '잠실 롯데타워',
+                center: [37.5125, 127.1025],
+                radius: 500,
+                level: 'low',
+                reason: '주차 공간 부족'
+            }
+        ];
+
+        // 20명의 기사 데이터 (서울 + 수도권) - 함수 호출 전에 정의
+        const driversData = {};
+
+        // 기사 데이터 초기화 함수
+        function initializeDriversData() {
+            const driverConfigs = [
+                { id: 'kim', name: '김기사', position: [37.5016, 127.0398], zone: '강남권', color: '#2ed573', status: 'active', bounds: [[37.4888, 127.0268], [37.5172, 127.0573]], count: 28 },
+                { id: 'lee', name: '이기사', position: [37.5563, 126.9239], zone: '마포권', color: '#667eea', status: 'busy', bounds: [[37.5463, 126.9139], [37.5663, 126.9439]], count: 32 },
+                { id: 'park', name: '박기사', position: [37.5133, 127.1028], zone: '송파권', color: '#ffa502', status: 'active', bounds: [[37.5033, 127.0928], [37.5233, 127.1228]], count: 25 },
+                { id: 'choi', name: '최기사', position: [37.5701, 126.9916], zone: '종로권', color: '#ff4757', status: 'break', bounds: [[37.5601, 126.9816], [37.5801, 127.0116]], count: 31 },
+                { id: 'jung', name: '정기사', position: [37.4795, 126.9520], zone: '서초권', color: '#a55eea', status: 'active', bounds: [[37.4695, 126.9420], [37.4895, 126.9720]], count: 29 },
+                { id: 'kang', name: '강기사', position: [37.5388, 126.8903], zone: '영등포권', color: '#26d0ce', status: 'active', bounds: [[37.5288, 126.8803], [37.5488, 127.0003]], count: 27 },
+                { id: 'han', name: '한기사', position: [37.6068, 126.9689], zone: '성북권', color: '#fd79a8', status: 'busy', bounds: [[37.5968, 126.9589], [37.6168, 126.9889]], count: 26 },
+                { id: 'oh', name: '오기사', position: [37.4979, 126.8644], zone: '관악권', color: '#fdcb6e', status: 'active', bounds: [[37.4879, 126.8544], [37.5079, 126.8844]], count: 30 },
+                { id: 'shin', name: '신기사', position: [37.5510, 126.8488], zone: '구로권', color: '#6c5ce7', status: 'active', bounds: [[37.5410, 126.8388], [37.5610, 126.8688]], count: 24 },
+                { id: 'lim', name: '임기사', position: [37.5662, 126.8011], zone: '강서권', color: '#00b894', status: 'break', bounds: [[37.5562, 126.7911], [37.5762, 126.8211]], count: 33 },
+                { id: 'yoon', name: '윤기사', position: [37.6583, 127.0617], zone: '노원권', color: '#e17055', status: 'active', bounds: [[37.6483, 127.0517], [37.6683, 127.0817]], count: 28 },
+                { id: 'song', name: '송기사', position: [37.6176, 127.0582], zone: '중랑권', color: '#00cec9', status: 'busy', bounds: [[37.6076, 127.0482], [37.6276, 127.0782]], count: 25 },
+                { id: 'moon', name: '문기사', position: [37.5944, 127.1294], zone: '광진권', color: '#dda0dd', status: 'active', bounds: [[37.5844, 127.1194], [37.6044, 127.1494]], count: 27 },
+                { id: 'baek', name: '백기사', position: [37.5239, 126.8597], zone: '양천권', color: '#fab1a0', status: 'active', bounds: [[37.5139, 126.8497], [37.5339, 126.8797]], count: 31 },
+                { id: 'nam', name: '남기사', position: [37.4678, 127.0373], zone: '서초남부', color: '#e84393', status: 'active', bounds: [[37.4578, 127.0273], [37.4778, 127.0573]], count: 26 },
+                { id: 'go', name: '고기사', position: [37.3914, 127.1197], zone: '분당권', color: '#0984e3', status: 'active', bounds: [[37.3814, 127.1097], [37.4014, 127.1397]], count: 35 },
+                { id: 'hong', name: '홍기사', position: [37.2636, 127.0286], zone: '수원권', color: '#00b894', status: 'busy', bounds: [[37.2536, 127.0186], [37.2836, 127.0486]], count: 38 },
+                { id: 'woo', name: '우기사', position: [37.6583, 126.7747], zone: '일산권', color: '#fd79a8', status: 'active', bounds: [[37.6483, 126.7647], [37.6783, 126.7947]], count: 32 },
+                { id: 'ahn', name: '안기사', position: [37.4563, 126.7052], zone: '부천권', color: '#fdcb6e', status: 'active', bounds: [[37.4463, 126.6952], [37.4663, 126.7252]], count: 29 },
+                { id: 'jang', name: '장기사', position: [37.6398, 127.2578], zone: '구리권', color: '#a29bfe', status: 'break', bounds: [[37.6298, 127.2478], [37.6498, 127.2778]], count: 24 }
+            ];
+
+            driverConfigs.forEach(config => {
+                driversData[config.id] = {
+                    name: config.name,
+                    position: config.position,
+                    color: config.color,
+                    zone: config.zone,
+                    status: config.status,
+                    deliveries: generateDeliveries(config.id, config.bounds[0], config.bounds[1], config.count)
+                };
+            });
+        }
+
+        // 배송지 생성 함수
+        function generateDeliveries(driverId, minCoord, maxCoord, count) {
+            const deliveries = [];
+            const statuses = ['delivered', 'transit', 'pending', 'delayed'];
+            const statusWeights = [0.6, 0.15, 0.2, 0.05]; // 완료 60%, 배송중 15%, 대기 20%, 지연 5%
+            
+            for (let i = 0; i < count; i++) {
+                // 가중치 기반 상태 선택
+                const random = Math.random();
+                let status = 'pending';
+                let cumulative = 0;
+                for (let j = 0; j < statusWeights.length; j++) {
+                    cumulative += statusWeights[j];
+                    if (random <= cumulative) {
+                        status = statuses[j];
+                        break;
+                    }
+                }
+
+                // 권역 내 랜덤 위치 생성
+                const lat = minCoord[0] + Math.random() * (maxCoord[0] - minCoord[0]);
+                const lng = minCoord[1] + Math.random() * (maxCoord[1] - minCoord[1]);
+                
+                // 지역별 주소 생성
+                const addresses = {
+                    kim: ['강남구 테헤란로', '강남구 역삼동', '강남구 삼성동', '강남구 대치동', '강남구 청담동'],
+                    lee: ['마포구 홍대입구', '마포구 서교동', '마포구 연남동', '마포구 합정동', '마포구 상수동'],
+                    park: ['송파구 잠실동', '송파구 신천동', '송파구 삼전동', '송파구 석촌동', '송파구 송파동'],
+                    choi: ['종로구 종로3가', '종로구 인사동', '종로구 혜화동', '종로구 삼청동', '종로구 안국동'],
+                    jung: ['서초구 서초동', '서초구 방배동', '서초구 양재동', '서초구 반포동', '서초구 내곡동'],
+                    kang: ['영등포구 여의도', '영등포구 당산동', '영등포구 문래동', '영등포구 신길동', '영등포구 대림동'],
+                    han: ['성북구 성북동', '성북구 돈암동', '성북구 정릉동', '성북구 장위동', '성북구 석관동'],
+                    oh: ['관악구 신림동', '관악구 봉천동', '관악구 남현동', '관악구 중앙동', '관악구 인헌동'],
+                    shin: ['구로구 신도림', '구로구 구로동', '구로구 가리봉', '구로구 개봉동', '구로구 오류동'],
+                    lim: ['강서구 화곡동', '강서구 등촌동', '강서구 염창동', '강서구 발산동', '강서구 공항동'],
+                    yoon: ['노원구 상계동', '노원구 중계동', '노원구 하계동', '노원구 공릉동', '노원구 월계동'],
+                    song: ['중랑구 면목동', '중랑구 상봉동', '중랑구 중화동', '중랑구 묵동', '중랑구 망우동'],
+                    moon: ['광진구 자양동', '광진구 구의동', '광진구 중곡동', '광진구 능동', '광진구 화양동'],
+                    baek: ['양천구 목동', '양천구 신정동', '양천구 신월동', '양천구 화곡동', '양천구 등촌동'],
+                    nam: ['서초구 잠원동', '서초구 반포동', '서초구 서초동', '서초구 방배동', '서초구 양재동'],
+                    go: ['성남시 분당구', '성남시 수정구', '성남시 중원구', '분당구 정자동', '분당구 서현동'],
+                    hong: ['수원시 영통구', '수원시 장안구', '수원시 권선구', '수원시 팔달구', '수원시 연무동'],
+                    woo: ['고양시 일산구', '고양시 덕양구', '일산동구', '일산서구', '고양시 화정동'],
+                    ahn: ['부천시 원미구', '부천시 소사구', '부천시 오정구', '부천시 중동', '부천시 상동'],
+                    jang: ['구리시 수택동', '구리시 인창동', '구리시 교문동', '구리시 토평동', '구리시 갈매동']
+                };
+                
+                const addressList = addresses[driverId] || ['서울시 중구'];
+                const randomAddress = addressList[Math.floor(Math.random() * addressList.length)];
+                const buildingNumber = Math.floor(Math.random() * 999) + 1;
+
+                deliveries.push({
+                    id: `QS2024-${String(10000 + i + (Object.keys(driversData).indexOf(driverId) * 100)).padStart(6, '0')}`,
+                    position: [lat, lng],
+                    address: `${randomAddress} ${buildingNumber}`,
+                    status: status,
+                    priority: Math.random() > 0.8 ? 'high' : 'normal',
+                    completedAt: status === 'delivered' ? generateRandomTime() : null,
+                    estimatedTime: status !== 'delivered' ? generateEstimatedTime() : null
+                });
+            }
+            
+            return deliveries.sort((a, b) => {
+                const statusOrder = { 'transit': 0, 'delayed': 1, 'pending': 2, 'delivered': 3 };
+                return statusOrder[a.status] - statusOrder[b.status];
+            });
+        }
+
+        // 랜덤 완료 시간 생성
+        function generateRandomTime() {
+            const hours = Math.floor(Math.random() * 8) + 9; // 9-17시
+            const minutes = Math.floor(Math.random() * 60);
+            return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+        }
+
+        // 예상 도착 시간 생성
+        function generateEstimatedTime() {
+            const hours = Math.floor(Math.random() * 4) + 14; // 14-17시
+            const minutes = Math.floor(Math.random() * 60);
+            return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+        }
+
+        // 지도 초기화
+        function initializeMap() {
+            // 기사 데이터 먼저 초기화
+            initializeDriversData();
+            
+            map = L.map('map').setView([37.5665, 126.9780], 10);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            // 기사 칩 생성
+            createDriverChips();
+            
+            // 초기 배송 목록 생성
+            createInitialDeliveryList();
+            
+            showAllDrivers();
+        }
+
+        // 기사 칩 생성
+        function createDriverChips() {
+            const chipContainer = document.getElementById('driverChips');
+            let chipsHTML = `
+                <div class="driver-chip selected" onclick="toggleDriver('all', this)">
+                    <span class="driver-status status-active"></span>
+                    전체 (20명)
+                </div>
+            `;
+            
+            Object.entries(driversData).forEach(([id, driver]) => {
+                chipsHTML += `
+                    <div class="driver-chip" onclick="toggleDriver('${id}', this)">
+                        <span class="driver-status status-${driver.status}"></span>
+                        ${driver.name}
+                    </div>
+                `;
+            });
+            
+            chipContainer.innerHTML = chipsHTML;
+        }
+
+        // 초기 배송 목록 생성
+        function createInitialDeliveryList() {
+            const deliveryList = document.getElementById('deliveryList');
+            const allDeliveries = [];
+            
+            // 모든 기사의 진행중인 배송만 수집
+            Object.values(driversData).forEach(driver => {
+                const activeDeliveries = driver.deliveries
+                    .filter(d => d.status !== 'delivered')
+                    .slice(0, 3) // 기사당 최대 3개만
+                    .map(d => ({ ...d, driverName: driver.name }));
+                allDeliveries.push(...activeDeliveries);
+            });
+            
+            // 우선순위와 상태순으로 정렬
+            allDeliveries.sort((a, b) => {
+                const priorityOrder = { 'high': 0, 'normal': 1 };
+                const statusOrder = { 'delayed': 0, 'transit': 1, 'pending': 2 };
+                
+                if (a.priority !== b.priority) {
+                    return priorityOrder[a.priority] - priorityOrder[b.priority];
+                }
+                return statusOrder[a.status] - statusOrder[b.status];
+            });
+            
+            const deliveriesHTML = allDeliveries.slice(0, 20).map(delivery => `
+                <div class="delivery-item" data-status="${delivery.status}" data-priority="${delivery.priority}" 
+                     onclick="trackDelivery('${delivery.id}')">
+                    <div class="delivery-header">
+                        <span class="delivery-id">${delivery.id}</span>
+                        <span class="status-badge status-${delivery.status}">
+                            ${delivery.status === 'transit' ? '배송중' :
+                              delivery.status === 'pending' ? '대기' :
+                              delivery.status === 'delayed' ? '지연' : '완료'}
+                        </span>
+                    </div>
+                    <div class="delivery-address">${delivery.address}</div>
+                    <div class="delivery-meta">
+                        <span class="priority-${delivery.priority}">
+                            ${delivery.priority === 'high' ? '긴급' : '일반'}
+                        </span>
+                        <span>${delivery.driverName} • ${delivery.estimatedTime || '시간미정'}</span>
+                    </div>
+                </div>
+            `).join('');
+            
+            deliveryList.innerHTML = deliveriesHTML;
+        }
+
+        // 사이드바 토글
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            sidebarCollapsed = !sidebarCollapsed;
+            
+            if (sidebarCollapsed) {
+                sidebar.classList.add('collapsed');
+                toggleIcon.textContent = '→';
+            } else {
+                sidebar.classList.remove('collapsed');
+                toggleIcon.textContent = '←';
+            }
+            
+            setTimeout(() => {
+                map.invalidateSize();
+            }, 300);
+        }
+
+        // 모든 기사 표시
+        function showAllDrivers() {
+            Object.keys(driversData).forEach(driverId => {
+                showDriver(driverId);
+            });
+        }
+
+        // 개별 기사 표시 (요약 모드)
+        function showDriver(driverId) {
+            const driver = driversData[driverId];
+            
+            // 기사 위치 마커
+            const driverIcon = L.divIcon({
+                className: 'custom-driver-marker',
+                html: `<div style="
+                    background: ${driver.color};
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 14px;
+                    border: 3px solid white;
+                    box-shadow: 0 3px 15px rgba(0,0,0,0.4);
+                    cursor: pointer;
+                    ${driver.status === 'active' ? 'animation: pulse-driver 3s infinite;' : ''}
+                ">🚚</div>
+                <style>
+                    @keyframes pulse-driver {
+                        0%, 100% { transform: scale(1); }
+                        50% { transform: scale(1.05); }
+                    }
+                </style>`,
+                iconSize: [38, 38],
+                iconAnchor: [19, 19]
+            });
+
+            const completedCount = driver.deliveries.filter(d => d.status === 'delivered').length;
+            const progressPercent = Math.round((completedCount / driver.deliveries.length) * 100);
+
+            driverMarkers[driverId] = L.marker(driver.position, { icon: driverIcon })
+                .addTo(map)
+                .bindPopup(`
+                    <div style="color: #333; font-weight: bold; margin-bottom: 8px; font-size: 14px;">
+                        ${driver.name} (${driver.zone})
+                    </div>
+                    <div style="color: #666; font-size: 12px; margin-bottom: 8px;">
+                        진행률: ${progressPercent}% (${completedCount}/${driver.deliveries.length})<br>
+                        상태: ${driver.status === 'active' ? '운행중' : 
+                                driver.status === 'busy' ? '바쁨' : '휴식중'}
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; font-size: 11px; margin-bottom: 8px;">
+                        <div style="color: #2ed573;">✓ ${driver.deliveries.filter(d => d.status === 'delivered').length}건</div>
+                        <div style="color: #667eea;">🚚 ${driver.deliveries.filter(d => d.status === 'transit').length}건</div>
+                        <div style="color: #ffa502;">⏳ ${driver.deliveries.filter(d => d.status === 'pending').length}건</div>
+                        <div style="color: #ff4757;">⚠️ ${driver.deliveries.filter(d => d.status === 'delayed').length}건</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <button onclick="showDriverDetail('${driverId}')" 
+                                style="background: ${driver.color}; color: white; border: none; 
+                                       padding: 6px 12px; border-radius: 4px; cursor: pointer; 
+                                       font-size: 12px; font-weight: bold;">
+                            상세 관제 (${driver.deliveries.length}건)
+                        </button>
+                    </div>
+                `)
+                .on('click', function() {
+                    showDriverDetail(driverId);
+                });
+
+            // 요약 배송지 마커들 (주요 몇 개만)
+            const summaryDeliveries = driver.deliveries
+                .filter(d => d.status !== 'delivered')
+                .slice(0, 3);
+                
+            summaryDeliveries.forEach(delivery => {
+                const statusColor = {
+                    'pending': '#ffa502',
+                    'transit': '#667eea',
+                    'delivered': '#888888',
+                    'delayed': '#ff4757'
+                }[delivery.status];
+
+                const deliveryIcon = L.divIcon({
+                    className: 'custom-delivery-marker',
+                    html: `<div style="
+                        background: ${statusColor};
+                        width: 14px;
+                        height: 14px;
+                        border-radius: 50%;
+                        border: 2px solid white;
+                        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+                        opacity: 0.8;
+                    "></div>`,
+                    iconSize: [18, 18],
+                    iconAnchor: [9, 9]
+                });
+
+                const marker = L.marker(delivery.position, { icon: deliveryIcon })
+                    .addTo(map)
+                    .bindPopup(`
+                        <div style="color: #333; font-size: 11px; margin-bottom: 2px;">${delivery.id}</div>
+                        <div style="color: #666; font-size: 10px;">${delivery.address}</div>
+                    `);
+
+                if (!deliveryMarkers[driverId]) deliveryMarkers[driverId] = [];
+                deliveryMarkers[driverId].push(marker);
+            });
+
+            // 기본 경로 표시 (주요 배송지들만)
+            if (summaryDeliveries.length > 0) {
+                calculateBasicRoute(driverId, summaryDeliveries);
+            }
+        }
+
+        // 기본 경로 계산 (요약 모드)
+        function calculateBasicRoute(driverId, deliveries) {
+            const driver = driversData[driverId];
+            const coordinates = [driver.position, ...deliveries.map(d => d.position)];
+            
+            const routeLine = L.polyline(coordinates, {
+                color: driver.color,
+                weight: 2,
+                opacity: 0.6,
+                dashArray: '8, 12'
+            }).addTo(map);
+            
+            if (!routeLines[driverId]) routeLines[driverId] = [];
+            routeLines[driverId].push(routeLine);
+        }
+
+        // 기사별 상세 관제 모드
+        function showDriverDetail(driverId) {
+            const driver = driversData[driverId];
+            currentDetailDriver = driverId;
+            
+            // 다른 기사들 숨기기
+            Object.keys(driversData).forEach(id => {
+                if (id !== driverId) {
+                    hideDriver(id);
+                }
+            });
+
+            // 해당 기사의 모든 배송지 표시
+            showAllDriverDeliveries(driverId);
+            
+            // 지도 중심을 해당 기사 권역으로 이동
+            const bounds = L.latLngBounds([driver.position]);
+            driver.deliveries.forEach(delivery => bounds.extend(delivery.position));
+            map.fitBounds(bounds, { padding: [50, 50] });
+            
+            // 사이드바 업데이트
+            updateDriverDetailSidebar(driverId);
+            
+            // 알림 표시
+            const alertPanel = document.getElementById('alertPanel');
+            alertPanel.className = 'alert-panel info';
+            alertPanel.innerHTML = `
+                <button class="alert-close" onclick="exitDetailMode()">×</button>
+                <div class="alert-title">🎯 ${driver.name} 상세 관제 모드</div>
+                <div class="alert-content">
+                    ${driver.zone} 전체 ${driver.deliveries.length}건 표시 중<br>
+                    <strong>회색:</strong> 완료 • <strong>녹색:</strong> 진행중 • <strong>주황:</strong> 대기 • <strong>빨강:</strong> 지연
+                </div>
+            `;
+            alertPanel.style.display = 'block';
+        }
+
+        // 기사의 모든 배송지 표시
+        function showAllDriverDeliveries(driverId) {
+            const driver = driversData[driverId];
+            
+            // 기존 마커들 제거
+            if (deliveryMarkers[driverId]) {
+                deliveryMarkers[driverId].forEach(marker => map.removeLayer(marker));
+            }
+            if (routeLines[driverId]) {
+                routeLines[driverId].forEach(line => map.removeLayer(line));
+            }
+            deliveryMarkers[driverId] = [];
+            routeLines[driverId] = [];
+
+            // 모든 배송지 마커 생성
+            driver.deliveries.forEach((delivery, index) => {
+                const statusColors = {
+                    'delivered': '#555555',    // 더 진한 회색 (완료)
+                    'transit': '#2ed573',      // 녹색 (진행중)
+                    'pending': '#ffa502',      // 주황 (대기)
+                    'delayed': '#ff4757'       // 빨강 (지연)
+                };
+
+                const statusColor = statusColors[delivery.status];
+                const isCompleted = delivery.status === 'delivered';
+                
+                // 완료건과 미완료건 구분하여 스타일 적용
+                const deliveryIcon = L.divIcon({
+                    className: 'custom-delivery-marker-detail',
+                    html: `<div style="
+                        background: ${statusColor};
+                        width: ${isCompleted ? '20px' : '22px'};
+                        height: ${isCompleted ? '20px' : '22px'};
+                        border-radius: 50%;
+                        border: 2px solid white;
+                        box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+                        opacity: ${isCompleted ? '0.9' : '1'};
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-size: 10px;
+                        font-weight: bold;
+                        cursor: pointer;
+                        ${delivery.status === 'delayed' ? 'animation: blink 1.5s infinite;' : ''}
+                        ${delivery.status === 'transit' ? 'animation: pulse-green 2s infinite;' : ''}
+                        ${isCompleted ? 'border: 3px solid #333;' : ''}
+                    ">${isCompleted ? '✓' : (index + 1)}</div>
+                    <style>
+                        @keyframes blink {
+                            0%, 50% { opacity: 1; }
+                            51%, 100% { opacity: 0.4; }
+                        }
+                        @keyframes pulse-green {
+                            0%, 100% { transform: scale(1); }
+                            50% { transform: scale(1.15); box-shadow: 0 3px 20px rgba(46, 213, 115, 0.6); }
+                        }
+                    </style>`,
+                    iconSize: [26, 26],
+                    iconAnchor: [13, 13]
+                });
+
+                const statusText = {
+                    'delivered': '배송완료',
+                    'transit': '배송중',
+                    'pending': '픽업대기',
+                    'delayed': '지연'
+                }[delivery.status];
+
+                const marker = L.marker(delivery.position, { icon: deliveryIcon })
+                    .addTo(map)
+                    .bindPopup(`
+                        <div style="color: #333; font-weight: bold; margin-bottom: 6px; font-size: 13px;">
+                            ${delivery.id}
+                        </div>
+                        <div style="color: #666; font-size: 11px; margin-bottom: 4px;">
+                            ${delivery.address}
+                        </div>
+                        <div style="color: ${statusColor}; font-size: 11px; font-weight: bold; margin-bottom: 4px;">
+                            ${statusText} ${delivery.priority === 'high' ? '(긴급)' : ''}
+                        </div>
+                        ${delivery.completedAt ? `<div style="color: #888; font-size: 10px;">완료: ${delivery.completedAt}</div>` : ''}
+                        ${delivery.estimatedTime ? `<div style="color: #666; font-size: 10px;">예상: ${delivery.estimatedTime}</div>` : ''}
+                        <div style="margin-top: 6px; font-size: 10px; color: #999;">
+                            순서: ${index + 1}/${driver.deliveries.length}
+                        </div>
+                    `);
+
+                deliveryMarkers[driverId].push(marker);
+            });
+
+            // 상세 경로 계산 및 표시
+            calculateDetailedRoute(driverId);
+        }
+
+        // 상세 경로 계산
+        async function calculateDetailedRoute(driverId) {
+            const driver = driversData[driverId];
+            const pendingDeliveries = driver.deliveries.filter(d => d.status !== 'delivered');
+            const completedDeliveries = driver.deliveries.filter(d => d.status === 'delivered');
+
+            // 완료된 배송지들 경로 (진한 회색 실선으로 가시성 개선)
+            if (completedDeliveries.length > 1) {
+                const completedCoordinates = completedDeliveries.map(d => d.position);
+                const completedRoute = L.polyline(completedCoordinates, {
+                    color: '#666666',        // 더 진한 회색으로 변경
+                    weight: 3,               // 두께 증가
+                    opacity: 0.85,           // 투명도 증가
+                    dashArray: '8, 6'        // 점선 패턴 개선
+                }).addTo(map);
+                
+                completedRoute.bindPopup(`
+                    <div style="font-weight: bold; color: #333;">${driver.name} - 완료된 경로</div>
+                    <div style="color: #666; font-size: 12px;">완료 건수: ${completedDeliveries.length}건</div>
+                    <div style="color: #888; font-size: 11px;">총 이동거리: 약 ${(completedDeliveries.length * 2.3).toFixed(1)}km</div>
+                `);
+                
+                routeLines[driverId].push(completedRoute);
+            }
+
+            // 진행 예정 경로
+            if (pendingDeliveries.length > 0) {
+                const remainingCoordinates = [driver.position, ...pendingDeliveries.map(d => d.position)];
+                
+                try {
+                    const coordString = remainingCoordinates.map(coord => `${coord[1]},${coord[0]}`).join(';');
+                    const response = await fetch(`https://router.project-osrm.org/route/v1/driving/${coordString}?overview=full&geometries=geojson`);
+                    const data = await response.json();
+                    
+                    if (data.routes && data.routes[0]) {
+                        const routeCoordinates = data.routes[0].geometry.coordinates.map(coord => [coord[1], coord[0]]);
+                        
+                        const activeRoute = L.polyline(routeCoordinates, {
+                            color: driver.color,
+                            weight: 4,
+                            opacity: 0.8,
+                            dashArray: '10, 5'
+                        }).addTo(map);
+                        
+                        const distance = (data.routes[0].distance / 1000).toFixed(1);
+                        const duration = Math.round(data.routes[0].duration / 60);
+                        
+                        activeRoute.bindPopup(`
+                            <div style="font-weight: bold;">${driver.name} - 남은 경로</div>
+                            <div>거리: ${distance}km • 시간: ${duration}분</div>
+                            <div>남은 배송: ${pendingDeliveries.length}건</div>
+                            <div style="margin-top: 4px; font-size: 11px; color: #666;">
+                                OSRM 최적화 경로
+                            </div>
+                        `);
+                        
+                        routeLines[driverId].push(activeRoute);
+                    }
+                } catch (error) {
+                    // 실패 시 직선 경로
+                    const fallbackRoute = L.polyline(remainingCoordinates, {
+                        color: driver.color,
+                        weight: 3,
+                        opacity: 0.6,
+                        dashArray: '8, 12'
+                    }).addTo(map);
+                    
+                    fallbackRoute.bindPopup(`
+                        <div style="font-weight: bold;">${driver.name} - 남은 경로</div>
+                        <div>남은 배송: ${pendingDeliveries.length}건</div>
+                        <div style="font-size: 11px; color: #999;">직선 경로 (네트워크 오류)</div>
+                    `);
+                    
+                    routeLines[driverId].push(fallbackRoute);
+                }
+            }
+        }
+
+        // 기사 숨기기
+        function hideDriver(driverId) {
+            if (driverMarkers[driverId]) {
+                map.removeLayer(driverMarkers[driverId]);
+                delete driverMarkers[driverId];
+            }
+            
+            if (deliveryMarkers[driverId]) {
+                deliveryMarkers[driverId].forEach(marker => map.removeLayer(marker));
+                delete deliveryMarkers[driverId];
+            }
+            
+            if (routeLines[driverId]) {
+                routeLines[driverId].forEach(line => map.removeLayer(line));
+                delete routeLines[driverId];
+            }
+        }
+
+        // 사이드바 상세 정보 업데이트
+        function updateDriverDetailSidebar(driverId) {
+            const driver = driversData[driverId];
+            const deliverySection = document.getElementById('deliveryList');
+            
+            const completedCount = driver.deliveries.filter(d => d.status === 'delivered').length;
+            const transitCount = driver.deliveries.filter(d => d.status === 'transit').length;
+            const pendingCount = driver.deliveries.filter(d => d.status === 'pending').length;
+            const delayedCount = driver.deliveries.filter(d => d.status === 'delayed').length;
+            
+            deliverySection.innerHTML = `
+                <div style="background: rgba(${
+                    driver.color === '#2ed573' ? '46, 213, 115' : 
+                    driver.color === '#667eea' ? '102, 126, 234' : 
+                    driver.color === '#ffa502' ? '255, 165, 2' : 
+                    driver.color === '#ff4757' ? '255, 71, 87' :
+                    driver.color === '#a55eea' ? '165, 94, 234' :
+                    driver.color === '#26d0ce' ? '38, 208, 206' :
+                    driver.color === '#fd79a8' ? '253, 121, 168' :
+                    driver.color === '#fdcb6e' ? '253, 203, 110' :
+                    driver.color === '#6c5ce7' ? '108, 92, 231' :
+                    driver.color === '#00b894' ? '0, 184, 148' :
+                    driver.color === '#e17055' ? '225, 112, 85' :
+                    driver.color === '#00cec9' ? '0, 206, 201' :
+                    driver.color === '#dda0dd' ? '221, 160, 221' :
+                    driver.color === '#fab1a0' ? '250, 177, 160' :
+                    driver.color === '#e84393' ? '232, 67, 147' :
+                    driver.color === '#0984e3' ? '9, 132, 227' :
+                    driver.color === '#a29bfe' ? '162, 155, 254' : '102, 126, 234'
+                }, 0.1); 
+                        border: 1px solid ${driver.color}; 
+                        border-radius: 8px; 
+                        padding: 1rem; 
+                        margin-bottom: 1rem;">
+                    <div style="font-weight: bold; font-size: 1rem; color: ${driver.color}; margin-bottom: 0.5rem;">
+                        ${driver.name} 상세 현황 (${driver.zone})
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.8rem; margin-bottom: 0.5rem;">
+                        <div style="color: #2ed573;">✓ 완료: ${completedCount}건</div>
+                        <div style="color: #667eea;">🚚 진행중: ${transitCount}건</div>
+                        <div style="color: #ffa502;">⏳ 대기: ${pendingCount}건</div>
+                        <div style="color: #ff4757;">⚠️ 지연: ${delayedCount}건</div>
+                    </div>
+                    <div style="margin-bottom: 0.5rem;">
+                        <div style="background: rgba(255,255,255,0.2); height: 8px; border-radius: 4px; overflow: hidden;">
+                            <div style="background: #2ed573; height: 100%; width: ${Math.round((completedCount / driver.deliveries.length) * 100)}%; border-radius: 4px;"></div>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.9rem; font-weight: bold; color: white; text-align: center;">
+                        진행률: ${Math.round((completedCount / driver.deliveries.length) * 100)}% 
+                        (${completedCount}/${driver.deliveries.length})
+                    </div>
+                </div>
+                
+                <button class="btn btn-secondary" onclick="exitDetailMode()" style="width: 100%; margin-bottom: 1rem;">
+                    ← 전체 보기로 돌아가기
+                </button>
+                
+                <div class="section-title" style="font-size: 0.8rem; margin-bottom: 0.5rem;">📋 배송지 목록 (${driver.deliveries.length}건)</div>
+                <div style="max-height: 400px; overflow-y: auto; scrollbar-width: thin;">
+                    ${driver.deliveries.map((delivery, index) => `
+                        <div class="delivery-item" data-status="${delivery.status}" onclick="focusDelivery('${driverId}', ${index})" 
+                             style="margin-bottom: 0.3rem; padding: 0.7rem; font-size: 0.75rem;
+                                    border-left: 3px solid ${
+                                        delivery.status === 'delivered' ? '#888888' :
+                                        delivery.status === 'transit' ? '#2ed573' :
+                                        delivery.status === 'pending' ? '#ffa502' : '#ff4757'
+                                    };">
+                            <div class="delivery-header">
+                                <span class="delivery-id" style="font-weight: bold;">
+                                    ${index + 1}. ${delivery.id}
+                                </span>
+                                <span class="status-badge status-${delivery.status}">
+                                    ${delivery.status === 'delivered' ? '완료' :
+                                      delivery.status === 'transit' ? '배송중' :
+                                      delivery.status === 'pending' ? '대기' : '지연'}
+                                </span>
+                            </div>
+                            <div class="delivery-address" style="margin: 0.3rem 0; font-size: 0.7rem;">
+                                ${delivery.address}
+                            </div>
+                            <div class="delivery-meta" style="font-size: 0.65rem;">
+                                <span class="priority-${delivery.priority}">
+                                    ${delivery.priority === 'high' ? '🔥 긴급' : '📦 일반'}
+                                </span>
+                                <span>${delivery.completedAt || delivery.estimatedTime || '시간 미정'}</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // 배송지 포커스
+        function focusDelivery(driverId, deliveryIndex) {
+            const delivery = driversData[driverId].deliveries[deliveryIndex];
+            map.setView(delivery.position, 16);
+            
+            // 해당 마커 팝업 열기
+            if (deliveryMarkers[driverId] && deliveryMarkers[driverId][deliveryIndex]) {
+                deliveryMarkers[driverId][deliveryIndex].openPopup();
+            }
+        }
+
+        // 기사 토글
+        function toggleDriver(driverId, chipElement) {
+            document.querySelectorAll('.driver-chip').forEach(chip => chip.classList.remove('selected'));
+            chipElement.classList.add('selected');
+            
+            currentSelectedDriver = driverId;
+            
+            if (driverId === 'all') {
+                Object.keys(driversData).forEach(id => {
+                    if (!driverMarkers[id]) showDriver(id);
+                });
+                map.setView([37.5665, 126.9780], 10);
+            } else {
+                Object.keys(driversData).forEach(id => {
+                    if (id === driverId) {
+                        if (!driverMarkers[id]) showDriver(id);
+                        map.setView(driversData[id].position, 13);
+                    } else {
+                        hideDriver(id);
+                    }
+                });
+            }
+        }
+
+        // 상세 모드 종료
+        function exitDetailMode() {
+            currentDetailDriver = null;
+            hideAlert();
+            
+            // 모든 기사 다시 표시
+            showAllDrivers();
+            
+            // 사이드바를 원래 배송 목록으로 복원
+            createInitialDeliveryList();
+            
+            // 지도 중심 복원
+            map.setView([37.5665, 126.9780], 10);
+        }
+
+        // 위험지역 토글
+        function toggleDangerZones() {
+            dangerZonesVisible = !dangerZonesVisible;
+            
+            if (dangerZonesVisible) {
+                showDangerZones();
+                
+                const alertPanel = document.getElementById('alertPanel');
+                alertPanel.className = 'alert-panel warning';
+                alertPanel.innerHTML = `
+                    <button class="alert-close" onclick="hideAlert()">×</button>
+                    <div class="alert-title">🚨 위험지역 표시 활성화</div>
+                    <div class="alert-content">
+                        <strong>빨간색:</strong> 높은 위험 • <strong>주황색:</strong> 보통 위험 • <strong>노란색:</strong> 낮은 위험<br>
+                        실시간 교통상황과 사고 다발지역을 표시합니다.
+                    </div>
+                `;
+                alertPanel.style.display = 'block';
+            } else {
+                hideDangerZones();
+                hideAlert();
+            }
+        }
+
+        // 위험지역 표시
+        function showDangerZones() {
+            dangerZoneData.forEach((zone, index) => {
+                const colors = {
+                    'high': '#ff4757',
+                    'medium': '#ffa502',
+                    'low': '#f1c40f'
+                };
+                
+                const circle = L.circle(zone.center, {
+                    color: colors[zone.level],
+                    fillColor: colors[zone.level],
+                    fillOpacity: 0.2,
+                    radius: zone.radius,
+                    weight: 2,
+                    opacity: 0.8
+                }).addTo(map);
+                
+                circle.bindPopup(`
+                    <div style="color: #333; font-weight: bold; margin-bottom: 4px;">
+                        🚨 ${zone.name}
+                    </div>
+                    <div style="color: #666; font-size: 12px; margin-bottom: 4px;">
+                        위험도: ${zone.level === 'high' ? '높음' : 
+                                zone.level === 'medium' ? '보통' : '낮음'}
+                    </div>
+                    <div style="color: #666; font-size: 11px;">
+                        사유: ${zone.reason}
+                    </div>
+                    <div style="margin-top: 6px; font-size: 10px; color: #999;">
+                        반경: ${zone.radius}m
+                    </div>
+                `);
+                
+                dangerZones.push(circle);
+            });
+        }
+
+        // 위험지역 숨기기
+        function hideDangerZones() {
+            dangerZones.forEach(zone => map.removeLayer(zone));
+            dangerZones = [];
+        }
+
+        // 지도 중심화
+        function centerMap() {
+            if (currentDetailDriver) {
+                const driver = driversData[currentDetailDriver];
+                const bounds = L.latLngBounds([driver.position]);
+                driver.deliveries.forEach(delivery => bounds.extend(delivery.position));
+                map.fitBounds(bounds, { padding: [50, 50] });
+            } else {
+                map.setView([37.5665, 126.9780], 10);
+            }
+        }
+
+        // 전체화면 토글
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // 알림 숨기기
+        function hideAlert() {
+            const alertPanel = document.getElementById('alertPanel');
+            alertPanel.style.display = 'none';
+        }
+
+        // 전체 경로 최적화
+        function optimizeAllRoutes() {
+            const activeDrivers = Object.keys(driversData).filter(id => 
+                driversData[id].status === 'active' || driversData[id].status === 'busy'
+            );
+            
+            activeDrivers.forEach(driverId => {
+                if (driverMarkers[driverId]) {
+                    if (currentDetailDriver === driverId) {
+                        calculateDetailedRoute(driverId);
+                    } else {
+                        const driver = driversData[driverId];
+                        const activeDeliveries = driver.deliveries.filter(d => d.status !== 'delivered').slice(0, 3);
+                        if (activeDeliveries.length > 0) {
+                            calculateBasicRoute(driverId, activeDeliveries);
+                        }
+                    }
+                }
+            });
+            
+            const alertPanel = document.getElementById('alertPanel');
+            alertPanel.className = 'alert-panel warning';
+            alertPanel.innerHTML = `
+                <button class="alert-close" onclick="hideAlert()">×</button>
+                <div class="alert-title">✅ 전체 경로 최적화 완료</div>
+                <div class="alert-content">
+                    ${activeDrivers.length}명 기사 경로 최적화 완료<br>
+                    예상 시간 단축: 평균 18% • 연료비 절약: 12%
+                </div>
+            `;
+            alertPanel.style.display = 'block';
+            setTimeout(() => hideAlert(), 5000);
+        }
+
+        // 지도 새로고침
+        function refreshMap() {
+            map.invalidateSize();
+            
+            // 기사 위치 약간씩 업데이트 (실시간 시뮬레이션)
+            Object.entries(driversData).forEach(([driverId, driver]) => {
+                if (driverMarkers[driverId] && driver.status === 'active') {
+                    const newLat = driver.position[0] + (Math.random() - 0.5) * 0.001;
+                    const newLng = driver.position[1] + (Math.random() - 0.5) * 0.001;
+                    driverMarkers[driverId].setLatLng([newLat, newLng]);
+                    driver.position = [newLat, newLng];
+                }
+            });
+            
+            const alertPanel = document.getElementById('alertPanel');
+            alertPanel.className = 'alert-panel info';
+            alertPanel.innerHTML = `
+                <button class="alert-close" onclick="hideAlert()">×</button>
+                <div class="alert-title">🔄 실시간 데이터 업데이트</div>
+                <div class="alert-content">
+                    기사 위치 및 배송 현황이 업데이트되었습니다.
+                </div>
+            `;
+            alertPanel.style.display = 'block';
+            setTimeout(() => hideAlert(), 3000);
+        }
+
+        // 교통정보 토글
+        let trafficVisible = false;
+        function toggleTraffic() {
+            trafficVisible = !trafficVisible;
+            const alertPanel = document.getElementById('alertPanel');
+            
+            if (trafficVisible) {
+                alertPanel.className = 'alert-panel warning';
+                alertPanel.innerHTML = `
+                    <button class="alert-close" onclick="hideAlert()">×</button>
+                    <div class="alert-title">🚦 실시간 교통정보</div>
+                    <div class="alert-content">
+                        <strong>🔴 심한 정체:</strong> 강남대로, 테헤란로, 여의대로<br>
+                        <strong>🟡 보통 정체:</strong> 홍대입구역, 잠실역 일대<br>
+                        <strong>🟢 원활:</strong> 강서구, 성북구, 구로구
+                    </div>
+                `;
+                alertPanel.style.display = 'block';
+            } else {
+                hideAlert();
+            }
+        }
+
+        // 배송 검색 필터
+        function filterDeliveries(searchTerm) {
+            const deliveryList = document.getElementById('deliveryList');
+            const items = deliveryList.getElementsByClassName('delivery-item');
+            
+            for (let item of items) {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm.toLowerCase())) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            }
+        }
+
+        // 상태별 필터
+        function filterByStatus(status) {
+            document.querySelectorAll('.filter-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const deliveryList = document.getElementById('deliveryList');
+            const items = deliveryList.getElementsByClassName('delivery-item');
+            
+            for (let item of items) {
+                if (status === 'all' || item.getAttribute('data-status') === status) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            }
+        }
+
+        // 배송 추적
+        function trackDelivery(trackingNumber) {
+            const alertPanel = document.getElementById('alertPanel');
+            alertPanel.className = 'alert-panel info';
+            alertPanel.innerHTML = `
+                <button class="alert-close" onclick="hideAlert()">×</button>
+                <div class="alert-title">📦 ${trackingNumber} 실시간 추적</div>
+                <div class="alert-content">
+                    현재 위치: GPS 좌표 추적 중<br>
+                    예상 도착: 30분 내 • 고객 연락처: 010-****-****
+                </div>
+            `;
+            alertPanel.style.display = 'block';
+        }
+
+        // 알림 표시
+        function showNotifications() {
+            const alertPanel = document.getElementById('alertPanel');
+            alertPanel.className = 'alert-panel';
+            alertPanel.innerHTML = `
+                <button class="alert-close" onclick="hideAlert()">×</button>
+                <div class="alert-title">🔔 새로운 알림 3건</div>
+                <div class="alert-content">
+                    🚨 <strong>긴급:</strong> 강남구 교통체증으로 3건 지연<br>
+                    📦 <strong>일반:</strong> 새 주문 15건 접수 대기<br>
+                    ⚙️ <strong>시스템:</strong> 야간 서버 점검 예정 (23:00-01:00)
+                </div>
+            `;
+            alertPanel.style.display = 'block';
+        }
+
+        // 실시간 통계 업데이트
+        function updateStats() {
+            const statValues = document.querySelectorAll('.stat-value');
+            const baseValues = [3247, 542, 43, 20];
+            
+            statValues.forEach((element, index) => {
+                if (Math.random() > 0.92) { // 8% 확률로 업데이트
+                    const variation = Math.floor(Math.random() * 20) - 10; // -10 ~ +10 변동
+                    const newValue = Math.max(0, baseValues[index] + variation);
+                    element.textContent = newValue.toLocaleString();
+                    element.classList.add('animate-pulse');
+                    setTimeout(() => element.classList.remove('animate-pulse'), 1000);
+                }
+            });
+        }
+
+        // 초기화
+        window.onload = function() {
+            initializeMap();
+            setInterval(updateStats, 5000);
+            
+            // 5초 후 알림 자동 숨김
+            setTimeout(() => hideAlert(), 5000);
+            
+            console.log('QuickLog TMS v2.1 전체 버전 로드 완료');
+            console.log('- 20명 기사 시스템 활성화');
+            console.log('- 실시간 위험지역 모니터링 활성화');
+            console.log('- 상세 관제 모드 활성화');
+        }
+
+        // 키보드 단축키
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                if (currentDetailDriver) {
+                    exitDetailMode();
+                } else {
+                    hideAlert();
+                }
+            } else if (e.key === 'F11') {
+                e.preventDefault();
+                toggleFullscreen();
+            } else if (e.ctrlKey && e.key === 'r') {
+                e.preventDefault();
+                refreshMap();
+            } else if (e.key === 'Tab') {
+                e.preventDefault();
+                toggleSidebar();
+            } else if (e.key === 'd' && e.ctrlKey) {
+                e.preventDefault();
+                toggleDangerZones();
+            }
+        });
+    </script>
+</body>
+</html>
