@@ -1301,7 +1301,7 @@
             }
         }
 
-        // 지도에 기사들 표시 (coordinates 키명 사용)
+        // 지도에 기사들 표시 (완료된 기사도 회색으로 표시)
         function showDriversOnMap(drivers) {
             if (!map || !drivers) return;
             
@@ -1316,14 +1316,6 @@
                 // 완료율 100% 기사는 회색으로 표시
                 const isCompleted = driver.completionRate === 100;
                 
-                const statusColors = {
-                    'active': '#2ed573',
-                    'pending': '#ffa502',
-                    'offline': '#888888',
-                    'completed': isCompleted ? '#9ca3af' : '#2ed573', // 완료된 기사는 회색
-                    'delayed': '#ff4757'
-                };
-
                 // 완료된 기사의 마커 크기 조정 (더 작게)
                 const markerSize = isCompleted ? 18 : 22;
                 const iconSize = isCompleted ? 24 : 28;
@@ -1331,7 +1323,7 @@
                 const driverIcon = L.divIcon({
                     className: 'driver-marker',
                     html: `<div style="
-                        background: ${isCompleted ? '#9ca3af' : (statusColors[driver.status] || '#888888')};
+                        background: ${isCompleted ? '#9ca3af' : (driver.delayStatus === '지연' ? '#ff4757' : '#2ed573')};
                         width: ${markerSize}px;
                         height: ${markerSize}px;
                         border-radius: 50%;
