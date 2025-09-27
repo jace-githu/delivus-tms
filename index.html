@@ -371,11 +371,12 @@
             border: 1px solid rgba(102, 126, 234, 0.3);
             border-radius: 4px;
             color: white;
-            padding: 4px 6px;
-            font-size: 0.7rem;
+            padding: 4px 8px;
+            font-size: 0.6rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            min-width: 30px;
+            min-width: 50px;
+            font-weight: 600;
         }
 
         .action-btn:hover {
@@ -741,9 +742,9 @@
                         
                         <button class="reset-filter-btn" onclick="resetFilters()" title="필터 초기화">↻</button>
                         
-                        <button class="action-btn app-push-btn" onclick="openAppPush()" title="App Push">📱</button>
+                        <button class="action-btn app-push-btn" onclick="openAppPush()" title="App Push">앱푸시</button>
                         
-                        <button class="action-btn copy-phone-btn" onclick="copyPhoneNumbers()" title="전화번호 복사">📋</button>
+                        <button class="action-btn copy-phone-btn" onclick="copyPhoneNumbers()" title="전화번호 복사">번호복사</button>
                     </div>
                 </div>
                 
@@ -945,17 +946,24 @@
         async function loadGitHubData() {
             try {
                 showDataStatus('loading', '데이터 로딩 중...');
+                console.log('GitHub 데이터 로드 시작...');
                 
                 const url = `https://raw.githubusercontent.com/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/${GITHUB_CONFIG.branch}/${GITHUB_CONFIG.path}`;
+                console.log('요청 URL:', url);
                 
                 const response = await fetch(url + '?t=' + Date.now()); // 캐시 방지
+                console.log('응답 상태:', response.status, response.statusText);
+                
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
                 
-                tmsData = await response.json();
+                const rawText = await response.text();
+                console.log('받은 데이터 크기:', rawText.length, '바이트');
+                
+                tmsData = JSON.parse(rawText);
                 allDrivers = tmsData.drivers || []; // 원본 데이터 저장
-                console.log('로드된 데이터:', tmsData);
+                console.log('파싱 완료. 기사 수:', allDrivers.length);
                 
                 // UI 업데이트
                 updateDashboardStats(tmsData.stats);
@@ -972,12 +980,13 @@
                 
                 const syncTime = new Date(tmsData.metadata?.lastSync || Date.now()).toLocaleString('ko-KR');
                 showDataStatus('success', `데이터 연결됨`, syncTime);
+                console.log('✅ 데이터 로드 완료:', syncTime);
                 
                 // 알림 개수 업데이트
                 updateNotificationCount();
                 
             } catch (error) {
-                console.error('GitHub 데이터 로드 실패:', error);
+                console.error('❌ GitHub 데이터 로드 실패:', error);
                 showDataStatus('error', '데이터 연결 실패');
                 showAlert('error', '데이터 로드 실패', `서버에서 데이터를 불러올 수 없습니다: ${error.message}`);
             }
