@@ -22,7 +22,7 @@
 
         body, html {
             height: 100vh;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
             overflow: hidden;
             background: #0f0f0f;
         }
@@ -59,7 +59,7 @@
             top: 20px;
             width: 45px;
             height: 45px;
-            background: #667eea;
+            background: #6e6eff;
             border: none;
             border-radius: 0 12px 12px 0;
             color: white;
@@ -73,21 +73,22 @@
         }
 
         .sidebar-toggle:hover {
-            background: #764ba2;
+            background: #3770cc;
         }
 
         /* 헤더 */
         .header {
             padding: 1.8rem 1.5rem;
-            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
-            background: rgba(102, 126, 234, 0.1);
+            border-bottom: 1px solid rgba(110, 110, 255, 0.2);
+            background: rgba(110, 110, 255, 0.1);
         }
 
         .logo {
             font-size: 1.6rem;
             font-weight: 700;
-            color: #667eea;
+            color: #6e6eff;
             margin-bottom: 0.8rem;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
         .user-info {
@@ -100,7 +101,7 @@
 
         .notification-btn {
             position: relative;
-            background: #667eea;
+            background: #6e6eff;
             color: white;
             border: none;
             border-radius: 50%;
@@ -165,7 +166,7 @@
         /* 통계 섹션 */
         .stats-section {
             padding: 1.5rem;
-            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            border-bottom: 1px solid rgba(110, 110, 255, 0.2);
         }
 
         .stats-grid {
@@ -179,14 +180,14 @@
             background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
             padding: 1rem;
-            border: 1px solid rgba(102, 126, 234, 0.15);
+            border: 1px solid rgba(110, 110, 255, 0.15);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
         .stat-card:hover {
-            background: rgba(102, 126, 234, 0.1);
+            background: rgba(110, 110, 255, 0.1);
             transform: translateY(-3px);
         }
 
@@ -201,7 +202,8 @@
             font-size: 0.7rem;
             color: rgba(255, 255, 255, 0.7);
             text-transform: uppercase;
-            font-weight: 500;
+            font-weight: 600;
+            font-family: 'Pretendard', sans-serif;
         }
 
         .stat-icon {
@@ -213,11 +215,13 @@
             font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 0.3rem;
+            font-family: 'Pretendard', sans-serif;
         }
 
         .stat-change {
             font-size: 0.7rem;
             color: rgba(255, 255, 255, 0.6);
+            font-family: 'Pretendard', sans-serif;
         }
 
         /* 추가 통계 */
@@ -225,7 +229,7 @@
             background: rgba(255, 255, 255, 0.03);
             border-radius: 8px;
             padding: 1rem;
-            border: 1px solid rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(110, 110, 255, 0.1);
         }
 
         .stat-row {
@@ -233,6 +237,7 @@
             justify-content: space-between;
             margin-bottom: 0.5rem;
             font-size: 0.8rem;
+            font-family: 'Pretendard', sans-serif;
         }
 
         .stat-row:last-child {
@@ -245,7 +250,7 @@
 
         .stat-value-small {
             font-weight: 600;
-            color: #667eea;
+            color: #6e6eff;
         }
 
         /* 지도 영역 */
@@ -293,12 +298,12 @@
         }
 
         .btn-primary {
-            background: #667eea;
+            background: #6e6eff;
             color: white;
         }
 
         .btn-primary:hover {
-            background: #5a67d8;
+            background: #3770cc;
             transform: translateY(-2px);
         }
 
@@ -335,7 +340,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            color: #667eea;
+            color: #6e6eff;
+            font-family: 'Pretendard', sans-serif;
         }
 
         /* 필터 컨테이너 */
@@ -359,7 +365,7 @@
 
         .filter-select:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #6e6eff;
         }
 
         .filter-select option {
@@ -422,11 +428,11 @@
         }
 
         .driver-table th {
-            background: rgba(102, 126, 234, 0.2);
-            color: #667eea;
+            background: rgba(110, 110, 255, 0.2);
+            color: #6e6eff;
             padding: 6px 4px;
             text-align: left;
-            border-bottom: 1px solid rgba(102, 126, 234, 0.3);
+            border-bottom: 1px solid rgba(110, 110, 255, 0.3);
             font-weight: 600;
             font-size: 0.65rem;
             position: sticky;
@@ -434,10 +440,11 @@
             z-index: 10;
             cursor: pointer;
             user-select: none;
+            font-family: 'Pretendard', sans-serif;
         }
 
         .driver-table th:hover {
-            background: rgba(102, 126, 234, 0.3);
+            background: rgba(110, 110, 255, 0.3);
         }
 
         .sort-btn {
