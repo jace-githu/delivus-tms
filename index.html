@@ -574,7 +574,115 @@
         @media (max-width: 1400px) {
             .app-container {
                 grid-template-columns: 360px 1fr;
+        }
+
+        function showNotifications() {
+            if (!tmsData || !tmsData.stats) {
+                showAlert('info', '알림', '데이터를 먼저 로드해주세요.');
+                return;
             }
+            
+            const notifications = [];
+            
+            // 지연 기사 알림
+            if (tmsData.stats.delayedCount > 0) {
+                notifications.push(`⚠️ 지연 기사 ${tmsData.stats.delayedCount}명`);
+            }
+            
+            // 미픽업 기사 알림
+            if (tmsData.stats.notPickupCount > 0) {
+                notifications.push(`📦 미픽업 기사 ${tmsData.stats.notPickupCount}명`);
+            }
+            
+            // 완료율 낮은 경우
+            if (tmsData.stats.overallCompletionRate < 80) {
+                notifications.push(`📉 전체 완료율 ${tmsData.stats.overallCompletionRate}% (주의 필요)`);
+            }
+            
+            if (notifications.length === 0) {
+                showAlert('success', '알림', '현재 특별한 알림이 없습니다. 모든 상황이 정상입니다.');
+            } else {
+                showAlert('warning', '상황 알림', notifications.join('\n'));
+            }
+            
+            // 알림 개수 업데이트
+            document.getElementById('notificationCount').textContent = notifications.length;
+        }
+
+        function updateNotificationCount() {
+            if (!tmsData || !tmsData.stats) {
+                document.getElementById('notificationCount').textContent = '0';
+                return;
+            }
+            
+            let count = 0;
+            if (tmsData.stats.delayedCount > 0) count++;
+            if (tmsData.stats.notPickupCount > 0) count++;
+            if (tmsData.stats.overallCompletionRate < 80) count++;
+            
+            document.getElementById('notificationCount').textContent = count;
+        }
+
+        // ✨ 지역별 포커스 기능 추가
+        function focusOnRegion(regionName) {
+            console.log(`${regionName} 지역 포커스...`);
+            
+            // 해당 지역 필터 적용
+            document.getElementById('regionFilter').value = regionName;
+            applyFilters();
+            
+            // 지도에서 해당 지역 기사들로 포커스
+            const regionDrivers = allDrivers.filter(driver => driver.region === regionName);
+            
+            if (regionDrivers.length > 0 && map) {
+                // 유효한 좌표를 가진 기사들만 선별
+                const validDrivers = regionDrivers.filter(driver => 
+                    driver.coordinates && 
+                    Array.isArray(driver.coordinates) && 
+                    driver.coordinates.length === 2 &&
+                    !isNaN(driver.coordinates[0]) && 
+                    !isNaN(driver.coordinates[1])
+                );
+                
+                if (validDrivers.length > 0) {
+                    if (validDrivers.length === 1) {
+                        // 기사가 1명인 경우 해당 위치로 이동
+                        map.setView(validDrivers[0].coordinates, 14);
+                    } else {
+                        // 여러 기사가 있는 경우 전체를 포함하는 영역으로 이동
+                        const bounds = L.latLngBounds(validDrivers.map(driver => driver.coordinates));
+                        map.fitBounds(bounds, { padding: [20, 20] });
+                    }
+                    
+                    showAlert('success', `${regionName} 지역`, `${regionName} 지역 ${validDrivers.length}명의 기사로 포커스했습니다.`);
+                } else {
+                    showAlert('warning', '위치 정보 없음', `${regionName} 지역 기사들의 위치 정보가 없습니다.`);
+                }
+            } else {
+                showAlert('info', `${regionName} 지역`, `${regionName} 지역으로 필터링했습니다.`);
+            }
+        }
+
+        // 페이지 로드 시 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('딜리래빗 TMS 시스템 시작...');
+            
+            if (typeof L !== 'undefined') {
+                initializeMap();
+                console.log('시스템 로드 완료');
+                
+                // 자동 새로고침 시작 (기본 ON)
+                if (autoRefreshEnabled) {
+                    autoRefreshInterval = setInterval(loadGitHubData, 30000); // 30초마다
+                }
+            } else {
+                console.error('Leaflet 라이브러리를 찾을 수 없습니다.');
+                showAlert('error', '시스템 오류', 'Leaflet 지도 라이브러리를 불러올 수 없습니다.');
+            }
+        });
+    </script>
+</body>
+</html>
             
             .bottom-panel {
                 grid-template-columns: 1.5fr 1fr 1fr;
@@ -1035,7 +1143,7 @@
             console.log(`필터 옵션 업데이트 완료: 운송사 ${companies.length}개, 지역 ${regions.length}개`);
         }
 
-        // 필터 적용
+        // 필터 적용 (✨ 완료율 100% 지연 제외 기능 추가)
         function applyFilters() {
             const controlFilter = document.getElementById('controlFilter').value;
             const companyFilter = document.getElementById('companyFilter').value;
@@ -1050,7 +1158,8 @@
                 
                 let controlMatch = true;
                 if (controlFilter === '지연') {
-                    controlMatch = driver.delayStatus === '지연';
+                    // ✨ 완료율 100% 기사는 지연에서 제외
+                    controlMatch = driver.delayStatus === '지연' && parseFloat(driver.completionRate || 0) < 100;
                 } else if (controlFilter === '미픽업') {
                     controlMatch = driver.pickupStatus === '미픽업';
                 }
@@ -1183,7 +1292,7 @@
             });
         }
 
-        // 기사 테이블 업데이트 (좌표 키명 수정: coordinates -> position)
+        // 기사 테이블 업데이트
         function updateDriverTable(drivers) {
             const tableBody = document.querySelector('#driverTable tbody');
             const driverCountEl = document.getElementById('driverCount');
@@ -1301,7 +1410,7 @@
             }
         }
 
-        // 지도에 기사들 표시 (완료된 기사도 회색으로 표시)
+        // 지도에 기사들 표시 (✨ 완료인원 회색핀 기능 추가)
         function showDriversOnMap(drivers) {
             if (!map || !drivers) return;
             
@@ -1313,17 +1422,27 @@
                 // coordinates 키명 사용 (Apps Script와 일치)
                 if (!driver.coordinates || driver.coordinates.length !== 2) return;
                 
-                // 완료율 100% 기사는 회색으로 표시
-                const isCompleted = driver.completionRate === 100;
+                // ✨ 완료율 100% 기사는 회색으로 표시
+                const isCompleted = parseFloat(driver.completionRate || 0) === 100;
                 
-                // 완료된 기사의 마커 크기 조정 (더 작게)
-                const markerSize = isCompleted ? 18 : 22;
-                const iconSize = isCompleted ? 24 : 28;
+                // ✨ 완료된 기사의 마커 크기 조정 (더 작게)
+                const markerSize = isCompleted ? 16 : 22;
+                const iconSize = isCompleted ? 22 : 28;
+                
+                // ✨ 마커 색상 및 스타일
+                let markerColor = '#2ed573'; // 기본 초록색
+                if (isCompleted) {
+                    markerColor = '#9ca3af'; // 회색 (완료)
+                } else if (driver.delayStatus === '지연') {
+                    markerColor = '#ff4757'; // 빨간색 (지연)
+                } else if (driver.pickupStatus === '미픽업') {
+                    markerColor = '#ffa502'; // 주황색 (미픽업)
+                }
                 
                 const driverIcon = L.divIcon({
                     className: 'driver-marker',
                     html: `<div style="
-                        background: ${isCompleted ? '#9ca3af' : (driver.delayStatus === '지연' ? '#ff4757' : '#2ed573')};
+                        background: ${markerColor};
                         width: ${markerSize}px;
                         height: ${markerSize}px;
                         border-radius: 50%;
@@ -1335,7 +1454,7 @@
                         color: white;
                         font-weight: bold;
                         font-size: ${isCompleted ? '8px' : '10px'};
-                        opacity: ${isCompleted ? '0.7' : '1'};
+                        opacity: ${isCompleted ? '0.8' : '1'};
                     ">${isCompleted ? '✓' : (driver.totalDeliveries - driver.completedDeliveries || 0)}</div>`,
                     iconSize: [iconSize, iconSize],
                     iconAnchor: [iconSize/2, iconSize/2]
@@ -1353,7 +1472,7 @@
                             총 배송: <strong>${driver.totalDeliveries}건</strong><br>
                             완료: <strong style="color: #2ed573;">${driver.completedDeliveries}건</strong><br>
                             실패: <strong style="color: #ff4757;">${driver.failedDeliveries}건</strong><br>
-                            완료율: <strong style="color: #2ed573;">${driver.completionRate}%</strong><br>
+                            완료율: <strong style="color: ${isCompleted ? '#2ed573' : '#ffa502'};">${driver.completionRate}%</strong><br>
                             픽업상태: <strong>${driver.pickupStatus}</strong><br>
                             지연상태: <strong>${driver.delayStatus}</strong><br>
                             지역: ${driver.region}
@@ -1470,89 +1589,3 @@
                 }
                 showAlert('info', '자동 새로고침 OFF', '수동으로만 데이터를 새로고침할 수 있습니다.');
             }
-        }
-
-        function showNotifications() {
-            if (!tmsData || !tmsData.stats) {
-                showAlert('info', '알림', '데이터를 먼저 로드해주세요.');
-                return;
-            }
-            
-            const notifications = [];
-            
-            // 지연 기사 알림
-            if (tmsData.stats.delayedCount > 0) {
-                notifications.push(`⚠️ 지연 기사 ${tmsData.stats.delayedCount}명`);
-            }
-            
-            // 미픽업 기사 알림
-            if (tmsData.stats.notPickupCount > 0) {
-                notifications.push(`📦 미픽업 기사 ${tmsData.stats.notPickupCount}명`);
-            }
-            
-            // 완료율 낮은 경우
-            if (tmsData.stats.overallCompletionRate < 80) {
-                notifications.push(`📉 전체 완료율 ${tmsData.stats.overallCompletionRate}% (주의 필요)`);
-            }
-            
-            if (notifications.length === 0) {
-                showAlert('success', '알림', '현재 특별한 알림이 없습니다. 모든 상황이 정상입니다.');
-            } else {
-                showAlert('warning', '상황 알림', notifications.join('\n'));
-            }
-            
-            // 알림 개수 업데이트
-            document.getElementById('notificationCount').textContent = notifications.length;
-        }
-
-        function updateNotificationCount() {
-            if (!tmsData || !tmsData.stats) {
-                document.getElementById('notificationCount').textContent = '0';
-                return;
-            }
-            
-            let count = 0;
-            if (tmsData.stats.delayedCount > 0) count++;
-            if (tmsData.stats.notPickupCount > 0) count++;
-            if (tmsData.stats.overallCompletionRate < 80) count++;
-            
-            document.getElementById('notificationCount').textContent = count;
-        }
-
-        function focusOnRegion(regionName) {
-            // 해당 지역 필터 적용
-            document.getElementById('regionFilter').value = regionName;
-            applyFilters();
-            
-            // 지도에서 해당 지역 기사들로 포커스
-            const regionDrivers = allDrivers.filter(driver => driver.region === regionName);
-            if (regionDrivers.length > 0 && map) {
-                const bounds = L.latLngBounds(regionDrivers.map(driver => driver.coordinates).filter(coord => coord));
-                if (bounds.isValid()) {
-                    map.fitBounds(bounds, { padding: [20, 20] });
-                }
-            }
-            
-            showAlert('info', `${regionName} 지역`, `${regionName} 지역으로 필터링하고 지도를 포커스했습니다.`);
-        }
-
-        // 페이지 로드 시 초기화
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('딜리래빗 TMS 시스템 시작...');
-            
-            if (typeof L !== 'undefined') {
-                initializeMap();
-                console.log('시스템 로드 완료');
-                
-                // 자동 새로고침 시작 (기본 ON)
-                if (autoRefreshEnabled) {
-                    autoRefreshInterval = setInterval(loadGitHubData, 30000); // 30초마다
-                }
-            } else {
-                console.error('Leaflet 라이브러리를 찾을 수 없습니다.');
-                showAlert('error', '시스템 오류', 'Leaflet 지도 라이브러리를 불러올 수 없습니다.');
-            }
-        });
-    </script>
-</body>
-</html>
