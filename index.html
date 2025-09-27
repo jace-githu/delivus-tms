@@ -45,7 +45,7 @@
             grid-area: sidebar;
             background: rgba(26, 26, 26, 0.95);
             backdrop-filter: blur(20px);
-            border-right: 1px solid rgba(102, 126, 234, 0.2);
+            border-right: 1px solid rgba(110, 110, 255, 0.2);
             display: flex;
             flex-direction: column;
             color: white;
@@ -262,15 +262,60 @@
 
         /* 클러스터 스타일 커스터마이징 */
         .marker-cluster-small {
-            background-color: rgba(102, 126, 234, 0.8);
+            background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
+            box-shadow: 0 4px 12px rgba(110, 110, 255, 0.4);
         }
         
         .marker-cluster-medium {
-            background-color: rgba(102, 126, 234, 0.9);
+            background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
+            box-shadow: 0 4px 15px rgba(110, 110, 255, 0.5);
         }
         
         .marker-cluster-large {
-            background-color: rgba(102, 126, 234, 1);
+            background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
+            box-shadow: 0 6px 20px rgba(110, 110, 255, 0.6);
+        }
+
+        .marker-cluster {
+            background-clip: padding-box;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .marker-cluster:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(110, 110, 255, 0.7);
+        }
+
+        .marker-cluster div {
+            background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
+            border-radius: 50%;
+            border: none;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 1;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .marker-cluster-small div {
+            font-size: 12px;
+        }
+
+        .marker-cluster-medium div {
+            font-size: 14px;
+        }
+
+        .marker-cluster-large div {
+            font-size: 16px;
+            font-weight: 800;
         }
 
         #map {
@@ -324,7 +369,7 @@
             display: grid;
             grid-template-columns: 3fr 0.8fr 0.8fr;
             gap: 1px;
-            border-top: 1px solid rgba(102, 126, 234, 0.2);
+            border-top: 1px solid rgba(110, 110, 255, 0.2);
         }
 
         .panel-section {
@@ -511,7 +556,7 @@
 
         .region-name {
             font-weight: 700;
-            color: #667eea;
+            color: #6e6eff;
             margin-bottom: 0.4rem;
             font-size: 0.9rem;
         }
@@ -542,11 +587,11 @@
             background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             padding: 0.8rem;
-            border-left: 3px solid #667eea;
+            border-left: 3px solid #6e6eff;
         }
 
         .delivery-id {
-            color: #667eea;
+            color: #6e6eff;
             font-weight: 600;
             margin-bottom: 0.3rem;
             font-size: 0.8rem;
@@ -677,7 +722,7 @@
                             <span class="stat-title">총 배송 건수</span>
                             <span class="stat-icon">📦</span>
                         </div>
-                        <div class="stat-value" style="color: #667eea;" id="totalOrders">0</div>
+                        <div class="stat-value" style="color: #6e6eff;" id="totalOrders">0</div>
                         <div class="stat-change">전체 배송량</div>
                     </div>
 
@@ -951,7 +996,7 @@
                     
                     if (column === activeColumn) {
                         sortBtn.textContent = sortOrder[column] === 'asc' ? '↑' : '↓';
-                        sortBtn.style.color = '#667eea';
+                        sortBtn.style.color = '#6e6eff';
                     } else {
                         sortBtn.textContent = '↕';
                         sortBtn.style.color = 'rgba(255, 255, 255, 0.6)';
@@ -1171,7 +1216,7 @@
                     <td>${driver.deliveryBox || '-'}</td>
                     <td>${driver.company || '-'}</td>
                     <td>${driver.phone || '-'}</td>
-                    <td><strong style="color: #667eea;">${driver.totalDeliveries || 0}</strong></td>
+                    <td><strong style="color: #6e6eff;">${driver.totalDeliveries || 0}</strong></td>
                     <td><strong style="color: #2ed573;">${driver.completedDeliveries || 0}</strong></td>
                     <td><strong style="color: #ff4757;">${driver.failedDeliveries || 0}</strong></td>
                     <td><span class="completion-rate">${driver.completionRate || 0}%</span></td>
@@ -1338,7 +1383,7 @@
                 const marker = L.marker(driver.coordinates, { icon: driverIcon })
                     .bindPopup(`
                         <div style="font-size: 12px; min-width: 200px;">
-                            <strong style="color: #667eea;">${driver.name}</strong><br>
+                            <strong style="color: #6e6eff;">${driver.name}</strong><br>
                             <strong>📦 ${driver.deliveryBox}</strong><br>
                             🏢 ${driver.company}<br>
                             📱 ${driver.phone}<br>
