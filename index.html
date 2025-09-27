@@ -29,8 +29,8 @@
             grid-template-areas: 
                 "sidebar map"
                 "bottom bottom";
-            grid-template-columns: 380px 1fr;
-            grid-template-rows: 1fr 320px;
+            grid-template-columns: 400px 1fr;
+            grid-template-rows: 1fr 350px;
             height: 100vh;
             width: 100vw;
             gap: 1px;
@@ -153,6 +153,12 @@
             border: 1px solid #dc3545;
         }
 
+        .sync-time {
+            font-size: 0.65rem;
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+
         /* 통계 섹션 */
         .stats-section {
             padding: 1.5rem;
@@ -211,6 +217,34 @@
             color: rgba(255, 255, 255, 0.6);
         }
 
+        /* 추가 통계 */
+        .additional-stats {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .stat-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .stat-value-small {
+            font-weight: 600;
+            color: #667eea;
+        }
+
         /* 지도 영역 */
         .map-container {
             grid-area: map;
@@ -267,7 +301,7 @@
             grid-area: bottom;
             background: rgba(26, 26, 26, 0.95);
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr;
             gap: 1px;
             border-top: 1px solid rgba(102, 126, 234, 0.2);
         }
@@ -289,24 +323,34 @@
         }
 
         /* 기사 리스트 테이블 */
+        .driver-table-container {
+            overflow-x: auto;
+            overflow-y: auto;
+            max-height: 280px;
+        }
+
         .driver-table {
             width: 100%;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             border-collapse: collapse;
+            min-width: 800px;
         }
 
         .driver-table th {
             background: rgba(102, 126, 234, 0.2);
             color: #667eea;
-            padding: 8px 4px;
+            padding: 6px 4px;
             text-align: left;
             border-bottom: 1px solid rgba(102, 126, 234, 0.3);
             font-weight: 600;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         .driver-table td {
-            padding: 8px 4px;
+            padding: 6px 4px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             vertical-align: top;
         }
@@ -325,11 +369,18 @@
         .status-active { background: rgba(46, 213, 115, 0.2); color: #2ed573; }
         .status-pending { background: rgba(255, 165, 2, 0.2); color: #ffa502; }
 
+        .completion-rate {
+            font-weight: 700;
+            color: #2ed573;
+        }
+
         /* 지역별 현황 */
         .region-list {
             display: flex;
             flex-direction: column;
             gap: 0.6rem;
+            max-height: 280px;
+            overflow-y: auto;
         }
 
         .region-item {
@@ -337,6 +388,13 @@
             border-radius: 8px;
             padding: 0.8rem;
             border: 1px solid rgba(102, 126, 234, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .region-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
         }
 
         .region-name {
@@ -350,19 +408,28 @@
             display: flex;
             justify-content: space-between;
             font-size: 0.75rem;
+            margin-bottom: 0.3rem;
         }
 
-        .completion-rate {
+        .region-completion {
             font-weight: 700;
             color: #2ed573;
+            font-size: 0.8rem;
         }
 
         /* 실시간 배송 */
+        .delivery-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            max-height: 280px;
+            overflow-y: auto;
+        }
+
         .delivery-item {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             padding: 0.8rem;
-            margin-bottom: 0.6rem;
             border-left: 3px solid #667eea;
         }
 
@@ -415,12 +482,17 @@
         }
 
         /* 반응형 */
-        @media (max-width: 1200px) {
+        @media (max-width: 1400px) {
             .app-container {
-                grid-template-columns: 320px 1fr;
-                grid-template-rows: 1fr 280px;
+                grid-template-columns: 360px 1fr;
             }
             
+            .bottom-panel {
+                grid-template-columns: 1.5fr 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 1200px) {
             .bottom-panel {
                 grid-template-columns: 1fr 1fr;
             }
@@ -474,7 +546,10 @@
             <!-- 데이터 상태 -->
             <div class="data-status loading" id="dataStatus">
                 <span>⏳</span>
-                <span>데이터 로딩 중...</span>
+                <div>
+                    <div>데이터 로딩 중...</div>
+                    <div class="sync-time" id="syncTime"></div>
+                </div>
             </div>
 
             <!-- 주요 통계 -->
@@ -486,7 +561,7 @@
                             <span class="stat-icon">📦</span>
                         </div>
                         <div class="stat-value" style="color: #667eea;" id="totalOrders">0</div>
-                        <div class="stat-change">G열 합계</div>
+                        <div class="stat-change">전체 배송량</div>
                     </div>
 
                     <div class="stat-card">
@@ -495,7 +570,7 @@
                             <span class="stat-icon">✅</span>
                         </div>
                         <div class="stat-value" style="color: #2ed573;" id="completedDeliveries">0</div>
-                        <div class="stat-change">H열 합계</div>
+                        <div class="stat-change">완료된 배송</div>
                     </div>
 
                     <div class="stat-card">
@@ -504,7 +579,7 @@
                             <span class="stat-icon">🚚</span>
                         </div>
                         <div class="stat-value" style="color: #ffa502;" id="inProgress">0</div>
-                        <div class="stat-change">총건수 - 완료건수</div>
+                        <div class="stat-change">배송 중</div>
                     </div>
 
                     <div class="stat-card">
@@ -513,15 +588,36 @@
                             <span class="stat-icon">👤</span>
                         </div>
                         <div class="stat-value" style="color: #2ed573;" id="activeDrivers">0</div>
-                        <div class="stat-change">완료건수 > 0</div>
+                        <div class="stat-change">현재 배송 중</div>
+                    </div>
+                </div>
+
+                <!-- 추가 통계 -->
+                <div class="additional-stats">
+                    <div class="stat-row">
+                        <span class="stat-label">전체 기사 수</span>
+                        <span class="stat-value-small" id="totalDrivers">0명</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">전체 완료율</span>
+                        <span class="stat-value-small" id="overallCompletionRate">0%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">평균 배송시간</span>
+                        <span class="stat-value-small" id="avgDeliveryTime">-</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">실패 건수</span>
+                        <span class="stat-value-small" id="failedDeliveries">0건</span>
                     </div>
                 </div>
             </div>
 
             <!-- 컨트롤 버튼 -->
             <div class="control-buttons">
-                <button class="btn btn-primary" onclick="loadGitHubData()">GitHub 데이터 새로고침</button>
-                <button class="btn btn-secondary" onclick="exportData()">데이터 내보내기</button>
+                <button class="btn btn-primary" onclick="loadGitHubData()">데이터 새로고침</button>
+                <button class="btn btn-secondary" onclick="exportDriverData()">기사 데이터 내보내기</button>
+                <button class="btn btn-secondary" onclick="toggleAutoRefresh()">자동새로고침: <span id="autoRefreshStatus">ON</span></button>
             </div>
         </div>
 
@@ -541,21 +637,21 @@
         <div class="bottom-panel">
             <!-- 배송 기사 리스트 -->
             <div class="panel-section">
-                <div class="panel-title">👨‍💼 배송 기사 리스트</div>
+                <div class="panel-title">👨‍💼 배송 기사 현황 (<span id="driverCount">0</span>명)</div>
                 
-                <div style="overflow-x: auto;">
+                <div class="driver-table-container">
                     <table class="driver-table" id="driverTable">
                         <thead>
                             <tr>
                                 <th>기사명</th>
-                                <th>코드</th>
-                                <th>Type</th>
-                                <th>운송수단</th>
+                                <th>배송박스</th>
+                                <th>운송사</th>
                                 <th>전화번호</th>
                                 <th>총건수</th>
                                 <th>완료</th>
-                                <th>시간</th>
-                                <th>담당지</th>
+                                <th>실패</th>
+                                <th>완료율</th>
+                                <th>지역</th>
                                 <th>상태</th>
                             </tr>
                         </thead>
@@ -583,9 +679,9 @@
 
             <!-- 실시간 배송 현황 -->
             <div class="panel-section">
-                <div class="panel-title">📊 실시간 배송 현황</div>
+                <div class="panel-title">📊 활성 배송 현황</div>
                 
-                <div id="deliveryList">
+                <div class="delivery-list" id="deliveryList">
                     <div style="text-align: center; color: #888; padding: 2rem;">
                         배송 현황을 로딩 중입니다...
                     </div>
@@ -598,6 +694,8 @@
         let map;
         let driverMarkers = {};
         let tmsData = null;
+        let autoRefreshInterval = null;
+        let autoRefreshEnabled = true;
 
         // GitHub 설정
         const GITHUB_CONFIG = {
@@ -614,7 +712,7 @@
                 
                 const url = `https://raw.githubusercontent.com/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/${GITHUB_CONFIG.branch}/${GITHUB_CONFIG.path}`;
                 
-                const response = await fetch(url);
+                const response = await fetch(url + '?t=' + Date.now()); // 캐시 방지
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
@@ -632,13 +730,16 @@
                     showDriversOnMap(tmsData.drivers || []);
                 }
                 
-                showDataStatus('success', `데이터 연결됨 (${new Date().toLocaleTimeString()})`);
-                showAlert('success', '데이터 로드 완료', `${tmsData.drivers?.length || 0}명의 기사 정보를 불러왔습니다.`);
+                const syncTime = new Date(tmsData.metadata?.lastSync || Date.now()).toLocaleString('ko-KR');
+                showDataStatus('success', `데이터 연결됨`, syncTime);
+                
+                // 알림 개수 업데이트
+                updateNotificationCount();
                 
             } catch (error) {
                 console.error('GitHub 데이터 로드 실패:', error);
                 showDataStatus('error', '데이터 연결 실패');
-                showAlert('error', '데이터 로드 실패', `GitHub에서 데이터를 불러올 수 없습니다: ${error.message}`);
+                showAlert('error', '데이터 로드 실패', `서버에서 데이터를 불러올 수 없습니다: ${error.message}`);
             }
         }
 
@@ -650,22 +751,32 @@
                 'totalOrders': stats.totalOrders || 0,
                 'completedDeliveries': stats.completedDeliveries || 0,
                 'inProgress': stats.inProgress || 0,
-                'activeDrivers': stats.activeDrivers || 0
+                'activeDrivers': stats.activeDrivers || 0,
+                'totalDrivers': stats.totalDrivers || 0,
+                'overallCompletionRate': (stats.overallCompletionRate || 0) + '%',
+                'avgDeliveryTime': stats.avgDeliveryTime || '-',
+                'failedDeliveries': stats.failedDeliveries || 0
             };
             
             Object.entries(elements).forEach(([id, value]) => {
                 const element = document.getElementById(id);
                 if (element) {
-                    element.textContent = value.toLocaleString();
+                    element.textContent = value;
                     element.classList.add('animate-pulse');
                     setTimeout(() => element.classList.remove('animate-pulse'), 1000);
                 }
             });
         }
 
-        // 기사 테이블 업데이트 (B,C,D,E,F,G,H,J,L 컬럼)
+        // 기사 테이블 업데이트 (실제 컬럼 구조 반영)
         function updateDriverTable(drivers) {
             const tableBody = document.querySelector('#driverTable tbody');
+            const driverCountEl = document.getElementById('driverCount');
+            
+            if (driverCountEl) {
+                driverCountEl.textContent = drivers.length;
+            }
+            
             if (!tableBody || !drivers || drivers.length === 0) {
                 if (tableBody) {
                     tableBody.innerHTML = '<tr><td colspan="10" style="text-align: center; padding: 2rem;">기사 데이터가 없습니다.</td></tr>';
@@ -676,14 +787,14 @@
             const rows = drivers.map(driver => `
                 <tr>
                     <td><strong>${driver.name || '-'}</strong></td>
-                    <td>${driver.driverCode || '-'}</td>
-                    <td>${driver.vehicleType || '-'}</td>
-                    <td>${driver.vehicle || '-'}</td>
+                    <td>${driver.deliveryBox || '-'}</td>
+                    <td>${driver.company || '-'}</td>
                     <td>${driver.phone || '-'}</td>
-                    <td><strong>${driver.totalDeliveries || 0}</strong></td>
-                    <td style="color: #2ed573;"><strong>${driver.completedDeliveries || 0}</strong></td>
-                    <td>${driver.avgTime || '-'}</td>
-                    <td>${driver.currentAddress || '-'}</td>
+                    <td><strong style="color: #667eea;">${driver.totalDeliveries || 0}</strong></td>
+                    <td><strong style="color: #2ed573;">${driver.completedDeliveries || 0}</strong></td>
+                    <td><strong style="color: #ff4757;">${driver.failedDeliveries || 0}</strong></td>
+                    <td><span class="completion-rate">${driver.completionRate || 0}%</span></td>
+                    <td>${driver.region || '-'}</td>
                     <td>
                         <span class="status-badge ${driver.status === 'active' ? 'status-active' : 'status-pending'}">
                             ${driver.status === 'active' ? '활성' : '대기'}
@@ -706,260 +817,16 @@
             }
             
             const regionItems = regions.map(region => `
-                <div class="region-item">
+                <div class="region-item" onclick="focusOnRegion('${region.name}')">
                     <div class="region-name">${region.name}</div>
                     <div class="region-stats">
-                        <span>완료: <strong style="color: #2ed573;">${region.delivered || 0}건</strong></span>
-                        <span>진행: <strong style="color: #667eea;">${region.transit || 0}건</strong></span>
-                        <span class="completion-rate">${region.completionRate || 0}%</span>
+                        <span>완료: <strong>${region.delivered || 0}</strong></span>
+                        <span>진행: <strong>${region.transit || 0}</strong></span>
+                        <span>실패: <strong>${region.delayed || 0}</strong></span>
+                    </div>
+                    <div class="region-completion">${region.completionRate || 0}% 완료</div>
+                    <div style="font-size: 0.65rem; color: rgba(255,255,255,0.6); margin-top: 0.2rem;">
+                        기사 ${region.driverCount || 0}명
                     </div>
                 </div>
-            `).join('');
-            
-            regionList.innerHTML = regionItems;
-        }
-
-        // 실시간 배송 현황 업데이트
-        function updateDeliveryList(deliveries) {
-            const deliveryList = document.getElementById('deliveryList');
-            if (!deliveryList || !deliveries || deliveries.length === 0) {
-                if (deliveryList) {
-                    deliveryList.innerHTML = '<div style="text-align: center; color: #888; padding: 2rem;">진행중인 배송이 없습니다.</div>';
-                }
-                return;
-            }
-            
-            const deliveryItems = deliveries.slice(0, 8).map(delivery => `
-                <div class="delivery-item">
-                    <div class="delivery-id">${delivery.id}</div>
-                    <div class="delivery-info">
-                        <strong>${delivery.driver}</strong><br>
-                        📍 ${delivery.address}<br>
-                        ⏱️ ${delivery.estimatedTime} | 📱 ${delivery.phone || '-'}
-                    </div>
-                </div>
-            `).join('');
-            
-            deliveryList.innerHTML = deliveryItems;
-        }
-
-        // 지도 초기화
-        function initializeMap() {
-            try {
-                map = L.map('map', {
-                    center: [37.5665, 126.9780],
-                    zoom: 11,
-                    zoomControl: true
-                });
-
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '© OpenStreetMap contributors'
-                }).addTo(map);
-
-                console.log('지도 초기화 완료');
-                loadGitHubData();
-                
-            } catch (error) {
-                console.error('지도 초기화 오류:', error);
-                showAlert('error', '지도 로딩 오류', '지도를 불러오는 중 문제가 발생했습니다.');
-            }
-        }
-
-        // 지도에 기사들 표시
-        function showDriversOnMap(drivers) {
-            if (!map || !drivers) return;
-            
-            // 기존 마커 제거
-            Object.values(driverMarkers).forEach(marker => map.removeLayer(marker));
-            driverMarkers = {};
-            
-            drivers.forEach(driver => {
-                if (!driver.position || driver.position.length !== 2) return;
-                
-                const statusColors = {
-                    'active': '#2ed573',
-                    'pending': '#ffa502',
-                    'offline': '#888888'
-                };
-
-                const driverIcon = L.divIcon({
-                    className: 'driver-marker',
-                    html: `<div style="
-                        background: ${statusColors[driver.status] || '#888888'};
-                        width: 20px;
-                        height: 20px;
-                        border-radius: 50%;
-                        border: 2px solid white;
-                        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-                    "></div>`,
-                    iconSize: [24, 24],
-                    iconAnchor: [12, 12]
-                });
-
-                const marker = L.marker(driver.position, { icon: driverIcon })
-                    .addTo(map)
-                    .bindPopup(`
-                        <div style="font-size: 12px;">
-                            <strong>${driver.name}</strong><br>
-                            완료: ${driver.completedDeliveries || 0}건<br>
-                            진행: ${driver.inProgress || 0}건<br>
-                            지역: ${driver.region || '미분류'}
-                        </div>
-                    `);
-
-                driverMarkers[driver.id] = marker;
-            });
-        }
-
-        // 데이터 상태 표시
-        function showDataStatus(status, message) {
-            const statusElement = document.getElementById('dataStatus');
-            if (!statusElement) return;
-            
-            statusElement.className = `data-status ${status}`;
-            const icons = { loading: '⏳', success: '✅', error: '❌' };
-            statusElement.innerHTML = `<span>${icons[status]}</span><span>${message}</span>`;
-        }
-
-        // 알림 표시
-        function showAlert(type, title, content) {
-            const alertPanel = document.getElementById('alertPanel');
-            if (!alertPanel) return;
-            
-            alertPanel.className = `alert-panel ${type}`;
-            document.getElementById('alertTitle').textContent = title;
-            document.getElementById('alertContent').textContent = content;
-            alertPanel.style.display = 'block';
-            
-            setTimeout(() => hideAlert(), type === 'success' ? 3000 : 5000);
-        }
-
-        function hideAlert() {
-            const alertPanel = document.getElementById('alertPanel');
-            if (alertPanel) {
-                alertPanel.style.display = 'none';
-            }
-        }
-
-        // 사이드바 토글
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.style.transform = sidebar.style.transform === 'translateX(-340px)' ? 'translateX(0)' : 'translateX(-340px)';
-            
-            if (map) {
-                setTimeout(() => map.invalidateSize(), 300);
-            }
-        }
-
-        // 데이터 내보내기
-        function exportData() {
-            if (!tmsData) {
-                showAlert('warning', '데이터 없음', '내보낼 데이터가 없습니다.');
-                return;
-            }
-            
-            // CSV 형태로 기사 데이터 내보내기
-            const headers = ['기사명', '기사코드', '운송Type', '운송수단', '전화번호', '총배송건수', '완료건수', '배송시간', '담당지', '지역명'];
-            const csvData = [headers];
-            
-            tmsData.drivers.forEach(driver => {
-                csvData.push([
-                    driver.name,
-                    driver.driverCode,
-                    driver.vehicleType,
-                    driver.vehicle,
-                    driver.phone,
-                    driver.totalDeliveries,
-                    driver.completedDeliveries,
-                    driver.avgTime,
-                    driver.currentAddress,
-                    driver.region
-                ]);
-            });
-            
-            const csvContent = csvData.map(row => row.join(',')).join('\n');
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = `delivus_tms_${new Date().toISOString().split('T')[0]}.csv`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            showAlert('success', '데이터 내보내기 완료', 'CSV 파일로 다운로드되었습니다.');
-        }
-
-        // 알림 표시
-        function showNotifications() {
-            if (!tmsData) {
-                showAlert('info', '알림', '데이터를 먼저 로드해주세요.');
-                return;
-            }
-            
-            const stats = tmsData.stats;
-            const notifications = [];
-            
-            if (stats.inProgress > 10) {
-                notifications.push(`진행중 배송 ${stats.inProgress}건이 많습니다.`);
-            }
-            
-            if (stats.completionRate < 50) {
-                notifications.push(`전체 완료율이 ${stats.completionRate}%로 낮습니다.`);
-            }
-            
-            // 지역별 알림 체크
-            if (tmsData.regions) {
-                tmsData.regions.forEach(region => {
-                    if (region.completionRate < 30) {
-                        notifications.push(`${region.name} 지역 완료율 ${region.completionRate}% 주의 필요`);
-                    }
-                });
-            }
-            
-            if (notifications.length === 0) {
-                notifications.push('모든 배송이 정상적으로 진행되고 있습니다.');
-            }
-            
-            // 알림 개수 업데이트
-            document.getElementById('notificationCount').textContent = notifications.length;
-            
-            showAlert('info', `알림 ${notifications.length}건`, notifications.join(' • '));
-        }
-
-        // 자동 새로고침 (10초마다)
-        function startAutoRefresh() {
-            setInterval(() => {
-                loadGitHubData();
-            }, 10000);
-        }
-
-        // 페이지 로드 시 초기화
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('딜리래빗 TMS 시스템 시작...');
-            
-            if (typeof L !== 'undefined') {
-                initializeMap();
-                startAutoRefresh();
-                console.log('시스템 로드 완료');
-            } else {
-                console.error('Leaflet 라이브러리를 찾을 수 없습니다.');
-                showAlert('error', '시스템 오류', 'Leaflet 지도 라이브러리를 불러올 수 없습니다.');
-            }
-        });
-
-        // 키보드 단축키
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') hideAlert();
-            else if (e.ctrlKey && e.key === 'r') { e.preventDefault(); loadGitHubData(); }
-            else if (e.key === 'F5') { e.preventDefault(); loadGitHubData(); }
-        });
-
-        // 윈도우 리사이즈 시 지도 크기 재조정
-        window.addEventListener('resize', function() {
-            if (map) {
-                setTimeout(() => map.invalidateSize(), 200);
-            }
-        });
-    </script>
-</body>
-</html>
+            `).join('
