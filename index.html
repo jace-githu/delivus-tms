@@ -301,7 +301,7 @@
             grid-area: bottom;
             background: rgba(26, 26, 26, 0.95);
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 3fr 0.8fr 0.8fr;
             gap: 1px;
             border-top: 1px solid rgba(102, 126, 234, 0.2);
         }
@@ -453,6 +453,10 @@
 
         .status-active { background: rgba(46, 213, 115, 0.2); color: #2ed573; }
         .status-pending { background: rgba(255, 165, 2, 0.2); color: #ffa502; }
+        .status-pickup { background: rgba(46, 213, 115, 0.2); color: #2ed573; }
+        .status-not-pickup { background: rgba(255, 71, 87, 0.2); color: #ff4757; }
+        .status-delayed { background: rgba(255, 71, 87, 0.2); color: #ff4757; }
+        .status-normal { background: rgba(46, 213, 115, 0.2); color: #2ed573; }
 
         .completion-rate {
             font-weight: 700;
@@ -732,6 +736,12 @@
                     
                     <!-- 필터 컨테이너 -->
                     <div class="filter-container">
+                        <select class="filter-select" id="controlFilter" onchange="applyFilters()">
+                            <option value="">전체 관제</option>
+                            <option value="지연">지연</option>
+                            <option value="미픽업">미픽업</option>
+                        </select>
+                        
                         <select class="filter-select" id="companyFilter" onchange="applyFilters()">
                             <option value="">전체 운송사</option>
                         </select>
@@ -760,13 +770,14 @@
                                 <th onclick="sortTable('completedDeliveries')">완료 <span class="sort-btn">↕</span></th>
                                 <th onclick="sortTable('failedDeliveries')">실패 <span class="sort-btn">↕</span></th>
                                 <th onclick="sortTable('completionRate')">완료율 <span class="sort-btn">↕</span></th>
+                                <th onclick="sortTable('pickupStatus')">픽업여부 <span class="sort-btn">↕</span></th>
+                                <th onclick="sortTable('delayStatus')">지연(20분) <span class="sort-btn">↕</span></th>
                                 <th onclick="sortTable('region')">지역 <span class="sort-btn">↕</span></th>
-                                <th onclick="sortTable('status')">상태 <span class="sort-btn">↕</span></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="10" style="text-align: center; padding: 2rem;">
+                                <td colspan="11" style="text-align: center; padding: 2rem;">
                                     데이터를 로딩 중입니다...
                                 </td>
                             </tr>
@@ -928,7 +939,7 @@
             headers.forEach((header, index) => {
                 const sortBtn = header.querySelector('.sort-btn');
                 if (sortBtn) {
-                    const columns = ['name', 'deliveryBox', 'company', 'phone', 'totalDeliveries', 'completedDeliveries', 'failedDeliveries', 'completionRate', 'region', 'status'];
+                    const columns = ['name', 'deliveryBox', 'company', 'phone', 'totalDeliveries', 'completedDeliveries', 'failedDeliveries', 'completionRate', 'pickupStatus', 'delayStatus', 'region'];
                     const column = columns[index];
                     
                     if (column === activeColumn) {
@@ -1026,16 +1037,25 @@
 
         // 필터 적용
         function applyFilters() {
+            const controlFilter = document.getElementById('controlFilter').value;
             const companyFilter = document.getElementById('companyFilter').value;
             const regionFilter = document.getElementById('regionFilter').value;
             
             if (!allDrivers.length) return;
             
             // 필터링된 기사 목록
-            const filteredDrivers = allDrivers.filter(driver => {
+            let filteredDrivers = allDrivers.filter(driver => {
                 const companyMatch = !companyFilter || driver.company === companyFilter;
                 const regionMatch = !regionFilter || driver.region === regionFilter;
-                return companyMatch && regionMatch;
+                
+                let controlMatch = true;
+                if (controlFilter === '지연') {
+                    controlMatch = driver.delayStatus === '지연';
+                } else if (controlFilter === '미픽업') {
+                    controlMatch = driver.pickupStatus === '미픽업';
+                }
+                
+                return companyMatch && regionMatch && controlMatch;
             });
             
             // 현재 필터링된 데이터 저장
@@ -1055,6 +1075,7 @@
 
         // 필터 초기화
         function resetFilters() {
+            document.getElementById('controlFilter').value = '';
             document.getElementById('companyFilter').value = '';
             document.getElementById('regionFilter').value = '';
             
@@ -1094,7 +1115,7 @@
             if (!drivers || drivers.length === 0) {
                 // 필터링 결과가 없는 경우
                 const noResultRow = document.createElement('tr');
-                noResultRow.innerHTML = '<td colspan="10" style="text-align: center; padding: 2rem; color: #888;">필터 조건에 해당하는 기사가 없습니다.</td>';
+                noResultRow.innerHTML = '<td colspan="11" style="text-align: center; padding: 2rem; color: #888;">필터 조건에 해당하는 기사가 없습니다.</td>';
                 noResultRow.classList.remove('filtered-out');
                 
                 // 기존 "결과 없음" 행 제거
@@ -1162,7 +1183,7 @@
             });
         }
 
-        // 기사 테이블 업데이트 (data-driver-id 속성 추가)
+        // 기사 테이블 업데이트 (새로운 컬럼 구조 반영)
         function updateDriverTable(drivers) {
             const tableBody = document.querySelector('#driverTable tbody');
             const driverCountEl = document.getElementById('driverCount');
@@ -1173,7 +1194,7 @@
             
             if (!tableBody || !drivers || drivers.length === 0) {
                 if (tableBody) {
-                    tableBody.innerHTML = '<tr><td colspan="10" style="text-align: center; padding: 2rem;">기사 데이터가 없습니다.</td></tr>';
+                    tableBody.innerHTML = '<tr><td colspan="11" style="text-align: center; padding: 2rem;">기사 데이터가 없습니다.</td></tr>';
                 }
                 return;
             }
@@ -1188,12 +1209,17 @@
                     <td><strong style="color: #2ed573;">${driver.completedDeliveries || 0}</strong></td>
                     <td><strong style="color: #ff4757;">${driver.failedDeliveries || 0}</strong></td>
                     <td><span class="completion-rate">${driver.completionRate || 0}%</span></td>
-                    <td>${driver.region || '-'}</td>
                     <td>
-                        <span class="status-badge ${driver.status === 'active' ? 'status-active' : 'status-pending'}">
-                            ${driver.status === 'active' ? '활성' : '대기'}
+                        <span class="status-badge ${driver.pickupStatus === '픽업' ? 'status-pickup' : 'status-not-pickup'}">
+                            ${driver.pickupStatus || '미픽업'}
                         </span>
                     </td>
+                    <td>
+                        <span class="status-badge ${driver.delayStatus === '지연' ? 'status-delayed' : 'status-normal'}">
+                            ${driver.delayStatus || '정상'}
+                        </span>
+                    </td>
+                    <td>${driver.region || '-'}</td>
                 </tr>
             `).join('');
             
