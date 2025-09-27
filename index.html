@@ -1183,7 +1183,7 @@
             });
         }
 
-        // 기사 테이블 업데이트 (새로운 컬럼 구조 반영)
+        // 기사 테이블 업데이트 (좌표 키명 수정: coordinates -> position)
         function updateDriverTable(drivers) {
             const tableBody = document.querySelector('#driverTable tbody');
             const driverCountEl = document.getElementById('driverCount');
@@ -1301,7 +1301,7 @@
             }
         }
 
-        // 지도에 기사들 표시 (마커 ID별 저장)
+        // 지도에 기사들 표시 (coordinates 키명 사용)
         function showDriversOnMap(drivers) {
             if (!map || !drivers) return;
             
@@ -1310,12 +1310,15 @@
             driverMarkers = {};
             
             drivers.forEach(driver => {
-                if (!driver.position || driver.position.length !== 2) return;
+                // coordinates 키명 사용 (Apps Script와 일치)
+                if (!driver.coordinates || driver.coordinates.length !== 2) return;
                 
                 const statusColors = {
                     'active': '#2ed573',
                     'pending': '#ffa502',
-                    'offline': '#888888'
+                    'offline': '#888888',
+                    'completed': '#2ed573',
+                    'delayed': '#ff4757'
                 };
 
                 const driverIcon = L.divIcon({
@@ -1338,7 +1341,7 @@
                     iconAnchor: [14, 14]
                 });
 
-                const marker = L.marker(driver.position, { icon: driverIcon })
+                const marker = L.marker(driver.coordinates, { icon: driverIcon })
                     .addTo(map)
                     .bindPopup(`
                         <div style="font-size: 12px; min-width: 200px;">
@@ -1351,6 +1354,8 @@
                             완료: <strong style="color: #2ed573;">${driver.completedDeliveries}건</strong><br>
                             실패: <strong style="color: #ff4757;">${driver.failedDeliveries}건</strong><br>
                             완료율: <strong style="color: #2ed573;">${driver.completionRate}%</strong><br>
+                            픽업상태: <strong>${driver.pickupStatus}</strong><br>
+                            지연상태: <strong>${driver.delayStatus}</strong><br>
                             지역: ${driver.region}
                         </div>
                     `);
@@ -1413,7 +1418,39 @@
                 return;
             }
             
-            showAlert('success', '기능 준비 중', '데이터 내보내기 기능을 준비 중입니다.');
+            // CSV 형태로 데이터 내보내기
+            const headers = ['기사명', '배송박스', '운송사', '전화번호', '총건수', '완료', '실패', '완료율', '픽업여부', '지연상태', '지역'];
+            const csvData = [headers.join(',')];
+            
+            allDrivers.forEach(driver => {
+                const row = [
+                    driver.name || '',
+                    driver.deliveryBox || '',
+                    driver.company || '',
+                    driver.phone || '',
+                    driver.totalDeliveries || 0,
+                    driver.completedDeliveries || 0,
+                    driver.failedDeliveries || 0,
+                    driver.completionRate || 0,
+                    driver.pickupStatus || '',
+                    driver.delayStatus || '',
+                    driver.region || ''
+                ];
+                csvData.push(row.join(','));
+            });
+            
+            const csvContent = csvData.join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `딜리래빗_TMS_기사데이터_${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            showAlert('success', '내보내기 완료', 'CSV 파일이 다운로드되었습니다.');
         }
 
         function toggleAutoRefresh() {
@@ -1422,24 +1459,81 @@
             
             if (autoRefreshEnabled) {
                 statusEl.textContent = 'ON';
-                showAlert('success', '자동 새로고침 ON', '10초마다 자동으로 데이터를 새로고침합니다.');
+                if (autoRefreshInterval) clearInterval(autoRefreshInterval);
+                autoRefreshInterval = setInterval(loadGitHubData, 30000); // 30초마다
+                showAlert('success', '자동 새로고침 ON', '30초마다 자동으로 데이터를 새로고침합니다.');
             } else {
                 statusEl.textContent = 'OFF';
+                if (autoRefreshInterval) {
+                    clearInterval(autoRefreshInterval);
+                    autoRefreshInterval = null;
+                }
                 showAlert('info', '자동 새로고침 OFF', '수동으로만 데이터를 새로고침할 수 있습니다.');
             }
         }
 
         function showNotifications() {
-            showAlert('info', '알림', '데이터를 먼저 로드해주세요.');
+            if (!tmsData || !tmsData.stats) {
+                showAlert('info', '알림', '데이터를 먼저 로드해주세요.');
+                return;
+            }
+            
+            const notifications = [];
+            
+            // 지연 기사 알림
+            if (tmsData.stats.delayedCount > 0) {
+                notifications.push(`⚠️ 지연 기사 ${tmsData.stats.delayedCount}명`);
+            }
+            
+            // 미픽업 기사 알림
+            if (tmsData.stats.notPickupCount > 0) {
+                notifications.push(`📦 미픽업 기사 ${tmsData.stats.notPickupCount}명`);
+            }
+            
+            // 완료율 낮은 경우
+            if (tmsData.stats.overallCompletionRate < 80) {
+                notifications.push(`📉 전체 완료율 ${tmsData.stats.overallCompletionRate}% (주의 필요)`);
+            }
+            
+            if (notifications.length === 0) {
+                showAlert('success', '알림', '현재 특별한 알림이 없습니다. 모든 상황이 정상입니다.');
+            } else {
+                showAlert('warning', '상황 알림', notifications.join('\n'));
+            }
+            
+            // 알림 개수 업데이트
+            document.getElementById('notificationCount').textContent = notifications.length;
         }
 
         function updateNotificationCount() {
-            // 기본 알림 개수 설정
-            document.getElementById('notificationCount').textContent = '0';
+            if (!tmsData || !tmsData.stats) {
+                document.getElementById('notificationCount').textContent = '0';
+                return;
+            }
+            
+            let count = 0;
+            if (tmsData.stats.delayedCount > 0) count++;
+            if (tmsData.stats.notPickupCount > 0) count++;
+            if (tmsData.stats.overallCompletionRate < 80) count++;
+            
+            document.getElementById('notificationCount').textContent = count;
         }
 
         function focusOnRegion(regionName) {
-            showAlert('info', `${regionName} 지역`, '해당 지역으로 포커스합니다.');
+            // 해당 지역 필터 적용
+            document.getElementById('regionFilter').value = regionName;
+            applyFilters();
+            
+            // 지도에서 해당 지역 기사들로 포커스
+            const regionDrivers = allDrivers.filter(driver => driver.region === regionName);
+            if (regionDrivers.length > 0 && map) {
+                const bounds = L.latLngBounds(regionDrivers.map(driver => driver.coordinates).filter(coord => coord));
+                if (bounds.isValid()) {
+                    map.fitBounds(bounds, { padding: [20, 20] });
+                }
+            }
+            
+            showAlert('info', `${regionName} 지역`, `${regionName} 지역으로 필터링하고 지도를 포커스했습니다.`);
         }
 
         // 페이지 로드 시 초기화
@@ -1449,6 +1543,11 @@
             if (typeof L !== 'undefined') {
                 initializeMap();
                 console.log('시스템 로드 완료');
+                
+                // 자동 새로고침 시작 (기본 ON)
+                if (autoRefreshEnabled) {
+                    autoRefreshInterval = setInterval(loadGitHubData, 30000); // 30초마다
+                }
             } else {
                 console.error('Leaflet 라이브러리를 찾을 수 없습니다.');
                 showAlert('error', '시스템 오류', 'Leaflet 지도 라이브러리를 불러올 수 없습니다.');
