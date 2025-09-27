@@ -366,6 +366,30 @@
             background: rgba(102, 126, 234, 0.3);
         }
 
+        .action-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 4px;
+            color: white;
+            padding: 4px 6px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 30px;
+        }
+
+        .action-btn:hover {
+            background: rgba(102, 126, 234, 0.3);
+        }
+
+        .app-push-btn:hover {
+            background: rgba(46, 213, 115, 0.3);
+        }
+
+        .copy-phone-btn:hover {
+            background: rgba(255, 165, 2, 0.3);
+        }
+
         /* 기사 리스트 테이블 */
         .driver-table-container {
             overflow-x: auto;
@@ -391,6 +415,18 @@
             position: sticky;
             top: 0;
             z-index: 10;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .driver-table th:hover {
+            background: rgba(102, 126, 234, 0.3);
+        }
+
+        .sort-btn {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.7rem;
+            margin-left: 4px;
         }
 
         .driver-table td {
@@ -704,6 +740,10 @@
                         </select>
                         
                         <button class="reset-filter-btn" onclick="resetFilters()" title="필터 초기화">↻</button>
+                        
+                        <button class="action-btn app-push-btn" onclick="openAppPush()" title="App Push">📱</button>
+                        
+                        <button class="action-btn copy-phone-btn" onclick="copyPhoneNumbers()" title="전화번호 복사">📋</button>
                     </div>
                 </div>
                 
@@ -711,16 +751,16 @@
                     <table class="driver-table" id="driverTable">
                         <thead>
                             <tr>
-                                <th>기사명</th>
-                                <th>배송박스</th>
-                                <th>운송사</th>
-                                <th>전화번호</th>
-                                <th>총건수</th>
-                                <th>완료</th>
-                                <th>실패</th>
-                                <th>완료율</th>
-                                <th>지역</th>
-                                <th>상태</th>
+                                <th onclick="sortTable('name')">기사명 <span class="sort-btn">↕</span></th>
+                                <th onclick="sortTable('deliveryBox')">배송박스 <span class="sort-btn">↕</span></th>
+                                <th onclick="sortTable('company')">운송사 <span class="sort-btn">↕</span></th>
+                                <th onclick="sortTable('phone')">전화번호 <span class="sort-btn">↕</span></th>
+                                <th onclick="sortTable('totalDeliveries')">총건수 <span class="sort-btn">↕</span></th>
+                                <th onclick="sortTable('completedDeliveries')">완료 <span class="sort-btn">↕</span></th>
+                                <th onclick="sortTable('failedDeliveries')">실패 <span class="sort-btn">↕</span></th>
+                                <th onclick="sortTable('completionRate')">완료율 <span class="sort-btn">↕</span></th>
+                                <th onclick="sortTable('region')">지역 <span class="sort-btn">↕</span></th>
+                                <th onclick="sortTable('status')">상태 <span class="sort-btn">↕</span></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -765,6 +805,8 @@
         let autoRefreshInterval = null;
         let autoRefreshEnabled = true;
         let allDrivers = []; // 원본 기사 데이터 저장용
+        let currentFilteredDrivers = []; // 현재 필터링된 기사 데이터 저장용
+        let sortOrder = {}; // 정렬 상태 저장
 
         // GitHub 설정
         const GITHUB_CONFIG = {
@@ -773,6 +815,131 @@
             path: 'data/tms_data.json',
             branch: 'main'
         };
+
+        // App Push 페이지 열기
+        function openAppPush() {
+            const url = 'https://backoffice.drabbit.co.kr/apps/4a42193c-c779-11ef-aa21-cf70a380470e/Backoffice%202.1%20-%20Page/%ED%91%B8%EC%89%AC';
+            window.open(url, '_blank');
+            showAlert('success', 'App Push', 'App Push 페이지를 새 탭에서 열었습니다.');
+        }
+
+        // 전화번호 복사
+        function copyPhoneNumbers() {
+            const driversToUse = currentFilteredDrivers.length > 0 ? currentFilteredDrivers : allDrivers;
+            
+            if (!driversToUse.length) {
+                showAlert('warning', '데이터 없음', '복사할 전화번호가 없습니다.');
+                return;
+            }
+
+            // 현재 화면에 보이는 기사들의 전화번호만 추출
+            const visibleDrivers = getVisibleDrivers();
+            const phoneNumbers = visibleDrivers
+                .map(driver => driver.phone)
+                .filter(phone => phone && phone.trim() !== '' && phone !== '-')
+                .join('\n');
+
+            if (!phoneNumbers) {
+                showAlert('warning', '전화번호 없음', '복사할 전화번호가 없습니다.');
+                return;
+            }
+
+            // 클립보드에 복사
+            navigator.clipboard.writeText(phoneNumbers).then(() => {
+                showAlert('success', '복사 완료', `${phoneNumbers.split('\n').length}개의 전화번호가 복사되었습니다.`);
+            }).catch(() => {
+                // 클립보드 API 실패 시 대체 방법
+                const textArea = document.createElement('textarea');
+                textArea.value = phoneNumbers;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showAlert('success', '복사 완료', `${phoneNumbers.split('\n').length}개의 전화번호가 복사되었습니다.`);
+            });
+        }
+
+        // 현재 화면에 보이는 기사들 가져오기
+        function getVisibleDrivers() {
+            const tableBody = document.querySelector('#driverTable tbody');
+            if (!tableBody) return [];
+
+            const visibleRows = tableBody.querySelectorAll('tr:not(.filtered-out):not(.no-result-row)');
+            const visibleDrivers = [];
+
+            visibleRows.forEach(row => {
+                const driverId = row.getAttribute('data-driver-id');
+                const driver = allDrivers.find(d => d.id === driverId);
+                if (driver) {
+                    visibleDrivers.push(driver);
+                }
+            });
+
+            return visibleDrivers;
+        }
+
+        // 테이블 정렬 함수
+        function sortTable(column) {
+            if (!allDrivers.length) return;
+            
+            // 현재 정렬 상태 토글 (asc -> desc -> asc)
+            const currentOrder = sortOrder[column] || 'none';
+            sortOrder[column] = currentOrder === 'asc' ? 'desc' : 'asc';
+            
+            // 다른 컬럼 정렬 상태 초기화
+            Object.keys(sortOrder).forEach(key => {
+                if (key !== column) sortOrder[key] = 'none';
+            });
+            
+            // 정렬된 데이터 생성
+            const sortedDrivers = [...allDrivers].sort((a, b) => {
+                let valueA = a[column];
+                let valueB = b[column];
+                
+                // 숫자형 데이터 처리
+                if (['totalDeliveries', 'completedDeliveries', 'failedDeliveries', 'completionRate'].includes(column)) {
+                    valueA = parseFloat(valueA) || 0;
+                    valueB = parseFloat(valueB) || 0;
+                } else {
+                    // 문자열 데이터 처리
+                    valueA = String(valueA || '').toLowerCase();
+                    valueB = String(valueB || '').toLowerCase();
+                }
+                
+                if (sortOrder[column] === 'asc') {
+                    return valueA > valueB ? 1 : -1;
+                } else {
+                    return valueA < valueB ? 1 : -1;
+                }
+            });
+            
+            // UI 업데이트
+            updateDriverTable(sortedDrivers);
+            updateSortIcons(column);
+            
+            // 현재 필터가 적용되어 있다면 필터도 다시 적용
+            applyFilters();
+        }
+        
+        // 정렬 아이콘 업데이트
+        function updateSortIcons(activeColumn) {
+            const headers = document.querySelectorAll('.driver-table th');
+            headers.forEach((header, index) => {
+                const sortBtn = header.querySelector('.sort-btn');
+                if (sortBtn) {
+                    const columns = ['name', 'deliveryBox', 'company', 'phone', 'totalDeliveries', 'completedDeliveries', 'failedDeliveries', 'completionRate', 'region', 'status'];
+                    const column = columns[index];
+                    
+                    if (column === activeColumn) {
+                        sortBtn.textContent = sortOrder[column] === 'asc' ? '↑' : '↓';
+                        sortBtn.style.color = '#667eea';
+                    } else {
+                        sortBtn.textContent = '↕';
+                        sortBtn.style.color = 'rgba(255, 255, 255, 0.6)';
+                    }
+                }
+            });
+        }
 
         // GitHub에서 데이터 로드
         async function loadGitHubData() {
@@ -862,6 +1029,9 @@
                 return companyMatch && regionMatch;
             });
             
+            // 현재 필터링된 데이터 저장
+            currentFilteredDrivers = filteredDrivers;
+            
             // 테이블 행 필터링
             updateDriverTableFiltered(filteredDrivers);
             
@@ -878,6 +1048,9 @@
         function resetFilters() {
             document.getElementById('companyFilter').value = '';
             document.getElementById('regionFilter').value = '';
+            
+            // 현재 필터링된 데이터 초기화
+            currentFilteredDrivers = [];
             
             // 전체 데이터로 복원
             updateDriverTableFiltered(allDrivers);
