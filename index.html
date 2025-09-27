@@ -829,4 +829,209 @@
                         기사 ${region.driverCount || 0}명
                     </div>
                 </div>
-            `).join('
+            `).join('');
+            
+            regionList.innerHTML = regionItems;
+        }
+
+        // 실시간 배송 현황 업데이트
+        function updateDeliveryList(deliveries) {
+            const deliveryList = document.getElementById('deliveryList');
+            if (!deliveryList || !deliveries || deliveries.length === 0) {
+                if (deliveryList) {
+                    deliveryList.innerHTML = '<div style="text-align: center; color: #888; padding: 2rem;">활성 배송이 없습니다.</div>';
+                }
+                return;
+            }
+            
+            const deliveryItems = deliveries.slice(0, 10).map(delivery => `
+                <div class="delivery-item">
+                    <div class="delivery-id">${delivery.id}</div>
+                    <div class="delivery-info">
+                        <strong>${delivery.driver}</strong><br>
+                        📍 ${delivery.address}<br>
+                        📱 ${delivery.phone || '-'} | ⏱️ ${delivery.estimatedTime}<br>
+                        <span style="color: #667eea;">완료율: ${delivery.completionRate || 0}%</span>
+                    </div>
+                </div>
+            `).join('');
+            
+            deliveryList.innerHTML = deliveryItems;
+        }
+
+        // 지도 초기화
+        function initializeMap() {
+            try {
+                map = L.map('map', {
+                    center: [37.5665, 126.9780],
+                    zoom: 11,
+                    zoomControl: true
+                });
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+
+                console.log('지도 초기화 완료');
+                loadGitHubData();
+                
+            } catch (error) {
+                console.error('지도 초기화 오류:', error);
+                showAlert('error', '지도 로딩 오류', '지도를 불러오는 중 문제가 발생했습니다.');
+            }
+        }
+
+        // 지도에 기사들 표시
+        function showDriversOnMap(drivers) {
+            if (!map || !drivers) return;
+            
+            Object.values(driverMarkers).forEach(marker => map.removeLayer(marker));
+            driverMarkers = {};
+            
+            drivers.forEach(driver => {
+                if (!driver.position || driver.position.length !== 2) return;
+                
+                const statusColors = {
+                    'active': '#2ed573',
+                    'pending': '#ffa502',
+                    'offline': '#888888'
+                };
+
+                const driverIcon = L.divIcon({
+                    className: 'driver-marker',
+                    html: `<div style="
+                        background: ${statusColors[driver.status] || '#888888'};
+                        width: 22px;
+                        height: 22px;
+                        border-radius: 50%;
+                        border: 3px solid white;
+                        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-weight: bold;
+                        font-size: 10px;
+                    ">${driver.completedDeliveries || 0}</div>`,
+                    iconSize: [28, 28],
+                    iconAnchor: [14, 14]
+                });
+
+                const marker = L.marker(driver.position, { icon: driverIcon })
+                    .addTo(map)
+                    .bindPopup(`
+                        <div style="font-size: 12px; min-width: 200px;">
+                            <strong style="color: #667eea;">${driver.name}</strong><br>
+                            <strong>📦 ${driver.deliveryBox}</strong><br>
+                            🏢 ${driver.company}<br>
+                            📱 ${driver.phone}<br>
+                            <hr style="margin: 5px 0;">
+                            총 배송: <strong>${driver.totalDeliveries}건</strong><br>
+                            완료: <strong style="color: #2ed573;">${driver.completedDeliveries}건</strong><br>
+                            실패: <strong style="color: #ff4757;">${driver.failedDeliveries}건</strong><br>
+                            완료율: <strong style="color: #2ed573;">${driver.completionRate}%</strong><br>
+                            지역: ${driver.region}
+                        </div>
+                    `);
+
+                driverMarkers[driver.id] = marker;
+            });
+        }
+
+        // 기타 필수 함수들
+        function showDataStatus(status, message, time = '') {
+            const statusElement = document.getElementById('dataStatus');
+            const syncTimeEl = document.getElementById('syncTime');
+            
+            if (!statusElement) return;
+            
+            statusElement.className = `data-status ${status}`;
+            const icons = { loading: '⏳', success: '✅', error: '❌' };
+            
+            statusElement.querySelector('div div').textContent = message;
+            statusElement.querySelector('span').textContent = icons[status];
+            
+            if (syncTimeEl && time) {
+                syncTimeEl.textContent = `마지막 업데이트: ${time}`;
+            }
+        }
+
+        function showAlert(type, title, content) {
+            const alertPanel = document.getElementById('alertPanel');
+            if (!alertPanel) return;
+            
+            alertPanel.className = `alert-panel ${type}`;
+            document.getElementById('alertTitle').textContent = title;
+            document.getElementById('alertContent').textContent = content;
+            alertPanel.style.display = 'block';
+            
+            setTimeout(() => hideAlert(), type === 'success' ? 3000 : 5000);
+        }
+
+        function hideAlert() {
+            const alertPanel = document.getElementById('alertPanel');
+            if (alertPanel) {
+                alertPanel.style.display = 'none';
+            }
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const isCollapsed = sidebar.style.transform === 'translateX(-360px)';
+            sidebar.style.transform = isCollapsed ? 'translateX(0)' : 'translateX(-360px)';
+            
+            if (map) {
+                setTimeout(() => map.invalidateSize(), 300);
+            }
+        }
+
+        function exportDriverData() {
+            if (!tmsData || !tmsData.drivers) {
+                showAlert('warning', '데이터 없음', '내보낼 데이터가 없습니다.');
+                return;
+            }
+            
+            showAlert('success', '기능 준비 중', '데이터 내보내기 기능을 준비 중입니다.');
+        }
+
+        function toggleAutoRefresh() {
+            autoRefreshEnabled = !autoRefreshEnabled;
+            const statusEl = document.getElementById('autoRefreshStatus');
+            
+            if (autoRefreshEnabled) {
+                statusEl.textContent = 'ON';
+                showAlert('success', '자동 새로고침 ON', '10초마다 자동으로 데이터를 새로고침합니다.');
+            } else {
+                statusEl.textContent = 'OFF';
+                showAlert('info', '자동 새로고침 OFF', '수동으로만 데이터를 새로고침할 수 있습니다.');
+            }
+        }
+
+        function showNotifications() {
+            showAlert('info', '알림', '데이터를 먼저 로드해주세요.');
+        }
+
+        function updateNotificationCount() {
+            // 기본 알림 개수 설정
+            document.getElementById('notificationCount').textContent = '0';
+        }
+
+        function focusOnRegion(regionName) {
+            showAlert('info', `${regionName} 지역`, '해당 지역으로 포커스합니다.');
+        }
+
+        // 페이지 로드 시 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('딜리래빗 TMS 시스템 시작...');
+            
+            if (typeof L !== 'undefined') {
+                initializeMap();
+                console.log('시스템 로드 완료');
+            } else {
+                console.error('Leaflet 라이브러리를 찾을 수 없습니다.');
+                showAlert('error', '시스템 오류', 'Leaflet 지도 라이브러리를 불러올 수 없습니다.');
+            }
+        });
+    </script>
+</body>
+</html>
