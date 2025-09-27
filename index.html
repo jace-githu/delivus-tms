@@ -1313,20 +1313,27 @@
                 // coordinates 키명 사용 (Apps Script와 일치)
                 if (!driver.coordinates || driver.coordinates.length !== 2) return;
                 
+                // 완료율 100% 기사는 회색으로 표시
+                const isCompleted = driver.completionRate === 100;
+                
                 const statusColors = {
                     'active': '#2ed573',
                     'pending': '#ffa502',
                     'offline': '#888888',
-                    'completed': '#2ed573',
+                    'completed': isCompleted ? '#9ca3af' : '#2ed573', // 완료된 기사는 회색
                     'delayed': '#ff4757'
                 };
 
+                // 완료된 기사의 마커 크기 조정 (더 작게)
+                const markerSize = isCompleted ? 18 : 22;
+                const iconSize = isCompleted ? 24 : 28;
+                
                 const driverIcon = L.divIcon({
                     className: 'driver-marker',
                     html: `<div style="
-                        background: ${statusColors[driver.status] || '#888888'};
-                        width: 22px;
-                        height: 22px;
+                        background: ${isCompleted ? '#9ca3af' : (statusColors[driver.status] || '#888888')};
+                        width: ${markerSize}px;
+                        height: ${markerSize}px;
                         border-radius: 50%;
                         border: 3px solid white;
                         box-shadow: 0 2px 8px rgba(0,0,0,0.3);
@@ -1335,10 +1342,11 @@
                         justify-content: center;
                         color: white;
                         font-weight: bold;
-                        font-size: 10px;
-                    ">${driver.completedDeliveries || 0}</div>`,
-                    iconSize: [28, 28],
-                    iconAnchor: [14, 14]
+                        font-size: ${isCompleted ? '8px' : '10px'};
+                        opacity: ${isCompleted ? '0.7' : '1'};
+                    ">${isCompleted ? '✓' : (driver.totalDeliveries - driver.completedDeliveries || 0)}</div>`,
+                    iconSize: [iconSize, iconSize],
+                    iconAnchor: [iconSize/2, iconSize/2]
                 });
 
                 const marker = L.marker(driver.coordinates, { icon: driverIcon })
