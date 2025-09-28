@@ -786,7 +786,143 @@
             font-size: 1.2rem;
         }
 
-        /* 반응형 */
+        /* 가이드 오버레이 */
+        .guide-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 10000;
+            display: none;
+            backdrop-filter: blur(5px);
+        }
+
+        .guide-modal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(26, 26, 26, 0.98);
+            border: 1px solid rgba(110, 110, 255, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            color: white;
+        }
+
+        .guide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(110, 110, 255, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        .guide-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #6e6eff;
+        }
+
+        .guide-close {
+            background: #ff4757;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .guide-close:hover {
+            background: #dc3545;
+            transform: scale(1.1);
+        }
+
+        .guide-section {
+            margin-bottom: 2rem;
+        }
+
+        .guide-section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #6e6eff;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .guide-content {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 4px solid #6e6eff;
+        }
+
+        .guide-feature {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: rgba(110, 110, 255, 0.1);
+            border-radius: 8px;
+            border-left: 3px solid #6e6eff;
+        }
+
+        .guide-feature-title {
+            font-weight: 600;
+            color: #ffa502;
+            margin-bottom: 0.5rem;
+        }
+
+        .guide-feature-desc {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .guide-tips {
+            background: rgba(46, 213, 115, 0.1);
+            border: 1px solid rgba(46, 213, 115, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .guide-tips-title {
+            color: #2ed573;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .guide-shortcuts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .guide-shortcut {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        .guide-key {
+            background: #6e6eff;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
         @media (max-width: 1400px) {
             .app-container {
                 grid-template-columns: 360px 1fr 280px;
@@ -967,7 +1103,8 @@
             <!-- 지도 컨트롤 버튼 -->
             <div class="map-controls">
                 <button class="map-control-btn" onclick="resetMapView()">🌍 전체보기</button>
-                <button class="map-control-btn" onclick="toggleMapStyle()">🗺️ 지도스타일</button>
+                <button class="map-control-btn" onclick="toggleMapStyle()">🗺️지도스타일</button>
+                <button class="map-control-btn" onclick="showGuide()">📖 가이드</button>
             </div>
             
             <!-- 알림 패널 -->
@@ -975,6 +1112,104 @@
                 <button class="alert-close" onclick="hideAlert()">×</button>
                 <div class="alert-title" id="alertTitle">알림</div>
                 <div class="alert-content" id="alertContent">알림 내용</div>
+            </div>
+        </div>
+
+        <!-- 가이드 오버레이 -->
+        <div class="guide-overlay" id="guideOverlay">
+            <div class="guide-modal">
+                <div class="guide-header">
+                    <div class="guide-title">📖 딜리래빗 TMS 사용 가이드</div>
+                    <button class="guide-close" onclick="hideGuide()">×</button>
+                </div>
+                
+                <div class="guide-section">
+                    <div class="guide-section-title">🚚 기본 기능</div>
+                    <div class="guide-content">
+                        <div class="guide-feature">
+                            <div class="guide-feature-title">📊 실시간 통계 확인</div>
+                            <div class="guide-feature-desc">좌측 사이드바에서 총 배송건수, 완료율, 활성 기사 수 등 주요 지표를 실시간으로 확인할 수 있습니다.</div>
+                        </div>
+                        <div class="guide-feature">
+                            <div class="guide-feature-title">🗺️ 지도 기반 관제</div>
+                            <div class="guide-feature-desc">지도에서 기사들의 실시간 위치와 상태를 시각적으로 파악할 수 있습니다. 핀 색상으로 상태를 구분합니다.</div>
+                        </div>
+                        <div class="guide-feature">
+                            <div class="guide-feature-title">📋 기사 현황 테이블</div>
+                            <div class="guide-feature-desc">하단에서 모든 기사의 상세 정보를 테이블 형태로 확인하고 정렬/필터링할 수 있습니다.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-section">
+                    <div class="guide-section-title">🔍 검색 및 필터링</div>
+                    <div class="guide-content">
+                        <div class="guide-feature">
+                            <div class="guide-feature-title">통합 검색</div>
+                            <div class="guide-feature-desc">기사명이나 전화번호로 빠르게 검색할 수 있습니다.</div>
+                        </div>
+                        <div class="guide-feature">
+                            <div class="guide-feature-title">관제 상태 필터</div>
+                            <div class="guide-feature-desc">지연/미픽업 기사만 별도로 필터링하여 관제가 필요한 기사를 집중 관리할 수 있습니다.</div>
+                        </div>
+                        <div class="guide-feature">
+                            <div class="guide-feature-title">운송사/지역별 필터</div>
+                            <div class="guide-feature-desc">특정 운송사나 지역의 기사들만 선택적으로 확인할 수 있습니다.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-section">
+                    <div class="guide-section-title">🎯 핀 색상 가이드</div>
+                    <div class="guide-content">
+                        <div class="guide-shortcuts">
+                            <div class="guide-shortcut">
+                                <span class="guide-key" style="background: #9ca3af;">회색</span>완료율 100%
+                            </div>
+                            <div class="guide-shortcut">
+                                <span class="guide-key" style="background: #2ed573;">초록</span>정상 진행
+                            </div>
+                            <div class="guide-shortcut">
+                                <span class="guide-key" style="background: #ffa502;">주황</span>미픽업 상태
+                            </div>
+                            <div class="guide-shortcut">
+                                <span class="guide-key" style="background: #ff4757;">빨강</span>지연 발생
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-section">
+                    <div class="guide-section-title">⚡ 고급 기능</div>
+                    <div class="guide-content">
+                        <div class="guide-feature">
+                            <div class="guide-feature-title">기사명 클릭 포커스</div>
+                            <div class="guide-feature-desc">기사명을 클릭하면 해당 기사의 위치로 지도가 자동 이동하고 상세 정보가 표시됩니다.</div>
+                        </div>
+                        <div class="guide-feature">
+                            <div class="guide-feature-title">지역별 포커스</div>
+                            <div class="guide-feature-desc">우측 지역별 수행률에서 지역을 클릭하면 해당 지역의 모든 기사를 지도에서 확인할 수 있습니다.</div>
+                        </div>
+                        <div class="guide-feature">
+                            <div class="guide-feature-title">전화번호 일괄 복사</div>
+                            <div class="guide-feature-desc">필터링된 기사들의 전화번호를 한 번에 복사하여 업무 효율성을 높일 수 있습니다.</div>
+                        </div>
+                        <div class="guide-feature">
+                            <div class="guide-feature-title">App Push 연동</div>
+                            <div class="guide-feature-desc">App Push 버튼으로 기사들에게 직접 알림을 보낼 수 있는 백오피스로 연결됩니다.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-tips">
+                    <div class="guide-tips-title">💡 효율적인 사용 팁</div>
+                    <ul style="margin: 0; padding-left: 1.2rem;">
+                        <li>지연 필터를 사용하면 완료율 100% 기사는 자동으로 제외되어 실제 관제가 필요한 기사만 표시됩니다.</li>
+                        <li>지도에서 핀들이 겹칠 때는 줌인하면 자동으로 분리되어 개별 기사를 확인할 수 있습니다.</li>
+                        <li>데이터는 5분마다 자동으로 새로고침되며, 수동 새로고침도 가능합니다.</li>
+                        <li>우측 상단의 📊 버튼을 클릭하면 추가 데이터 시각화 패널을 열 수 있습니다.</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -1944,6 +2179,33 @@
             
             document.getElementById('notificationCount').textContent = count;
         }
+
+        // 가이드 표시/숨기기 함수
+        function showGuide() {
+            const guideOverlay = document.getElementById('guideOverlay');
+            if (guideOverlay) {
+                guideOverlay.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function hideGuide() {
+            const guideOverlay = document.getElementById('guideOverlay');
+            if (guideOverlay) {
+                guideOverlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // 가이드 오버레이 클릭 시 닫기 (모달 영역 외부 클릭)
+        document.addEventListener('click', function(event) {
+            const guideOverlay = document.getElementById('guideOverlay');
+            const guideModal = document.querySelector('.guide-modal');
+            
+            if (guideOverlay && event.target === guideOverlay) {
+                hideGuide();
+            }
+        });
 
         document.addEventListener('DOMContentLoaded', function() {
             console.log('딜리래빗 TMS 시스템 시작...');
