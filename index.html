@@ -389,6 +389,29 @@
             font-family: 'Pretendard', sans-serif;
         }
 
+        /* 검색창 스타일 */
+        .search-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 6px;
+            color: white;
+            padding: 6px 10px;
+            font-size: 0.75rem;
+            width: 140px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.7rem;
+        }
+
+        .search-input:focus {
+            border-color: #6e6eff;
+            box-shadow: 0 0 0 2px rgba(110, 110, 255, 0.2);
+        }
+
         /* 필터 컨테이너 */
         .filter-container {
             display: flex;
@@ -510,6 +533,19 @@
 
         .driver-table tr.filtered-out {
             display: none;
+        }
+
+        /* 기사명 클릭 스타일 */
+        .driver-name-clickable {
+            cursor: pointer;
+            color: #6e6eff;
+            text-decoration: underline;
+            transition: all 0.3s ease;
+        }
+
+        .driver-name-clickable:hover {
+            color: #3770cc;
+            text-decoration: underline;
         }
 
         .status-badge {
@@ -825,7 +861,17 @@
             <!-- 배송 기사 리스트 -->
             <div class="panel-section">
                 <div class="panel-title">
-                    <span>👨‍💼 배송 기사 현황 (<span id="driverCount">0</span>명)</span>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span>👨‍💼 배송 기사 현황</span>
+                        <input type="text" class="search-input" id="driverSearch" 
+                               placeholder="기사명, 운송사, 전화번호" 
+                               onkeyup="searchDrivers()"
+                               style="background: rgba(255, 255, 255, 0.1); 
+                                      border: 1px solid rgba(102, 126, 234, 0.3); 
+                                      border-radius: 6px; color: white; padding: 6px 10px; 
+                                      font-size: 0.75rem; width: 160px; 
+                                      outline: none;">
+                    </div>
                     
                     <!-- 필터 컨테이너 -->
                     <div class="filter-container">
@@ -925,6 +971,70 @@
             const url = 'https://backoffice.drabbit.co.kr/apps/4a42193c-c779-11ef-aa21-cf70a380470e/Backoffice%202.1%20-%20Page/%ED%91%B8%EC%89%AC';
             window.open(url, '_blank');
             showAlert('success', 'App Push', 'App Push 페이지를 새 탭에서 열었습니다.');
+        }
+
+        // ✨ 통합 검색 기능
+        function searchDrivers() {
+            const searchTerm = document.getElementById('driverSearch').value.toLowerCase().trim();
+            const tableBody = document.querySelector('#driverTable tbody');
+            const rows = tableBody.querySelectorAll('tr[data-driver-id]');
+            
+            if (!searchTerm) {
+                // 검색어가 없으면 전체 표시
+                rows.forEach(row => row.classList.remove('filtered-out'));
+                updateDriverCount(allDrivers.length, allDrivers.length);
+                return;
+            }
+            
+            let visibleCount = 0;
+            
+            rows.forEach(row => {
+                const driverId = row.getAttribute('data-driver-id');
+                const driver = allDrivers.find(d => d.id === driverId);
+                
+                if (driver) {
+                    // 기사명 검색
+                    const nameMatch = (driver.name || '').toLowerCase().includes(searchTerm);
+                    
+                    // 운송사 검색
+                    const companyMatch = (driver.company || '').toLowerCase().includes(searchTerm);
+                    
+                    // 전화번호 검색 (하이픈 제거해서 비교)
+                    const cleanSearchTerm = searchTerm.replace(/[^0-9]/g, '');
+                    const cleanPhone = (driver.phone || '').replace(/[^0-9]/g, '');
+                    const phoneMatch = cleanPhone.includes(cleanSearchTerm);
+                    
+                    if (nameMatch || companyMatch || phoneMatch) {
+                        row.classList.remove('filtered-out');
+                        visibleCount++;
+                    } else {
+                        row.classList.add('filtered-out');
+                    }
+                }
+            });
+            
+            updateDriverCount(visibleCount, allDrivers.length);
+        }
+
+        // ✨ 기사 포커스 기능
+        function focusOnDriver(driverId) {
+            const driver = allDrivers.find(d => d.id === driverId);
+            if (!driver || !driver.coordinates) {
+                showAlert('warning', '위치 정보 없음', '해당 기사의 위치 정보가 없습니다.');
+                return;
+            }
+            
+            // 지도 포커스 (클러스터 해제 수준)
+            map.setView(driver.coordinates, 15);
+            
+            // 마커 팝업 자동 열기
+            const marker = driverMarkers[driver.id];
+            if (marker) {
+                setTimeout(() => {
+                    marker.openPopup();
+                    showAlert('success', '기사 포커스', `${driver.name} 기사 위치로 이동했습니다.`);
+                }, 500);
+            }
         }
 
         function copyPhoneNumbers() {
@@ -1126,6 +1236,7 @@
             document.getElementById('controlFilter').value = '';
             document.getElementById('companyFilter').value = '';
             document.getElementById('regionFilter').value = '';
+            document.getElementById('driverSearch').value = '';
             
             currentFilteredDrivers = [];
             updateDriverTableFiltered(allDrivers);
@@ -1237,7 +1348,7 @@
             
             const rows = drivers.map(driver => `
                 <tr data-driver-id="${driver.id}">
-                    <td><strong>${driver.name || '-'}</strong></td>
+                    <td><strong onclick="focusOnDriver('${driver.id}')" class="driver-name-clickable">${driver.name || '-'}</strong></td>
                     <td>${driver.deliveryBox || '-'}</td>
                     <td>${driver.company || '-'}</td>
                     <td>${driver.phone || '-'}</td>
