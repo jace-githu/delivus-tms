@@ -367,7 +367,7 @@
             grid-area: bottom;
             background: rgba(26, 26, 26, 0.95);
             display: grid;
-            grid-template-columns: 3fr 0.8fr 0.8fr;
+            grid-template-columns: 3fr 2fr;
             gap: 1px;
             border-top: 1px solid rgba(110, 110, 255, 0.2);
         }
@@ -645,13 +645,13 @@
             }
             
             .bottom-panel {
-                grid-template-columns: 1.5fr 1fr 1fr;
+                grid-template-columns: 2fr 1fr;
             }
         }
 
         @media (max-width: 1200px) {
             .bottom-panel {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
             }
         }
 
@@ -879,7 +879,7 @@
                 </div>
             </div>
 
-            <!-- 지역별 수행률 -->
+            <!-- 지역별 수행률 (확장됨) -->
             <div class="panel-section">
                 <div class="panel-title">🗺️ 지역별 수행률</div>
                 
@@ -890,8 +890,8 @@
                 </div>
             </div>
 
-            <!-- 실시간 배송 현황 -->
-            <div class="panel-section">
+            <!-- 실시간 배송 현황 - UI에서 숨김 처리 -->
+            <div class="panel-section" style="display: none;">
                 <div class="panel-title">📊 활성 배송 현황</div>
                 
                 <div class="delivery-list" id="deliveryList">
