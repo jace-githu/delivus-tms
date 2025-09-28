@@ -1579,8 +1579,8 @@
             if (autoRefreshEnabled) {
                 statusEl.textContent = 'ON';
                 if (autoRefreshInterval) clearInterval(autoRefreshInterval);
-                autoRefreshInterval = setInterval(loadGitHubData, 30000);
-                showAlert('success', '자동 새로고침 ON', '30초마다 자동으로 데이터를 새로고침합니다.');
+                autoRefreshInterval = setInterval(loadGitHubData, 300000);
+                showAlert('success', '자동 새로고침 ON', '5분마다 자동으로 데이터를 새로고침합니다.');
             } else {
                 statusEl.textContent = 'OFF';
                 if (autoRefreshInterval) {
@@ -1676,7 +1676,7 @@
                 initializeMap();
                 
                 if (autoRefreshEnabled) {
-                    autoRefreshInterval = setInterval(loadGitHubData, 30000);
+                    autoRefreshInterval = setInterval(loadGitHubData, 300000);
                 }
             } else {
                 console.error('Leaflet 라이브러리를 찾을 수 없습니다.');
