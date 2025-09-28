@@ -305,6 +305,29 @@
             background: #3770cc;
         }
 
+        .data-panel-toggle {
+            position: absolute;
+            left: -45px;
+            top: 20px;
+            width: 45px;
+            height: 45px;
+            background: #6e6eff;
+            border: none;
+            border-radius: 12px 0 0 12px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .data-panel-toggle:hover {
+            background: #3770cc;
+        }
+
         .data-panel-header {
             padding: 1.5rem;
             border-bottom: 1px solid rgba(110, 110, 255, 0.2);
@@ -728,35 +751,6 @@
             font-size: 0.8rem;
         }
 
-        /* 실시간 배송 */
-        .delivery-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            max-height: 280px;
-            overflow-y: auto;
-        }
-
-        .delivery-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 0.8rem;
-            border-left: 3px solid #6e6eff;
-        }
-
-        .delivery-id {
-            color: #6e6eff;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-            font-size: 0.8rem;
-        }
-
-        .delivery-info {
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.4;
-        }
-
         /* 알림 패널 */
         .alert-panel {
             position: absolute;
@@ -815,10 +809,6 @@
             .data-panel {
                 display: none;
             }
-            
-            .bottom-panel {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media (max-width: 768px) {
@@ -829,10 +819,6 @@
                     "bottom";
                 grid-template-columns: 1fr;
                 grid-template-rows: 1fr auto auto;
-            }
-            
-            .bottom-panel {
-                grid-template-columns: 1fr;
             }
             
             .filter-container {
@@ -907,6 +893,15 @@
             <!-- 주요 통계 -->
             <div class="stats-section">
                 <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">총 배송 건수</span>
+                            <span class="stat-icon">📦</span>
+                        </div>
+                        <div class="stat-value" style="color: #6e6eff;" id="totalOrders">0</div>
+                        <div class="stat-change">전체 배송량</div>
+                    </div>
+
                     <div class="stat-card">
                         <div class="stat-header">
                             <span class="stat-title">배송 완료</span>
@@ -1120,7 +1115,7 @@
         let currentFilteredDrivers = [];
         let sortOrder = {};
         let currentMapStyle = 'osm'; 
-        let dataPanelOpen = false; // 패널 상태 관리
+        let dataPanelOpen = false; // 시각화 패널은 기본적으로 닫힌 상태
 
         const GITHUB_CONFIG = {
             owner: 'jace-githu',
@@ -1149,7 +1144,6 @@
                 showAlert('info', '데이터 패널', '데이터 시각화 패널이 닫혔습니다.');
             }
             
-            // 지도 크기 재조정
             if (map) {
                 setTimeout(() => map.invalidateSize(), 350);
             }
@@ -1159,12 +1153,8 @@
         function resetMapView() {
             if (!map) return;
             
-            // 서울 중심으로 초기 뷰 복원
             map.setView([37.5665, 126.9780], 11);
-            
-            // 모든 필터 해제
             resetFilters();
-            
             showAlert('success', '전체 지도', '전체 지도 보기로 돌아갔습니다.');
         }
 
@@ -1172,24 +1162,20 @@
         function toggleMapStyle() {
             if (!map) return;
             
-            // 현재 타일 레이어 제거
             map.eachLayer(function(layer) {
                 if (layer instanceof L.TileLayer) {
                     map.removeLayer(layer);
                 }
             });
             
-            // 스타일 전환
             let newLayer;
             if (currentMapStyle === 'osm') {
-                // 위성 지도로 전환
                 newLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
                     attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OSM Team'
                 });
                 currentMapStyle = 'hot';
                 showAlert('success', '지도 스타일', 'HOT 스타일로 변경되었습니다.');
             } else {
-                // 기본 OSM으로 전환
                 newLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '© OpenStreetMap contributors'
                 });
@@ -1471,14 +1457,8 @@
         }
 
         function updateDriverCount(filteredCount, totalCount) {
-            const driverCountEl = document.getElementById('driverCount');
-            if (driverCountEl) {
-                if (filteredCount === totalCount) {
-                    driverCountEl.textContent = totalCount;
-                } else {
-                    driverCountEl.textContent = `${filteredCount}/${totalCount}`;
-                }
-            }
+            // 기사 수 업데이트 로직 (현재 UI에 표시할 요소가 없으므로 콘솔에만 출력)
+            console.log(`기사 수: ${filteredCount}/${totalCount}`);
         }
 
         function updateDriverTableFiltered(drivers) {
@@ -1615,6 +1595,40 @@
             `).join('');
             
             regionList.innerHTML = regionItems;
+        }
+
+        function focusOnRegion(regionName) {
+            console.log(`${regionName} 지역 포커스...`);
+            
+            document.getElementById('regionFilter').value = regionName;
+            applyFilters();
+            
+            const regionDrivers = allDrivers.filter(driver => driver.region === regionName);
+            
+            if (regionDrivers.length > 0 && map) {
+                const validDrivers = regionDrivers.filter(driver => 
+                    driver.coordinates && 
+                    Array.isArray(driver.coordinates) && 
+                    driver.coordinates.length === 2 &&
+                    !isNaN(driver.coordinates[0]) && 
+                    !isNaN(driver.coordinates[1])
+                );
+                
+                if (validDrivers.length > 0) {
+                    if (validDrivers.length === 1) {
+                        map.setView(validDrivers[0].coordinates, 14);
+                    } else {
+                        const bounds = L.latLngBounds(validDrivers.map(driver => driver.coordinates));
+                        map.fitBounds(bounds, { padding: [20, 20] });
+                    }
+                    
+                    showAlert('success', `${regionName} 지역`, `${regionName} 지역 ${validDrivers.length}명의 기사로 포커스했습니다.`);
+                } else {
+                    showAlert('warning', '위치 정보 없음', `${regionName} 지역 기사들의 위치 정보가 없습니다.`);
+                }
+            } else {
+                showAlert('info', `${regionName} 지역`, `${regionName} 지역으로 필터링했습니다.`);
+            }
         }
 
         function initializeMap() {
@@ -1931,40 +1945,6 @@
             document.getElementById('notificationCount').textContent = count;
         }
 
-        function focusOnRegion(regionName) {
-            console.log(`${regionName} 지역 포커스...`);
-            
-            document.getElementById('regionFilter').value = regionName;
-            applyFilters();
-            
-            const regionDrivers = allDrivers.filter(driver => driver.region === regionName);
-            
-            if (regionDrivers.length > 0 && map) {
-                const validDrivers = regionDrivers.filter(driver => 
-                    driver.coordinates && 
-                    Array.isArray(driver.coordinates) && 
-                    driver.coordinates.length === 2 &&
-                    !isNaN(driver.coordinates[0]) && 
-                    !isNaN(driver.coordinates[1])
-                );
-                
-                if (validDrivers.length > 0) {
-                    if (validDrivers.length === 1) {
-                        map.setView(validDrivers[0].coordinates, 14);
-                    } else {
-                        const bounds = L.latLngBounds(validDrivers.map(driver => driver.coordinates));
-                        map.fitBounds(bounds, { padding: [20, 20] });
-                    }
-                    
-                    showAlert('success', `${regionName} 지역`, `${regionName} 지역 ${validDrivers.length}명의 기사로 포커스했습니다.`);
-                } else {
-                    showAlert('warning', '위치 정보 없음', `${regionName} 지역 기사들의 위치 정보가 없습니다.`);
-                }
-            } else {
-                showAlert('info', `${regionName} 지역`, `${regionName} 지역으로 필터링했습니다.`);
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
             console.log('딜리래빗 TMS 시스템 시작...');
             
@@ -1982,12 +1962,3 @@
     </script>
 </body>
 </html>
-                        <div class="stat-header">
-                            <span class="stat-title">총 배송 건수</span>
-                            <span class="stat-icon">📦</span>
-                        </div>
-                        <div class="stat-value" style="color: #6e6eff;" id="totalOrders">0</div>
-                        <div class="stat-change">전체 배송량</div>
-                    </div>
-
-                    <div class="stat-card">
