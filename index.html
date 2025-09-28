@@ -864,7 +864,7 @@
                     <div style="display: flex; align-items: center; gap: 12px;">
                         <span>👨‍💼 배송 기사 현황</span>
                         <input type="text" class="search-input" id="driverSearch" 
-                               placeholder="기사명, 운송사, 전화번호" 
+                               placeholder="기사명, 전화번호 검색" 
                                onkeyup="searchDrivers()"
                                style="background: rgba(255, 255, 255, 0.1); 
                                       border: 1px solid rgba(102, 126, 234, 0.3); 
@@ -973,7 +973,7 @@
             showAlert('success', 'App Push', 'App Push 페이지를 새 탭에서 열었습니다.');
         }
 
-        // ✨ 통합 검색 기능
+        // ✨ 통합 검색 기능 (기사명, 전화번호만)
         function searchDrivers() {
             const searchTerm = document.getElementById('driverSearch').value.toLowerCase().trim();
             const tableBody = document.querySelector('#driverTable tbody');
@@ -993,18 +993,16 @@
                 const driver = allDrivers.find(d => d.id === driverId);
                 
                 if (driver) {
-                    // 기사명 검색
-                    const nameMatch = (driver.name || '').toLowerCase().includes(searchTerm);
-                    
-                    // 운송사 검색
-                    const companyMatch = (driver.company || '').toLowerCase().includes(searchTerm);
+                    // 기사명 검색 (한글 포함 완전 검색)
+                    const driverName = (driver.name || '').toLowerCase();
+                    const nameMatch = driverName.includes(searchTerm);
                     
                     // 전화번호 검색 (하이픈 제거해서 비교)
                     const cleanSearchTerm = searchTerm.replace(/[^0-9]/g, '');
                     const cleanPhone = (driver.phone || '').replace(/[^0-9]/g, '');
-                    const phoneMatch = cleanPhone.includes(cleanSearchTerm);
+                    const phoneMatch = cleanSearchTerm && cleanPhone.includes(cleanSearchTerm);
                     
-                    if (nameMatch || companyMatch || phoneMatch) {
+                    if (nameMatch || phoneMatch) {
                         row.classList.remove('filtered-out');
                         visibleCount++;
                     } else {
