@@ -32,12 +32,17 @@
             grid-template-areas: 
                 "sidebar map data-panel"
                 "bottom bottom bottom";
-            grid-template-columns: 400px 1fr 300px;
+            grid-template-columns: 400px 1fr 0px;
             grid-template-rows: 1fr 350px;
             height: 100vh;
             width: 100vw;
             gap: 1px;
             background: #1a1a1a;
+            transition: grid-template-columns 0.3s ease;
+        }
+
+        .app-container.data-panel-open {
+            grid-template-columns: 400px 1fr 300px;
         }
 
         /* 사이드바 */
@@ -78,25 +83,24 @@
 
         /* 헤더 */
         .header {
-            padding: 1.8rem 1.5rem;
+            padding: 1.2rem 1.5rem;
             border-bottom: 1px solid rgba(110, 110, 255, 0.2);
             background: rgba(110, 110, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
             font-size: 1.6rem;
             font-weight: 700;
             color: #6e6eff;
-            margin-bottom: 0.8rem;
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
         .user-info {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            font-size: 0.9rem;
-            opacity: 0.9;
         }
 
         .notification-btn {
@@ -270,6 +274,35 @@
             flex-direction: column;
             color: white;
             overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .data-panel.open {
+            transform: translateX(0);
+        }
+
+        .data-panel-toggle {
+            position: absolute;
+            left: -45px;
+            top: 20px;
+            width: 45px;
+            height: 45px;
+            background: #6e6eff;
+            border: none;
+            border-radius: 12px 0 0 12px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .data-panel-toggle:hover {
+            background: #3770cc;
         }
 
         .data-panel-header {
@@ -855,7 +888,6 @@
             <div class="header">
                 <div class="logo">딜리래빗 TMS</div>
                 <div class="user-info">
-                    <span>관리자</span>
                     <button class="notification-btn" onclick="showNotifications()">
                         🔔
                         <span class="notification-badge" id="notificationCount">0</span>
@@ -952,7 +984,11 @@
         </div>
 
         <!-- 우측 데이터 시각화 패널 -->
-        <div class="data-panel">
+        <div class="data-panel" id="dataPanel">
+            <button class="data-panel-toggle" onclick="toggleDataPanel()">
+                <span id="dataPanelToggleIcon">📊</span>
+            </button>
+            
             <div class="data-panel-header">
                 <div class="data-panel-title">📊 데이터 시각화</div>
                 <div class="data-panel-subtitle">실시간 배송 분석 대시보드</div>
@@ -1083,7 +1119,8 @@
         let allDrivers = [];
         let currentFilteredDrivers = [];
         let sortOrder = {};
-        let currentMapStyle = 'osm'; // osm, satellite 등
+        let currentMapStyle = 'osm'; 
+        let dataPanelOpen = false; // 패널 상태 관리
 
         const GITHUB_CONFIG = {
             owner: 'jace-githu',
@@ -1091,6 +1128,32 @@
             path: 'data/tms_data.json',
             branch: 'main'
         };
+
+        // 데이터 패널 토글 기능
+        function toggleDataPanel() {
+            const appContainer = document.querySelector('.app-container');
+            const dataPanel = document.getElementById('dataPanel');
+            const toggleIcon = document.getElementById('dataPanelToggleIcon');
+            
+            dataPanelOpen = !dataPanelOpen;
+            
+            if (dataPanelOpen) {
+                appContainer.classList.add('data-panel-open');
+                dataPanel.classList.add('open');
+                toggleIcon.textContent = '✕';
+                showAlert('success', '데이터 패널', '데이터 시각화 패널이 열렸습니다.');
+            } else {
+                appContainer.classList.remove('data-panel-open');
+                dataPanel.classList.remove('open');
+                toggleIcon.textContent = '📊';
+                showAlert('info', '데이터 패널', '데이터 시각화 패널이 닫혔습니다.');
+            }
+            
+            // 지도 크기 재조정
+            if (map) {
+                setTimeout(() => map.invalidateSize(), 350);
+            }
+        }
 
         // 전체 지도 보기 기능
         function resetMapView() {
