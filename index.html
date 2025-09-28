@@ -30,9 +30,9 @@
         .app-container {
             display: grid;
             grid-template-areas: 
-                "sidebar map"
-                "bottom bottom";
-            grid-template-columns: 400px 1fr;
+                "sidebar map data-panel"
+                "bottom bottom bottom";
+            grid-template-columns: 400px 1fr 300px;
             grid-template-rows: 1fr 350px;
             height: 100vh;
             width: 100vw;
@@ -260,6 +260,62 @@
             background: #1a1a1a;
         }
 
+        /* 우측 데이터 패널 */
+        .data-panel {
+            grid-area: data-panel;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(110, 110, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            color: white;
+            overflow-y: auto;
+        }
+
+        .data-panel-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(110, 110, 255, 0.2);
+            background: rgba(110, 110, 255, 0.1);
+        }
+
+        .data-panel-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #6e6eff;
+            margin-bottom: 0.5rem;
+        }
+
+        .data-panel-subtitle {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .data-panel-content {
+            padding: 1.5rem;
+            flex: 1;
+        }
+
+        .chart-placeholder {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(110, 110, 255, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-placeholder-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.4;
+        }
+
+        .chart-placeholder-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
         /* 클러스터 스타일 커스터마이징 */
         .marker-cluster-small {
             background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
@@ -360,6 +416,35 @@
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* 지도 컨트롤 버튼 (오버레이) */
+        .map-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .map-control-btn {
+            background: rgba(26, 26, 26, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(110, 110, 255, 0.3);
+            border-radius: 8px;
+            color: white;
+            padding: 8px 12px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 100px;
+        }
+
+        .map-control-btn:hover {
+            background: rgba(110, 110, 255, 0.2);
+            border-color: #6e6eff;
         }
 
         /* 하단 패널 */
@@ -677,7 +762,7 @@
         /* 반응형 */
         @media (max-width: 1400px) {
             .app-container {
-                grid-template-columns: 360px 1fr;
+                grid-template-columns: 360px 1fr 280px;
             }
             
             .bottom-panel {
@@ -686,6 +771,18 @@
         }
 
         @media (max-width: 1200px) {
+            .app-container {
+                grid-template-areas: 
+                    "sidebar map"
+                    "bottom bottom";
+                grid-template-columns: 360px 1fr;
+                grid-template-rows: 1fr 350px;
+            }
+            
+            .data-panel {
+                display: none;
+            }
+            
             .bottom-panel {
                 grid-template-columns: 1fr;
             }
@@ -780,15 +877,6 @@
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-header">
-                            <span class="stat-title">총 배송 건수</span>
-                            <span class="stat-icon">📦</span>
-                        </div>
-                        <div class="stat-value" style="color: #6e6eff;" id="totalOrders">0</div>
-                        <div class="stat-change">전체 배송량</div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-header">
                             <span class="stat-title">배송 완료</span>
                             <span class="stat-icon">✅</span>
                         </div>
@@ -839,6 +927,7 @@
             <!-- 컨트롤 버튼 -->
             <div class="control-buttons">
                 <button class="btn btn-primary" onclick="loadGitHubData()">데이터 새로고침</button>
+                <button class="btn btn-secondary" onclick="resetMapView()">전체 지도 보기</button>
                 <button class="btn btn-secondary" onclick="exportDriverData()" style="display: none;">기사 데이터 내보내기</button>
                 <button class="btn btn-secondary" onclick="toggleAutoRefresh()">자동새로고침: <span id="autoRefreshStatus">ON</span></button>
             </div>
@@ -848,11 +937,57 @@
         <div class="map-container">
             <div id="map"></div>
             
+            <!-- 지도 컨트롤 버튼 -->
+            <div class="map-controls">
+                <button class="map-control-btn" onclick="resetMapView()">🌍 전체보기</button>
+                <button class="map-control-btn" onclick="toggleMapStyle()">🗺️ 지도스타일</button>
+            </div>
+            
             <!-- 알림 패널 -->
             <div class="alert-panel" id="alertPanel">
                 <button class="alert-close" onclick="hideAlert()">×</button>
                 <div class="alert-title" id="alertTitle">알림</div>
                 <div class="alert-content" id="alertContent">알림 내용</div>
+            </div>
+        </div>
+
+        <!-- 우측 데이터 시각화 패널 -->
+        <div class="data-panel">
+            <div class="data-panel-header">
+                <div class="data-panel-title">📊 데이터 시각화</div>
+                <div class="data-panel-subtitle">실시간 배송 분석 대시보드</div>
+            </div>
+            
+            <div class="data-panel-content">
+                <!-- 차트 플레이스홀더 1 -->
+                <div class="chart-placeholder">
+                    <div class="chart-placeholder-icon">📈</div>
+                    <div class="chart-placeholder-text">
+                        <strong>시간별 배송 현황</strong><br>
+                        시간대별 배송 완료율과<br>
+                        진행 상황을 표시할 예정
+                    </div>
+                </div>
+
+                <!-- 차트 플레이스홀더 2 -->
+                <div class="chart-placeholder">
+                    <div class="chart-placeholder-icon">🥧</div>
+                    <div class="chart-placeholder-text">
+                        <strong>운송사별 분포</strong><br>
+                        각 운송사의 배송량과<br>
+                        성과 지표를 표시할 예정
+                    </div>
+                </div>
+
+                <!-- 차트 플레이스홀더 3 -->
+                <div class="chart-placeholder">
+                    <div class="chart-placeholder-icon">📊</div>
+                    <div class="chart-placeholder-text">
+                        <strong>지역별 성과</strong><br>
+                        지역별 완료율과<br>
+                        배송 효율성을 표시할 예정
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -925,7 +1060,7 @@
                 </div>
             </div>
 
-            <!-- 지역별 수행률 (확장됨) -->
+            <!-- 지역별 수행률 -->
             <div class="panel-section">
                 <div class="panel-title">🗺️ 지역별 수행률</div>
                 
@@ -935,30 +1070,20 @@
                     </div>
                 </div>
             </div>
-
-            <!-- 실시간 배송 현황 - UI에서 숨김 처리 -->
-            <div class="panel-section" style="display: none;">
-                <div class="panel-title">📊 활성 배송 현황</div>
-                
-                <div class="delivery-list" id="deliveryList">
-                    <div style="text-align: center; color: #888; padding: 2rem;">
-                        배송 현황을 로딩 중입니다...
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
     <script>
         let map;
         let driverMarkers = {};
-        let markerCluster; // 클러스터 그룹
+        let markerCluster;
         let tmsData = null;
         let autoRefreshInterval = null;
         let autoRefreshEnabled = true;
         let allDrivers = [];
         let currentFilteredDrivers = [];
         let sortOrder = {};
+        let currentMapStyle = 'osm'; // osm, satellite 등
 
         const GITHUB_CONFIG = {
             owner: 'jace-githu',
@@ -967,20 +1092,64 @@
             branch: 'main'
         };
 
+        // 전체 지도 보기 기능
+        function resetMapView() {
+            if (!map) return;
+            
+            // 서울 중심으로 초기 뷰 복원
+            map.setView([37.5665, 126.9780], 11);
+            
+            // 모든 필터 해제
+            resetFilters();
+            
+            showAlert('success', '전체 지도', '전체 지도 보기로 돌아갔습니다.');
+        }
+
+        // 지도 스타일 토글 기능
+        function toggleMapStyle() {
+            if (!map) return;
+            
+            // 현재 타일 레이어 제거
+            map.eachLayer(function(layer) {
+                if (layer instanceof L.TileLayer) {
+                    map.removeLayer(layer);
+                }
+            });
+            
+            // 스타일 전환
+            let newLayer;
+            if (currentMapStyle === 'osm') {
+                // 위성 지도로 전환
+                newLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OSM Team'
+                });
+                currentMapStyle = 'hot';
+                showAlert('success', '지도 스타일', 'HOT 스타일로 변경되었습니다.');
+            } else {
+                // 기본 OSM으로 전환
+                newLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                });
+                currentMapStyle = 'osm';
+                showAlert('success', '지도 스타일', '기본 스타일로 변경되었습니다.');
+            }
+            
+            newLayer.addTo(map);
+        }
+
         function openAppPush() {
             const url = 'https://backoffice.drabbit.co.kr/apps/4a42193c-c779-11ef-aa21-cf70a380470e/Backoffice%202.1%20-%20Page/%ED%91%B8%EC%89%AC';
             window.open(url, '_blank');
             showAlert('success', 'App Push', 'App Push 페이지를 새 탭에서 열었습니다.');
         }
 
-        // ✨ 통합 검색 기능 (기사명, 전화번호만)
+        // 통합 검색 기능 (기사명, 전화번호만)
         function searchDrivers() {
             const searchTerm = document.getElementById('driverSearch').value.toLowerCase().trim();
             const tableBody = document.querySelector('#driverTable tbody');
             const rows = tableBody.querySelectorAll('tr[data-driver-id]');
             
             if (!searchTerm) {
-                // 검색어가 없으면 전체 표시
                 rows.forEach(row => row.classList.remove('filtered-out'));
                 updateDriverCount(allDrivers.length, allDrivers.length);
                 return;
@@ -993,11 +1162,9 @@
                 const driver = allDrivers.find(d => d.id === driverId);
                 
                 if (driver) {
-                    // 기사명 검색 (한글 포함 완전 검색)
                     const driverName = (driver.name || '').toLowerCase();
                     const nameMatch = driverName.includes(searchTerm);
                     
-                    // 전화번호 검색 (하이픈 제거해서 비교)
                     const cleanSearchTerm = searchTerm.replace(/[^0-9]/g, '');
                     const cleanPhone = (driver.phone || '').replace(/[^0-9]/g, '');
                     const phoneMatch = cleanSearchTerm && cleanPhone.includes(cleanSearchTerm);
@@ -1014,7 +1181,7 @@
             updateDriverCount(visibleCount, allDrivers.length);
         }
 
-        // ✨ 기사 포커스 기능
+        // 기사 포커스 기능
         function focusOnDriver(driverId) {
             const driver = allDrivers.find(d => d.id === driverId);
             if (!driver || !driver.coordinates) {
@@ -1022,10 +1189,8 @@
                 return;
             }
             
-            // 지도 포커스 (클러스터 해제 수준)
             map.setView(driver.coordinates, 15);
             
-            // 마커 팝업 자동 열기
             const marker = driverMarkers[driver.id];
             if (marker) {
                 setTimeout(() => {
@@ -1157,7 +1322,6 @@
                 updateDashboardStats(tmsData.stats);
                 updateDriverTable(allDrivers);
                 updateRegionList(tmsData.regions || []);
-                updateDeliveryList(tmsData.deliveries || []);
                 updateFilterOptions(allDrivers);
                 
                 if (map) {
@@ -1201,7 +1365,7 @@
             });
         }
 
-        // ✨ 완료율 100% 지연 제외 기능 추가
+        // 완료율 100% 지연 제외 기능 
         function applyFilters() {
             const controlFilter = document.getElementById('controlFilter').value;
             const companyFilter = document.getElementById('companyFilter').value;
@@ -1215,7 +1379,6 @@
                 
                 let controlMatch = true;
                 if (controlFilter === '지연') {
-                    // ✨ 완료율 100% 기사는 지연에서 제외
                     controlMatch = driver.delayStatus === '지연' && parseFloat(driver.completionRate || 0) < 100;
                 } else if (controlFilter === '미픽업') {
                     controlMatch = driver.pickupStatus === '미픽업';
@@ -1289,12 +1452,10 @@
         function updateMapFiltered(drivers) {
             if (!map) return;
             
-            // 마커 클러스터 클리어
             if (markerCluster) {
                 markerCluster.clearLayers();
             }
             
-            // 필터링된 기사들의 마커만 클러스터에 추가
             drivers.forEach(driver => {
                 const marker = driverMarkers[driver.id];
                 if (marker && markerCluster) {
@@ -1331,11 +1492,6 @@
 
         function updateDriverTable(drivers) {
             const tableBody = document.querySelector('#driverTable tbody');
-            const driverCountEl = document.getElementById('driverCount');
-            
-            if (driverCountEl) {
-                driverCountEl.textContent = drivers.length;
-            }
             
             if (!tableBody || !drivers || drivers.length === 0) {
                 if (tableBody) {
@@ -1398,30 +1554,6 @@
             regionList.innerHTML = regionItems;
         }
 
-        function updateDeliveryList(deliveries) {
-            const deliveryList = document.getElementById('deliveryList');
-            if (!deliveryList || !deliveries || deliveries.length === 0) {
-                if (deliveryList) {
-                    deliveryList.innerHTML = '<div style="text-align: center; color: #888; padding: 2rem;">활성 배송이 없습니다.</div>';
-                }
-                return;
-            }
-            
-            const deliveryItems = deliveries.slice(0, 10).map(delivery => `
-                <div class="delivery-item">
-                    <div class="delivery-id">${delivery.id}</div>
-                    <div class="delivery-info">
-                        <strong>${delivery.driver}</strong><br>
-                        📍 ${delivery.address}<br>
-                        📱 ${delivery.phone || '-'} | ⏱️ ${delivery.estimatedTime}<br>
-                        <span style="color: #667eea;">완료율: ${delivery.completionRate || 0}%</span>
-                    </div>
-                </div>
-            `).join('');
-            
-            deliveryList.innerHTML = deliveryItems;
-        }
-
         function initializeMap() {
             try {
                 map = L.map('map', {
@@ -1434,15 +1566,14 @@
                     attribution: '© OpenStreetMap contributors'
                 }).addTo(map);
 
-                // 마커 클러스터 그룹 초기화
                 if (typeof L.markerClusterGroup !== 'undefined') {
                     markerCluster = L.markerClusterGroup({
-                        maxClusterRadius: 40, // 클러스터 반경 더 축소 (50 → 40)
-                        disableClusteringAtZoom: 13, // 줌 레벨 13 이상에서는 클러스터링 비활성화
-                        spiderfyOnMaxZoom: false, // 최대 줌에서 거미다리 효과 비활성화
+                        maxClusterRadius: 40,
+                        disableClusteringAtZoom: 13,
+                        spiderfyOnMaxZoom: false,
                         showCoverageOnHover: false,
                         zoomToBoundsOnClick: true,
-                        removeOutsideVisibleBounds: true, // 화면 밖 마커 제거로 성능 향상
+                        removeOutsideVisibleBounds: true,
                         iconCreateFunction: function(cluster) {
                             const childCount = cluster.getChildCount();
                             let size = 'small';
@@ -1455,11 +1586,10 @@
                                 size = 'large';
                             }
                             
-                            // 클러스터 크기를 더 작게 조정
                             const sizeMap = {
-                                small: 28,  // 기본 40 → 28
-                                medium: 32, // 기본 45 → 32
-                                large: 36   // 기본 50 → 36
+                                small: 28,
+                                medium: 32,
+                                large: 36
                             };
                             
                             const clusterSize = sizeMap[size];
@@ -1500,16 +1630,13 @@
             }
         }
 
-        // ✨ 완료인원 회색핀 + 클러스터링 기능 추가
         function showDriversOnMap(drivers) {
             if (!map || !drivers) return;
             
-            // 마커 클러스터 클리어
             if (markerCluster) {
                 markerCluster.clearLayers();
             }
             
-            // 기존 개별 마커들 제거
             Object.values(driverMarkers).forEach(marker => {
                 if (map.hasLayer(marker)) {
                     map.removeLayer(marker);
@@ -1520,28 +1647,27 @@
             drivers.forEach(driver => {
                 if (!driver.coordinates || driver.coordinates.length !== 2) return;
                 
-                // ✨ 완료율 100% 기사는 회색으로 표시
                 const isCompleted = parseFloat(driver.completionRate || 0) === 100;
-                const markerSize = isCompleted ? 16 : 20; // 개별 핀 크기 다시 증가
+                const markerSize = isCompleted ? 16 : 20;
                 const iconSize = isCompleted ? 20 : 24;
                 
                 let markerColor = '#2ed573';
-                let borderColor = '#ffffff'; // 기본 흰색 테두리
-                let animationClass = ''; // 애니메이션 클래스
+                let borderColor = '#ffffff';
+                let animationClass = '';
                 
                 if (isCompleted) {
-                    markerColor = '#9ca3af'; // 회색 (완료)
-                    borderColor = '#6b7280'; // 완료된 기사는 회색 테두리
+                    markerColor = '#9ca3af';
+                    borderColor = '#6b7280';
                 } else if (driver.delayStatus === '지연') {
-                    markerColor = '#ff4757'; // 빨간색 (지연)
-                    borderColor = '#dc2626'; // 지연은 진한 빨간 테두리
-                    animationClass = 'animation: urgent-pulse 2s infinite;'; // 지연 애니메이션
+                    markerColor = '#ff4757';
+                    borderColor = '#dc2626';
+                    animationClass = 'animation: urgent-pulse 2s infinite;';
                 } else if (driver.pickupStatus === '미픽업') {
-                    markerColor = '#ffa502'; // 주황색 (미픽업)
-                    borderColor = '#ea580c'; // 미픽업은 진한 주황 테두리
-                    animationClass = 'animation: pickup-pulse 2s infinite;'; // 미픽업 애니메이션
+                    markerColor = '#ffa502';
+                    borderColor = '#ea580c';
+                    animationClass = 'animation: pickup-pulse 2s infinite;';
                 } else {
-                    borderColor = '#16a34a'; // 정상은 진한 초록 테두리
+                    borderColor = '#16a34a';
                 }
                 
                 const driverIcon = L.divIcon({
@@ -1584,7 +1710,6 @@
                         </div>
                     `);
 
-                // 마커를 클러스터에 추가
                 if (markerCluster) {
                     markerCluster.addLayer(marker);
                 } else {
@@ -1743,7 +1868,6 @@
             document.getElementById('notificationCount').textContent = count;
         }
 
-        // ✨ 지역별 포커스 기능 추가
         function focusOnRegion(regionName) {
             console.log(`${regionName} 지역 포커스...`);
             
@@ -1795,3 +1919,12 @@
     </script>
 </body>
 </html>
+                        <div class="stat-header">
+                            <span class="stat-title">총 배송 건수</span>
+                            <span class="stat-icon">📦</span>
+                        </div>
+                        <div class="stat-value" style="color: #6e6eff;" id="totalOrders">0</div>
+                        <div class="stat-change">전체 배송량</div>
+                    </div>
+
+                    <div class="stat-card">
