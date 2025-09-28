@@ -839,7 +839,7 @@
             <!-- 컨트롤 버튼 -->
             <div class="control-buttons">
                 <button class="btn btn-primary" onclick="loadGitHubData()">데이터 새로고침</button>
-                <button class="btn btn-secondary" onclick="exportDriverData()">기사 데이터 내보내기</button>
+                <button class="btn btn-secondary" onclick="exportDriverData()" style="display: none;">기사 데이터 내보내기</button>
                 <button class="btn btn-secondary" onclick="toggleAutoRefresh()">자동새로고침: <span id="autoRefreshStatus">ON</span></button>
             </div>
         </div>
@@ -891,7 +891,7 @@
                         
                         <button class="reset-filter-btn" onclick="resetFilters()" title="필터 초기화">↻</button>
                         
-                        <button class="action-btn app-push-btn" onclick="openAppPush()" title="App Push">앱푸시</button>
+                        <button class="action-btn app-push-btn" onclick="openAppPush()" title="App Push">App-push</button>
                         
                         <button class="action-btn copy-phone-btn" onclick="copyPhoneNumbers()" title="전화번호 복사">번호복사</button>
                     </div>
