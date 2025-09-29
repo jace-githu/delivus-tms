@@ -927,7 +927,9 @@
 @media (max-width: 768px) {
     body, html {
         overflow-x: hidden;
-        height: auto;
+    overflow-y: auto;  /* 이 줄 추가 */
+    height: auto;
+    -webkit-overflow-scrolling: touch;  /* iOS 부드러운 스크롤 */
     }
     
     .app-container {
