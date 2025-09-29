@@ -996,6 +996,190 @@
                 box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 0 0 rgba(255, 165, 2, 0);
             }
         }
+        /* 인터랙티브 가이드 스타일 */
+.guide-overlay-interactive {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 10000;
+    display: none;
+}
+
+.guide-overlay-interactive.active {
+    display: block;
+}
+
+.guide-tooltip {
+    position: fixed;
+    background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
+    color: white;
+    padding: 20px 24px;
+    border-radius: 16px;
+    max-width: 350px;
+    z-index: 10001;
+    box-shadow: 0 8px 32px rgba(110, 110, 255, 0.4);
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.guide-tooltip.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.guide-tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.guide-tooltip-arrow.top {
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 12px 12px 0 12px;
+    border-color: #6e6eff transparent transparent transparent;
+}
+
+.guide-tooltip-arrow.bottom {
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 12px 12px 12px;
+    border-color: transparent transparent #6e6eff transparent;
+}
+
+.guide-tooltip-arrow.left {
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 12px 0 12px 12px;
+    border-color: transparent transparent transparent #6e6eff;
+}
+
+.guide-tooltip-arrow.right {
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 12px 12px 12px 0;
+    border-color: transparent #6e6eff transparent transparent;
+}
+
+.guide-tooltip-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.guide-tooltip-content {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    white-space: pre-line;
+}
+
+.guide-tooltip-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.guide-step-info {
+    font-size: 12px;
+    opacity: 0.9;
+    font-weight: 600;
+}
+
+.guide-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.guide-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.guide-btn-skip {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.guide-btn-skip:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.guide-btn-prev {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.guide-btn-prev:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.guide-btn-next {
+    background: white;
+    color: #6e6eff;
+}
+
+.guide-btn-next:hover {
+    background: #f0f0ff;
+}
+
+.guide-btn-finish {
+    background: #2ed573;
+    color: white;
+}
+
+.guide-btn-finish:hover {
+    background: #26c464;
+}
+
+.guide-highlight {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.guide-highlight-border {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 3px solid #6e6eff;
+    border-radius: 12px;
+    box-shadow: 0 0 0 4px rgba(110, 110, 255, 0.3),
+                0 0 20px rgba(110, 110, 255, 0.5);
+    animation: guide-pulse 2s infinite;
+}
+
+@keyframes guide-pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 4px rgba(110, 110, 255, 0.3),
+                   0 0 20px rgba(110, 110, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(110, 110, 255, 0.2),
+                   0 0 30px rgba(110, 110, 255, 0.7);
+    }
+}
     </style>
 </head>
 <body>
@@ -2181,13 +2365,20 @@
         }
 
         // 가이드 표시/숨기기 함수
-        function showGuide() {
-            const guideOverlay = document.getElementById('guideOverlay');
-            if (guideOverlay) {
-                guideOverlay.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-            }
+            // 기존 showGuide 함수를 이렇게 변경
+function showGuide() {
+    // 인터랙티브 가이드가 있으면 그것을 실행
+    if (typeof interactiveGuide !== 'undefined' && interactiveGuide) {
+        interactiveGuide.start();
+    } else {
+        // 없으면 기존 모달 가이드 실행
+        const guideOverlay = document.getElementById('guideOverlay');
+        if (guideOverlay) {
+            guideOverlay.style.display = 'block';
+            document.body.style.overflow = 'hidden';
         }
+    }
+}
 
         function hideGuide() {
             const guideOverlay = document.getElementById('guideOverlay');
@@ -2207,8 +2398,264 @@
             }
         });
 
+        // ==================== 인터랙티브 가이드 시스템 ====================
+class InteractiveGuide {
+    constructor() {
+        this.currentStep = 0;
+        this.isActive = false;
+        this.steps = [
+            {
+                target: '.stats-section',
+                title: '📊 실시간 통계 대시보드',
+                content: '좌측 사이드바에서 총 배송건수, 완료율, 활성 기사 수 등 주요 지표를 실시간으로 확인할 수 있습니다.',
+                position: 'right'
+            },
+            {
+                target: '#map',
+                title: '🗺️ 지도 기반 관제',
+                content: '지도에서 기사들의 실시간 위치와 상태를 시각적으로 파악할 수 있습니다.\n\n• 회색: 완료율 100%\n• 초록: 정상 진행\n• 주황: 미픽업 상태\n• 빨강: 지연 발생',
+                position: 'bottom'
+            },
+            {
+                target: '#driverSearch',
+                title: '🔍 통합 검색',
+                content: '기사명이나 전화번호로 빠르게 검색할 수 있습니다. 검색어를 입력하면 실시간으로 필터링됩니다.',
+                position: 'top'
+            },
+            {
+                target: '#controlFilter',
+                title: '⚠️ 관제 상태 필터',
+                content: '지연/미픽업 기사만 별도로 필터링하여 관제가 필요한 기사를 집중 관리할 수 있습니다. 지연 필터 선택 시 완료율 100% 기사는 자동 제외됩니다.',
+                position: 'top'
+            },
+            {
+                target: '.driver-table',
+                title: '📋 기사 현황 테이블',
+                content: '모든 기사의 상세 정보를 테이블 형태로 확인할 수 있습니다. 컬럼 헤더를 클릭하면 정렬되며, 기사명을 클릭하면 지도에서 해당 위치로 이동합니다.',
+                position: 'top'
+            },
+            {
+                target: '.copy-phone-btn',
+                title: '📞 전화번호 일괄 복사',
+                content: '현재 필터링된 기사들의 전화번호를 한 번에 복사할 수 있습니다. 관제가 필요한 기사들에게 연락할 때 유용합니다.',
+                position: 'left'
+            },
+            {
+                target: '.app-push-btn',
+                title: '📱 App Push 연동',
+                content: 'App Push 버튼으로 기사들에게 직접 알림을 보낼 수 있는 백오피스로 연결됩니다.',
+                position: 'left'
+            },
+            {
+                target: '#regionList',
+                title: '🗺️ 지역별 수행률',
+                content: '지역을 클릭하면 해당 지역의 모든 기사를 지도에서 확인할 수 있습니다. 지역별 완료율과 진행 상황을 한눈에 파악하세요.',
+                position: 'left'
+            },
+            {
+                target: '.map-controls',
+                title: '⚡ 지도 컨트롤',
+                content: '전체보기로 초기 위치로 돌아가거나, 지도 스타일을 변경할 수 있습니다. 클러스터 핀을 클릭하면 확대되어 개별 기사를 볼 수 있습니다.',
+                position: 'left'
+            }
+        ];
+        this.init();
+    }
+
+    init() {
+        this.createOverlay();
+        this.createTooltip();
+        this.createHighlight();
+    }
+
+    createOverlay() {
+        const overlay = document.createElement('div');
+        overlay.className = 'guide-overlay-interactive';
+        overlay.id = 'guideOverlayInteractive';
+        document.body.appendChild(overlay);
+        this.overlay = overlay;
+    }
+
+    createTooltip() {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'guide-tooltip';
+        tooltip.id = 'guideTooltip';
+        tooltip.innerHTML = `
+            <div class="guide-tooltip-arrow"></div>
+            <div class="guide-tooltip-header">
+                <span class="guide-tooltip-icon"></span>
+                <span class="guide-tooltip-title"></span>
+            </div>
+            <div class="guide-tooltip-content"></div>
+            <div class="guide-tooltip-footer">
+                <div class="guide-step-info"></div>
+                <div class="guide-buttons">
+                    <button class="guide-btn guide-btn-skip">건너뛰기</button>
+                    <button class="guide-btn guide-btn-prev" style="display: none;">이전</button>
+                    <button class="guide-btn guide-btn-next">다음</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(tooltip);
+        this.tooltip = tooltip;
+
+        tooltip.querySelector('.guide-btn-skip').addEventListener('click', () => this.end());
+        tooltip.querySelector('.guide-btn-prev').addEventListener('click', () => this.prev());
+        tooltip.querySelector('.guide-btn-next').addEventListener('click', () => this.next());
+    }
+
+    createHighlight() {
+        const highlight = document.createElement('div');
+        highlight.className = 'guide-highlight';
+        highlight.innerHTML = '<div class="guide-highlight-border"></div>';
+        document.body.appendChild(highlight);
+        this.highlight = highlight;
+    }
+
+    start() {
+        if (this.isActive) return;
+        this.isActive = true;
+        this.currentStep = 0;
+        this.overlay.classList.add('active');
+        this.showStep(0);
+    }
+
+    end() {
+        this.isActive = false;
+        this.overlay.classList.remove('active');
+        this.tooltip.classList.remove('active');
+        this.highlight.style.display = 'none';
+        localStorage.setItem('tms_guide_completed', 'true');
+    }
+
+    next() {
+        if (this.currentStep < this.steps.length - 1) {
+            this.currentStep++;
+            this.showStep(this.currentStep);
+        } else {
+            this.end();
+        }
+    }
+
+    prev() {
+        if (this.currentStep > 0) {
+            this.currentStep--;
+            this.showStep(this.currentStep);
+        }
+    }
+
+    showStep(stepIndex) {
+        const step = this.steps[stepIndex];
+        const target = document.querySelector(step.target);
+
+        if (!target) {
+            console.warn(`가이드 대상을 찾을 수 없습니다: ${step.target}`);
+            this.next();
+            return;
+        }
+
+        this.highlightElement(target);
+        this.positionTooltip(target, step);
+
+        const titleParts = step.title.match(/^(.*?)\s(.+)$/);
+        const icon = titleParts ? titleParts[1] : '';
+        const title = titleParts ? titleParts[2] : step.title;
+
+        this.tooltip.querySelector('.guide-tooltip-icon').textContent = icon;
+        this.tooltip.querySelector('.guide-tooltip-title').textContent = title;
+        this.tooltip.querySelector('.guide-tooltip-content').textContent = step.content;
+        this.tooltip.querySelector('.guide-step-info').textContent = `${stepIndex + 1} / ${this.steps.length}`;
+
+        const prevBtn = this.tooltip.querySelector('.guide-btn-prev');
+        const nextBtn = this.tooltip.querySelector('.guide-btn-next');
+
+        if (stepIndex === 0) {
+            prevBtn.style.display = 'none';
+        } else {
+            prevBtn.style.display = 'inline-block';
+        }
+
+        if (stepIndex === this.steps.length - 1) {
+            nextBtn.textContent = '완료';
+            nextBtn.className = 'guide-btn guide-btn-finish';
+        } else {
+            nextBtn.textContent = '다음';
+            nextBtn.className = 'guide-btn guide-btn-next';
+        }
+
+        setTimeout(() => {
+            this.tooltip.classList.add('active');
+        }, 100);
+    }
+
+    highlightElement(element) {
+        const rect = element.getBoundingClientRect();
+        this.highlight.style.display = 'block';
+        this.highlight.style.top = rect.top + 'px';
+        this.highlight.style.left = rect.left + 'px';
+        this.highlight.style.width = rect.width + 'px';
+        this.highlight.style.height = rect.height + 'px';
+    }
+
+    positionTooltip(target, step) {
+        const rect = target.getBoundingClientRect();
+        const tooltip = this.tooltip;
+        const arrow = tooltip.querySelector('.guide-tooltip-arrow');
+        
+        tooltip.classList.remove('active');
+        arrow.className = 'guide-tooltip-arrow';
+
+        setTimeout(() => {
+            const tooltipRect = tooltip.getBoundingClientRect();
+            let top, left;
+
+            switch (step.position) {
+                case 'right':
+                    top = rect.top + (rect.height / 2) - (tooltipRect.height / 2);
+                    left = rect.right + 20;
+                    arrow.classList.add('left');
+                    break;
+                case 'left':
+                    top = rect.top + (rect.height / 2) - (tooltipRect.height / 2);
+                    left = rect.left - tooltipRect.width - 20;
+                    arrow.classList.add('right');
+                    break;
+                case 'bottom':
+                    top = rect.bottom + 20;
+                    left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+                    arrow.classList.add('top');
+                    break;
+                case 'top':
+                    top = rect.top - tooltipRect.height - 20;
+                    left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+                    arrow.classList.add('bottom');
+                    break;
+            }
+
+            const padding = 20;
+            if (left < padding) left = padding;
+            if (left + tooltipRect.width > window.innerWidth - padding) {
+                left = window.innerWidth - tooltipRect.width - padding;
+            }
+            if (top < padding) top = padding;
+            if (top + tooltipRect.height > window.innerHeight - padding) {
+                top = window.innerHeight - tooltipRect.height - padding;
+            }
+
+            tooltip.style.top = top + 'px';
+            tooltip.style.left = left + 'px';
+        }, 50);
+    }
+}
+
+let interactiveGuide;
+// ==================== 인터랙티브 가이드 시스템 끝 ====================
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('딜리래빗 TMS 시스템 시작...');
+    // 인터랙티브 가이드 초기화 (맨 위에 추가)
+    interactiveGuide = new InteractiveGuide();
+    
+    console.log('딜리래빗 TMS 시스템 시작...');
+    // ... 기존 코드 계속
             
             if (typeof L !== 'undefined') {
                 initializeMap();
