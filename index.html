@@ -45,7 +45,6 @@
             grid-template-columns: 400px 1fr 300px;
         }
 
-        /* 사이드바 */
         .sidebar {
             grid-area: sidebar;
             background: rgba(26, 26, 26, 0.95);
@@ -81,7 +80,6 @@
             background: #3770cc;
         }
 
-        /* 헤더 */
         .header {
             padding: 1.2rem 1.5rem;
             border-bottom: 1px solid rgba(110, 110, 255, 0.2);
@@ -95,12 +93,6 @@
             font-size: 1.6rem;
             font-weight: 700;
             color: #6e6eff;
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
         }
 
         .notification-btn {
@@ -131,7 +123,6 @@
             font-weight: 600;
         }
 
-        /* 데이터 상태 */
         .data-status {
             padding: 12px 14px;
             border-radius: 12px;
@@ -167,7 +158,6 @@
             margin-top: 4px;
         }
 
-        /* 통계 섹션 */
         .stats-section {
             padding: 1.5rem;
             border-bottom: 1px solid rgba(110, 110, 255, 0.2);
@@ -186,8 +176,6 @@
             padding: 1rem;
             border: 1px solid rgba(110, 110, 255, 0.15);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
         .stat-card:hover {
@@ -207,7 +195,6 @@
             color: rgba(255, 255, 255, 0.7);
             text-transform: uppercase;
             font-weight: 600;
-            font-family: 'Pretendard', sans-serif;
         }
 
         .stat-icon {
@@ -219,16 +206,13 @@
             font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 0.3rem;
-            font-family: 'Pretendard', sans-serif;
         }
 
         .stat-change {
             font-size: 0.7rem;
             color: rgba(255, 255, 255, 0.6);
-            font-family: 'Pretendard', sans-serif;
         }
 
-        /* 추가 통계 */
         .additional-stats {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 8px;
@@ -241,7 +225,6 @@
             justify-content: space-between;
             margin-bottom: 0.5rem;
             font-size: 0.8rem;
-            font-family: 'Pretendard', sans-serif;
         }
 
         .stat-row:last-child {
@@ -257,14 +240,12 @@
             color: #6e6eff;
         }
 
-        /* 지도 영역 */
         .map-container {
             grid-area: map;
             position: relative;
             background: #1a1a1a;
         }
 
-        /* 우측 데이터 패널 */
         .data-panel {
             grid-area: data-panel;
             background: rgba(26, 26, 26, 0.95);
@@ -280,29 +261,6 @@
 
         .data-panel.open {
             transform: translateX(0);
-        }
-
-        .data-panel-toggle {
-            position: absolute;
-            left: -45px;
-            top: 20px;
-            width: 45px;
-            height: 45px;
-            background: #6e6eff;
-            border: none;
-            border-radius: 12px 0 0 12px;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            z-index: 1001;
-            transition: all 0.3s ease;
-        }
-
-        .data-panel-toggle:hover {
-            background: #3770cc;
         }
 
         .data-panel-toggle {
@@ -372,22 +330,6 @@
             line-height: 1.5;
         }
 
-        /* 클러스터 스타일 커스터마이징 */
-        .marker-cluster-small {
-            background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
-            box-shadow: 0 4px 12px rgba(110, 110, 255, 0.4);
-        }
-        
-        .marker-cluster-medium {
-            background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
-            box-shadow: 0 4px 15px rgba(110, 110, 255, 0.5);
-        }
-        
-        .marker-cluster-large {
-            background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
-            box-shadow: 0 6px 20px rgba(110, 110, 255, 0.6);
-        }
-
         .marker-cluster {
             background-clip: padding-box;
             border-radius: 50%;
@@ -397,37 +339,16 @@
 
         .marker-cluster:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(110, 110, 255, 0.7);
         }
 
         .marker-cluster div {
             background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
             border-radius: 50%;
-            border: none;
             color: white;
             font-weight: 700;
-            font-size: 14px;
-            line-height: 1;
-            text-align: center;
-            width: 100%;
-            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-
-        .marker-cluster-small div {
-            font-size: 12px;
-        }
-
-        .marker-cluster-medium div {
-            font-size: 14px;
-        }
-
-        .marker-cluster-large div {
-            font-size: 16px;
-            font-weight: 800;
         }
 
         #map {
@@ -435,7 +356,6 @@
             height: 100%;
         }
 
-        /* 컨트롤 버튼 */
         .control-buttons {
             padding: 1.5rem;
             display: flex;
@@ -450,7 +370,6 @@
             cursor: pointer;
             font-size: 0.8rem;
             font-weight: 600;
-            text-align: center;
             transition: all 0.3s ease;
         }
 
@@ -474,7 +393,6 @@
             background: rgba(255, 255, 255, 0.15);
         }
 
-        /* 지도 컨트롤 버튼 (오버레이) */
         .map-controls {
             position: absolute;
             top: 20px;
@@ -503,7 +421,6 @@
             border-color: #6e6eff;
         }
 
-        /* 하단 패널 */
         .bottom-panel {
             grid-area: bottom;
             background: rgba(26, 26, 26, 0.95);
@@ -527,10 +444,8 @@
             align-items: center;
             justify-content: space-between;
             color: #6e6eff;
-            font-family: 'Pretendard', sans-serif;
         }
 
-        /* 검색창 스타일 */
         .search-input {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(102, 126, 234, 0.3);
@@ -553,7 +468,6 @@
             box-shadow: 0 0 0 2px rgba(110, 110, 255, 0.2);
         }
 
-        /* 필터 컨테이너 */
         .filter-container {
             display: flex;
             align-items: center;
@@ -582,7 +496,7 @@
             color: white;
         }
 
-        .reset-filter-btn {
+        .reset-filter-btn, .action-btn {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(102, 126, 234, 0.3);
             border-radius: 4px;
@@ -593,24 +507,14 @@
             transition: all 0.3s ease;
         }
 
-        .reset-filter-btn:hover {
-            background: rgba(102, 126, 234, 0.3);
-        }
-
         .action-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(102, 126, 234, 0.3);
-            border-radius: 4px;
-            color: white;
             padding: 4px 8px;
             font-size: 0.6rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
             min-width: 50px;
             font-weight: 600;
         }
 
-        .action-btn:hover {
+        .reset-filter-btn:hover, .action-btn:hover {
             background: rgba(102, 126, 234, 0.3);
         }
 
@@ -622,7 +526,6 @@
             background: rgba(255, 165, 2, 0.3);
         }
 
-        /* 기사 리스트 테이블 */
         .driver-table-container {
             overflow-x: auto;
             overflow-y: auto;
@@ -649,7 +552,6 @@
             z-index: 10;
             cursor: pointer;
             user-select: none;
-            font-family: 'Pretendard', sans-serif;
         }
 
         .driver-table th:hover {
@@ -676,7 +578,6 @@
             display: none;
         }
 
-        /* 기사명 클릭 스타일 */
         .driver-name-clickable {
             cursor: pointer;
             color: #6e6eff;
@@ -686,7 +587,6 @@
 
         .driver-name-clickable:hover {
             color: #3770cc;
-            text-decoration: underline;
         }
 
         .status-badge {
@@ -696,8 +596,6 @@
             font-weight: 600;
         }
 
-        .status-active { background: rgba(46, 213, 115, 0.2); color: #2ed573; }
-        .status-pending { background: rgba(255, 165, 2, 0.2); color: #ffa502; }
         .status-pickup { background: rgba(46, 213, 115, 0.2); color: #2ed573; }
         .status-not-pickup { background: rgba(255, 71, 87, 0.2); color: #ff4757; }
         .status-delayed { background: rgba(255, 71, 87, 0.2); color: #ff4757; }
@@ -708,7 +606,6 @@
             color: #2ed573;
         }
 
-        /* 지역별 현황 */
         .region-list {
             display: flex;
             flex-direction: column;
@@ -751,7 +648,6 @@
             font-size: 0.8rem;
         }
 
-        /* 알림 패널 */
         .alert-panel {
             position: absolute;
             top: 20px;
@@ -786,7 +682,6 @@
             font-size: 1.2rem;
         }
 
-        /* 가이드 오버레이 */
         .guide-overlay {
             position: fixed;
             top: 0;
@@ -855,9 +750,6 @@
             font-weight: 600;
             color: #6e6eff;
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
         .guide-content {
@@ -923,43 +815,22 @@
             font-weight: 600;
             margin-right: 0.5rem;
         }
-        @media (max-width: 1400px) {
-            .app-container {
-                grid-template-columns: 360px 1fr 280px;
+
+        @keyframes urgent-pulse {
+            0%, 100% { 
+                box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 0 0 rgba(255, 71, 87, 0.7);
             }
-            
-            .bottom-panel {
-                grid-template-columns: 2fr 1fr;
+            50% { 
+                box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 0 4px rgba(255, 71, 87, 0.3);
             }
         }
 
-        @media (max-width: 1200px) {
-            .app-container {
-                grid-template-areas: 
-                    "sidebar map"
-                    "bottom bottom";
-                grid-template-columns: 360px 1fr;
-                grid-template-rows: 1fr 350px;
+        @keyframes pickup-pulse {
+            0%, 100% { 
+                box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 0 0 rgba(255, 165, 2, 0.7);
             }
-            
-            .data-panel {
-                display: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .app-container {
-                grid-template-areas: 
-                    "map"
-                    "sidebar"
-                    "bottom";
-                grid-template-columns: 1fr;
-                grid-template-rows: 1fr auto auto;
-            }
-            
-            .filter-container {
-                flex-direction: column;
-                gap: 0.3rem;
+            50% { 
+                box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 0 4px rgba(255, 165, 2, 0.3);
             }
         }
 
@@ -971,42 +842,15 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.7; }
         }
-
-        /* 관제 필요 마커 애니메이션 */
-        @keyframes urgent-pulse {
-            0% { 
-                box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 0 0 rgba(255, 71, 87, 0.7);
-            }
-            50% { 
-                box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 0 4px rgba(255, 71, 87, 0.3);
-            }
-            100% { 
-                box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 0 0 rgba(255, 71, 87, 0);
-            }
-        }
-
-        @keyframes pickup-pulse {
-            0% { 
-                box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 0 0 rgba(255, 165, 2, 0.7);
-            }
-            50% { 
-                box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 0 4px rgba(255, 165, 2, 0.3);
-            }
-            100% { 
-                box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 0 0 rgba(255, 165, 2, 0);
-            }
-        }
     </style>
 </head>
 <body>
     <div class="app-container">
-        <!-- 사이드바 -->
         <div class="sidebar" id="sidebar">
             <button class="sidebar-toggle" onclick="toggleSidebar()">
                 <span>←</span>
             </button>
             
-            <!-- 헤더 -->
             <div class="header">
                 <div class="logo">딜리래빗 TMS</div>
                 <div class="user-info">
@@ -1017,7 +861,6 @@
                 </div>
             </div>
 
-            <!-- 데이터 상태 -->
             <div class="data-status loading" id="dataStatus">
                 <span>⏳</span>
                 <div>
@@ -1026,7 +869,6 @@
                 </div>
             </div>
 
-            <!-- 주요 통계 -->
             <div class="stats-section">
                 <div class="stats-grid">
                     <div class="stat-card">
@@ -1066,7 +908,6 @@
                     </div>
                 </div>
 
-                <!-- 추가 통계 -->
                 <div class="additional-stats">
                     <div class="stat-row">
                         <span class="stat-label">전체 기사 수</span>
@@ -1087,27 +928,22 @@
                 </div>
             </div>
 
-            <!-- 컨트롤 버튼 -->
             <div class="control-buttons">
                 <button class="btn btn-primary" onclick="loadGitHubData()">데이터 새로고침</button>
                 <button class="btn btn-secondary" onclick="resetMapView()">전체 지도 보기</button>
-                <button class="btn btn-secondary" onclick="exportDriverData()" style="display: none;">기사 데이터 내보내기</button>
                 <button class="btn btn-secondary" onclick="toggleAutoRefresh()">자동새로고침: <span id="autoRefreshStatus">ON</span></button>
             </div>
         </div>
 
-        <!-- 지도 영역 -->
         <div class="map-container">
             <div id="map"></div>
             
-            <!-- 지도 컨트롤 버튼 -->
             <div class="map-controls">
                 <button class="map-control-btn" onclick="resetMapView()">🌍 전체보기</button>
                 <button class="map-control-btn" onclick="toggleMapStyle()">🗺️지도스타일</button>
                 <button class="map-control-btn" onclick="showGuide()">📖 가이드</button>
             </div>
             
-            <!-- 알림 패널 -->
             <div class="alert-panel" id="alertPanel">
                 <button class="alert-close" onclick="hideAlert()">×</button>
                 <div class="alert-title" id="alertTitle">알림</div>
@@ -1115,7 +951,6 @@
             </div>
         </div>
 
-        <!-- 가이드 오버레이 -->
         <div class="guide-overlay" id="guideOverlay">
             <div class="guide-modal">
                 <div class="guide-header">
@@ -1132,29 +967,11 @@
                         </div>
                         <div class="guide-feature">
                             <div class="guide-feature-title">🗺️ 지도 기반 관제</div>
-                            <div class="guide-feature-desc">지도에서 기사들의 실시간 위치와 상태를 시각적으로 파악할 수 있습니다. 핀 색상으로 상태를 구분합니다.</div>
+                            <div class="guide-feature-desc">지도에서 기사들의 실시간 위치와 상태를 시각적으로 파악할 수 있습니다.</div>
                         </div>
                         <div class="guide-feature">
                             <div class="guide-feature-title">📋 기사 현황 테이블</div>
                             <div class="guide-feature-desc">하단에서 모든 기사의 상세 정보를 테이블 형태로 확인하고 정렬/필터링할 수 있습니다.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="guide-section">
-                    <div class="guide-section-title">🔍 검색 및 필터링</div>
-                    <div class="guide-content">
-                        <div class="guide-feature">
-                            <div class="guide-feature-title">통합 검색</div>
-                            <div class="guide-feature-desc">기사명이나 전화번호로 빠르게 검색할 수 있습니다.</div>
-                        </div>
-                        <div class="guide-feature">
-                            <div class="guide-feature-title">관제 상태 필터</div>
-                            <div class="guide-feature-desc">지연/미픽업 기사만 별도로 필터링하여 관제가 필요한 기사를 집중 관리할 수 있습니다.</div>
-                        </div>
-                        <div class="guide-feature">
-                            <div class="guide-feature-title">운송사/지역별 필터</div>
-                            <div class="guide-feature-desc">특정 운송사나 지역의 기사들만 선택적으로 확인할 수 있습니다.</div>
                         </div>
                     </div>
                 </div>
@@ -1179,41 +996,17 @@
                     </div>
                 </div>
 
-                <div class="guide-section">
-                    <div class="guide-section-title">⚡ 고급 기능</div>
-                    <div class="guide-content">
-                        <div class="guide-feature">
-                            <div class="guide-feature-title">기사명 클릭 포커스</div>
-                            <div class="guide-feature-desc">기사명을 클릭하면 해당 기사의 위치로 지도가 자동 이동하고 상세 정보가 표시됩니다.</div>
-                        </div>
-                        <div class="guide-feature">
-                            <div class="guide-feature-title">지역별 포커스</div>
-                            <div class="guide-feature-desc">우측 지역별 수행률에서 지역을 클릭하면 해당 지역의 모든 기사를 지도에서 확인할 수 있습니다.</div>
-                        </div>
-                        <div class="guide-feature">
-                            <div class="guide-feature-title">전화번호 일괄 복사</div>
-                            <div class="guide-feature-desc">필터링된 기사들의 전화번호를 한 번에 복사하여 업무 효율성을 높일 수 있습니다.</div>
-                        </div>
-                        <div class="guide-feature">
-                            <div class="guide-feature-title">App Push 연동</div>
-                            <div class="guide-feature-desc">App Push 버튼으로 기사들에게 직접 알림을 보낼 수 있는 백오피스로 연결됩니다.</div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="guide-tips">
                     <div class="guide-tips-title">💡 효율적인 사용 팁</div>
                     <ul style="margin: 0; padding-left: 1.2rem;">
-                        <li>지연 필터를 사용하면 완료율 100% 기사는 자동으로 제외되어 실제 관제가 필요한 기사만 표시됩니다.</li>
-                        <li>지도에서 핀들이 겹칠 때는 줌인하면 자동으로 분리되어 개별 기사를 확인할 수 있습니다.</li>
-                        <li>데이터는 5분마다 자동으로 새로고침되며, 수동 새로고침도 가능합니다.</li>
-                        <li>우측 상단의 📊 버튼을 클릭하면 추가 데이터 시각화 패널을 열 수 있습니다.</li>
+                        <li>지연 필터를 사용하면 완료율 100% 기사는 자동으로 제외됩니다.</li>
+                        <li>지도에서 핀들이 겹칠 때는 줌인하면 자동으로 분리됩니다.</li>
+                        <li>데이터는 5분마다 자동으로 새로고침됩니다.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- 우측 데이터 시각화 패널 -->
         <div class="data-panel" id="dataPanel">
             <button class="data-panel-toggle" onclick="toggleDataPanel()">
                 <span id="dataPanelToggleIcon">📊</span>
@@ -1225,7 +1018,6 @@
             </div>
             
             <div class="data-panel-content">
-                <!-- 차트 플레이스홀더 1 -->
                 <div class="chart-placeholder">
                     <div class="chart-placeholder-icon">📈</div>
                     <div class="chart-placeholder-text">
@@ -1235,7 +1027,6 @@
                     </div>
                 </div>
 
-                <!-- 차트 플레이스홀더 2 -->
                 <div class="chart-placeholder">
                     <div class="chart-placeholder-icon">🥧</div>
                     <div class="chart-placeholder-text">
@@ -1244,37 +1035,19 @@
                         성과 지표를 표시할 예정
                     </div>
                 </div>
-
-                <!-- 차트 플레이스홀더 3 -->
-                <div class="chart-placeholder">
-                    <div class="chart-placeholder-icon">📊</div>
-                    <div class="chart-placeholder-text">
-                        <strong>지역별 성과</strong><br>
-                        지역별 완료율과<br>
-                        배송 효율성을 표시할 예정
-                    </div>
-                </div>
             </div>
         </div>
 
-        <!-- 하단 패널 -->
         <div class="bottom-panel">
-            <!-- 배송 기사 리스트 -->
             <div class="panel-section">
                 <div class="panel-title">
                     <div style="display: flex; align-items: center; gap: 12px;">
                         <span>👨‍💼 배송 기사 현황</span>
                         <input type="text" class="search-input" id="driverSearch" 
                                placeholder="기사명, 전화번호 검색" 
-                               onkeyup="searchDrivers()"
-                               style="background: rgba(255, 255, 255, 0.1); 
-                                      border: 1px solid rgba(102, 126, 234, 0.3); 
-                                      border-radius: 6px; color: white; padding: 6px 10px; 
-                                      font-size: 0.75rem; width: 160px; 
-                                      outline: none;">
+                               onkeyup="searchDrivers()">
                     </div>
                     
-                    <!-- 필터 컨테이너 -->
                     <div class="filter-container">
                         <select class="filter-select" id="controlFilter" onchange="applyFilters()">
                             <option value="">전체 관제</option>
@@ -1326,7 +1099,6 @@
                 </div>
             </div>
 
-            <!-- 지역별 수행률 -->
             <div class="panel-section">
                 <div class="panel-title">🗺️ 지역별 수행률</div>
                 
@@ -1350,7 +1122,7 @@
         let currentFilteredDrivers = [];
         let sortOrder = {};
         let currentMapStyle = 'osm'; 
-        let dataPanelOpen = false; // 시각화 패널은 기본적으로 닫힌 상태
+        let dataPanelOpen = false;
 
         const GITHUB_CONFIG = {
             owner: 'jace-githu',
@@ -1359,249 +1131,34 @@
             branch: 'main'
         };
 
-        // 데이터 패널 토글 기능
-        function toggleDataPanel() {
-            const appContainer = document.querySelector('.app-container');
-            const dataPanel = document.getElementById('dataPanel');
-            const toggleIcon = document.getElementById('dataPanelToggleIcon');
-            
-            dataPanelOpen = !dataPanelOpen;
-            
-            if (dataPanelOpen) {
-                appContainer.classList.add('data-panel-open');
-                dataPanel.classList.add('open');
-                toggleIcon.textContent = '✕';
-                showAlert('success', '데이터 패널', '데이터 시각화 패널이 열렸습니다.');
-            } else {
-                appContainer.classList.remove('data-panel-open');
-                dataPanel.classList.remove('open');
-                toggleIcon.textContent = '📊';
-                showAlert('info', '데이터 패널', '데이터 시각화 패널이 닫혔습니다.');
-            }
-            
-            if (map) {
-                setTimeout(() => map.invalidateSize(), 350);
-            }
-        }
-
-        // 전체 지도 보기 기능
-        function resetMapView() {
-            if (!map) return;
-            
-            map.setView([37.5665, 126.9780], 11);
-            resetFilters();
-            showAlert('success', '전체 지도', '전체 지도 보기로 돌아갔습니다.');
-        }
-
-        // 지도 스타일 토글 기능
-        function toggleMapStyle() {
-            if (!map) return;
-            
-            map.eachLayer(function(layer) {
-                if (layer instanceof L.TileLayer) {
-                    map.removeLayer(layer);
-                }
-            });
-            
-            let newLayer;
-            if (currentMapStyle === 'osm') {
-                newLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-                    attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OSM Team'
-                });
-                currentMapStyle = 'hot';
-                showAlert('success', '지도 스타일', 'HOT 스타일로 변경되었습니다.');
-            } else {
-                newLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '© OpenStreetMap contributors'
-                });
-                currentMapStyle = 'osm';
-                showAlert('success', '지도 스타일', '기본 스타일로 변경되었습니다.');
-            }
-            
-            newLayer.addTo(map);
-        }
-
-        function openAppPush() {
-            const url = 'https://backoffice.drabbit.co.kr/apps/4a42193c-c779-11ef-aa21-cf70a380470e/Backoffice%202.1%20-%20Page/%ED%91%B8%EC%89%AC';
-            window.open(url, '_blank');
-            showAlert('success', 'App Push', 'App Push 페이지를 새 탭에서 열었습니다.');
-        }
-
-        // 통합 검색 기능 (기사명, 전화번호만)
-        function searchDrivers() {
-            const searchTerm = document.getElementById('driverSearch').value.toLowerCase().trim();
-            const tableBody = document.querySelector('#driverTable tbody');
-            const rows = tableBody.querySelectorAll('tr[data-driver-id]');
-            
-            if (!searchTerm) {
-                rows.forEach(row => row.classList.remove('filtered-out'));
-                updateDriverCount(allDrivers.length, allDrivers.length);
-                return;
-            }
-            
-            let visibleCount = 0;
-            
-            rows.forEach(row => {
-                const driverId = row.getAttribute('data-driver-id');
-                const driver = allDrivers.find(d => d.id === driverId);
-                
-                if (driver) {
-                    const driverName = (driver.name || '').toLowerCase();
-                    const nameMatch = driverName.includes(searchTerm);
-                    
-                    const cleanSearchTerm = searchTerm.replace(/[^0-9]/g, '');
-                    const cleanPhone = (driver.phone || '').replace(/[^0-9]/g, '');
-                    const phoneMatch = cleanSearchTerm && cleanPhone.includes(cleanSearchTerm);
-                    
-                    if (nameMatch || phoneMatch) {
-                        row.classList.remove('filtered-out');
-                        visibleCount++;
-                    } else {
-                        row.classList.add('filtered-out');
-                    }
-                }
-            });
-            
-            updateDriverCount(visibleCount, allDrivers.length);
-        }
-
-        // 기사 포커스 기능
-        function focusOnDriver(driverId) {
-            const driver = allDrivers.find(d => d.id === driverId);
-            if (!driver || !driver.coordinates) {
-                showAlert('warning', '위치 정보 없음', '해당 기사의 위치 정보가 없습니다.');
-                return;
-            }
-            
-            map.setView(driver.coordinates, 15);
-            
-            const marker = driverMarkers[driver.id];
-            if (marker) {
-                setTimeout(() => {
-                    marker.openPopup();
-                    showAlert('success', '기사 포커스', `${driver.name} 기사 위치로 이동했습니다.`);
-                }, 500);
-            }
-        }
-
-        function copyPhoneNumbers() {
-            const driversToUse = currentFilteredDrivers.length > 0 ? currentFilteredDrivers : allDrivers;
-            
-            if (!driversToUse.length) {
-                showAlert('warning', '데이터 없음', '복사할 전화번호가 없습니다.');
-                return;
-            }
-
-            const visibleDrivers = getVisibleDrivers();
-            const phoneNumbers = visibleDrivers
-                .map(driver => driver.phone)
-                .filter(phone => phone && phone.trim() !== '' && phone !== '-')
-                .join('\n');
-
-            if (!phoneNumbers) {
-                showAlert('warning', '전화번호 없음', '복사할 전화번호가 없습니다.');
-                return;
-            }
-
-            navigator.clipboard.writeText(phoneNumbers).then(() => {
-                showAlert('success', '복사 완료', `${phoneNumbers.split('\n').length}개의 전화번호가 복사되었습니다.`);
-            }).catch(() => {
-                const textArea = document.createElement('textarea');
-                textArea.value = phoneNumbers;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                showAlert('success', '복사 완료', `${phoneNumbers.split('\n').length}개의 전화번호가 복사되었습니다.`);
-            });
-        }
-
-        function getVisibleDrivers() {
-            const tableBody = document.querySelector('#driverTable tbody');
-            if (!tableBody) return [];
-
-            const visibleRows = tableBody.querySelectorAll('tr:not(.filtered-out):not(.no-result-row)');
-            const visibleDrivers = [];
-
-            visibleRows.forEach(row => {
-                const driverId = row.getAttribute('data-driver-id');
-                const driver = allDrivers.find(d => d.id === driverId);
-                if (driver) {
-                    visibleDrivers.push(driver);
-                }
-            });
-
-            return visibleDrivers;
-        }
-
-        function sortTable(column) {
-            if (!allDrivers.length) return;
-            
-            const currentOrder = sortOrder[column] || 'none';
-            sortOrder[column] = currentOrder === 'asc' ? 'desc' : 'asc';
-            
-            Object.keys(sortOrder).forEach(key => {
-                if (key !== column) sortOrder[key] = 'none';
-            });
-            
-            const sortedDrivers = [...allDrivers].sort((a, b) => {
-                let valueA = a[column];
-                let valueB = b[column];
-                
-                if (['totalDeliveries', 'completedDeliveries', 'failedDeliveries', 'completionRate'].includes(column)) {
-                    valueA = parseFloat(valueA) || 0;
-                    valueB = parseFloat(valueB) || 0;
-                } else {
-                    valueA = String(valueA || '').toLowerCase();
-                    valueB = String(valueB || '').toLowerCase();
-                }
-                
-                if (sortOrder[column] === 'asc') {
-                    return valueA > valueB ? 1 : -1;
-                } else {
-                    return valueA < valueB ? 1 : -1;
-                }
-            });
-            
-            updateDriverTable(sortedDrivers);
-            updateSortIcons(column);
-            applyFilters();
-        }
-        
-        function updateSortIcons(activeColumn) {
-            const headers = document.querySelectorAll('.driver-table th');
-            headers.forEach((header, index) => {
-                const sortBtn = header.querySelector('.sort-btn');
-                if (sortBtn) {
-                    const columns = ['name', 'deliveryBox', 'company', 'phone', 'totalDeliveries', 'completedDeliveries', 'failedDeliveries', 'completionRate', 'pickupStatus', 'delayStatus', 'region'];
-                    const column = columns[index];
-                    
-                    if (column === activeColumn) {
-                        sortBtn.textContent = sortOrder[column] === 'asc' ? '↑' : '↓';
-                        sortBtn.style.color = '#6e6eff';
-                    } else {
-                        sortBtn.textContent = '↕';
-                        sortBtn.style.color = 'rgba(255, 255, 255, 0.6)';
-                    }
-                }
-            });
-        }
-
         async function loadGitHubData() {
             try {
-                showDataStatus('loading', '데이터 로딩 중...');
-                console.log('GitHub 데이터 로드 시작...');
+                showDataStatus('loading', '최신 데이터 로딩 중...');
+                console.log('GitHub API로 최신 데이터 로드 시작...');
                 
-                const url = `https://raw.githubusercontent.com/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/${GITHUB_CONFIG.branch}/${GITHUB_CONFIG.path}`;
-                const response = await fetch(url + '?t=' + Date.now());
+                const timestamp = new Date().getTime();
+                const apiUrl = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.path}?ref=${GITHUB_CONFIG.branch}&t=${timestamp}`;
+                
+                const response = await fetch(apiUrl, {
+                    headers: {
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Cache-Control': 'no-cache, no-store, must-revalidate',
+                        'Pragma': 'no-cache',
+                        'Expires': '0'
+                    },
+                    cache: 'no-store'
+                });
                 
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
                 
-                const rawText = await response.text();
-                tmsData = JSON.parse(rawText);
+                const data = await response.json();
+                const content = atob(data.content.replace(/\s/g, ''));
+                tmsData = JSON.parse(content);
                 allDrivers = tmsData.drivers || [];
+                
+                console.log('✅ GitHub API를 통한 최신 데이터 로드 성공');
                 
                 updateDashboardStats(tmsData.stats);
                 updateDriverTable(allDrivers);
@@ -1621,127 +1178,6 @@
                 showDataStatus('error', '데이터 연결 실패');
                 showAlert('error', '데이터 로드 실패', `서버에서 데이터를 불러올 수 없습니다: ${error.message}`);
             }
-        }
-
-        function updateFilterOptions(drivers) {
-            const companyFilter = document.getElementById('companyFilter');
-            const regionFilter = document.getElementById('regionFilter');
-            
-            if (!companyFilter || !regionFilter || !drivers) return;
-            
-            const companies = [...new Set(drivers.map(d => d.company).filter(c => c))].sort();
-            const regions = [...new Set(drivers.map(d => d.region).filter(r => r))].sort();
-            
-            companyFilter.innerHTML = '<option value="">전체 운송사</option>';
-            companies.forEach(company => {
-                const option = document.createElement('option');
-                option.value = company;
-                option.textContent = company;
-                companyFilter.appendChild(option);
-            });
-            
-            regionFilter.innerHTML = '<option value="">전체 지역</option>';
-            regions.forEach(region => {
-                const option = document.createElement('option');
-                option.value = region;
-                option.textContent = region;
-                regionFilter.appendChild(option);
-            });
-        }
-
-        // 완료율 100% 지연 제외 기능 
-        function applyFilters() {
-            const controlFilter = document.getElementById('controlFilter').value;
-            const companyFilter = document.getElementById('companyFilter').value;
-            const regionFilter = document.getElementById('regionFilter').value;
-            
-            if (!allDrivers.length) return;
-            
-            let filteredDrivers = allDrivers.filter(driver => {
-                const companyMatch = !companyFilter || driver.company === companyFilter;
-                const regionMatch = !regionFilter || driver.region === regionFilter;
-                
-                let controlMatch = true;
-                if (controlFilter === '지연') {
-                    controlMatch = driver.delayStatus === '지연' && parseFloat(driver.completionRate || 0) < 100;
-                } else if (controlFilter === '미픽업') {
-                    controlMatch = driver.pickupStatus === '미픽업';
-                }
-                
-                return companyMatch && regionMatch && controlMatch;
-            });
-            
-            currentFilteredDrivers = filteredDrivers;
-            updateDriverTableFiltered(filteredDrivers);
-            updateMapFiltered(filteredDrivers);
-            updateDriverCount(filteredDrivers.length, allDrivers.length);
-        }
-
-        function resetFilters() {
-            document.getElementById('controlFilter').value = '';
-            document.getElementById('companyFilter').value = '';
-            document.getElementById('regionFilter').value = '';
-            document.getElementById('driverSearch').value = '';
-            
-            currentFilteredDrivers = [];
-            updateDriverTableFiltered(allDrivers);
-            updateMapFiltered(allDrivers);
-            updateDriverCount(allDrivers.length, allDrivers.length);
-            
-            showAlert('success', '필터 초기화', '모든 필터가 해제되었습니다.');
-        }
-
-        function updateDriverCount(filteredCount, totalCount) {
-            // 기사 수 업데이트 로직 (현재 UI에 표시할 요소가 없으므로 콘솔에만 출력)
-            console.log(`기사 수: ${filteredCount}/${totalCount}`);
-        }
-
-        function updateDriverTableFiltered(drivers) {
-            const tableBody = document.querySelector('#driverTable tbody');
-            if (!tableBody) return;
-            
-            const allRows = tableBody.querySelectorAll('tr');
-            allRows.forEach(row => row.classList.add('filtered-out'));
-            
-            if (!drivers || drivers.length === 0) {
-                const noResultRow = document.createElement('tr');
-                noResultRow.innerHTML = '<td colspan="11" style="text-align: center; padding: 2rem; color: #888;">필터 조건에 해당하는 기사가 없습니다.</td>';
-                noResultRow.classList.remove('filtered-out');
-                
-                const existingNoResult = tableBody.querySelector('.no-result-row');
-                if (existingNoResult) existingNoResult.remove();
-                
-                noResultRow.classList.add('no-result-row');
-                tableBody.appendChild(noResultRow);
-                return;
-            }
-            
-            const existingNoResult = tableBody.querySelector('.no-result-row');
-            if (existingNoResult) existingNoResult.remove();
-            
-            drivers.forEach(driver => {
-                const row = tableBody.querySelector(`tr[data-driver-id="${driver.id}"]`);
-                if (row) {
-                    row.classList.remove('filtered-out');
-                }
-            });
-        }
-
-        function updateMapFiltered(drivers) {
-            if (!map) return;
-            
-            if (markerCluster) {
-                markerCluster.clearLayers();
-            }
-            
-            drivers.forEach(driver => {
-                const marker = driverMarkers[driver.id];
-                if (marker && markerCluster) {
-                    markerCluster.addLayer(marker);
-                } else if (marker) {
-                    marker.addTo(map);
-                }
-            });
         }
 
         function updateDashboardStats(stats) {
@@ -1832,9 +1268,169 @@
             regionList.innerHTML = regionItems;
         }
 
-        function focusOnRegion(regionName) {
-            console.log(`${regionName} 지역 포커스...`);
+        function updateFilterOptions(drivers) {
+            const companyFilter = document.getElementById('companyFilter');
+            const regionFilter = document.getElementById('regionFilter');
             
+            if (!companyFilter || !regionFilter || !drivers) return;
+            
+            const companies = [...new Set(drivers.map(d => d.company).filter(c => c))].sort();
+            const regions = [...new Set(drivers.map(d => d.region).filter(r => r))].sort();
+            
+            companyFilter.innerHTML = '<option value="">전체 운송사</option>';
+            companies.forEach(company => {
+                const option = document.createElement('option');
+                option.value = company;
+                option.textContent = company;
+                companyFilter.appendChild(option);
+            });
+            
+            regionFilter.innerHTML = '<option value="">전체 지역</option>';
+            regions.forEach(region => {
+                const option = document.createElement('option');
+                option.value = region;
+                option.textContent = region;
+                regionFilter.appendChild(option);
+            });
+        }
+
+        function searchDrivers() {
+            const searchTerm = document.getElementById('driverSearch').value.toLowerCase().trim();
+            const tableBody = document.querySelector('#driverTable tbody');
+            const rows = tableBody.querySelectorAll('tr[data-driver-id]');
+            
+            if (!searchTerm) {
+                rows.forEach(row => row.classList.remove('filtered-out'));
+                return;
+            }
+            
+            rows.forEach(row => {
+                const driverId = row.getAttribute('data-driver-id');
+                const driver = allDrivers.find(d => d.id === driverId);
+                
+                if (driver) {
+                    const driverName = (driver.name || '').toLowerCase();
+                    const nameMatch = driverName.includes(searchTerm);
+                    
+                    const cleanSearchTerm = searchTerm.replace(/[^0-9]/g, '');
+                    const cleanPhone = (driver.phone || '').replace(/[^0-9]/g, '');
+                    const phoneMatch = cleanSearchTerm && cleanPhone.includes(cleanSearchTerm);
+                    
+                    if (nameMatch || phoneMatch) {
+                        row.classList.remove('filtered-out');
+                    } else {
+                        row.classList.add('filtered-out');
+                    }
+                }
+            });
+        }
+
+        function applyFilters() {
+            const controlFilter = document.getElementById('controlFilter').value;
+            const companyFilter = document.getElementById('companyFilter').value;
+            const regionFilter = document.getElementById('regionFilter').value;
+            
+            if (!allDrivers.length) return;
+            
+            let filteredDrivers = allDrivers.filter(driver => {
+                const companyMatch = !companyFilter || driver.company === companyFilter;
+                const regionMatch = !regionFilter || driver.region === regionFilter;
+                
+                let controlMatch = true;
+                if (controlFilter === '지연') {
+                    controlMatch = driver.delayStatus === '지연' && parseFloat(driver.completionRate || 0) < 100;
+                } else if (controlFilter === '미픽업') {
+                    controlMatch = driver.pickupStatus === '미픽업';
+                }
+                
+                return companyMatch && regionMatch && controlMatch;
+            });
+            
+            currentFilteredDrivers = filteredDrivers;
+            updateDriverTableFiltered(filteredDrivers);
+            updateMapFiltered(filteredDrivers);
+        }
+
+        function resetFilters() {
+            document.getElementById('controlFilter').value = '';
+            document.getElementById('companyFilter').value = '';
+            document.getElementById('regionFilter').value = '';
+            document.getElementById('driverSearch').value = '';
+            
+            currentFilteredDrivers = [];
+            updateDriverTableFiltered(allDrivers);
+            updateMapFiltered(allDrivers);
+            
+            showAlert('success', '필터 초기화', '모든 필터가 해제되었습니다.');
+        }
+
+        function updateDriverTableFiltered(drivers) {
+            const tableBody = document.querySelector('#driverTable tbody');
+            if (!tableBody) return;
+            
+            const allRows = tableBody.querySelectorAll('tr');
+            allRows.forEach(row => row.classList.add('filtered-out'));
+            
+            if (!drivers || drivers.length === 0) {
+                const noResultRow = document.createElement('tr');
+                noResultRow.innerHTML = '<td colspan="11" style="text-align: center; padding: 2rem; color: #888;">필터 조건에 해당하는 기사가 없습니다.</td>';
+                noResultRow.classList.remove('filtered-out');
+                
+                const existingNoResult = tableBody.querySelector('.no-result-row');
+                if (existingNoResult) existingNoResult.remove();
+                
+                noResultRow.classList.add('no-result-row');
+                tableBody.appendChild(noResultRow);
+                return;
+            }
+            
+            const existingNoResult = tableBody.querySelector('.no-result-row');
+            if (existingNoResult) existingNoResult.remove();
+            
+            drivers.forEach(driver => {
+                const row = tableBody.querySelector(`tr[data-driver-id="${driver.id}"]`);
+                if (row) {
+                    row.classList.remove('filtered-out');
+                }
+            });
+        }
+
+        function updateMapFiltered(drivers) {
+            if (!map) return;
+            
+            if (markerCluster) {
+                markerCluster.clearLayers();
+            }
+            
+            drivers.forEach(driver => {
+                const marker = driverMarkers[driver.id];
+                if (marker && markerCluster) {
+                    markerCluster.addLayer(marker);
+                } else if (marker) {
+                    marker.addTo(map);
+                }
+            });
+        }
+
+        function focusOnDriver(driverId) {
+            const driver = allDrivers.find(d => d.id === driverId);
+            if (!driver || !driver.coordinates) {
+                showAlert('warning', '위치 정보 없음', '해당 기사의 위치 정보가 없습니다.');
+                return;
+            }
+            
+            map.setView(driver.coordinates, 15);
+            
+            const marker = driverMarkers[driver.id];
+            if (marker) {
+                setTimeout(() => {
+                    marker.openPopup();
+                    showAlert('success', '기사 포커스', `${driver.name} 기사 위치로 이동했습니다.`);
+                }, 500);
+            }
+        }
+
+        function focusOnRegion(regionName) {
             document.getElementById('regionFilter').value = regionName;
             applyFilters();
             
@@ -1844,9 +1440,7 @@
                 const validDrivers = regionDrivers.filter(driver => 
                     driver.coordinates && 
                     Array.isArray(driver.coordinates) && 
-                    driver.coordinates.length === 2 &&
-                    !isNaN(driver.coordinates[0]) && 
-                    !isNaN(driver.coordinates[1])
+                    driver.coordinates.length === 2
                 );
                 
                 if (validDrivers.length > 0) {
@@ -1858,12 +1452,90 @@
                     }
                     
                     showAlert('success', `${regionName} 지역`, `${regionName} 지역 ${validDrivers.length}명의 기사로 포커스했습니다.`);
-                } else {
-                    showAlert('warning', '위치 정보 없음', `${regionName} 지역 기사들의 위치 정보가 없습니다.`);
                 }
-            } else {
-                showAlert('info', `${regionName} 지역`, `${regionName} 지역으로 필터링했습니다.`);
             }
+        }
+
+        function sortTable(column) {
+            if (!allDrivers.length) return;
+            
+            const currentOrder = sortOrder[column] || 'none';
+            sortOrder[column] = currentOrder === 'asc' ? 'desc' : 'asc';
+            
+            Object.keys(sortOrder).forEach(key => {
+                if (key !== column) sortOrder[key] = 'none';
+            });
+            
+            const sortedDrivers = [...allDrivers].sort((a, b) => {
+                let valueA = a[column];
+                let valueB = b[column];
+                
+                if (['totalDeliveries', 'completedDeliveries', 'failedDeliveries', 'completionRate'].includes(column)) {
+                    valueA = parseFloat(valueA) || 0;
+                    valueB = parseFloat(valueB) || 0;
+                } else {
+                    valueA = String(valueA || '').toLowerCase();
+                    valueB = String(valueB || '').toLowerCase();
+                }
+                
+                if (sortOrder[column] === 'asc') {
+                    return valueA > valueB ? 1 : -1;
+                } else {
+                    return valueA < valueB ? 1 : -1;
+                }
+            });
+            
+            updateDriverTable(sortedDrivers);
+            applyFilters();
+        }
+
+        function copyPhoneNumbers() {
+            const visibleDrivers = getVisibleDrivers();
+            
+            if (!visibleDrivers.length) {
+                showAlert('warning', '데이터 없음', '복사할 전화번호가 없습니다.');
+                return;
+            }
+
+            const phoneNumbers = visibleDrivers
+                .map(driver => driver.phone)
+                .filter(phone => phone && phone.trim() !== '' && phone !== '-')
+                .join('\n');
+
+            if (!phoneNumbers) {
+                showAlert('warning', '전화번호 없음', '복사할 전화번호가 없습니다.');
+                return;
+            }
+
+            navigator.clipboard.writeText(phoneNumbers).then(() => {
+                showAlert('success', '복사 완료', `${phoneNumbers.split('\n').length}개의 전화번호가 복사되었습니다.`);
+            }).catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = phoneNumbers;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showAlert('success', '복사 완료', `${phoneNumbers.split('\n').length}개의 전화번호가 복사되었습니다.`);
+            });
+        }
+
+        function getVisibleDrivers() {
+            const tableBody = document.querySelector('#driverTable tbody');
+            if (!tableBody) return [];
+
+            const visibleRows = tableBody.querySelectorAll('tr:not(.filtered-out):not(.no-result-row)');
+            const visibleDrivers = [];
+
+            visibleRows.forEach(row => {
+                const driverId = row.getAttribute('data-driver-id');
+                const driver = allDrivers.find(d => d.id === driverId);
+                if (driver) {
+                    visibleDrivers.push(driver);
+                }
+            });
+
+            return visibleDrivers;
         }
 
         function initializeMap() {
@@ -1888,52 +1560,20 @@
                         removeOutsideVisibleBounds: true,
                         iconCreateFunction: function(cluster) {
                             const childCount = cluster.getChildCount();
-                            let size = 'small';
-                            
-                            if (childCount < 10) {
-                                size = 'small';
-                            } else if (childCount < 25) {
-                                size = 'medium';
-                            } else {
-                                size = 'large';
-                            }
-                            
-                            const sizeMap = {
-                                small: 28,
-                                medium: 32,
-                                large: 36
-                            };
-                            
+                            let size = childCount < 10 ? 'small' : childCount < 25 ? 'medium': 'large';
+                            const sizeMap = { small: 28, medium: 32, large: 36 };
                             const clusterSize = sizeMap[size];
                             
                             return new L.DivIcon({
-                                html: `<div style="
-                                    background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
-                                    width: ${clusterSize}px;
-                                    height: ${clusterSize}px;
-                                    border-radius: 50%;
-                                    border: 2px solid #ffffff;
-                                    box-shadow: 0 2px 8px rgba(110, 110, 255, 0.4);
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    color: white;
-                                    font-weight: 700;
-                                    font-size: ${clusterSize < 30 ? '11px' : clusterSize < 35 ? '12px' : '13px'};
-                                    font-family: 'Pretendard', sans-serif;
-                                ">${childCount}</div>`,
+                                html: `<div style="background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%); width: ${clusterSize}px; height: ${clusterSize}px; border-radius: 50%; border: 2px solid #ffffff; box-shadow: 0 2px 8px rgba(110, 110, 255, 0.4); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: ${clusterSize < 30 ? '11px' : clusterSize < 35 ? '12px' : '13px'};">${childCount}</div>`,
                                 className: `marker-cluster marker-cluster-${size}`,
                                 iconSize: new L.Point(clusterSize + 4, clusterSize + 4)
                             });
                         }
                     });
                     map.addLayer(markerCluster);
-                    console.log('마커 클러스터 초기화 완료');
-                } else {
-                    console.warn('마커 클러스터 라이브러리가 로드되지 않았습니다.');
                 }
 
-                console.log('지도 초기화 완료');
                 loadGitHubData();
                 
             } catch (error) {
@@ -1984,22 +1624,7 @@
                 
                 const driverIcon = L.divIcon({
                     className: 'driver-marker',
-                    html: `<div style="
-                        background: ${markerColor};
-                        width: ${markerSize}px;
-                        height: ${markerSize}px;
-                        border-radius: 50%;
-                        border: 2px solid ${borderColor};
-                        box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        color: white;
-                        font-weight: bold;
-                        font-size: ${isCompleted ? '9px' : '10px'};
-                        opacity: ${isCompleted ? '0.85' : '1'};
-                        ${animationClass}
-                    ">${isCompleted ? '✓' : (driver.totalDeliveries - driver.completedDeliveries || 0)}</div>`,
+                    html: `<div style="background: ${markerColor}; width: ${markerSize}px; height: ${markerSize}px; border-radius: 50%; border: 2px solid ${borderColor}; box-shadow: 0 2px 6px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: ${isCompleted ? '9px' : '10px'}; opacity: ${isCompleted ? '0.85' : '1'}; ${animationClass}">${isCompleted ? '✓' : (driver.totalDeliveries - driver.completedDeliveries || 0)}</div>`,
                     iconSize: [iconSize, iconSize],
                     iconAnchor: [iconSize/2, iconSize/2]
                 });
@@ -2030,6 +1655,138 @@
 
                 driverMarkers[driver.id] = marker;
             });
+        }
+
+        function resetMapView() {
+            if (!map) return;
+            map.setView([37.5665, 126.9780], 11);
+            resetFilters();
+            showAlert('success', '전체 지도', '전체 지도 보기로 돌아갔습니다.');
+        }
+
+        function toggleMapStyle() {
+            if (!map) return;
+            
+            map.eachLayer(function(layer) {
+                if (layer instanceof L.TileLayer) {
+                    map.removeLayer(layer);
+                }
+            });
+            
+            let newLayer;
+            if (currentMapStyle === 'osm') {
+                newLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                });
+                currentMapStyle = 'hot';
+                showAlert('success', '지도 스타일', 'HOT 스타일로 변경되었습니다.');
+            } else {
+                newLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                });
+                currentMapStyle = 'osm';
+                showAlert('success', '지도 스타일', '기본 스타일로 변경되었습니다.');
+            }
+            
+            newLayer.addTo(map);
+        }
+
+        function toggleDataPanel() {
+            const appContainer = document.querySelector('.app-container');
+            const dataPanel = document.getElementById('dataPanel');
+            const toggleIcon = document.getElementById('dataPanelToggleIcon');
+            
+            dataPanelOpen = !dataPanelOpen;
+            
+            if (dataPanelOpen) {
+                appContainer.classList.add('data-panel-open');
+                dataPanel.classList.add('open');
+                toggleIcon.textContent = '✕';
+            } else {
+                appContainer.classList.remove('data-panel-open');
+                dataPanel.classList.remove('open');
+                toggleIcon.textContent = '📊';
+            }
+            
+            if (map) {
+                setTimeout(() => map.invalidateSize(), 350);
+            }
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const isCollapsed = sidebar.style.transform === 'translateX(-360px)';
+            sidebar.style.transform = isCollapsed ? 'translateX(0)' : 'translateX(-360px)';
+            
+            if (map) {
+                setTimeout(() => map.invalidateSize(), 300);
+            }
+        }
+
+        function toggleAutoRefresh() {
+            autoRefreshEnabled = !autoRefreshEnabled;
+            const statusEl = document.getElementById('autoRefreshStatus');
+            
+            if (autoRefreshEnabled) {
+                statusEl.textContent = 'ON';
+                if (autoRefreshInterval) clearInterval(autoRefreshInterval);
+                autoRefreshInterval = setInterval(loadGitHubData, 300000);
+                showAlert('success', '자동 새로고침 ON', '5분마다 자동으로 데이터를 새로고침합니다.');
+            } else {
+                statusEl.textContent = 'OFF';
+                if (autoRefreshInterval) {
+                    clearInterval(autoRefreshInterval);
+                    autoRefreshInterval = null;
+                }
+                showAlert('info', '자동 새로고침 OFF', '수동으로만 데이터를 새로고침할 수 있습니다.');
+            }
+        }
+
+        function openAppPush() {
+            const url = 'https://backoffice.drabbit.co.kr/apps/4a42193c-c779-11ef-aa21-cf70a380470e/Backoffice%202.1%20-%20Page/%ED%91%B8%EC%89%AC';
+            window.open(url, '_blank');
+            showAlert('success', 'App Push', 'App Push 페이지를 새 탭에서 열었습니다.');
+        }
+
+        function showNotifications() {
+            if (!tmsData || !tmsData.stats) {
+                showAlert('info', '알림', '데이터를 먼저 로드해주세요.');
+                return;
+            }
+            
+            const notifications = [];
+            
+            if (tmsData.stats.delayedCount > 0) {
+                notifications.push(`지연 기사 ${tmsData.stats.delayedCount}명`);
+            }
+            
+            if (tmsData.stats.notPickupCount > 0) {
+                notifications.push(`미픽업 기사 ${tmsData.stats.notPickupCount}명`);
+            }
+            
+            if (tmsData.stats.overallCompletionRate < 80) {
+                notifications.push(`전체 완료율 ${tmsData.stats.overallCompletionRate}% (주의 필요)`);
+            }
+            
+            if (notifications.length === 0) {
+                showAlert('success', '알림', '현재 특별한 알림이 없습니다. 모든 상황이 정상입니다.');
+            } else {
+                showAlert('warning', '상황 알림', notifications.join('\n'));
+            }
+        }
+
+        function updateNotificationCount() {
+            if (!tmsData || !tmsData.stats) {
+                document.getElementById('notificationCount').textContent = '0';
+                return;
+            }
+            
+            let count = 0;
+            if (tmsData.stats.delayedCount > 0) count++;
+            if (tmsData.stats.notPickupCount > 0) count++;
+            if (tmsData.stats.overallCompletionRate < 80) count++;
+            
+            document.getElementById('notificationCount').textContent = count;
         }
 
         function showDataStatus(status, message, time = '') {
@@ -2068,119 +1825,6 @@
             }
         }
 
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const isCollapsed = sidebar.style.transform === 'translateX(-360px)';
-            sidebar.style.transform = isCollapsed ? 'translateX(0)' : 'translateX(-360px)';
-            
-            if (map) {
-                setTimeout(() => map.invalidateSize(), 300);
-            }
-        }
-
-        function exportDriverData() {
-            if (!tmsData || !tmsData.drivers) {
-                showAlert('warning', '데이터 없음', '내보낼 데이터가 없습니다.');
-                return;
-            }
-            
-            const headers = ['기사명', '배송박스', '운송사', '전화번호', '총건수', '완료', '실패', '완료율', '픽업여부', '지연상태', '지역'];
-            const csvData = [headers.join(',')];
-            
-            allDrivers.forEach(driver => {
-                const row = [
-                    driver.name || '',
-                    driver.deliveryBox || '',
-                    driver.company || '',
-                    driver.phone || '',
-                    driver.totalDeliveries || 0,
-                    driver.completedDeliveries || 0,
-                    driver.failedDeliveries || 0,
-                    driver.completionRate || 0,
-                    driver.pickupStatus || '',
-                    driver.delayStatus || '',
-                    driver.region || ''
-                ];
-                csvData.push(row.join(','));
-            });
-            
-            const csvContent = csvData.join('\n');
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
-            const url = URL.createObjectURL(blob);
-            link.setAttribute('href', url);
-            link.setAttribute('download', `딜리래빗_TMS_기사데이터_${new Date().toISOString().split('T')[0]}.csv`);
-            link.style.visibility = 'hidden';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            showAlert('success', '내보내기 완료', 'CSV 파일이 다운로드되었습니다.');
-        }
-
-        function toggleAutoRefresh() {
-            autoRefreshEnabled = !autoRefreshEnabled;
-            const statusEl = document.getElementById('autoRefreshStatus');
-            
-            if (autoRefreshEnabled) {
-                statusEl.textContent = 'ON';
-                if (autoRefreshInterval) clearInterval(autoRefreshInterval);
-                autoRefreshInterval = setInterval(loadGitHubData, 300000);
-                showAlert('success', '자동 새로고침 ON', '5분마다 자동으로 데이터를 새로고침합니다.');
-            } else {
-                statusEl.textContent = 'OFF';
-                if (autoRefreshInterval) {
-                    clearInterval(autoRefreshInterval);
-                    autoRefreshInterval = null;
-                }
-                showAlert('info', '자동 새로고침 OFF', '수동으로만 데이터를 새로고침할 수 있습니다.');
-            }
-        }
-
-        function showNotifications() {
-            if (!tmsData || !tmsData.stats) {
-                showAlert('info', '알림', '데이터를 먼저 로드해주세요.');
-                return;
-            }
-            
-            const notifications = [];
-            
-            if (tmsData.stats.delayedCount > 0) {
-                notifications.push(`⚠️ 지연 기사 ${tmsData.stats.delayedCount}명`);
-            }
-            
-            if (tmsData.stats.notPickupCount > 0) {
-                notifications.push(`📦 미픽업 기사 ${tmsData.stats.notPickupCount}명`);
-            }
-            
-            if (tmsData.stats.overallCompletionRate < 80) {
-                notifications.push(`📉 전체 완료율 ${tmsData.stats.overallCompletionRate}% (주의 필요)`);
-            }
-            
-            if (notifications.length === 0) {
-                showAlert('success', '알림', '현재 특별한 알림이 없습니다. 모든 상황이 정상입니다.');
-            } else {
-                showAlert('warning', '상황 알림', notifications.join('\n'));
-            }
-            
-            document.getElementById('notificationCount').textContent = notifications.length;
-        }
-
-        function updateNotificationCount() {
-            if (!tmsData || !tmsData.stats) {
-                document.getElementById('notificationCount').textContent = '0';
-                return;
-            }
-            
-            let count = 0;
-            if (tmsData.stats.delayedCount > 0) count++;
-            if (tmsData.stats.notPickupCount > 0) count++;
-            if (tmsData.stats.overallCompletionRate < 80) count++;
-            
-            document.getElementById('notificationCount').textContent = count;
-        }
-
-        // 가이드 표시/숨기기 함수
         function showGuide() {
             const guideOverlay = document.getElementById('guideOverlay');
             if (guideOverlay) {
@@ -2197,11 +1841,8 @@
             }
         }
 
-        // 가이드 오버레이 클릭 시 닫기 (모달 영역 외부 클릭)
         document.addEventListener('click', function(event) {
             const guideOverlay = document.getElementById('guideOverlay');
-            const guideModal = document.querySelector('.guide-modal');
-            
             if (guideOverlay && event.target === guideOverlay) {
                 hideGuide();
             }
