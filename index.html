@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>딜리래빗 TMS</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
-          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
-          crossorigin=""/>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-            crossorigin=""></script>
+    <title>딜리래빗 TMS - 최종 통합 관제</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
     <style>
         * {
@@ -20,414 +16,213 @@
             box-sizing: border-box;
         }
 
-        body, html {
-            height: 100vh;
+        body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+            background: #f5f5f7;
+            color: #1d1d1f;
             overflow: hidden;
-            background: #0f0f0f;
-        }
-
-        .app-container {
-            display: grid;
-            grid-template-areas: 
-                "sidebar map data-panel"
-                "bottom bottom bottom";
-            grid-template-columns: 400px 1fr 0px;
-            grid-template-rows: 1fr 350px;
             height: 100vh;
-            width: 100vw;
-            gap: 1px;
-            background: #1a1a1a;
-            transition: grid-template-columns 0.3s ease;
-        }
-
-        .app-container.data-panel-open {
-            grid-template-columns: 400px 1fr 300px;
-        }
-
-        /* 사이드바 */
-        .sidebar {
-            grid-area: sidebar;
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(20px);
-            border-right: 1px solid rgba(110, 110, 255, 0.2);
-            display: flex;
-            flex-direction: column;
-            color: white;
-            position: relative;
-            overflow-y: auto;
-        }
-
-        .sidebar-toggle {
-            position: absolute;
-            right: -45px;
-            top: 20px;
-            width: 45px;
-            height: 45px;
-            background: #6e6eff;
-            border: none;
-            border-radius: 0 12px 12px 0;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            z-index: 1001;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar-toggle:hover {
-            background: #3770cc;
         }
 
         /* 헤더 */
         .header {
-            padding: 1.2rem 1.5rem;
-            border-bottom: 1px solid rgba(110, 110, 255, 0.2);
-            background: rgba(110, 110, 255, 0.1);
+            background: white;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 12px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
         .logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #6e6eff;
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .user-info {
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
+            border-radius: 8px;
             display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .app-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .header-stats {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #86868b;
+            margin-bottom: 2px;
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .stat-value.primary { color: #6e6eff; }
+        .stat-value.success { color: #2ed573; }
+        .stat-value.warning { color: #ffa502; }
+        .stat-value.danger { color: #ff4757; }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
             align-items: center;
         }
 
         .notification-btn {
             position: relative;
-            background: #6e6eff;
-            color: white;
-            border: none;
-            border-radius: 50%;
+            background: white;
+            border: 1px solid #d1d1d6;
+            border-radius: 6px;
             width: 36px;
             height: 36px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
         }
 
         .notification-badge {
             position: absolute;
-            top: -3px;
-            right: -3px;
-            background: #ff4757;
+            top: -4px;
+            right: -4px;
+            background: #ff3b30;
             color: white;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 0.65rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: 10px;
+            padding: 2px 6px;
+            font-size: 11px;
             font-weight: 600;
         }
 
-        /* 데이터 상태 */
-        .data-status {
-            padding: 12px 14px;
-            border-radius: 12px;
-            font-size: 12px;
-            margin: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .btn {
+            padding: 8px 16px;
+            border: 1px solid #d1d1d6;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
             font-weight: 500;
+            transition: all 0.2s;
         }
 
-        .data-status.loading {
-            background: rgba(255, 193, 7, 0.2);
-            color: #ffc107;
-            border: 1px solid #ffc107;
+        .btn:hover {
+            background: #f5f5f7;
         }
 
-        .data-status.success {
-            background: rgba(40, 167, 69, 0.2);
-            color: #28a745;
-            border: 1px solid #28a745;
+        .btn-primary {
+            background: #6e6eff;
+            color: white;
+            border-color: #6e6eff;
         }
 
-        .data-status.error {
-            background: rgba(220, 53, 69, 0.2);
-            color: #dc3545;
-            border: 1px solid #dc3545;
+        .btn-primary:hover {
+            background: #3770cc;
         }
 
-        .sync-time {
-            font-size: 0.65rem;
-            opacity: 0.8;
-            margin-top: 4px;
+        .btn-success {
+            background: #2ed573;
+            color: white;
+            border-color: #2ed573;
         }
 
-        /* 통계 섹션 */
-        .stats-section {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(110, 110, 255, 0.2);
+        .btn-success:hover {
+            background: #26c464;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.8rem;
-            margin-bottom: 1rem;
+        /* 메인 레이아웃 */
+        .main-container {
+            display: flex;
+            height: calc(100vh - 61px);
         }
 
-        .stat-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 1rem;
-            border: 1px solid rgba(110, 110, 255, 0.15);
-            transition: all 0.3s ease;
-            position: relative;
+        /* 좌측 메뉴 영역 */
+        .left-menu {
+            width: 35%;
+            background: white;
+            border-right: 1px solid #e5e5e5;
+            display: flex;
+            flex-direction: column;
             overflow: hidden;
         }
 
-        .stat-card:hover {
-            background: rgba(110, 110, 255, 0.1);
-            transform: translateY(-3px);
-        }
-
-        .stat-header {
+        /* 탭 네비게이션 */
+        .tabs {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
+            gap: 4px;
+            background: white;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 0 16px;
         }
 
-        .stat-title {
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.7);
-            text-transform: uppercase;
-            font-weight: 600;
-            font-family: 'Pretendard', sans-serif;
-        }
-
-        .stat-icon {
-            font-size: 1.1rem;
-            opacity: 0.8;
-        }
-
-        .stat-value {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-            font-family: 'Pretendard', sans-serif;
-        }
-
-        .stat-change {
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.6);
-            font-family: 'Pretendard', sans-serif;
-        }
-
-        /* 추가 통계 */
-        .additional-stats {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            padding: 1rem;
-            border: 1px solid rgba(110, 110, 255, 0.1);
-        }
-
-        .stat-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-size: 0.8rem;
-            font-family: 'Pretendard', sans-serif;
-        }
-
-        .stat-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .stat-label {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .stat-value-small {
-            font-weight: 600;
-            color: #6e6eff;
-        }
-
-        /* 지도 영역 */
-        .map-container {
-            grid-area: map;
-            position: relative;
-            background: #1a1a1a;
-        }
-
-        /* 우측 데이터 패널 */
-        .data-panel {
-            grid-area: data-panel;
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(20px);
-            border-left: 1px solid rgba(110, 110, 255, 0.2);
-            display: flex;
-            flex-direction: column;
-            color: white;
-            overflow-y: auto;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .data-panel.open {
-            transform: translateX(0);
-        }
-
-        .data-panel-toggle {
-            position: absolute;
-            left: -45px;
-            top: 20px;
-            width: 45px;
-            height: 45px;
-            background: #6e6eff;
+        .tab {
+            padding: 14px 16px;
             border: none;
-            border-radius: 12px 0 0 12px;
-            color: white;
+            background: none;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            z-index: 1001;
-            transition: all 0.3s ease;
+            font-size: 13px;
+            font-weight: 500;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            white-space: nowrap;
         }
 
-        .data-panel-toggle:hover {
-            background: #3770cc;
-        }
-
-        .data-panel-toggle {
-            position: absolute;
-            left: -45px;
-            top: 20px;
-            width: 45px;
-            height: 45px;
-            background: #6e6eff;
-            border: none;
-            border-radius: 12px 0 0 12px;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            z-index: 1001;
-            transition: all 0.3s ease;
-        }
-
-        .data-panel-toggle:hover {
-            background: #3770cc;
-        }
-
-        .data-panel-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(110, 110, 255, 0.2);
-            background: rgba(110, 110, 255, 0.1);
-        }
-
-        .data-panel-title {
-            font-size: 1.2rem;
-            font-weight: 700;
+        .tab:hover {
             color: #6e6eff;
-            margin-bottom: 0.5rem;
+            background: #f5f5f7;
         }
 
-        .data-panel-subtitle {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.7);
+        .tab.active {
+            color: #6e6eff;
+            border-bottom-color: #6e6eff;
         }
 
-        .data-panel-content {
-            padding: 1.5rem;
+        /* 탭 컨텐츠 */
+        .tab-content-area {
             flex: 1;
+            overflow-y: auto;
+            padding: 16px;
         }
 
-        .chart-placeholder {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px dashed rgba(110, 110, 255, 0.3);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 1.5rem;
+        .tab-content {
+            display: none;
         }
 
-        .chart-placeholder-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            opacity: 0.4;
+        .tab-content.active {
+            display: block;
         }
 
-        .chart-placeholder-text {
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        /* 클러스터 스타일 커스터마이징 */
-        .marker-cluster-small {
-            background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
-            box-shadow: 0 4px 12px rgba(110, 110, 255, 0.4);
-        }
-        
-        .marker-cluster-medium {
-            background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
-            box-shadow: 0 4px 15px rgba(110, 110, 255, 0.5);
-        }
-        
-        .marker-cluster-large {
-            background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
-            box-shadow: 0 6px 20px rgba(110, 110, 255, 0.6);
-        }
-
-        .marker-cluster {
-            background-clip: padding-box;
-            border-radius: 50%;
-            border: 3px solid rgba(255, 255, 255, 0.9);
-            transition: all 0.3s ease;
-        }
-
-        .marker-cluster:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(110, 110, 255, 0.7);
-        }
-
-        .marker-cluster div {
-            background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
-            border-radius: 50%;
-            border: none;
-            color: white;
-            font-weight: 700;
-            font-size: 14px;
-            line-height: 1;
-            text-align: center;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-
-        .marker-cluster-small div {
-            font-size: 12px;
-        }
-
-        .marker-cluster-medium div {
-            font-size: 14px;
-        }
-
-        .marker-cluster-large div {
-            font-size: 16px;
-            font-weight: 800;
+        /* 우측 지도 영역 */
+        .right-map {
+            width: 65%;
+            position: relative;
+            background: #f5f5f7;
         }
 
         #map {
@@ -435,1203 +230,577 @@
             height: 100%;
         }
 
-        /* 컨트롤 버튼 */
-        .control-buttons {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-        }
-
-        .btn {
-            padding: 0.8rem;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background: #6e6eff;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #3770cc;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.08);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        /* 지도 컨트롤 버튼 (오버레이) */
         .map-controls {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 16px;
+            right: 16px;
             z-index: 1000;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .map-control-btn {
-            background: rgba(26, 26, 26, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(110, 110, 255, 0.3);
-            border-radius: 8px;
-            color: white;
-            padding: 8px 12px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 100px;
-        }
-
-        .map-control-btn:hover {
-            background: rgba(110, 110, 255, 0.2);
-            border-color: #6e6eff;
-        }
-
-        /* 하단 패널 */
-        .bottom-panel {
-            grid-area: bottom;
-            background: rgba(26, 26, 26, 0.95);
-            display: grid;
-            grid-template-columns: 3fr 2fr;
-            gap: 1px;
-            border-top: 1px solid rgba(110, 110, 255, 0.2);
-        }
-
-        .panel-section {
-            padding: 1.2rem;
-            color: white;
-            overflow-y: auto;
-        }
-
-        .panel-title {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            color: #6e6eff;
-            font-family: 'Pretendard', sans-serif;
-        }
-
-        /* 검색창 스타일 */
-        .search-input {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(102, 126, 234, 0.3);
+        .map-btn {
+            background: white;
+            border: 1px solid #d1d1d6;
             border-radius: 6px;
-            color: white;
-            padding: 6px 10px;
-            font-size: 0.75rem;
-            width: 140px;
-            outline: none;
-            transition: all 0.3s ease;
+            padding: 10px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+            font-size: 18px;
         }
 
-        .search-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.7rem;
+        .map-btn:hover {
+            background: #f5f5f7;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* 통계 카드 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 16px;
+            transition: all 0.2s;
+        }
+
+        .stat-card:hover {
+            border-color: #6e6eff;
+            box-shadow: 0 4px 12px rgba(110, 110, 255, 0.1);
+        }
+
+        .stat-card .stat-label {
+            font-size: 12px;
+            color: #86868b;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .stat-card .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .stat-change {
+            font-size: 11px;
+            color: #2ed573;
+            font-weight: 500;
+        }
+
+        /* 필터 바 */
+        .filter-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 150px;
+            padding: 8px 12px;
+            border: 1px solid #d1d1d6;
+            border-radius: 6px;
+            font-size: 13px;
+            outline: none;
         }
 
         .search-input:focus {
             border-color: #6e6eff;
-            box-shadow: 0 0 0 2px rgba(110, 110, 255, 0.2);
+            box-shadow: 0 0 0 3px rgba(110, 110, 255, 0.1);
         }
 
-        /* 필터 컨테이너 */
-        .filter-container {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-left: auto;
-        }
-
-        .filter-select {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(102, 126, 234, 0.3);
+        .select {
+            padding: 8px 12px;
+            border: 1px solid #d1d1d6;
             border-radius: 6px;
-            color: white;
-            padding: 4px 8px;
-            font-size: 0.7rem;
-            min-width: 80px;
-            max-width: 120px;
-        }
-
-        .filter-select:focus {
-            outline: none;
-            border-color: #6e6eff;
-        }
-
-        .filter-select option {
-            background: #1a1a1a;
-            color: white;
-        }
-
-        .reset-filter-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(102, 126, 234, 0.3);
-            border-radius: 4px;
-            color: white;
-            padding: 4px 6px;
-            font-size: 0.7rem;
+            font-size: 13px;
             cursor: pointer;
-            transition: all 0.3s ease;
         }
 
-        .reset-filter-btn:hover {
-            background: rgba(102, 126, 234, 0.3);
+        /* 테이블 */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 12px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .table th {
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 11px;
+            font-weight: 600;
+            color: #86868b;
+            background: #fafafa;
+            border-bottom: 1px solid #e5e5e5;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .table td {
+            padding: 12px;
+            border-bottom: 1px solid #f5f5f7;
+        }
+
+        .table tbody tr {
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .table tbody tr:hover {
+            background: #f5f5f7;
+        }
+
+        /* 상태 배지 */
+        .status-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .status-completed { background: #d1f4e0; color: #0f5132; }
+        .status-delivering { background: #fff3cd; color: #856404; }
+        .status-delayed { background: #ffe5e5; color: #c41e3a; }
+        .status-pending { background: #e5e5e5; color: #666; }
+        .status-assigned { background: #cfe2ff; color: #084298; }
+        .status-pickup { background: #d1f4e0; color: #0f5132; }
+        .status-not-pickup { background: #fff3cd; color: #856404; }
+        .status-normal { background: #d1f4e0; color: #0f5132; }
+
+        /* 기사 카드 */
+        .card {
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .card:hover {
+            border-color: #6e6eff;
+            box-shadow: 0 2px 8px rgba(110, 110, 255, 0.1);
+        }
+
+        .card.selected {
+            border-color: #6e6eff;
+            background: #f5f9ff;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .card-id {
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .card-info {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 3px;
+        }
+
+        /* 액션 버튼 */
+        .action-buttons {
+            display: flex;
+            gap: 6px;
+            margin-top: 8px;
         }
 
         .action-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(102, 126, 234, 0.3);
-            border-radius: 4px;
-            color: white;
-            padding: 4px 8px;
-            font-size: 0.6rem;
+            padding: 5px 10px;
+            border: 1px solid #d1d1d6;
+            border-radius: 6px;
+            background: white;
+            font-size: 11px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 50px;
-            font-weight: 600;
+            transition: all 0.2s;
         }
 
         .action-btn:hover {
-            background: rgba(102, 126, 234, 0.3);
+            background: #6e6eff;
+            color: white;
+            border-color: #6e6eff;
         }
 
-        .app-push-btn:hover {
-            background: rgba(46, 213, 115, 0.3);
+        /* 프로그레스 바 */
+        .progress-bar {
+            height: 6px;
+            background: #e5e5e5;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 6px;
         }
 
-        .copy-phone-btn:hover {
-            background: rgba(255, 165, 2, 0.3);
+        .progress-fill {
+            height: 100%;
+            background: #2ed573;
+            border-radius: 3px;
+            transition: width 0.3s;
         }
 
-        /* 기사 리스트 테이블 */
-        .driver-table-container {
-            overflow-x: auto;
-            overflow-y: auto;
-            max-height: 280px;
+        /* Empty State */
+        .empty-state {
+            padding: 40px 20px;
+            text-align: center;
+            color: #86868b;
         }
 
-        .driver-table {
-            width: 100%;
-            font-size: 0.7rem;
-            border-collapse: collapse;
-            min-width: 800px;
+        .empty-icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+            opacity: 0.3;
         }
 
-        .driver-table th {
-            background: rgba(110, 110, 255, 0.2);
-            color: #6e6eff;
-            padding: 6px 4px;
-            text-align: left;
-            border-bottom: 1px solid rgba(110, 110, 255, 0.3);
-            font-weight: 600;
-            font-size: 0.65rem;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            cursor: pointer;
-            user-select: none;
-            font-family: 'Pretendard', sans-serif;
-        }
-
-        .driver-table th:hover {
-            background: rgba(110, 110, 255, 0.3);
-        }
-
-        .sort-btn {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.7rem;
-            margin-left: 4px;
-        }
-
-        .driver-table td {
-            padding: 6px 4px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            vertical-align: top;
-        }
-
-        .driver-table tr:hover {
-            background: rgba(102, 126, 234, 0.1);
-        }
-
-        .driver-table tr.filtered-out {
+        /* 토스트 */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 16px 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             display: none;
+            align-items: center;
+            gap: 12px;
+            z-index: 10001;
+            min-width: 300px;
         }
 
-        /* 기사명 클릭 스타일 */
-        .driver-name-clickable {
-            cursor: pointer;
-            color: #6e6eff;
-            text-decoration: underline;
-            transition: all 0.3s ease;
+        .toast.active {
+            display: flex;
+            animation: slideIn 0.3s ease;
         }
 
-        .driver-name-clickable:hover {
-            color: #3770cc;
-            text-decoration: underline;
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
-        .status-badge {
-            padding: 2px 6px;
-            border-radius: 12px;
-            font-size: 0.6rem;
+        .toast-icon {
+            font-size: 20px;
+        }
+
+        .toast-content {
+            flex: 1;
+        }
+
+        .toast-title {
             font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 2px;
         }
 
-        .status-active { background: rgba(46, 213, 115, 0.2); color: #2ed573; }
-        .status-pending { background: rgba(255, 165, 2, 0.2); color: #ffa502; }
-        .status-pickup { background: rgba(46, 213, 115, 0.2); color: #2ed573; }
-        .status-not-pickup { background: rgba(255, 71, 87, 0.2); color: #ff4757; }
-        .status-delayed { background: rgba(255, 71, 87, 0.2); color: #ff4757; }
-        .status-normal { background: rgba(46, 213, 115, 0.2); color: #2ed573; }
-
-        .completion-rate {
-            font-weight: 700;
-            color: #2ed573;
+        .toast-message {
+            font-size: 13px;
+            color: #666;
         }
 
-        /* 지역별 현황 */
+        .toast.success { border-left: 4px solid #2ed573; }
+        .toast.error { border-left: 4px solid #ff3b30; }
+        .toast.warning { border-left: 4px solid #ffa502; }
+        .toast.info { border-left: 4px solid #6e6eff; }
+
+        /* 체크박스 */
+        .checkbox {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        /* 스크롤바 */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f5f5f7;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #d1d1d6;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #86868b;
+        }
+
+        /* 지역 리스트 */
         .region-list {
             display: flex;
             flex-direction: column;
-            gap: 0.6rem;
-            max-height: 280px;
-            overflow-y: auto;
+            gap: 8px;
         }
 
         .region-item {
-            background: rgba(255, 255, 255, 0.05);
+            background: white;
+            border: 1px solid #e5e5e5;
             border-radius: 8px;
-            padding: 0.8rem;
-            border: 1px solid rgba(102, 126, 234, 0.2);
+            padding: 12px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s;
         }
 
         .region-item:hover {
-            background: rgba(102, 126, 234, 0.1);
+            border-color: #6e6eff;
             transform: translateY(-2px);
         }
 
         .region-name {
-            font-weight: 700;
+            font-weight: 600;
             color: #6e6eff;
-            margin-bottom: 0.4rem;
-            font-size: 0.9rem;
+            margin-bottom: 4px;
         }
 
         .region-stats {
             display: flex;
             justify-content: space-between;
-            font-size: 0.75rem;
-            margin-bottom: 0.3rem;
+            font-size: 11px;
+            color: #666;
         }
 
-        .region-completion {
-            font-weight: 700;
-            color: #2ed573;
-            font-size: 0.8rem;
-        }
-
-        /* 알림 패널 */
-        .alert-panel {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(102, 126, 234, 0.95);
-            border-radius: 12px;
-            padding: 1.2rem;
-            color: white;
-            z-index: 1000;
-            max-width: 420px;
-            display: none;
-        }
-
-        .alert-panel.success { background: rgba(46, 213, 115, 0.95); }
-        .alert-panel.error { background: rgba(255, 71, 87, 0.95); }
-        .alert-panel.warning { background: rgba(255, 165, 2, 0.95); }
-
-        .alert-title {
-            font-weight: 700;
-            margin-bottom: 0.6rem;
-        }
-
-        .alert-close {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
-        /* 가이드 오버레이 */
-        .guide-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 10000;
-            display: none;
-            backdrop-filter: blur(5px);
-        }
-
-        .guide-modal {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(26, 26, 26, 0.98);
-            border: 1px solid rgba(110, 110, 255, 0.3);
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 800px;
-            max-height: 80vh;
-            overflow-y: auto;
-            color: white;
-        }
-
-        .guide-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(110, 110, 255, 0.2);
-            padding-bottom: 1rem;
-        }
-
-        .guide-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #6e6eff;
-        }
-
-        .guide-close {
-            background: #ff4757;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            color: white;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .guide-close:hover {
-            background: #dc3545;
-            transform: scale(1.1);
-        }
-
-        .guide-section {
-            margin-bottom: 2rem;
-        }
-
-        .guide-section-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #6e6eff;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .guide-content {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 1.5rem;
-            border-left: 4px solid #6e6eff;
-        }
-
-        .guide-feature {
-            margin-bottom: 1rem;
-            padding: 0.8rem;
-            background: rgba(110, 110, 255, 0.1);
-            border-radius: 8px;
-            border-left: 3px solid #6e6eff;
-        }
-
-        .guide-feature-title {
-            font-weight: 600;
-            color: #ffa502;
-            margin-bottom: 0.5rem;
-        }
-
-        .guide-feature-desc {
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .guide-tips {
-            background: rgba(46, 213, 115, 0.1);
-            border: 1px solid rgba(46, 213, 115, 0.3);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-
-        .guide-tips-title {
-            color: #2ed573;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .guide-shortcuts {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .guide-shortcut {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.8rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-        }
-
-        .guide-key {
-            background: #6e6eff;
-            color: white;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-weight: 600;
-            margin-right: 0.5rem;
-        }
-/* 1. 모바일 (768px 이하) */
-@media (max-width: 768px) {
-    body, html {
-        overflow-x: hidden;
-    overflow-y: auto;  /* 이 줄 추가 */
-    height: auto;
-    -webkit-overflow-scrolling: touch;  /* iOS 부드러운 스크롤 */
-    }
-    
-    .app-container {
-        display: flex;
-        flex-direction: column;
-        height: auto;
-        min-height: 100vh;
-    }
-    
-    .sidebar {
-        width: 100%;
-        order: 1;
-        border-right: none;
-        border-bottom: 1px solid rgba(110, 110, 255, 0.2);
-    }
-    
-    .sidebar-toggle {
-        display: none;
-    }
-    
-    .map-container {
-        width: 100%;
-        height: 50vh;
-        min-height: 400px;
-        order: 2;
-    }
-    
-    .bottom-panel {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        order: 3;
-    }
-    
-    .data-panel {
-        display: none !important;
-    }
-    
-    .panel-title {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-    
-    .filter-container {
-        width: 100%;
-        flex-direction: column;
-        margin-left: 0;
-    }
-    
-    .search-input,
-    .filter-select,
-    .action-btn {
-        width: 100% !important;
-    }
-    
-    .driver-table {
-        font-size: 0.65rem;
-        min-width: 650px;
-    }
-    
-    .driver-table th,
-    .driver-table td {
-        padding: 4px 3px;
-    }
-}
-
-/* 2. 노트북 14-16인치 (769px ~ 1920px) */
-@media (min-width: 769px) and (max-width: 1920px) {
-    .app-container {
-        grid-template-columns: 380px 1fr 0px;
-        grid-template-rows: 1fr 330px;
-    }
-    
-    .driver-table {
-        font-size: 0.72rem;
-    }
-    
-    .bottom-panel {
-        grid-template-columns: 2.5fr 1.5fr;
-    }
-}
-
-/* 3. 데스크탑 27인치 (1921px ~ 2560px) */
-@media (min-width: 1921px) and (max-width: 2560px) {
-    .app-container {
-        grid-template-columns: 420px 1fr 0px;
-        grid-template-rows: 1fr 380px;
-    }
-    
-    .driver-table {
-        font-size: 0.8rem;
-    }
-    
-    .stat-value {
-        font-size: 1.8rem;
-    }
-}
-
-/* 4. TV/대형 화면 시연용 (2561px 이상) */
-@media (min-width: 2561px) {
-    .app-container {
-        grid-template-columns: 500px 1fr 0px;
-        grid-template-rows: 1fr 420px;
-        max-width: 3200px;
-        margin: 0 auto;
-    }
-    
-    .logo {
-        font-size: 2rem;
-    }
-    
-    .stat-value {
-        font-size: 2.2rem;
-    }
-    
-    .driver-table {
-        font-size: 0.9rem;
-    }
-    
-    .driver-table th,
-    .driver-table td {
-        padding: 10px 8px;
-    }
-    
-    .map-control-btn {
-        font-size: 1rem;
-        padding: 12px 18px;
-    }
-}
-        .animate-pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        /* 관제 필요 마커 애니메이션 */
-        @keyframes urgent-pulse {
-            0% { 
-                box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 0 0 rgba(255, 71, 87, 0.7);
+        /* 반응형 */
+        @media (max-width: 1200px) {
+            .left-menu {
+                width: 40%;
             }
-            50% { 
-                box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 0 4px rgba(255, 71, 87, 0.3);
-            }
-            100% { 
-                box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 0 0 rgba(255, 71, 87, 0);
+            .right-map {
+                width: 60%;
             }
         }
 
-        @keyframes pickup-pulse {
-            0% { 
-                box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 0 0 rgba(255, 165, 2, 0.7);
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
             }
-            50% { 
-                box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 0 4px rgba(255, 165, 2, 0.3);
+            .left-menu {
+                width: 100%;
+                height: 50%;
             }
-            100% { 
-                box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 0 0 rgba(255, 165, 2, 0);
+            .right-map {
+                width: 100%;
+                height: 50%;
             }
         }
-        /* 인터랙티브 가이드 스타일 */
-.guide-overlay-interactive {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.75);
-    z-index: 10000;
-    display: none;
-}
-
-.guide-overlay-interactive.active {
-    display: block;
-}
-
-.guide-tooltip {
-    position: fixed;
-    background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
-    color: white;
-    padding: 20px 24px;
-    border-radius: 16px;
-    max-width: 350px;
-    z-index: 10001;
-    box-shadow: 0 8px 32px rgba(110, 110, 255, 0.4);
-    opacity: 0;
-    transform: scale(0.9);
-    transition: all 0.3s ease;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-}
-
-.guide-tooltip.active {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.guide-tooltip-arrow {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-}
-
-.guide-tooltip-arrow.top {
-    bottom: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 12px 12px 0 12px;
-    border-color: #6e6eff transparent transparent transparent;
-}
-
-.guide-tooltip-arrow.bottom {
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 0 12px 12px 12px;
-    border-color: transparent transparent #6e6eff transparent;
-}
-
-.guide-tooltip-arrow.left {
-    right: -12px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-width: 12px 0 12px 12px;
-    border-color: transparent transparent transparent #6e6eff;
-}
-
-.guide-tooltip-arrow.right {
-    left: -12px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-width: 12px 12px 12px 0;
-    border-color: transparent #6e6eff transparent transparent;
-}
-
-.guide-tooltip-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.guide-tooltip-content {
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 16px;
-    white-space: pre-line;
-}
-
-.guide-tooltip-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.guide-step-info {
-    font-size: 12px;
-    opacity: 0.9;
-    font-weight: 600;
-}
-
-.guide-buttons {
-    display: flex;
-    gap: 8px;
-}
-
-.guide-btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.guide-btn-skip {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-}
-
-.guide-btn-skip:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-.guide-btn-prev {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-}
-
-.guide-btn-prev:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-.guide-btn-next {
-    background: white;
-    color: #6e6eff;
-}
-
-.guide-btn-next:hover {
-    background: #f0f0ff;
-}
-
-.guide-btn-finish {
-    background: #2ed573;
-    color: white;
-}
-
-.guide-btn-finish:hover {
-    background: #26c464;
-}
-
-.guide-highlight {
-    position: fixed;
-    z-index: 9999;
-    pointer-events: none;
-    transition: all 0.3s ease;
-}
-
-.guide-highlight-border {
-    position: absolute;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
-    border: 3px solid #6e6eff;
-    border-radius: 12px;
-    box-shadow: 0 0 0 4px rgba(110, 110, 255, 0.3),
-                0 0 20px rgba(110, 110, 255, 0.5);
-    animation: guide-pulse 2s infinite;
-}
-
-@keyframes guide-pulse {
-    0%, 100% {
-        box-shadow: 0 0 0 4px rgba(110, 110, 255, 0.3),
-                   0 0 20px rgba(110, 110, 255, 0.5);
-    }
-    50% {
-        box-shadow: 0 0 0 8px rgba(110, 110, 255, 0.2),
-                   0 0 30px rgba(110, 110, 255, 0.7);
-    }
-}
     </style>
 </head>
 <body>
-    <div class="app-container">
-        <!-- 사이드바 -->
-        <div class="sidebar" id="sidebar">
-            <button class="sidebar-toggle" onclick="toggleSidebar()">
-                <span>←</span>
+    <!-- 헤더 -->
+    <div class="header">
+        <div class="logo">
+            <div class="logo-icon">D</div>
+            <span class="app-title">딜리래빗 TMS</span>
+        </div>
+        
+        <div class="header-stats">
+            <div class="stat-item">
+                <div class="stat-label">총 배송</div>
+                <div class="stat-value primary" id="totalOrders">0</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">진행중</div>
+                <div class="stat-value warning" id="inProgressOrders">0</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">완료</div>
+                <div class="stat-value success" id="completedOrders">0</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">활성 기사</div>
+                <div class="stat-value primary" id="activeDrivers">0</div>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <button class="notification-btn" onclick="showNotifications()">
+                🔔
+                <span class="notification-badge" id="notificationCount">0</span>
             </button>
-            
-            <!-- 헤더 -->
-            <div class="header">
-                <div class="logo">딜리래빗 TMS</div>
-                <div class="user-info">
-                    <button class="notification-btn" onclick="showNotifications()">
-                        🔔
-                        <span class="notification-badge" id="notificationCount">0</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- 데이터 상태 -->
-            <div class="data-status loading" id="dataStatus">
-                <span>⏳</span>
-                <div>
-                    <div>데이터 로딩 중...</div>
-                    <div class="sync-time" id="syncTime"></div>
-                </div>
-            </div>
-
-            <!-- 주요 통계 -->
-            <div class="stats-section">
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <span class="stat-title">총 배송 건수</span>
-                            <span class="stat-icon">📦</span>
-                        </div>
-                        <div class="stat-value" style="color: #6e6eff;" id="totalOrders">0</div>
-                        <div class="stat-change">전체 배송량</div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <span class="stat-title">배송 완료</span>
-                            <span class="stat-icon">✅</span>
-                        </div>
-                        <div class="stat-value" style="color: #2ed573;" id="completedDeliveries">0</div>
-                        <div class="stat-change">완료된 배송</div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <span class="stat-title">진행 중</span>
-                            <span class="stat-icon">🚚</span>
-                        </div>
-                        <div class="stat-value" style="color: #ffa502;" id="inProgress">0</div>
-                        <div class="stat-change">배송 중</div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <span class="stat-title">활성 기사</span>
-                            <span class="stat-icon">👤</span>
-                        </div>
-                        <div class="stat-value" style="color: #2ed573;" id="activeDrivers">0</div>
-                        <div class="stat-change">현재 배송 중</div>
-                    </div>
-                </div>
-
-                <!-- 추가 통계 -->
-                <div class="additional-stats">
-                    <div class="stat-row">
-                        <span class="stat-label">전체 기사 수</span>
-                        <span class="stat-value-small" id="totalDrivers">0명</span>
-                    </div>
-                    <div class="stat-row">
-                        <span class="stat-label">전체 완료율</span>
-                        <span class="stat-value-small" id="overallCompletionRate">0%</span>
-                    </div>
-                    <div class="stat-row">
-                        <span class="stat-label">평균 배송시간</span>
-                        <span class="stat-value-small" id="avgDeliveryTime">-</span>
-                    </div>
-                    <div class="stat-row">
-                        <span class="stat-label">실패 건수</span>
-                        <span class="stat-value-small" id="failedDeliveries">0건</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 컨트롤 버튼 -->
-            <div class="control-buttons">
-                <button class="btn btn-primary" onclick="loadGitHubData()">데이터 새로고침</button>
-                <button class="btn btn-secondary" onclick="resetMapView()">전체 지도 보기</button>
-                <button class="btn btn-secondary" onclick="exportDriverData()" style="display: none;">기사 데이터 내보내기</button>
-                <button class="btn btn-secondary" onclick="toggleAutoRefresh()">자동새로고침: <span id="autoRefreshStatus">ON</span></button>
-            </div>
+            <button class="btn" onclick="loadGitHubData()">새로고침</button>
+            <button class="btn btn-primary" onclick="openAppPush()">App Push</button>
         </div>
+    </div>
 
-        <!-- 지도 영역 -->
-        <div class="map-container">
-            <div id="map"></div>
-            
-            <!-- 지도 컨트롤 버튼 -->
-            <div class="map-controls">
-                <button class="map-control-btn" onclick="resetMapView()">🌍 전체보기</button>
-                <button class="map-control-btn" onclick="toggleMapStyle()">🗺️지도스타일</button>
-                <button class="map-control-btn" onclick="showGuide()">📖 가이드</button>
+    <!-- 메인 컨테이너 -->
+    <div class="main-container">
+        <!-- 좌측 메뉴 영역 -->
+        <div class="left-menu">
+            <!-- 탭 -->
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('dashboard')">대시보드</button>
+                <button class="tab" onclick="switchTab('drivers')">기사관리</button>
+                <button class="tab" onclick="switchTab('regions')">지역현황</button>
+                <button class="tab" onclick="switchTab('control')">관제필요</button>
+                <button class="tab" onclick="switchTab('stats')">통계</button>
             </div>
-            
-            <!-- 알림 패널 -->
-            <div class="alert-panel" id="alertPanel">
-                <button class="alert-close" onclick="hideAlert()">×</button>
-                <div class="alert-title" id="alertTitle">알림</div>
-                <div class="alert-content" id="alertContent">알림 내용</div>
-            </div>
-        </div>
 
-        <!-- 가이드 오버레이 -->
-        <div class="guide-overlay" id="guideOverlay">
-            <div class="guide-modal">
-                <div class="guide-header">
-                    <div class="guide-title">📖 딜리래빗 TMS 사용 가이드</div>
-                    <button class="guide-close" onclick="hideGuide()">×</button>
-                </div>
-                
-                <div class="guide-section">
-                    <div class="guide-section-title">🚚 기본 기능</div>
-                    <div class="guide-content">
-                        <div class="guide-feature">
-                            <div class="guide-feature-title">📊 실시간 통계 확인</div>
-                            <div class="guide-feature-desc">좌측 사이드바에서 총 배송건수, 완료율, 활성 기사 수 등 주요 지표를 실시간으로 확인할 수 있습니다.</div>
+            <!-- 탭 컨텐츠 영역 -->
+            <div class="tab-content-area">
+                <!-- 대시보드 탭 -->
+                <div id="tab-dashboard" class="tab-content active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">미픽업 기사</div>
+                            <div class="stat-value" style="color: #ffa502;" id="notPickupCount">0</div>
+                            <div class="stat-change">픽업 관리 필요</div>
                         </div>
-                        <div class="guide-feature">
-                            <div class="guide-feature-title">🗺️ 지도 기반 관제</div>
-                            <div class="guide-feature-desc">지도에서 기사들의 실시간 위치와 상태를 시각적으로 파악할 수 있습니다. 핀 색상으로 상태를 구분합니다.</div>
+                        <div class="stat-card">
+                            <div class="stat-label">지연 기사</div>
+                            <div class="stat-value" style="color: #ff4757;" id="delayedCount">0</div>
+                            <div class="stat-change">20분 이상 지연</div>
                         </div>
-                        <div class="guide-feature">
-                            <div class="guide-feature-title">📋 기사 현황 테이블</div>
-                            <div class="guide-feature-desc">하단에서 모든 기사의 상세 정보를 테이블 형태로 확인하고 정렬/필터링할 수 있습니다.</div>
+                        <div class="stat-card">
+                            <div class="stat-label">전체 완료율</div>
+                            <div class="stat-value" style="color: #2ed573;" id="overallCompletionRate">0%</div>
+                            <div class="stat-change">목표 95%</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">실패 건수</div>
+                            <div class="stat-value" style="color: #ff4757;" id="failedDeliveries">0</div>
+                            <div class="stat-change">처리 필요</div>
                         </div>
                     </div>
+
+                    <h3 style="font-size: 14px; margin-bottom: 12px; font-weight: 600;">실시간 알림</h3>
+                    <div id="alertsList"></div>
                 </div>
 
-                <div class="guide-section">
-                    <div class="guide-section-title">🔍 검색 및 필터링</div>
-                    <div class="guide-content">
-                        <div class="guide-feature">
-                            <div class="guide-feature-title">통합 검색</div>
-                            <div class="guide-feature-desc">기사명이나 전화번호로 빠르게 검색할 수 있습니다.</div>
-                        </div>
-                        <div class="guide-feature">
-                            <div class="guide-feature-title">관제 상태 필터</div>
-                            <div class="guide-feature-desc">지연/미픽업 기사만 별도로 필터링하여 관제가 필요한 기사를 집중 관리할 수 있습니다.</div>
-                        </div>
-                        <div class="guide-feature">
-                            <div class="guide-feature-title">운송사/지역별 필터</div>
-                            <div class="guide-feature-desc">특정 운송사나 지역의 기사들만 선택적으로 확인할 수 있습니다.</div>
-                        </div>
+                <!-- 기사관리 탭 -->
+                <div id="tab-drivers" class="tab-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <h3 style="font-size: 14px; font-weight: 600;">기사 목록 (<span id="driverCount">0</span>)</h3>
+                        <button class="btn btn-primary" onclick="copyPhoneNumbers()">번호 복사</button>
                     </div>
-                </div>
 
-                <div class="guide-section">
-                    <div class="guide-section-title">🎯 핀 색상 가이드</div>
-                    <div class="guide-content">
-                        <div class="guide-shortcuts">
-                            <div class="guide-shortcut">
-                                <span class="guide-key" style="background: #9ca3af;">회색</span>완료율 100%
-                            </div>
-                            <div class="guide-shortcut">
-                                <span class="guide-key" style="background: #2ed573;">초록</span>정상 진행
-                            </div>
-                            <div class="guide-shortcut">
-                                <span class="guide-key" style="background: #ffa502;">주황</span>미픽업 상태
-                            </div>
-                            <div class="guide-shortcut">
-                                <span class="guide-key" style="background: #ff4757;">빨강</span>지연 발생
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="guide-section">
-                    <div class="guide-section-title">⚡ 고급 기능</div>
-                    <div class="guide-content">
-                        <div class="guide-feature">
-                            <div class="guide-feature-title">기사명 클릭 포커스</div>
-                            <div class="guide-feature-desc">기사명을 클릭하면 해당 기사의 위치로 지도가 자동 이동하고 상세 정보가 표시됩니다.</div>
-                        </div>
-                        <div class="guide-feature">
-                            <div class="guide-feature-title">지역별 포커스</div>
-                            <div class="guide-feature-desc">우측 지역별 수행률에서 지역을 클릭하면 해당 지역의 모든 기사를 지도에서 확인할 수 있습니다.</div>
-                        </div>
-                        <div class="guide-feature">
-                            <div class="guide-feature-title">전화번호 일괄 복사</div>
-                            <div class="guide-feature-desc">필터링된 기사들의 전화번호를 한 번에 복사하여 업무 효율성을 높일 수 있습니다.</div>
-                        </div>
-                        <div class="guide-feature">
-                            <div class="guide-feature-title">App Push 연동</div>
-                            <div class="guide-feature-desc">App Push 버튼으로 기사들에게 직접 알림을 보낼 수 있는 백오피스로 연결됩니다.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="guide-tips">
-                    <div class="guide-tips-title">💡 효율적인 사용 팁</div>
-                    <ul style="margin: 0; padding-left: 1.2rem;">
-                        <li>지연 필터를 사용하면 완료율 100% 기사는 자동으로 제외되어 실제 관제가 필요한 기사만 표시됩니다.</li>
-                        <li>지도에서 핀들이 겹칠 때는 줌인하면 자동으로 분리되어 개별 기사를 확인할 수 있습니다.</li>
-                        <li>데이터는 5분마다 자동으로 새로고침되며, 수동 새로고침도 가능합니다.</li>
-                        <li>우측 상단의 📊 버튼을 클릭하면 추가 데이터 시각화 패널을 열 수 있습니다.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- 우측 데이터 시각화 패널 -->
-        <div class="data-panel" id="dataPanel">
-            <button class="data-panel-toggle" onclick="toggleDataPanel()">
-                <span id="dataPanelToggleIcon">📊</span>
-            </button>
-            
-            <div class="data-panel-header">
-                <div class="data-panel-title">📊 데이터 시각화</div>
-                <div class="data-panel-subtitle">실시간 배송 분석 대시보드</div>
-            </div>
-            
-            <div class="data-panel-content">
-                <!-- 차트 플레이스홀더 1 -->
-                <div class="chart-placeholder">
-                    <div class="chart-placeholder-icon">📈</div>
-                    <div class="chart-placeholder-text">
-                        <strong>시간별 배송 현황</strong><br>
-                        시간대별 배송 완료율과<br>
-                        진행 상황을 표시할 예정
-                    </div>
-                </div>
-
-                <!-- 차트 플레이스홀더 2 -->
-                <div class="chart-placeholder">
-                    <div class="chart-placeholder-icon">🥧</div>
-                    <div class="chart-placeholder-text">
-                        <strong>운송사별 분포</strong><br>
-                        각 운송사의 배송량과<br>
-                        성과 지표를 표시할 예정
-                    </div>
-                </div>
-
-                <!-- 차트 플레이스홀더 3 -->
-                <div class="chart-placeholder">
-                    <div class="chart-placeholder-icon">📊</div>
-                    <div class="chart-placeholder-text">
-                        <strong>지역별 성과</strong><br>
-                        지역별 완료율과<br>
-                        배송 효율성을 표시할 예정
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 하단 패널 -->
-        <div class="bottom-panel">
-            <!-- 배송 기사 리스트 -->
-            <div class="panel-section">
-                <div class="panel-title">
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <span>👨‍💼 배송 기사 현황</span>
-                        <input type="text" class="search-input" id="driverSearch" 
-                               placeholder="기사명, 전화번호 검색" 
-                               onkeyup="searchDrivers()"
-                               style="background: rgba(255, 255, 255, 0.1); 
-                                      border: 1px solid rgba(102, 126, 234, 0.3); 
-                                      border-radius: 6px; color: white; padding: 6px 10px; 
-                                      font-size: 0.75rem; width: 160px; 
-                                      outline: none;">
-                    </div>
-                    
-                    <!-- 필터 컨테이너 -->
-                    <div class="filter-container">
-                        <select class="filter-select" id="controlFilter" onchange="applyFilters()">
+                    <div class="filter-bar">
+                        <input type="text" class="search-input" placeholder="기사명, 전화번호 검색" id="driverSearch" onkeyup="searchDrivers()">
+                        <select class="select" id="driverControlFilter" onchange="filterDrivers()">
                             <option value="">전체 관제</option>
                             <option value="지연">지연</option>
                             <option value="미픽업">미픽업</option>
                         </select>
-                        
-                        <select class="filter-select" id="companyFilter" onchange="applyFilters()">
+                        <select class="select" id="driverCompanyFilter" onchange="filterDrivers()">
                             <option value="">전체 운송사</option>
                         </select>
-                        
-                        <select class="filter-select" id="regionFilter" onchange="applyFilters()">
-                            <option value="">전체 지역</option>
-                        </select>
-                        
-                        <button class="reset-filter-btn" onclick="resetFilters()" title="필터 초기화">↻</button>
-                        
-                        <button class="action-btn app-push-btn" onclick="openAppPush()" title="App Push">App-push</button>
-                        
-                        <button class="action-btn copy-phone-btn" onclick="copyPhoneNumbers()" title="전화번호 복사">번호복사</button>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th onclick="sortTable('name')">기사명 ↕</th>
+                                    <th onclick="sortTable('company')">운송사 ↕</th>
+                                    <th onclick="sortTable('totalDeliveries')">총건수 ↕</th>
+                                    <th onclick="sortTable('completionRate')">완료율 ↕</th>
+                                    <th onclick="sortTable('pickupStatus')">픽업 ↕</th>
+                                    <th onclick="sortTable('delayStatus')">지연 ↕</th>
+                                </tr>
+                            </thead>
+                            <tbody id="driversTable"></tbody>
+                        </table>
                     </div>
                 </div>
-                
-                <div class="driver-table-container">
-                    <table class="driver-table" id="driverTable">
-                        <thead>
-                            <tr>
-                                <th onclick="sortTable('name')">기사명 <span class="sort-btn">↕</span></th>
-                                <th onclick="sortTable('deliveryBox')">배송박스 <span class="sort-btn">↕</span></th>
-                                <th onclick="sortTable('company')">운송사 <span class="sort-btn">↕</span></th>
-                                <th onclick="sortTable('phone')">전화번호 <span class="sort-btn">↕</span></th>
-                                <th onclick="sortTable('totalDeliveries')">총건수 <span class="sort-btn">↕</span></th>
-                                <th onclick="sortTable('completedDeliveries')">완료 <span class="sort-btn">↕</span></th>
-                                <th onclick="sortTable('failedDeliveries')">실패 <span class="sort-btn">↕</span></th>
-                                <th onclick="sortTable('completionRate')">완료율 <span class="sort-btn">↕</span></th>
-                                <th onclick="sortTable('pickupStatus')">픽업여부 <span class="sort-btn">↕</span></th>
-                                <th onclick="sortTable('delayStatus')">지연(20분) <span class="sort-btn">↕</span></th>
-                                <th onclick="sortTable('region')">지역 <span class="sort-btn">↕</span></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td colspan="11" style="text-align: center; padding: 2rem;">
-                                    데이터를 로딩 중입니다...
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+                <!-- 지역현황 탭 -->
+                <div id="tab-regions" class="tab-content">
+                    <h3 style="font-size: 14px; margin-bottom: 12px; font-weight: 600;">지역별 수행률</h3>
+                    <div class="region-list" id="regionList"></div>
+                </div>
+
+                <!-- 관제필요 탭 -->
+                <div id="tab-control" class="tab-content">
+                    <h3 style="font-size: 14px; margin-bottom: 12px; font-weight: 600;">관제 필요 기사</h3>
+                    <div id="controlList"></div>
+                </div>
+
+                <!-- 통계 탭 -->
+                <div id="tab-stats" class="tab-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">평균 배송시간</div>
+                            <div class="stat-value" style="color: #6e6eff;" id="avgDeliveryTime">-</div>
+                            <div class="stat-change">목표 45분</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">시간당 처리량</div>
+                            <div class="stat-value" style="color: #2ed573;">24건</div>
+                            <div class="stat-change">전일 대비 +5%</div>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 14px; margin: 16px 0 12px; font-weight: 600;">운송사별 성과</h3>
+                    <div id="companyStats"></div>
+
+                    <h3 style="font-size: 14px; margin: 16px 0 12px; font-weight: 600;">시간대별 배송 현황</h3>
+                    <div id="timeStats"></div>
                 </div>
             </div>
+        </div>
 
-            <!-- 지역별 수행률 -->
-            <div class="panel-section">
-                <div class="panel-title">🗺️ 지역별 수행률</div>
-                
-                <div class="region-list" id="regionList">
-                    <div style="text-align: center; color: #888; padding: 2rem;">
-                        지역별 데이터를 로딩 중입니다...
-                    </div>
-                </div>
+        <!-- 우측 지도 영역 -->
+        <div class="right-map">
+            <div id="map"></div>
+            <div class="map-controls">
+                <button class="map-btn" onclick="resetMapView()" title="전체보기">🗺️</button>
+                <button class="map-btn" onclick="toggleMapStyle()" title="지도스타일">🎨</button>
+                <button class="map-btn" onclick="toggleClustering()" title="클러스터링">📍</button>
+                <button class="map-btn" onclick="showGuide()" title="가이드">📖</button>
             </div>
         </div>
     </div>
 
+    <!-- 토스트 -->
+    <div id="toast" class="toast">
+        <div class="toast-icon">✔</div>
+        <div class="toast-content">
+            <div class="toast-title" id="toastTitle">성공</div>
+            <div class="toast-message" id="toastMessage">작업이 완료되었습니다</div>
+        </div>
+    </div>
+
     <script>
+        // 전역 변수
         let map;
-        let driverMarkers = {};
         let markerCluster;
         let tmsData = null;
-        let autoRefreshInterval = null;
-        let autoRefreshEnabled = true;
         let allDrivers = [];
         let currentFilteredDrivers = [];
+        let driverMarkers = {};
         let sortOrder = {};
-        let currentMapStyle = 'osm'; 
-        let dataPanelOpen = false; // 시각화 패널은 기본적으로 닫힌 상태
+        let currentMapStyle = 'osm';
+        let clusteringEnabled = true;
 
         const GITHUB_CONFIG = {
             owner: 'jace-githu',
@@ -1640,1131 +809,50 @@
             branch: 'main'
         };
 
-        // 데이터 패널 토글 기능
-        function toggleDataPanel() {
-            const appContainer = document.querySelector('.app-container');
-            const dataPanel = document.getElementById('dataPanel');
-            const toggleIcon = document.getElementById('dataPanelToggleIcon');
-            
-            dataPanelOpen = !dataPanelOpen;
-            
-            if (dataPanelOpen) {
-                appContainer.classList.add('data-panel-open');
-                dataPanel.classList.add('open');
-                toggleIcon.textContent = '✕';
-                showAlert('success', '데이터 패널', '데이터 시각화 패널이 열렸습니다.');
-            } else {
-                appContainer.classList.remove('data-panel-open');
-                dataPanel.classList.remove('open');
-                toggleIcon.textContent = '📊';
-                showAlert('info', '데이터 패널', '데이터 시각화 패널이 닫혔습니다.');
-            }
-            
-            if (map) {
-                setTimeout(() => map.invalidateSize(), 350);
-            }
-        }
-
-        // 전체 지도 보기 기능
-        function resetMapView() {
-            if (!map) return;
-            
-            map.setView([37.5665, 126.9780], 11);
-            resetFilters();
-            showAlert('success', '전체 지도', '전체 지도 보기로 돌아갔습니다.');
-        }
-
-        // 지도 스타일 토글 기능
-        function toggleMapStyle() {
-            if (!map) return;
-            
-            map.eachLayer(function(layer) {
-                if (layer instanceof L.TileLayer) {
-                    map.removeLayer(layer);
-                }
-            });
-            
-            let newLayer;
-            if (currentMapStyle === 'osm') {
-                newLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-                    attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OSM Team'
-                });
-                currentMapStyle = 'hot';
-                showAlert('success', '지도 스타일', 'HOT 스타일로 변경되었습니다.');
-            } else {
-                newLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '© OpenStreetMap contributors'
-                });
-                currentMapStyle = 'osm';
-                showAlert('success', '지도 스타일', '기본 스타일로 변경되었습니다.');
-            }
-            
-            newLayer.addTo(map);
-        }
-
-        function openAppPush() {
-            const url = 'https://backoffice.drabbit.co.kr/apps/4a42193c-c779-11ef-aa21-cf70a380470e/Backoffice%202.1%20-%20Page/%ED%91%B8%EC%89%AC';
-            window.open(url, '_blank');
-            showAlert('success', 'App Push', 'App Push 페이지를 새 탭에서 열었습니다.');
-        }
-
-        // 통합 검색 기능 (기사명, 전화번호만)
-        function searchDrivers() {
-            const searchTerm = document.getElementById('driverSearch').value.toLowerCase().trim();
-            const tableBody = document.querySelector('#driverTable tbody');
-            const rows = tableBody.querySelectorAll('tr[data-driver-id]');
-            
-            if (!searchTerm) {
-                rows.forEach(row => row.classList.remove('filtered-out'));
-                updateDriverCount(allDrivers.length, allDrivers.length);
-                return;
-            }
-            
-            let visibleCount = 0;
-            
-            rows.forEach(row => {
-                const driverId = row.getAttribute('data-driver-id');
-                const driver = allDrivers.find(d => d.id === driverId);
-                
-                if (driver) {
-                    const driverName = (driver.name || '').toLowerCase();
-                    const nameMatch = driverName.includes(searchTerm);
-                    
-                    const cleanSearchTerm = searchTerm.replace(/[^0-9]/g, '');
-                    const cleanPhone = (driver.phone || '').replace(/[^0-9]/g, '');
-                    const phoneMatch = cleanSearchTerm && cleanPhone.includes(cleanSearchTerm);
-                    
-                    if (nameMatch || phoneMatch) {
-                        row.classList.remove('filtered-out');
-                        visibleCount++;
-                    } else {
-                        row.classList.add('filtered-out');
-                    }
-                }
-            });
-            
-            updateDriverCount(visibleCount, allDrivers.length);
-        }
-
-        // 기사 포커스 기능
-        function focusOnDriver(driverId) {
-            const driver = allDrivers.find(d => d.id === driverId);
-            if (!driver || !driver.coordinates) {
-                showAlert('warning', '위치 정보 없음', '해당 기사의 위치 정보가 없습니다.');
-                return;
-            }
-            
-            map.setView(driver.coordinates, 15);
-            
-            const marker = driverMarkers[driver.id];
-            if (marker) {
-                setTimeout(() => {
-                    marker.openPopup();
-                    showAlert('success', '기사 포커스', `${driver.name} 기사 위치로 이동했습니다.`);
-                }, 500);
-            }
-        }
-
-        function copyPhoneNumbers() {
-            const driversToUse = currentFilteredDrivers.length > 0 ? currentFilteredDrivers : allDrivers;
-            
-            if (!driversToUse.length) {
-                showAlert('warning', '데이터 없음', '복사할 전화번호가 없습니다.');
-                return;
-            }
-
-            const visibleDrivers = getVisibleDrivers();
-            const phoneNumbers = visibleDrivers
-                .map(driver => driver.phone)
-                .filter(phone => phone && phone.trim() !== '' && phone !== '-')
-                .join('\n');
-
-            if (!phoneNumbers) {
-                showAlert('warning', '전화번호 없음', '복사할 전화번호가 없습니다.');
-                return;
-            }
-
-            navigator.clipboard.writeText(phoneNumbers).then(() => {
-                showAlert('success', '복사 완료', `${phoneNumbers.split('\n').length}개의 전화번호가 복사되었습니다.`);
-            }).catch(() => {
-                const textArea = document.createElement('textarea');
-                textArea.value = phoneNumbers;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                showAlert('success', '복사 완료', `${phoneNumbers.split('\n').length}개의 전화번호가 복사되었습니다.`);
-            });
-        }
-
-        function getVisibleDrivers() {
-            const tableBody = document.querySelector('#driverTable tbody');
-            if (!tableBody) return [];
-
-            const visibleRows = tableBody.querySelectorAll('tr:not(.filtered-out):not(.no-result-row)');
-            const visibleDrivers = [];
-
-            visibleRows.forEach(row => {
-                const driverId = row.getAttribute('data-driver-id');
-                const driver = allDrivers.find(d => d.id === driverId);
-                if (driver) {
-                    visibleDrivers.push(driver);
-                }
-            });
-
-            return visibleDrivers;
-        }
-
-        function sortTable(column) {
-            if (!allDrivers.length) return;
-            
-            const currentOrder = sortOrder[column] || 'none';
-            sortOrder[column] = currentOrder === 'asc' ? 'desc' : 'asc';
-            
-            Object.keys(sortOrder).forEach(key => {
-                if (key !== column) sortOrder[key] = 'none';
-            });
-            
-            const sortedDrivers = [...allDrivers].sort((a, b) => {
-                let valueA = a[column];
-                let valueB = b[column];
-                
-                if (['totalDeliveries', 'completedDeliveries', 'failedDeliveries', 'completionRate'].includes(column)) {
-                    valueA = parseFloat(valueA) || 0;
-                    valueB = parseFloat(valueB) || 0;
-                } else {
-                    valueA = String(valueA || '').toLowerCase();
-                    valueB = String(valueB || '').toLowerCase();
-                }
-                
-                if (sortOrder[column] === 'asc') {
-                    return valueA > valueB ? 1 : -1;
-                } else {
-                    return valueA < valueB ? 1 : -1;
-                }
-            });
-            
-            updateDriverTable(sortedDrivers);
-            updateSortIcons(column);
-            applyFilters();
-        }
-        
-        function updateSortIcons(activeColumn) {
-            const headers = document.querySelectorAll('.driver-table th');
-            headers.forEach((header, index) => {
-                const sortBtn = header.querySelector('.sort-btn');
-                if (sortBtn) {
-                    const columns = ['name', 'deliveryBox', 'company', 'phone', 'totalDeliveries', 'completedDeliveries', 'failedDeliveries', 'completionRate', 'pickupStatus', 'delayStatus', 'region'];
-                    const column = columns[index];
-                    
-                    if (column === activeColumn) {
-                        sortBtn.textContent = sortOrder[column] === 'asc' ? '↑' : '↓';
-                        sortBtn.style.color = '#6e6eff';
-                    } else {
-                        sortBtn.textContent = '↕';
-                        sortBtn.style.color = 'rgba(255, 255, 255, 0.6)';
-                    }
-                }
-            });
-        }
-
-        async function loadGitHubData() {
-            try {
-                showDataStatus('loading', '데이터 로딩 중...');
-                console.log('GitHub 데이터 로드 시작...');
-                
-                const url = `https://raw.githubusercontent.com/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/${GITHUB_CONFIG.branch}/${GITHUB_CONFIG.path}`;
-                const response = await fetch(url + '?t=' + Date.now());
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-                }
-                
-                const rawText = await response.text();
-                tmsData = JSON.parse(rawText);
-                allDrivers = tmsData.drivers || [];
-                
-                updateDashboardStats(tmsData.stats);
-                updateDriverTable(allDrivers);
-                updateRegionList(tmsData.regions || []);
-                updateFilterOptions(allDrivers);
-                
-                if (map) {
-                    showDriversOnMap(allDrivers);
-                }
-                
-                const syncTime = new Date(tmsData.metadata?.lastSync || Date.now()).toLocaleString('ko-KR');
-                showDataStatus('success', `데이터 연결됨`, syncTime);
-                updateNotificationCount();
-                
-            } catch (error) {
-                console.error('GitHub 데이터 로드 실패:', error);
-                showDataStatus('error', '데이터 연결 실패');
-                showAlert('error', '데이터 로드 실패', `서버에서 데이터를 불러올 수 없습니다: ${error.message}`);
-            }
-        }
-
-        function updateFilterOptions(drivers) {
-            const companyFilter = document.getElementById('companyFilter');
-            const regionFilter = document.getElementById('regionFilter');
-            
-            if (!companyFilter || !regionFilter || !drivers) return;
-            
-            const companies = [...new Set(drivers.map(d => d.company).filter(c => c))].sort();
-            const regions = [...new Set(drivers.map(d => d.region).filter(r => r))].sort();
-            
-            companyFilter.innerHTML = '<option value="">전체 운송사</option>';
-            companies.forEach(company => {
-                const option = document.createElement('option');
-                option.value = company;
-                option.textContent = company;
-                companyFilter.appendChild(option);
-            });
-            
-            regionFilter.innerHTML = '<option value="">전체 지역</option>';
-            regions.forEach(region => {
-                const option = document.createElement('option');
-                option.value = region;
-                option.textContent = region;
-                regionFilter.appendChild(option);
-            });
-        }
-
-        // 완료율 100% 지연 제외 기능 
-        function applyFilters() {
-            const controlFilter = document.getElementById('controlFilter').value;
-            const companyFilter = document.getElementById('companyFilter').value;
-            const regionFilter = document.getElementById('regionFilter').value;
-            
-            if (!allDrivers.length) return;
-            
-            let filteredDrivers = allDrivers.filter(driver => {
-                const companyMatch = !companyFilter || driver.company === companyFilter;
-                const regionMatch = !regionFilter || driver.region === regionFilter;
-                
-                let controlMatch = true;
-                if (controlFilter === '지연') {
-                    controlMatch = driver.delayStatus === '지연' && parseFloat(driver.completionRate || 0) < 100;
-                } else if (controlFilter === '미픽업') {
-                    controlMatch = driver.pickupStatus === '미픽업';
-                }
-                
-                return companyMatch && regionMatch && controlMatch;
-            });
-            
-            currentFilteredDrivers = filteredDrivers;
-            updateDriverTableFiltered(filteredDrivers);
-            updateMapFiltered(filteredDrivers);
-            updateDriverCount(filteredDrivers.length, allDrivers.length);
-        }
-
-        function resetFilters() {
-            document.getElementById('controlFilter').value = '';
-            document.getElementById('companyFilter').value = '';
-            document.getElementById('regionFilter').value = '';
-            document.getElementById('driverSearch').value = '';
-            
-            currentFilteredDrivers = [];
-            updateDriverTableFiltered(allDrivers);
-            updateMapFiltered(allDrivers);
-            updateDriverCount(allDrivers.length, allDrivers.length);
-            
-            showAlert('success', '필터 초기화', '모든 필터가 해제되었습니다.');
-        }
-
-        function updateDriverCount(filteredCount, totalCount) {
-            // 기사 수 업데이트 로직 (현재 UI에 표시할 요소가 없으므로 콘솔에만 출력)
-            console.log(`기사 수: ${filteredCount}/${totalCount}`);
-        }
-
-        function updateDriverTableFiltered(drivers) {
-            const tableBody = document.querySelector('#driverTable tbody');
-            if (!tableBody) return;
-            
-            const allRows = tableBody.querySelectorAll('tr');
-            allRows.forEach(row => row.classList.add('filtered-out'));
-            
-            if (!drivers || drivers.length === 0) {
-                const noResultRow = document.createElement('tr');
-                noResultRow.innerHTML = '<td colspan="11" style="text-align: center; padding: 2rem; color: #888;">필터 조건에 해당하는 기사가 없습니다.</td>';
-                noResultRow.classList.remove('filtered-out');
-                
-                const existingNoResult = tableBody.querySelector('.no-result-row');
-                if (existingNoResult) existingNoResult.remove();
-                
-                noResultRow.classList.add('no-result-row');
-                tableBody.appendChild(noResultRow);
-                return;
-            }
-            
-            const existingNoResult = tableBody.querySelector('.no-result-row');
-            if (existingNoResult) existingNoResult.remove();
-            
-            drivers.forEach(driver => {
-                const row = tableBody.querySelector(`tr[data-driver-id="${driver.id}"]`);
-                if (row) {
-                    row.classList.remove('filtered-out');
-                }
-            });
-        }
-
-        function updateMapFiltered(drivers) {
-            if (!map) return;
-            
-            if (markerCluster) {
-                markerCluster.clearLayers();
-            }
-            
-            drivers.forEach(driver => {
-                const marker = driverMarkers[driver.id];
-                if (marker && markerCluster) {
-                    markerCluster.addLayer(marker);
-                } else if (marker) {
-                    marker.addTo(map);
-                }
-            });
-        }
-
-        function updateDashboardStats(stats) {
-            if (!stats) return;
-            
-            const elements = {
-                'totalOrders': stats.totalOrders || 0,
-                'completedDeliveries': stats.completedDeliveries || 0,
-                'inProgress': stats.inProgress || 0,
-                'activeDrivers': stats.activeDrivers || 0,
-                'totalDrivers': stats.totalDrivers || 0,
-                'overallCompletionRate': (stats.overallCompletionRate || 0) + '%',
-                'avgDeliveryTime': stats.avgDeliveryTime || '-',
-                'failedDeliveries': stats.failedDeliveries || 0
-            };
-            
-            Object.entries(elements).forEach(([id, value]) => {
-                const element = document.getElementById(id);
-                if (element) {
-                    element.textContent = value;
-                    element.classList.add('animate-pulse');
-                    setTimeout(() => element.classList.remove('animate-pulse'), 1000);
-                }
-            });
-        }
-
-        function updateDriverTable(drivers) {
-            const tableBody = document.querySelector('#driverTable tbody');
-            
-            if (!tableBody || !drivers || drivers.length === 0) {
-                if (tableBody) {
-                    tableBody.innerHTML = '<tr><td colspan="11" style="text-align: center; padding: 2rem;">기사 데이터가 없습니다.</td></tr>';
-                }
-                return;
-            }
-            
-            const rows = drivers.map(driver => `
-                <tr data-driver-id="${driver.id}">
-                    <td><strong onclick="focusOnDriver('${driver.id}')" class="driver-name-clickable">${driver.name || '-'}</strong></td>
-                    <td>${driver.deliveryBox || '-'}</td>
-                    <td>${driver.company || '-'}</td>
-                    <td>${driver.phone || '-'}</td>
-                    <td><strong style="color: #6e6eff;">${driver.totalDeliveries || 0}</strong></td>
-                    <td><strong style="color: #2ed573;">${driver.completedDeliveries || 0}</strong></td>
-                    <td><strong style="color: #ff4757;">${driver.failedDeliveries || 0}</strong></td>
-                    <td><span class="completion-rate">${driver.completionRate || 0}%</span></td>
-                    <td>
-                        <span class="status-badge ${driver.pickupStatus === '픽업' ? 'status-pickup' : 'status-not-pickup'}">
-                            ${driver.pickupStatus || '미픽업'}
-                        </span>
-                    </td>
-                    <td>
-                        <span class="status-badge ${driver.delayStatus === '지연' ? 'status-delayed' : 'status-normal'}">
-                            ${driver.delayStatus || '정상'}
-                        </span>
-                    </td>
-                    <td>${driver.region || '-'}</td>
-                </tr>
-            `).join('');
-            
-            tableBody.innerHTML = rows;
-        }
-
-        function updateRegionList(regions) {
-            const regionList = document.getElementById('regionList');
-            if (!regionList || !regions || regions.length === 0) {
-                if (regionList) {
-                    regionList.innerHTML = '<div style="text-align: center; color: #888; padding: 2rem;">지역 데이터가 없습니다.</div>';
-                }
-                return;
-            }
-            
-            const regionItems = regions.map(region => `
-                <div class="region-item" onclick="focusOnRegion('${region.name}')">
-                    <div class="region-name">${region.name}</div>
-                    <div class="region-stats">
-                        <span>완료: <strong>${region.delivered || 0}</strong></span>
-                        <span>진행: <strong>${region.transit || 0}</strong></span>
-                        <span>실패: <strong>${region.delayed || 0}</strong></span>
-                    </div>
-                    <div class="region-completion">${region.completionRate || 0}% 완료</div>
-                    <div style="font-size: 0.65rem; color: rgba(255,255,255,0.6); margin-top: 0.2rem;">
-                        기사 ${region.driverCount || 0}명
-                    </div>
-                </div>
-            `).join('');
-            
-            regionList.innerHTML = regionItems;
-        }
-
-        function focusOnRegion(regionName) {
-            console.log(`${regionName} 지역 포커스...`);
-            
-            document.getElementById('regionFilter').value = regionName;
-            applyFilters();
-            
-            const regionDrivers = allDrivers.filter(driver => driver.region === regionName);
-            
-            if (regionDrivers.length > 0 && map) {
-                const validDrivers = regionDrivers.filter(driver => 
-                    driver.coordinates && 
-                    Array.isArray(driver.coordinates) && 
-                    driver.coordinates.length === 2 &&
-                    !isNaN(driver.coordinates[0]) && 
-                    !isNaN(driver.coordinates[1])
-                );
-                
-                if (validDrivers.length > 0) {
-                    if (validDrivers.length === 1) {
-                        map.setView(validDrivers[0].coordinates, 14);
-                    } else {
-                        const bounds = L.latLngBounds(validDrivers.map(driver => driver.coordinates));
-                        map.fitBounds(bounds, { padding: [20, 20] });
-                    }
-                    
-                    showAlert('success', `${regionName} 지역`, `${regionName} 지역 ${validDrivers.length}명의 기사로 포커스했습니다.`);
-                } else {
-                    showAlert('warning', '위치 정보 없음', `${regionName} 지역 기사들의 위치 정보가 없습니다.`);
-                }
-            } else {
-                showAlert('info', `${regionName} 지역`, `${regionName} 지역으로 필터링했습니다.`);
-            }
-        }
-
-        function initializeMap() {
-            try {
-                map = L.map('map', {
-                    center: [37.5665, 126.9780],
-                    zoom: 11,
-                    zoomControl: true
-                });
-
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '© OpenStreetMap contributors'
-                }).addTo(map);
-
-                if (typeof L.markerClusterGroup !== 'undefined') {
-                    markerCluster = L.markerClusterGroup({
-                        maxClusterRadius: 40,
-                        disableClusteringAtZoom: 13,
-                        spiderfyOnMaxZoom: false,
-                        showCoverageOnHover: false,
-                        zoomToBoundsOnClick: true,
-                        removeOutsideVisibleBounds: true,
-                        iconCreateFunction: function(cluster) {
-                            const childCount = cluster.getChildCount();
-                            let size = 'small';
-                            
-                            if (childCount < 10) {
-                                size = 'small';
-                            } else if (childCount < 25) {
-                                size = 'medium';
-                            } else {
-                                size = 'large';
-                            }
-                            
-                            const sizeMap = {
-                                small: 28,
-                                medium: 32,
-                                large: 36
-                            };
-                            
-                            const clusterSize = sizeMap[size];
-                            
-                            return new L.DivIcon({
-                                html: `<div style="
-                                    background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
-                                    width: ${clusterSize}px;
-                                    height: ${clusterSize}px;
-                                    border-radius: 50%;
-                                    border: 2px solid #ffffff;
-                                    box-shadow: 0 2px 8px rgba(110, 110, 255, 0.4);
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    color: white;
-                                    font-weight: 700;
-                                    font-size: ${clusterSize < 30 ? '11px' : clusterSize < 35 ? '12px' : '13px'};
-                                    font-family: 'Pretendard', sans-serif;
-                                ">${childCount}</div>`,
-                                className: `marker-cluster marker-cluster-${size}`,
-                                iconSize: new L.Point(clusterSize + 4, clusterSize + 4)
-                            });
-                        }
-                    });
-                    map.addLayer(markerCluster);
-                    console.log('마커 클러스터 초기화 완료');
-                } else {
-                    console.warn('마커 클러스터 라이브러리가 로드되지 않았습니다.');
-                }
-
-                console.log('지도 초기화 완료');
-                loadGitHubData();
-                
-            } catch (error) {
-                console.error('지도 초기화 오류:', error);
-                showAlert('error', '지도 로딩 오류', '지도를 불러오는 중 문제가 발생했습니다.');
-            }
-        }
-
-        function showDriversOnMap(drivers) {
-            if (!map || !drivers) return;
-            
-            if (markerCluster) {
-                markerCluster.clearLayers();
-            }
-            
-            Object.values(driverMarkers).forEach(marker => {
-                if (map.hasLayer(marker)) {
-                    map.removeLayer(marker);
-                }
-            });
-            driverMarkers = {};
-            
-            drivers.forEach(driver => {
-                if (!driver.coordinates || driver.coordinates.length !== 2) return;
-                
-                const isCompleted = parseFloat(driver.completionRate || 0) === 100;
-                const markerSize = isCompleted ? 16 : 20;
-                const iconSize = isCompleted ? 20 : 24;
-                
-                let markerColor = '#2ed573';
-                let borderColor = '#ffffff';
-                let animationClass = '';
-                
-                if (isCompleted) {
-                    markerColor = '#9ca3af';
-                    borderColor = '#6b7280';
-                } else if (driver.delayStatus === '지연') {
-                    markerColor = '#ff4757';
-                    borderColor = '#dc2626';
-                    animationClass = 'animation: urgent-pulse 2s infinite;';
-                } else if (driver.pickupStatus === '미픽업') {
-                    markerColor = '#ffa502';
-                    borderColor = '#ea580c';
-                    animationClass = 'animation: pickup-pulse 2s infinite;';
-                } else {
-                    borderColor = '#16a34a';
-                }
-                
-                const driverIcon = L.divIcon({
-                    className: 'driver-marker',
-                    html: `<div style="
-                        background: ${markerColor};
-                        width: ${markerSize}px;
-                        height: ${markerSize}px;
-                        border-radius: 50%;
-                        border: 2px solid ${borderColor};
-                        box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        color: white;
-                        font-weight: bold;
-                        font-size: ${isCompleted ? '9px' : '10px'};
-                        opacity: ${isCompleted ? '0.85' : '1'};
-                        ${animationClass}
-                    ">${isCompleted ? '✓' : (driver.totalDeliveries - driver.completedDeliveries || 0)}</div>`,
-                    iconSize: [iconSize, iconSize],
-                    iconAnchor: [iconSize/2, iconSize/2]
-                });
-
-                const marker = L.marker(driver.coordinates, { icon: driverIcon })
-                    .bindPopup(`
-                        <div style="font-size: 12px; min-width: 200px;">
-                            <strong style="color: #6e6eff;">${driver.name}</strong><br>
-                            <strong>📦 ${driver.deliveryBox}</strong><br>
-                            🏢 ${driver.company}<br>
-                            📱 ${driver.phone}<br>
-                            <hr style="margin: 5px 0;">
-                            총 배송: <strong>${driver.totalDeliveries}건</strong><br>
-                            완료: <strong style="color: #2ed573;">${driver.completedDeliveries}건</strong><br>
-                            실패: <strong style="color: #ff4757;">${driver.failedDeliveries}건</strong><br>
-                            완료율: <strong style="color: ${isCompleted ? '#2ed573' : '#ffa502'};">${driver.completionRate}%</strong><br>
-                            픽업상태: <strong>${driver.pickupStatus}</strong><br>
-                            지연상태: <strong>${driver.delayStatus}</strong><br>
-                            지역: ${driver.region}
-                        </div>
-                    `);
-
-                if (markerCluster) {
-                    markerCluster.addLayer(marker);
-                } else {
-                    marker.addTo(map);
-                }
-
-                driverMarkers[driver.id] = marker;
-            });
-        }
-
-        function showDataStatus(status, message, time = '') {
-            const statusElement = document.getElementById('dataStatus');
-            const syncTimeEl = document.getElementById('syncTime');
-            
-            if (!statusElement) return;
-            
-            statusElement.className = `data-status ${status}`;
-            const icons = { loading: '⏳', success: '✅', error: '❌' };
-            
-            statusElement.querySelector('div div').textContent = message;
-            statusElement.querySelector('span').textContent = icons[status];
-            
-            if (syncTimeEl && time) {
-                syncTimeEl.textContent = `마지막 업데이트: ${time}`;
-            }
-        }
-
-        function showAlert(type, title, content) {
-            const alertPanel = document.getElementById('alertPanel');
-            if (!alertPanel) return;
-            
-            alertPanel.className = `alert-panel ${type}`;
-            document.getElementById('alertTitle').textContent = title;
-            document.getElementById('alertContent').textContent = content;
-            alertPanel.style.display = 'block';
-            
-            setTimeout(() => hideAlert(), type === 'success' ? 3000 : 5000);
-        }
-
-        function hideAlert() {
-            const alertPanel = document.getElementById('alertPanel');
-            if (alertPanel) {
-                alertPanel.style.display = 'none';
-            }
-        }
-
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const isCollapsed = sidebar.style.transform === 'translateX(-360px)';
-            sidebar.style.transform = isCollapsed ? 'translateX(0)' : 'translateX(-360px)';
-            
-            if (map) {
-                setTimeout(() => map.invalidateSize(), 300);
-            }
-        }
-
-        function exportDriverData() {
-            if (!tmsData || !tmsData.drivers) {
-                showAlert('warning', '데이터 없음', '내보낼 데이터가 없습니다.');
-                return;
-            }
-            
-            const headers = ['기사명', '배송박스', '운송사', '전화번호', '총건수', '완료', '실패', '완료율', '픽업여부', '지연상태', '지역'];
-            const csvData = [headers.join(',')];
-            
-            allDrivers.forEach(driver => {
-                const row = [
-                    driver.name || '',
-                    driver.deliveryBox || '',
-                    driver.company || '',
-                    driver.phone || '',
-                    driver.totalDeliveries || 0,
-                    driver.completedDeliveries || 0,
-                    driver.failedDeliveries || 0,
-                    driver.completionRate || 0,
-                    driver.pickupStatus || '',
-                    driver.delayStatus || '',
-                    driver.region || ''
-                ];
-                csvData.push(row.join(','));
-            });
-            
-            const csvContent = csvData.join('\n');
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
-            const url = URL.createObjectURL(blob);
-            link.setAttribute('href', url);
-            link.setAttribute('download', `딜리래빗_TMS_기사데이터_${new Date().toISOString().split('T')[0]}.csv`);
-            link.style.visibility = 'hidden';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            showAlert('success', '내보내기 완료', 'CSV 파일이 다운로드되었습니다.');
-        }
-
-        function toggleAutoRefresh() {
-            autoRefreshEnabled = !autoRefreshEnabled;
-            const statusEl = document.getElementById('autoRefreshStatus');
-            
-            if (autoRefreshEnabled) {
-                statusEl.textContent = 'ON';
-                if (autoRefreshInterval) clearInterval(autoRefreshInterval);
-                autoRefreshInterval = setInterval(loadGitHubData, 300000);
-                showAlert('success', '자동 새로고침 ON', '5분마다 자동으로 데이터를 새로고침합니다.');
-            } else {
-                statusEl.textContent = 'OFF';
-                if (autoRefreshInterval) {
-                    clearInterval(autoRefreshInterval);
-                    autoRefreshInterval = null;
-                }
-                showAlert('info', '자동 새로고침 OFF', '수동으로만 데이터를 새로고침할 수 있습니다.');
-            }
-        }
-
-        function showNotifications() {
-            if (!tmsData || !tmsData.stats) {
-                showAlert('info', '알림', '데이터를 먼저 로드해주세요.');
-                return;
-            }
-            
-            const notifications = [];
-            
-            if (tmsData.stats.delayedCount > 0) {
-                notifications.push(`⚠️ 지연 기사 ${tmsData.stats.delayedCount}명`);
-            }
-            
-            if (tmsData.stats.notPickupCount > 0) {
-                notifications.push(`📦 미픽업 기사 ${tmsData.stats.notPickupCount}명`);
-            }
-            
-            if (tmsData.stats.overallCompletionRate < 80) {
-                notifications.push(`📉 전체 완료율 ${tmsData.stats.overallCompletionRate}% (주의 필요)`);
-            }
-            
-            if (notifications.length === 0) {
-                showAlert('success', '알림', '현재 특별한 알림이 없습니다. 모든 상황이 정상입니다.');
-            } else {
-                showAlert('warning', '상황 알림', notifications.join('\n'));
-            }
-            
-            document.getElementById('notificationCount').textContent = notifications.length;
-        }
-
-        function updateNotificationCount() {
-            if (!tmsData || !tmsData.stats) {
-                document.getElementById('notificationCount').textContent = '0';
-                return;
-            }
-            
-            let count = 0;
-            if (tmsData.stats.delayedCount > 0) count++;
-            if (tmsData.stats.notPickupCount > 0) count++;
-            if (tmsData.stats.overallCompletionRate < 80) count++;
-            
-            document.getElementById('notificationCount').textContent = count;
-        }
-
-        // 가이드 표시/숨기기 함수
-            // 기존 showGuide 함수를 이렇게 변경
-function showGuide() {
-    // 인터랙티브 가이드가 있으면 그것을 실행
-    if (typeof interactiveGuide !== 'undefined' && interactiveGuide) {
-        interactiveGuide.start();
-    } else {
-        // 없으면 기존 모달 가이드 실행
-        const guideOverlay = document.getElementById('guideOverlay');
-        if (guideOverlay) {
-            guideOverlay.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-    }
-}
-
-        function hideGuide() {
-            const guideOverlay = document.getElementById('guideOverlay');
-            if (guideOverlay) {
-                guideOverlay.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // 가이드 오버레이 클릭 시 닫기 (모달 영역 외부 클릭)
-        document.addEventListener('click', function(event) {
-            const guideOverlay = document.getElementById('guideOverlay');
-            const guideModal = document.querySelector('.guide-modal');
-            
-            if (guideOverlay && event.target === guideOverlay) {
-                hideGuide();
-            }
-        });
-
-        // ==================== 인터랙티브 가이드 시스템 ====================
-class InteractiveGuide {
-    constructor() {
-        this.currentStep = 0;
-        this.isActive = false;
-        this.steps = [
-            {
-                target: '.stats-section',
-                title: '📊 실시간 통계 대시보드',
-                content: '좌측 사이드바에서 총 배송건수, 완료율, 활성 기사 수 등 주요 지표를 실시간으로 확인할 수 있습니다.',
-                position: 'left'
-            },
-            {
-                target: '#map',
-                title: '🗺️ 지도 기반 관제',
-                content: '지도에서 기사들의 실시간 위치와 상태를 시각적으로 파악할 수 있습니다.\n\n• 회색: 완료율 100%\n• 초록: 정상 진행\n• 주황: 미픽업 상태\n• 빨강: 지연 발생',
-                position: 'top'
-            },
-            {
-                target: '#driverSearch',
-                title: '🔍 통합 검색',
-                content: '기사명이나 전화번호로 빠르게 검색할 수 있습니다. 검색어를 입력하면 실시간으로 필터링됩니다.',
-                position: 'bottom'
-            },
-            {
-                target: '#controlFilter',
-                title: '⚠️ 관제 상태 필터',
-                content: '지연/미픽업 기사만 별도로 필터링하여 관제가 필요한 기사를 집중 관리할 수 있습니다. 지연 필터 선택 시 완료율 100% 기사는 자동 제외됩니다.',
-                position: 'bottom'
-            },
-            {
-                target: '.driver-table',
-                title: '📋 기사 현황 테이블',
-                content: '모든 기사의 상세 정보를 테이블 형태로 확인할 수 있습니다. 컬럼 헤더를 클릭하면 정렬되며, 기사명을 클릭하면 지도에서 해당 위치로 이동합니다.',
-                position: 'bottom'
-            },
-            {
-                target: '.copy-phone-btn',
-                title: '📞 전화번호 일괄 복사',
-                content: '현재 필터링된 기사들의 전화번호를 한 번에 복사할 수 있습니다. 관제가 필요한 기사들에게 연락할 때 유용합니다.',
-                position: 'right'
-            },
-            {
-                target: '.app-push-btn',
-                title: '📱 App Push 연동',
-                content: 'App Push 버튼으로 기사들에게 직접 알림을 보낼 수 있는 백오피스로 연결됩니다.',
-                position: 'right'
-            },
-            {
-                target: '#regionList',
-                title: '🗺️ 지역별 수행률',
-                content: '지역을 클릭하면 해당 지역의 모든 기사를 지도에서 확인할 수 있습니다. 지역별 완료율과 진행 상황을 한눈에 파악하세요.',
-                position: 'right'
-            },
-            {
-                target: '.map-controls',
-                title: '⚡ 지도 컨트롤',
-                content: '전체보기로 초기 위치로 돌아가거나, 지도 스타일을 변경할 수 있습니다. 클러스터 핀을 클릭하면 확대되어 개별 기사를 볼 수 있습니다.',
-                position: 'right'
-            }
-        ];
-        this.init();
-    }
-
-    init() {
-        this.createOverlay();
-        this.createTooltip();
-        this.createHighlight();
-    }
-
-    createOverlay() {
-        const overlay = document.createElement('div');
-        overlay.className = 'guide-overlay-interactive';
-        overlay.id = 'guideOverlayInteractive';
-        document.body.appendChild(overlay);
-        this.overlay = overlay;
-    }
-
-    createTooltip() {
-        const tooltip = document.createElement('div');
-        tooltip.className = 'guide-tooltip';
-        tooltip.id = 'guideTooltip';
-        tooltip.innerHTML = `
-            <div class="guide-tooltip-arrow"></div>
-            <div class="guide-tooltip-header">
-                <span class="guide-tooltip-icon"></span>
-                <span class="guide-tooltip-title"></span>
-            </div>
-            <div class="guide-tooltip-content"></div>
-            <div class="guide-tooltip-footer">
-                <div class="guide-step-info"></div>
-                <div class="guide-buttons">
-                    <button class="guide-btn guide-btn-skip">건너뛰기</button>
-                    <button class="guide-btn guide-btn-prev" style="display: none;">이전</button>
-                    <button class="guide-btn guide-btn-next">다음</button>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(tooltip);
-        this.tooltip = tooltip;
-
-        tooltip.querySelector('.guide-btn-skip').addEventListener('click', () => this.end());
-        tooltip.querySelector('.guide-btn-prev').addEventListener('click', () => this.prev());
-        tooltip.querySelector('.guide-btn-next').addEventListener('click', () => this.next());
-    }
-
-    createHighlight() {
-        const highlight = document.createElement('div');
-        highlight.className = 'guide-highlight';
-        highlight.innerHTML = '<div class="guide-highlight-border"></div>';
-        document.body.appendChild(highlight);
-        this.highlight = highlight;
-    }
-
-    start() {
-        if (this.isActive) return;
-        this.isActive = true;
-        this.currentStep = 0;
-        this.overlay.classList.add('active');
-        this.showStep(0);
-    }
-
-    end() {
-        this.isActive = false;
-        this.overlay.classList.remove('active');
-        this.tooltip.classList.remove('active');
-        this.highlight.style.display = 'none';
-        localStorage.setItem('tms_guide_completed', 'true');
-    }
-
-    next() {
-        if (this.currentStep < this.steps.length - 1) {
-            this.currentStep++;
-            this.showStep(this.currentStep);
-        } else {
-            this.end();
-        }
-    }
-
-    prev() {
-        if (this.currentStep > 0) {
-            this.currentStep--;
-            this.showStep(this.currentStep);
-        }
-    }
-
-    showStep(stepIndex) {
-        const step = this.steps[stepIndex];
-        const target = document.querySelector(step.target);
-
-        if (!target) {
-            console.warn(`가이드 대상을 찾을 수 없습니다: ${step.target}`);
-            this.next();
-            return;
-        }
-
-        this.highlightElement(target);
-        this.positionTooltip(target, step);
-
-        const titleParts = step.title.match(/^(.*?)\s(.+)$/);
-        const icon = titleParts ? titleParts[1] : '';
-        const title = titleParts ? titleParts[2] : step.title;
-
-        this.tooltip.querySelector('.guide-tooltip-icon').textContent = icon;
-        this.tooltip.querySelector('.guide-tooltip-title').textContent = title;
-        this.tooltip.querySelector('.guide-tooltip-content').textContent = step.content;
-        this.tooltip.querySelector('.guide-step-info').textContent = `${stepIndex + 1} / ${this.steps.length}`;
-
-        const prevBtn = this.tooltip.querySelector('.guide-btn-prev');
-        const nextBtn = this.tooltip.querySelector('.guide-btn-next');
-
-        if (stepIndex === 0) {
-            prevBtn.style.display = 'none';
-        } else {
-            prevBtn.style.display = 'inline-block';
-        }
-
-        if (stepIndex === this.steps.length - 1) {
-            nextBtn.textContent = '완료';
-            nextBtn.className = 'guide-btn guide-btn-finish';
-        } else {
-            nextBtn.textContent = '다음';
-            nextBtn.className = 'guide-btn guide-btn-next';
-        }
-
-        setTimeout(() => {
-            this.tooltip.classList.add('active');
-        }, 100);
-    }
-
-    highlightElement(element) {
-        const rect = element.getBoundingClientRect();
-        this.highlight.style.display = 'block';
-        this.highlight.style.top = rect.top + 'px';
-        this.highlight.style.left = rect.left + 'px';
-        this.highlight.style.width = rect.width + 'px';
-        this.highlight.style.height = rect.height + 'px';
-    }
-
-    positionTooltip(target, step) {
-        const rect = target.getBoundingClientRect();
-        const tooltip = this.tooltip;
-        const arrow = tooltip.querySelector('.guide-tooltip-arrow');
-        
-        tooltip.classList.remove('active');
-        arrow.className = 'guide-tooltip-arrow';
-
-        setTimeout(() => {
-            const tooltipRect = tooltip.getBoundingClientRect();
-            let top, left;
-
-            switch (step.position) {
-                case 'right':
-                    top = rect.top + (rect.height / 2) - (tooltipRect.height / 2);
-                    left = rect.right + 20;
-                    arrow.classList.add('left');
-                    break;
-                case 'left':
-                    top = rect.top + (rect.height / 2) - (tooltipRect.height / 2);
-                    left = rect.left - tooltipRect.width - 20;
-                    arrow.classList.add('right');
-                    break;
-                case 'bottom':
-                    top = rect.bottom + 20;
-                    left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
-                    arrow.classList.add('top');
-                    break;
-                case 'top':
-                    top = rect.top - tooltipRect.height - 20;
-                    left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
-                    arrow.classList.add('bottom');
-                    break;
-            }
-
-            const padding = 20;
-            if (left < padding) left = padding;
-            if (left + tooltipRect.width > window.innerWidth - padding) {
-                left = window.innerWidth - tooltipRect.width - padding;
-            }
-            if (top < padding) top = padding;
-            if (top + tooltipRect.height > window.innerHeight - padding) {
-                top = window.innerHeight - tooltipRect.height - padding;
-            }
-
-            tooltip.style.top = top + 'px';
-            tooltip.style.left = left + 'px';
-        }, 50);
-    }
-}
-
-let interactiveGuide;
-// ==================== 인터랙티브 가이드 시스템 끝 ====================
+        // 초기화
         document.addEventListener('DOMContentLoaded', function() {
-    // 인터랙티브 가이드 초기화 (맨 위에 추가)
-    interactiveGuide = new InteractiveGuide();
-    
-    console.log('딜리래빗 TMS 시스템 시작...');
-    // ... 기존 코드 계속
-            
-            if (typeof L !== 'undefined') {
-                initializeMap();
-                
-                if (autoRefreshEnabled) {
-                    autoRefreshInterval = setInterval(loadGitHubData, 300000);
-                }
-            } else {
-                console.error('Leaflet 라이브러리를 찾을 수 없습니다.');
-                showAlert('error', '시스템 오류', 'Leaflet 지도 라이브러리를 불러올 수 없습니다.');
-            }
+            initMap();
+            loadGitHubData();
+            setupAutoRefresh();
         });
-    </script>
-</body>
-</html>
+
+        // 지도 초기화
+        function initMap() {
+            map = L.map('map').setView([37.5665, 126.9780], 11);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+
+            // 마커 클러스터 초기화
+            markerCluster = L.markerClusterGroup({
+                maxClusterRadius: 40,
+                disableClusteringAtZoom: 13,
+                spiderfyOnMaxZoom: false,
+                showCoverageOnHover: false,
+                zoomToBoundsOnClick: true,
+                iconCreateFunction: function(cluster) {
+                    const childCount = cluster.getChildCount();
+                    let size = childCount < 10 ? 'small' : childCount < 25 ? 'medium' : 'large';
+                    
+                    return new L.DivIcon({
+                        html: `<div style="
+                            background: linear-gradient(135deg, #6e6eff 0%, #3770cc 100%);
+                            width: ${size === 'small' ? 30 : size === 'medium' ? 35 : 40}px;
+                            height: ${size === 'small' ? 30 : size === 'medium' ? 35 : 40}px;
+                            border-radius: 50%;
+                            border: 2px solid white;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: white;
+                            font-weight: 700;
+                            font-size: ${size === 'small' ? 12 : size === 'medium' ? 14 : 16}px;
+                            box-shadow: 0 2px 8px rgba(110, 110, 255, 0.4);
+                        ">${childCount}</div>`,
+                        className: `marker-cluster marker-cluster-${size}`,
+                        iconSize: new L.Point(40, 40)
+                    });
+                }
+            });
+            map.addLayer(markerCluster);
+        }
