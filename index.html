@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>딜리래빗 TMS v3.1 (Refactored)</title>
+  <title>딜리래빗 TMS v3.1.1</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"/>
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"/>
@@ -52,6 +52,9 @@
     .panel-header-left{display:flex;align-items:center;gap:12px}
     .toggle-btn{width:24px;height:24px;border:1px solid #d1d1d6;border-radius:4px;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;transition:.2s}
     .panel-title{font-size:14px;font-weight:600;color:#1d1d1f}
+    /* 전체 기사 수 칩 */
+    .count-chip{display:flex;align-items:center;gap:6px;background:#fff;border:1px solid #e5e5e5;border-radius:999px;padding:6px 10px;font-size:12px;color:#666}
+    .count-chip strong{color:#1d1d1f}
     .panel-header-right{display:flex;align-items:center;gap:12px}
     .filter-bar{display:flex;align-items:center;gap:8px}
     .search-input{width:200px;padding:8px 12px;border:1px solid #d1d1d6;border-radius:6px;font-size:13px;outline:none}
@@ -96,7 +99,7 @@
     .guide-tooltip{position:fixed;background:linear-gradient(135deg,#6e6eff 0%,#5555dd 100%);color:#fff;padding:20px;border-radius:12px;max-width:350px;z-index:10001;box-shadow:0 8px 32px rgba(110,110,255,.4);opacity:0;transform:scale(.9);transition:.2s}
     .guide-tooltip.active{opacity:1;transform:scale(1)}
     .guide-tooltip-header{font-size:18px;font-weight:700;margin-bottom:12px}
-    .guide-tooltip-content{font-size:14px;line-height:1.6;margin-bottom:16px}
+    .guide-tooltip-content{font-size:14px;line-height:1.6;margin-bottom:16px;white-space:pre-line}
     .guide-buttons{display:flex;gap:8px;justify-content:space-between}
     .guide-btn{padding:8px 16px;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;transition:.2s}
     .guide-btn-skip{background:rgba(255,255,255,.2);color:#fff}.guide-btn-next{background:#fff;color:#6e6eff}.guide-btn-finish{background:#34c759;color:#fff}
@@ -136,7 +139,6 @@
 
       <div class="tabs-container">
         <nav class="tabs-nav">
-          <!-- [REF] 이벤트 객체 전달 -->
           <button class="tab active" onclick="switchTab(event,'monitor')">실시간관제</button>
           <button class="tab" onclick="switchTab(event,'drivers')">기사관리</button>
           <button class="tab" onclick="switchTab(event,'regions')">지역현황</button>
@@ -160,7 +162,6 @@
       <div id="map"></div>
       <div class="map-controls">
         <button class="map-btn" onclick="resetMapView()" title="전체보기">🌍</button>
-        <!-- [REF] 지도 스타일 버튼 삭제 -->
         <button class="map-btn" onclick="showGuide()" title="가이드">📖</button>
       </div>
     </main>
@@ -170,21 +171,25 @@
         <div class="panel-header-left">
           <button class="toggle-btn" id="toggleBtn" onclick="event.stopPropagation();toggleBottomPanel()">▲</button>
           <h3 class="panel-title">상세 현황</h3>
+          <!-- 전체 기사 수 칩 -->
+          <div class="count-chip" onclick="event.stopPropagation()">
+            전체 기사 수 <strong id="totalCountChip">0명</strong>
+          </div>
         </div>
         <div class="panel-header-right">
           <div class="filter-bar" onclick="event.stopPropagation()">
-            <!-- [REF] onkeyup → oninput + 디바운스 -->
             <input type="text" class="search-input" placeholder="기사명, 전화번호 검색" id="driverSearch">
             <select class="filter-select" id="controlFilter" onchange="applyFilters()">
               <option value="">전체 관제</option><option value="지연">지연</option><option value="미픽업">미픽업</option>
             </select>
             <select class="filter-select" id="companyFilter" onchange="applyFilters()"><option value="">전체 운송사</option></select>
             <select class="filter-select" id="regionFilter" onchange="applyFilters()"><option value="">전체 지역</option></select>
-            <button class="btn-sm" onclick="resetFilters()">↻ 초기화</button>
+            <button class="btn-sm" onclick="event.stopPropagation();resetFilters()">↻ 초기화</button>
           </div>
-          <button class="btn-sm" onclick="copyPhoneNumbers()">📞 번호복사</button>
-          <button class="btn-sm" onclick="openAppPush()">📱 App Push</button>
-          <button class="btn-sm" onclick="exportData()">📥 내보내기</button>
+          <!-- 버튼들: 패널 토글 방지 -->
+          <button class="btn-sm" onclick="event.stopPropagation();copyPhoneNumbers()">📞 번호복사</button>
+          <button class="btn-sm" onclick="event.stopPropagation();openAppPush()">📱 App Push</button>
+          <button class="btn-sm" onclick="event.stopPropagation();exportData()">📥 내보내기</button>
           <span style="margin-left:12px;font-size:13px;color:#666;"><strong id="visibleCount">0</strong> / <span id="totalCount">0</span></span>
         </div>
       </div>
@@ -235,7 +240,7 @@
   <script>
     // ========= 전역 =========
     let map, markerCluster;
-    let driverMarkers = new Map();      // [REF] Map으로 변경
+    let driverMarkers = new Map();
     let tmsData = null;
     let allDrivers = [];
     let sortOrder = {};
@@ -243,38 +248,37 @@
     let autoRefreshInterval = null;
     let currentGuideStep = 0;
     let isGuideActive = false;
+    let wasPanelOpenBeforeGuide = null;   // [NEW] 가이드 시작 전 상태 저장
 
-    // [REF] 검색 성능용 인덱스 & DOM 캐시
-    let searchIndex = [];               // {id, nameL, nameNS, phoneD}
+    // 검색 인덱스 & DOM 캐시
+    let searchIndex = [];
     let rowById = new Map();
     let lastFilteredIds = null;
 
     const GITHUB_CONFIG = { owner:'jace-githu', repo:'delivus-tms', path:'data/tms_data.json', branch:'main' };
 
+    // === 기능 위주 가이드 (슬림화) ===
     const guideSteps = [
-      { element: '.brand-header', title: '🚀 딜리래빗 TMS 시작', content: '딜리래빗 TMS는 실시간 배송 관제 시스템입니다.' },
-      { element: '.dashboard-section', title: '📊 실시간 대시보드', content: '핵심 지표를 한눈에 확인합니다.' },
-      { element: '.tabs-nav', title: '📑 메뉴 탭', content: '탭 전환으로 다양한 정보를 확인하세요.' },
-      { element: '#driverSearch', title: '🔍 통합 검색', content: '기사명·전화번호 검색. 입력 시 디바운스 적용.' },
-      { element: '.filter-bar', title: '🎯 필터링', content: '관제/운송사/지역별 필터를 제공합니다.' },
-      { element: '#map', title: '🗺️ 지도 관제', content: '마커 색상으로 상태를 구분합니다.' },
-      { element: '.map-controls', title: '🎛️ 지도 컨트롤', content: '전체보기, 가이드 버튼을 제공합니다.' },
-      { element: '.driver-table', title: '📋 상세 테이블', content: '정렬/포커스 지원.' },
-      { element: '.panel-header-right', title: '⚡ 빠른 액션', content: '번호복사, App Push, CSV 내보내기.' },
-      { element: '.btn-refresh', title: '🔄 데이터 새로고침', content: '5분마다 자동 갱신.' }
+      { element: '.dashboard-section', title: '📊 대시보드', content: '총 배송/완료/지연 등 핵심 지표를 즉시 확인합니다.' },
+      { element: '.tabs-nav',         title: '📑 탭 전환', content: '실시간관제/기사관리/지역현황/통계분석으로 필요한 정보를 빠르게 찾습니다.' },
+      { element: '#map',              title: '🗺️ 지도 관제', content: '마커 색상 의미\n• 회색 100% 완료\n• 초록 정상\n• 주황 미픽업\n• 빨강 지연' },
+      { element: '.map-controls',     title: '🎛️ 지도 컨트롤', content: '🌍 전체보기, 📖 가이드 호출이 가능합니다.' },
+      { element: '.panel-header',     title: '▼ 상세 현황 열기', content: '클릭하여 하단 상세 테이블을 펼칩니다.', openBottomPanel: true },
+      { element: '#driverSearch',     title: '🔍 통합 검색', content: '기사명/전화번호 검색 시 테이블과 지도가 함께 필터링됩니다.', openBottomPanel: true },
+      { element: '.filter-bar',       title: '🎯 필터', content: '관제 상태/운송사/지역별로 좁혀보기. ↻ 초기화로 원복.', openBottomPanel: true },
+      { element: '.driver-table',     title: '📋 정렬·포커스', content: '헤더 클릭 정렬, 기사명 클릭 시 지도에서 위치 포커스.', openBottomPanel: true },
+      { element: '.panel-header-right',title:'⚡ 빠른 액션', content:'📞번호복사 / 📱App Push / 📥CSV 내보내기', openBottomPanel: true }
     ];
 
     // ========= 유틸 =========
-    const debounce = (fn, delay=200) => {
-      let t; return (...args) => { clearTimeout(t); t = setTimeout(()=>fn(...args), delay); };
-    };
+    const debounce = (fn, delay=200) => { let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args),delay); }; };
     const clamp = (v,min,max)=>Math.max(min,Math.min(max,v));
     const toDigits = s => (s||'').replace(/[^0-9]/g,'');
 
     // ========= 초기화 =========
     document.addEventListener('DOMContentLoaded', () => {
       initMap();
-      bindSearchInput();     // [REF]
+      bindSearchInput();
       loadGitHubData();
       startAutoRefresh();
       setupSearchFocus();
@@ -314,7 +318,6 @@
     // ========= 데이터 로드 =========
     async function loadGitHubData(){
       try{
-        showToast('info','데이터 로딩','서버에서 데이터를 가져오는 중...');
         const url = `https://raw.githubusercontent.com/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/${GITHUB_CONFIG.branch}/${GITHUB_CONFIG.path}?t=${Date.now()}`;
         const res = await fetch(url);
         if(!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -322,12 +325,12 @@
         tmsData = JSON.parse(rawText);
         allDrivers = tmsData.drivers||[];
 
-        buildSearchIndex();            // [REF]
+        buildSearchIndex();
         updateDashboard();
         updateTabs();
-        renderDriverTable();           // [REF] (fragment 렌더)
+        renderDriverTable();
         updateFilterOptions();
-        showDriversOnMap(allDrivers,true); // [REF] firstLoad=true → 강제 갱신
+        showDriversOnMap(allDrivers,true);
 
         showToast('success','데이터 로드 완료',`${allDrivers.length}명의 기사 정보를 불러왔습니다.`);
       }catch(e){
@@ -371,9 +374,13 @@
       });
       tbody.innerHTML = '';
       tbody.appendChild(frag);
+
+      // 총/가시 수 갱신 + 칩 업데이트
       document.getElementById('totalCount').textContent = allDrivers.length;
       document.getElementById('visibleCount').textContent = allDrivers.length;
-      lastFilteredIds = new Set(allDrivers.map(d=>d.id)); // [REF]
+      document.getElementById('totalCountChip').textContent = `${allDrivers.length}명`;
+
+      lastFilteredIds = new Set(allDrivers.map(d=>d.id));
     }
 
     // ========= 대시보드/탭/필터 =========
@@ -433,7 +440,6 @@
     // ========= 지도 마커 =========
     function showDriversOnMap(drivers, force=false){
       if(!map||!drivers) return;
-      // [REF] 필터 변화량이 작으면 skip (재빌드 비용 절감)
       const newIds = new Set(drivers.map(d=>d.id));
       const same = lastFilteredIds && newIds.size===lastFilteredIds.size && [...newIds].every(id=>lastFilteredIds.has(id));
       if(!force && same) return;
@@ -459,7 +465,7 @@
         driverMarkers.set(d.id, mk);
       }
       if(markers.length) markerCluster.addLayers(markers);
-      lastFilteredIds = newIds; // [REF]
+      lastFilteredIds = newIds;
     }
 
     // ========= 검색/필터 =========
@@ -467,10 +473,10 @@
       const handler = debounce(()=>{
         const term = driverSearch.value.trim().toLowerCase();
         if(!term){
-          // 전체 표시
           for(const [id,row] of rowById.entries()) row.classList.remove('filtered-out');
           visibleCount.textContent = allDrivers.length;
-          showDriversOnMap(allDrivers); // 변화량 체크 내장
+          document.getElementById('totalCountChip').textContent = `${allDrivers.length}명`;
+          showDriversOnMap(allDrivers);
           return;
         }
         const termNS = term.replace(/\s+/g,'');
@@ -478,7 +484,6 @@
 
         let visible = 0;
         const matchedIds = [];
-        // [REF] 인덱스 기반 매칭 (O(n))
         for(const ix of searchIndex){
           const nameMatch = ix.nameL.includes(term) || ix.nameNS.includes(termNS) || [...term].every(c=>ix.nameL.includes(c));
           const phoneMatch = termD && ix.phoneD.includes(termD);
@@ -489,11 +494,7 @@
           else  { row.classList.add('filtered-out'); }
         }
         visibleCount.textContent = visible;
-        // [REF] 결과가 너무 짧거나 term 길이≥2일 때만 지도 업데이트
-        if(term.length>=2 || visible<=300){
-          const drivers = allDrivers.filter(d=>matchedIds.includes(d.id));
-          showDriversOnMap(drivers);
-        }
+        showDriversOnMap(allDrivers.filter(d=>matchedIds.includes(d.id)));
       },200);
       driverSearch.addEventListener('input', handler);
     }
@@ -509,11 +510,12 @@
         return a && b && c;
       });
 
-      // 표시/숨김만 토글 (DOM 재생성 없음)
       for(const [id,row] of rowById.entries()){
         row.classList.toggle('filtered-out', !filtered.some(d=>d.id===id));
       }
       visibleCount.textContent = filtered.length;
+      // 총 칩은 전체 수를 표현(요청사항), 유지
+      document.getElementById('totalCountChip').textContent = `${allDrivers.length}명`;
       showDriversOnMap(filtered);
     }
 
@@ -521,6 +523,7 @@
       controlFilter.value=''; companyFilter.value=''; regionFilter.value=''; driverSearch.value='';
       for(const [_,row] of rowById.entries()) row.classList.remove('filtered-out');
       visibleCount.textContent = allDrivers.length;
+      document.getElementById('totalCountChip').textContent = `${allDrivers.length}명`;
       showDriversOnMap(allDrivers);
       showToast('success','필터 초기화','모든 필터가 해제되었습니다.');
     }
@@ -533,16 +536,17 @@
       document.getElementById(`tab-${tabName}`).classList.add('active');
     }
 
-    function toggleBottomPanel(){
-      bottomPanelOpen = !bottomPanelOpen;
-      bottomPanel.classList.toggle('open');
-      toggleBtn.textContent = bottomPanelOpen ? '▼' : '▲';
+    function toggleBottomPanel(force){
+      const wantOpen = (typeof force==='boolean') ? force : !bottomPanelOpen;
+      bottomPanelOpen = wantOpen;
+      bottomPanel.classList.toggle('open', wantOpen);
+      toggleBtn.textContent = wantOpen ? '▼' : '▲';
       if(map) setTimeout(()=>map.invalidateSize(),300);
     }
 
     function setupSearchFocus(){
       const si = document.getElementById('driverSearch');
-      si.addEventListener('focus', ()=>{ if(!bottomPanelOpen) toggleBottomPanel(); });
+      si.addEventListener('focus', ()=>{ if(!bottomPanelOpen) toggleBottomPanel(true); });
     }
 
     // ========= 포커스/정렬 =========
@@ -577,8 +581,8 @@
         return order==='asc' ? (A>B?1:-1) : (A<B?1:-1);
       });
       allDrivers=sorted;
-      renderDriverTable(); // 재그리되지만 fragment로 빠름
-      applyFilters();      // 정렬 후 현 필터 유지
+      renderDriverTable();
+      applyFilters();
     }
 
     // ========= 액션 =========
@@ -630,59 +634,71 @@
       else showToast('warning','상황 알림',msgs.join(' | '));
     }
 
-    // ========= 가이드 (툴팁 오프스크린 방지) =========
+    // ========= 가이드 (자동 패널 오픈/복원 & 오프스크린 방지) =========
     function showGuide(){
-      isGuideActive=true; currentGuideStep=0;
+      isGuideActive = true;
+      currentGuideStep = 0;
+      wasPanelOpenBeforeGuide = bottomPanelOpen;       // 상태 저장
       guideOverlay.classList.add('active');
       showGuideStep(0);
     }
+
     function showGuideStep(i){
       if(i>=guideSteps.length){ endGuide(); return; }
       const step=guideSteps[i];
-      const el=document.querySelector(step.element);
-      if(!el){ nextGuide(); return; }
 
-      // 대상 중앙으로 스크롤
-      el.scrollIntoView({behavior:'smooth',block:'center',inline:'center'});
-
-      const rect=el.getBoundingClientRect();
-      const highlight=document.getElementById('guideHighlight');
-      highlight.style.top=rect.top+'px';
-      highlight.style.left=rect.left+'px';
-      highlight.style.width=rect.width+'px';
-      highlight.style.height=rect.height+'px';
-      highlight.classList.add('active');
-
-      const tip=document.getElementById('guideTooltip');
-      guideTitle.textContent=step.title;
-      guideContent.textContent=step.content;
-
-      const tipW=350, tipH=140, margin=16;
-      // 기본은 아래쪽
-      let top = rect.bottom + margin;
-      let left = clamp(rect.left, 16, window.innerWidth - tipW - 16);
-      // 아래쪽이 넘치면 위로
-      if(top + tipH > window.innerHeight - 16){
-        top = rect.top - tipH - margin;
+      // 필요 시 하단 패널 자동 오픈
+      if(step.openBottomPanel && !bottomPanelOpen){
+        toggleBottomPanel(true);
       }
-      // 위도 넘치면 화면 상단에 고정
-      if(top < 16) top = 16;
 
-      tip.style.top = `${top}px`;
-      tip.style.left = `${left}px`;
+      // DOM 안정화 후 위치 계산
+      setTimeout(()=>{
+        const el=document.querySelector(step.element);
+        if(!el){ nextGuide(); return; }
 
-      const nextBtn=document.getElementById('guideNext');
-      if(i===guideSteps.length-1){ nextBtn.textContent='완료'; nextBtn.className='guide-btn guide-btn-finish'; }
-      else { nextBtn.textContent='다음'; nextBtn.className='guide-btn guide-btn-next'; }
+        el.scrollIntoView({behavior:'smooth',block:'center',inline:'center'});
 
-      tip.classList.add('active');
+        const rect=el.getBoundingClientRect();
+        const highlight=document.getElementById('guideHighlight');
+        highlight.style.top=rect.top+'px';
+        highlight.style.left=rect.left+'px';
+        highlight.style.width=rect.width+'px';
+        highlight.style.height=rect.height+'px';
+        highlight.classList.add('active');
+
+        const tip=document.getElementById('guideTooltip');
+        guideTitle.textContent=step.title;
+        guideContent.textContent=step.content;
+
+        const tipW=350, tipH=160, margin=16;
+        let top = rect.bottom + margin;
+        let left = clamp(rect.left, 16, window.innerWidth - tipW - 16);
+        if(top + tipH > window.innerHeight - 16){ top = rect.top - tipH - margin; }
+        if(top < 16) top = 16;
+
+        tip.style.top = `${top}px`;
+        tip.style.left = `${left}px`;
+
+        const nextBtn=document.getElementById('guideNext');
+        if(i===guideSteps.length-1){ nextBtn.textContent='완료'; nextBtn.className='guide-btn guide-btn-finish'; }
+        else { nextBtn.textContent='다음'; nextBtn.className='guide-btn guide-btn-next'; }
+
+        tip.classList.add('active');
+      }, 220); // 패널 애니메이션/레이아웃 반영 후
     }
+
     function nextGuide(){ currentGuideStep++; showGuideStep(currentGuideStep); }
+
     function endGuide(){
       isGuideActive=false;
       guideOverlay.classList.remove('active');
       guideTooltip.classList.remove('active');
       guideHighlight.classList.remove('active');
+      // 패널 상태 복원
+      if(wasPanelOpenBeforeGuide===false && bottomPanelOpen){
+        toggleBottomPanel(false);
+      }
       showToast('success','가이드 종료','가이드를 완료했습니다.');
     }
 
@@ -700,9 +716,9 @@
     }
 
     document.addEventListener('keydown', e=>{
-      if(e.key==='Escape'&&bottomPanelOpen) toggleBottomPanel();
+      if(e.key==='Escape'&&bottomPanelOpen) toggleBottomPanel(false);
       if((e.ctrlKey||e.metaKey)&&e.key==='r'){ e.preventDefault(); loadGitHubData(); }
-      if((e.ctrlKey||e.metaKey)&&e.key==='f'){ e.preventDefault(); if(!bottomPanelOpen) toggleBottomPanel(); driverSearch.focus(); }
+      if((e.ctrlKey||e.metaKey)&&e.key==='f'){ e.preventDefault(); if(!bottomPanelOpen) toggleBottomPanel(true); driverSearch.focus(); }
       if(e.key==='F1'){ e.preventDefault(); showGuide(); }
     });
 
