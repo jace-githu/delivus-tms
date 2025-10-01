@@ -24,7 +24,6 @@
             height: 100vh;
         }
 
-        /* 전체 레이아웃 */
         .app-container {
             display: grid;
             grid-template-areas:
@@ -42,7 +41,6 @@
             grid-template-columns: 22% 1fr 1fr 0;
         }
 
-        /* ==================== 헤더 ==================== */
         .tms-header {
             grid-area: header;
             background: white;
@@ -205,7 +203,6 @@
             background: #f5f5f7;
         }
 
-        /* ==================== 좌측 사이드바 ==================== */
         .left-sidebar {
             grid-area: sidebar;
             background: white;
@@ -260,7 +257,6 @@
             display: block;
         }
 
-        /* 필터 섹션 */
         .filter-section {
             background: #f5f5f7;
             border-radius: 8px;
@@ -307,7 +303,6 @@
             background: #f5f5f7;
         }
 
-        /* 빠른 통계 카드 */
         .quick-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -334,7 +329,6 @@
             color: #3170f9;
         }
 
-        /* 알림 리스트 */
         .alert-list {
             margin-bottom: 16px;
         }
@@ -373,7 +367,6 @@
             font-weight: 600;
         }
 
-        /* 기사 카드 */
         .driver-cards {
             display: flex;
             flex-direction: column;
@@ -424,7 +417,6 @@
         .status-pickup { background: #d1f4e0; color: #0f5132; }
         .status-not-pickup { background: #fff3cd; color: #856404; }
 
-        /* 액션 바 */
         .action-bar {
             display: flex;
             justify-content: space-between;
@@ -458,7 +450,6 @@
             border-color: #3170f9;
         }
 
-        /* 지역 리스트 */
         .region-list {
             display: flex;
             flex-direction: column;
@@ -498,7 +489,6 @@
             font-size: 14px;
         }
 
-        /* ==================== 중앙 지도 ==================== */
         .map-container {
             grid-area: map;
             position: relative;
@@ -583,7 +573,6 @@
             gap: 8px;
         }
 
-        /* ==================== 우측 패널 ==================== */
         .right-panel {
             grid-area: right;
             background: white;
@@ -625,7 +614,6 @@
             font-size: 12px;
         }
 
-        /* ==================== 하단 패널 ==================== */
         .bottom-panel {
             grid-area: bottom;
             background: white;
@@ -650,12 +638,6 @@
 
         .bottom-panel .panel-header:hover {
             background: #f5f5f7;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
         }
 
         .toggle-btn {
@@ -692,7 +674,6 @@
             border-color: #3170f9;
         }
 
-        /* 테이블 */
         .table-container {
             overflow-x: auto;
             overflow-y: auto;
@@ -760,7 +741,6 @@
             text-decoration: underline;
         }
 
-        /* 지역 그리드 */
         .regions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -768,7 +748,6 @@
             padding: 16px;
         }
 
-        /* 마커 클러스터 커스터마이징 */
         .marker-cluster-small,
         .marker-cluster-medium,
         .marker-cluster-large {
@@ -797,7 +776,6 @@
             justify-content: center;
         }
 
-        /* 토스트 */
         .toast {
             position: fixed;
             bottom: 24px;
@@ -850,7 +828,159 @@
             color: #666;
         }
 
-        /* 스크롤바 */
+        /* 인터랙티브 가이드 */
+        .guide-overlay-interactive {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 10000;
+            display: none;
+        }
+
+        .guide-overlay-interactive.active {
+            display: block;
+        }
+
+        .guide-tooltip {
+            position: fixed;
+            background: linear-gradient(135deg, #3170f9 0%, #1e56d8 100%);
+            color: white;
+            padding: 20px 24px;
+            border-radius: 16px;
+            max-width: 350px;
+            z-index: 10001;
+            box-shadow: 0 8px 32px rgba(49, 112, 249, 0.4);
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .guide-tooltip.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .guide-tooltip-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .guide-tooltip-content {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            white-space: pre-line;
+        }
+
+        .guide-tooltip-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .guide-step-info {
+            font-size: 12px;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .guide-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .guide-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .guide-btn-skip {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .guide-btn-skip:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .guide-btn-prev {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .guide-btn-prev:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .guide-btn-next {
+            background: white;
+            color: #3170f9;
+        }
+
+        .guide-btn-next:hover {
+            background: #f0f0ff;
+        }
+
+        .guide-btn-finish {
+            background: #34c759;
+            color: white;
+        }
+
+        .guide-btn-finish:hover {
+            background: #26c464;
+        }
+
+        .guide-highlight {
+            position: fixed;
+            z-index: 9999;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .guide-highlight-border {
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 3px solid #3170f9;
+            border-radius: 12px;
+            box-shadow: 0 0 0 4px rgba(49, 112, 249, 0.3),
+                        0 0 20px rgba(49, 112, 249, 0.5);
+            animation: guide-pulse 2s infinite;
+        }
+
+        @keyframes guide-pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 4px rgba(49, 112, 249, 0.3),
+                           0 0 20px rgba(49, 112, 249, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 0 8px rgba(49, 112, 249, 0.2),
+                           0 0 30px rgba(49, 112, 249, 0.7);
+            }
+        }
+
+        /* 하단 패널 액션 버튼 추가 */
+        .bottom-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
@@ -869,7 +999,6 @@
             background: #86868b;
         }
 
-        /* 반응형 */
         @media (max-width: 1400px) {
             .app-container {
                 grid-template-columns: 25% 1fr 1fr 0;
@@ -902,7 +1031,6 @@
 </head>
 <body>
     <div class="app-container" id="appContainer">
-        <!-- 헤더 -->
         <header class="tms-header">
             <div class="header-left">
                 <div class="logo">
@@ -942,22 +1070,20 @@
                     🔔
                     <span class="badge" id="notificationCount">0</span>
                 </button>
-                <button class="btn btn-secondary" onclick="loadGitHubData()">새로고침</button>
                 <button class="btn btn-primary" onclick="openAppPush()">App Push</button>
             </div>
         </header>
 
-        <!-- 좌측 사이드바 -->
         <aside class="left-sidebar">
             <nav class="tabs-nav">
                 <button class="tab active" onclick="switchTab('monitor')">📊 실시간 관제</button>
                 <button class="tab" onclick="switchTab('drivers')">👤 기사 관리</button>
                 <button class="tab" onclick="switchTab('regions')">🗺️ 지역별 현황</button>
                 <button class="tab" onclick="switchTab('stats')">📈 통계 분석</button>
+                <button class="btn btn-secondary" style="margin: 8px; margin-top: auto;" onclick="loadGitHubData()">🔄 데이터 새로고침</button>
             </nav>
 
             <div class="tab-contents">
-                <!-- 실시간 관제 탭 -->
                 <div id="tab-monitor" class="tab-pane active">
                     <div class="filter-section">
                         <input type="text" class="search-input" placeholder="기사명, 전화번호 검색" id="driverSearch" onkeyup="searchDrivers()">
@@ -1000,7 +1126,6 @@
                     </div>
                 </div>
 
-                <!-- 기사 관리 탭 -->
                 <div id="tab-drivers" class="tab-pane">
                     <div class="action-bar">
                         <span class="count">총 <strong id="driverCount">0</strong>명</span>
@@ -1009,12 +1134,10 @@
                     <div class="driver-cards" id="driverCardsList"></div>
                 </div>
 
-                <!-- 지역별 현황 탭 -->
                 <div id="tab-regions" class="tab-pane">
                     <div class="region-list" id="regionList"></div>
                 </div>
 
-                <!-- 통계 분석 탭 -->
                 <div id="tab-stats" class="tab-pane">
                     <div class="section-title">운송사별 성과</div>
                     <div id="companyStats"></div>
@@ -1026,7 +1149,6 @@
             </div>
         </aside>
 
-        <!-- 중앙 지도 -->
         <main class="map-container">
             <div id="map"></div>
             
@@ -1052,11 +1174,10 @@
             </div>
         </main>
 
-        <!-- 우측 패널 -->
         <aside class="right-panel collapsed" id="rightPanel">
             <div class="panel-header">
                 <h3>빠른 분석</h3>
-                <button class="btn-icon" onclick="toggleRightPanel()">✕</button>
+                <button class="icon-btn" onclick="toggleRightPanel()">✕</button>
             </div>
             <div class="panel-content">
                 <div class="detail-view" id="detailView">
@@ -1066,7 +1187,6 @@
             </div>
         </aside>
 
-        <!-- 하단 패널 -->
         <div class="bottom-panel" id="bottomPanel">
             <div class="panel-header" onclick="toggleBottomPanel()">
                 <div class="header-left">
@@ -1078,13 +1198,16 @@
                     </div>
                 </div>
                 <div class="header-right">
-                    <span class="count"><strong id="visibleCount">0</strong> / <span id="totalCount">0</span></span>
-                    <button class="btn-sm" onclick="exportData()">📥 내보내기</button>
+                    <div class="bottom-actions">
+                        <span class="count"><strong id="visibleCount">0</strong> / <span id="totalCount">0</span></span>
+                        <button class="btn-sm" onclick="copyPhoneNumbers()">📞 번호복사</button>
+                        <button class="btn-sm" onclick="openAppPush()">📱 App Push</button>
+                        <button class="btn-sm" onclick="exportData()">📥 내보내기</button>
+                    </div>
                 </div>
             </div>
 
             <div class="panel-content">
-                <!-- 기사 현황 테이블 -->
                 <div id="bottom-drivers" class="table-container">
                     <table class="driver-table">
                         <thead>
@@ -1108,13 +1231,11 @@
                     </table>
                 </div>
 
-                <!-- 지역 통계 -->
                 <div id="bottom-regions" class="regions-grid" style="display: none;"></div>
             </div>
         </div>
     </div>
 
-    <!-- 토스트 -->
     <div id="toast" class="toast">
         <div class="toast-content">
             <div class="toast-title" id="toastTitle">알림</div>
@@ -1122,8 +1243,27 @@
         </div>
     </div>
 
+    <div class="guide-overlay-interactive" id="guideOverlayInteractive"></div>
+    <div class="guide-tooltip" id="guideTooltip">
+        <div class="guide-tooltip-header">
+            <span class="guide-tooltip-icon"></span>
+            <span class="guide-tooltip-title"></span>
+        </div>
+        <div class="guide-tooltip-content"></div>
+        <div class="guide-tooltip-footer">
+            <div class="guide-step-info"></div>
+            <div class="guide-buttons">
+                <button class="guide-btn guide-btn-skip">건너뛰기</button>
+                <button class="guide-btn guide-btn-prev" style="display: none;">이전</button>
+                <button class="guide-btn guide-btn-next">다음</button>
+            </div>
+        </div>
+    </div>
+    <div class="guide-highlight" id="guideHighlight">
+        <div class="guide-highlight-border"></div>
+    </div>
+
     <script>
-        // 전역 변수
         let map;
         let driverMarkers = {};
         let markerCluster;
@@ -1136,6 +1276,7 @@
         let rightPanelOpen = false;
         let bottomTab = 'drivers';
         let autoRefreshInterval = null;
+        let interactiveGuide;
 
         const GITHUB_CONFIG = {
             owner: 'jace-githu',
@@ -1144,14 +1285,13 @@
             branch: 'main'
         };
 
-        // 초기화
         document.addEventListener('DOMContentLoaded', function() {
             initMap();
             loadGitHubData();
             startAutoRefresh();
+            interactiveGuide = new InteractiveGuide();
         });
 
-        // 지도 초기화
         function initMap() {
             map = L.map('map').setView([37.5665, 126.9780], 11);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -1170,7 +1310,6 @@
             }
         }
 
-        // GitHub 데이터 로드
         async function loadGitHubData() {
             try {
                 showToast('info', '데이터 로딩', '서버에서 데이터를 가져오는 중...');
@@ -1200,7 +1339,6 @@
             }
         }
 
-        // 대시보드 업데이트
         function updateDashboard() {
             if (!tmsData) return;
             
@@ -1216,7 +1354,6 @@
             document.getElementById('failedDeliveries').textContent = (stats.failedDeliveries || 0) + '건';
             document.getElementById('notificationCount').textContent = (stats.delayedCount || 0) + (stats.notPickupCount || 0);
 
-            // 관제 필요 목록
             const alertDrivers = allDrivers.filter(d => 
                 d.delayStatus === '지연' || d.pickupStatus === '미픽업'
             ).slice(0, 5);
@@ -1234,12 +1371,9 @@
             `).join('') : '<div style="text-align: center; padding: 20px; color: #86868b;">관제가 필요한 기사가 없습니다 ✓</div>';
 
             document.getElementById('alertDriversList').innerHTML = alertHtml;
-
-            // 기사 카드 리스트
             updateDriverCards();
         }
 
-        // 기사 카드 업데이트
         function updateDriverCards() {
             const html = allDrivers.slice(0, 20).map(driver => `
                 <div class="driver-card" onclick="focusOnDriver('${driver.id}')">
@@ -1259,7 +1393,6 @@
             document.getElementById('driverCount').textContent = allDrivers.length;
         }
 
-        // 기사 테이블 업데이트
         function updateDriverTable() {
             const tbody = document.getElementById('driverTableBody');
             if (!tbody || !allDrivers.length) return;
@@ -1285,7 +1418,6 @@
             document.getElementById('visibleCount').textContent = allDrivers.length;
         }
 
-        // 지역 리스트 업데이트
         function updateRegionList() {
             if (!tmsData || !tmsData.regions) return;
 
@@ -1306,7 +1438,6 @@
             document.getElementById('bottom-regions').innerHTML = html;
         }
 
-        // 필터 옵션 업데이트
         function updateFilterOptions() {
             const companies = [...new Set(allDrivers.map(d => d.company).filter(c => c))].sort();
             const regions = [...new Set(allDrivers.map(d => d.region).filter(r => r))].sort();
@@ -1320,7 +1451,6 @@
                 regions.map(r => `<option value="${r}">${r}</option>`).join('');
         }
 
-        // 지도에 기사 마커 표시
         function showDriversOnMap(drivers) {
             if (!map || !drivers) return;
 
@@ -1371,7 +1501,6 @@
             });
         }
 
-        // 탭 전환
         function switchTab(tabName) {
             document.querySelectorAll('.tabs-nav .tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
@@ -1380,7 +1509,6 @@
             document.getElementById(`tab-${tabName}`).classList.add('active');
         }
 
-        // 하단 패널 탭 전환
         function switchBottomTab(tabName) {
             bottomTab = tabName;
             document.querySelectorAll('.tabs-mini .tab').forEach(t => t.classList.remove('active'));
@@ -1390,7 +1518,6 @@
             document.getElementById('bottom-regions').style.display = tabName === 'regions' ? 'block' : 'none';
         }
 
-        // 하단 패널 토글
         function toggleBottomPanel() {
             bottomPanelOpen = !bottomPanelOpen;
             const panel = document.getElementById('bottomPanel');
@@ -1405,14 +1532,18 @@
             if (map) setTimeout(() => map.invalidateSize(), 300);
         }
 
-        // 우측 패널 토글
         function toggleRightPanel() {
             rightPanelOpen = !rightPanelOpen;
             const panel = document.getElementById('rightPanel');
             const container = document.getElementById('appContainer');
             
-            panel.classList.toggle('collapsed');
-            container.classList.toggle('right-collapsed');
+            if (rightPanelOpen) {
+                panel.classList.remove('collapsed');
+                container.classList.remove('right-collapsed');
+            } else {
+                panel.classList.add('collapsed');
+                container.classList.add('right-collapsed');
+            }
             
             document.getElementById('rightPanelText').textContent = 
                 rightPanelOpen ? '📊 분석 닫기' : '📊 분석 열기';
@@ -1420,7 +1551,6 @@
             if (map) setTimeout(() => map.invalidateSize(), 300);
         }
 
-        // 필터 적용
         function applyFilters() {
             const controlFilter = document.getElementById('controlFilter').value;
             const companyFilter = document.getElementById('companyFilter').value;
@@ -1446,7 +1576,6 @@
             document.getElementById('visibleCount').textContent = filtered.length;
         }
 
-        // 테이블 필터링
         function updateDriverTableFiltered(drivers) {
             const tbody = document.getElementById('driverTableBody');
             const allRows = tbody.querySelectorAll('tr');
@@ -1459,7 +1588,6 @@
             });
         }
 
-        // 검색
         function searchDrivers() {
             const searchTerm = document.getElementById('driverSearch').value.toLowerCase().trim();
             const tbody = document.getElementById('driverTableBody');
@@ -1468,10 +1596,15 @@
             if (!searchTerm) {
                 rows.forEach(row => row.classList.remove('filtered-out'));
                 document.getElementById('visibleCount').textContent = allDrivers.length;
+                
+                // 지도 리셋
+                showDriversOnMap(allDrivers);
                 return;
             }
 
             let visibleCount = 0;
+            const visibleDrivers = [];
+            
             rows.forEach(row => {
                 const driverId = row.getAttribute('data-driver-id');
                 const driver = allDrivers.find(d => d.id === driverId);
@@ -1483,6 +1616,7 @@
                     if (nameMatch || phoneMatch) {
                         row.classList.remove('filtered-out');
                         visibleCount++;
+                        visibleDrivers.push(driver);
                     } else {
                         row.classList.add('filtered-out');
                     }
@@ -1490,9 +1624,11 @@
             });
 
             document.getElementById('visibleCount').textContent = visibleCount;
+            
+            // 검색 결과에 따라 지도 업데이트
+            showDriversOnMap(visibleDrivers);
         }
 
-        // 필터 초기화
         function resetFilters() {
             document.getElementById('controlFilter').value = '';
             document.getElementById('companyFilter').value = '';
@@ -1507,7 +1643,6 @@
             showToast('success', '필터 초기화', '모든 필터가 해제되었습니다.');
         }
 
-        // 기사 포커스
         function focusOnDriver(driverId) {
             const driver = allDrivers.find(d => d.id === driverId);
             if (!driver || !driver.coordinates) {
@@ -1521,7 +1656,6 @@
                 setTimeout(() => marker.openPopup(), 500);
             }
 
-            // 우측 패널에 상세 정보 표시
             if (!rightPanelOpen) toggleRightPanel();
             
             document.getElementById('detailView').innerHTML = `
@@ -1545,7 +1679,6 @@
             showToast('success', '기사 포커스', `${driver.name} 기사 위치로 이동했습니다.`);
         }
 
-        // 지역 포커스
         function focusOnRegion(regionName) {
             document.getElementById('regionFilter').value = regionName;
             applyFilters();
@@ -1569,7 +1702,6 @@
             showToast('success', `${regionName} 지역`, `${regionName} 지역으로 포커스했습니다.`);
         }
 
-        // 테이블 정렬
         function sortTable(column) {
             if (!allDrivers.length) return;
 
@@ -1605,7 +1737,6 @@
             updateSortIcons(column);
         }
 
-        // 정렬 아이콘 업데이트
         function updateSortIcons(activeColumn) {
             const headers = document.querySelectorAll('.driver-table th');
             const columns = ['name', 'deliveryBox', 'company', 'phone', 'totalDeliveries', 'completedDeliveries', 'failedDeliveries', 'completionRate', 'pickupStatus', 'delayStatus', 'region'];
@@ -1625,7 +1756,6 @@
             });
         }
 
-        // 전화번호 복사
         function copyPhoneNumbers() {
             const visibleDrivers = getVisibleDrivers();
             const phoneNumbers = visibleDrivers
@@ -1651,7 +1781,6 @@
             });
         }
 
-        // 보이는 기사 가져오기
         function getVisibleDrivers() {
             const tbody = document.getElementById('driverTableBody');
             const visibleRows = tbody.querySelectorAll('tr:not(.filtered-out)[data-driver-id]');
@@ -1666,7 +1795,6 @@
             return visibleDrivers;
         }
 
-        // 지도 초기화
         function resetMapView() {
             if (!map) return;
             map.setView([37.5665, 126.9780], 11);
@@ -1674,7 +1802,6 @@
             showToast('success', '전체 지도', '전체 지도 보기로 돌아갔습니다.');
         }
 
-        // 지도 스타일 토글
         function toggleMapStyle() {
             if (!map) return;
 
@@ -1702,19 +1829,18 @@
             newLayer.addTo(map);
         }
 
-        // 가이드 표시
         function showGuide() {
-            showToast('info', '사용 가이드', '딜리래빗 TMS v2.0 - 좌측 탭에서 기능을 선택하고, 지도에서 기사를 클릭하면 상세 정보를 확인할 수 있습니다.');
+            if (interactiveGuide) {
+                interactiveGuide.start();
+            }
         }
 
-        // App Push 열기
         function openAppPush() {
             const url = 'https://backoffice.drabbit.co.kr/apps/4a42193c-c779-11ef-aa21-cf70a380470e/Backoffice%202.1%20-%20Page/%ED%91%B8%EC%89%AC';
             window.open(url, '_blank');
             showToast('success', 'App Push', 'App Push 페이지를 새 탭에서 열었습니다.');
         }
 
-        // 데이터 내보내기
         function exportData() {
             if (!allDrivers.length) {
                 showToast('warning', '데이터 없음', '내보낼 데이터가 없습니다.');
@@ -1724,7 +1850,7 @@
             const headers = ['기사명', '배송박스', '운송사', '전화번호', '총건수', '완료', '실패', '완료율', '픽업여부', '지연상태', '지역'];
             const csvData = [headers.join(',')];
 
-            const driversToExport = currentFilteredDrivers.length > 0 ? currentFilteredDrivers : allDrivers;
+            const driversToExport = currentFilteredDrivers.length > 0 ? currentFilteredDrivers : getVisibleDrivers();
 
             driversToExport.forEach(driver => {
                 const row = [
@@ -1757,7 +1883,6 @@
             showToast('success', '내보내기 완료', `${driversToExport.length}명의 기사 데이터가 CSV 파일로 다운로드되었습니다.`);
         }
 
-        // 알림 표시
         function showNotifications() {
             if (!tmsData || !tmsData.stats) {
                 showToast('info', '알림', '데이터를 먼저 로드해주세요.');
@@ -1785,16 +1910,14 @@
             }
         }
 
-        // 자동 새로고침
         function startAutoRefresh() {
             if (autoRefreshInterval) clearInterval(autoRefreshInterval);
             autoRefreshInterval = setInterval(() => {
                 console.log('자동 새로고침 실행...');
                 loadGitHubData();
-            }, 300000); // 5분
+            }, 300000);
         }
 
-        // 토스트 표시
         function showToast(type, title, message) {
             const toast = document.getElementById('toast');
             toast.className = `toast ${type} active`;
@@ -1806,33 +1929,198 @@
             }, 3000);
         }
 
-        // 전체 새로고침
-        function refreshAll() {
-            loadGitHubData();
+        // 인터랙티브 가이드 클래스
+        class InteractiveGuide {
+            constructor() {
+                this.currentStep = 0;
+                this.isActive = false;
+                this.steps = [
+                    {
+                        target: '.filter-section',
+                        title: '🔍 검색 및 필터',
+                        content: '기사명이나 전화번호로 검색하고, 관제 상태별로 필터링할 수 있습니다.',
+                        position: 'right'
+                    },
+                    {
+                        target: '#map',
+                        title: '🗺️ 지도 기반 관제',
+                        content: '지도에서 기사들의 실시간 위치를 확인할 수 있습니다.\n\n• 회색: 완료율 100%\n• 초록: 정상 진행\n• 주황: 미픽업\n• 빨강: 지연',
+                        position: 'left'
+                    },
+                    {
+                        target: '.driver-table',
+                        title: '📋 상세 테이블',
+                        content: '기사명을 클릭하면 지도에서 해당 위치로 이동합니다. 컬럼 헤더를 클릭하면 정렬됩니다.',
+                        position: 'top'
+                    },
+                    {
+                        target: '.bottom-actions',
+                        title: '⚡ 빠른 액션',
+                        content: '전화번호 복사, App Push 발송, 데이터 내보내기를 빠르게 실행할 수 있습니다.',
+                        position: 'top'
+                    },
+                    {
+                        target: '#regionList',
+                        title: '🗺️ 지역별 현황',
+                        content: '지역을 클릭하면 해당 지역의 모든 기사를 지도에서 확인할 수 있습니다.',
+                        position: 'right'
+                    }
+                ];
+                this.init();
+            }
+
+            init() {
+                this.overlay = document.getElementById('guideOverlayInteractive');
+                this.tooltip = document.getElementById('guideTooltip');
+                this.highlight = document.getElementById('guideHighlight');
+
+                this.tooltip.querySelector('.guide-btn-skip').addEventListener('click', () => this.end());
+                this.tooltip.querySelector('.guide-btn-prev').addEventListener('click', () => this.prev());
+                this.tooltip.querySelector('.guide-btn-next').addEventListener('click', () => this.next());
+            }
+
+            start() {
+                if (this.isActive) return;
+                this.isActive = true;
+                this.currentStep = 0;
+                this.overlay.classList.add('active');
+                this.showStep(0);
+            }
+
+            end() {
+                this.isActive = false;
+                this.overlay.classList.remove('active');
+                this.tooltip.classList.remove('active');
+                this.highlight.style.display = 'none';
+            }
+
+            next() {
+                if (this.currentStep < this.steps.length - 1) {
+                    this.currentStep++;
+                    this.showStep(this.currentStep);
+                } else {
+                    this.end();
+                }
+            }
+
+            prev() {
+                if (this.currentStep > 0) {
+                    this.currentStep--;
+                    this.showStep(this.currentStep);
+                }
+            }
+
+            showStep(stepIndex) {
+                const step = this.steps[stepIndex];
+                const target = document.querySelector(step.target);
+
+                if (!target) {
+                    console.warn(`가이드 대상을 찾을 수 없습니다: ${step.target}`);
+                    this.next();
+                    return;
+                }
+
+                this.highlightElement(target);
+                this.positionTooltip(target, step);
+
+                const titleParts = step.title.match(/^(.*?)\s(.+)$/);
+                const icon = titleParts ? titleParts[1] : '';
+                const title = titleParts ? titleParts[2] : step.title;
+
+                this.tooltip.querySelector('.guide-tooltip-icon').textContent = icon;
+                this.tooltip.querySelector('.guide-tooltip-title').textContent = title;
+                this.tooltip.querySelector('.guide-tooltip-content').textContent = step.content;
+                this.tooltip.querySelector('.guide-step-info').textContent = `${stepIndex + 1} / ${this.steps.length}`;
+
+                const prevBtn = this.tooltip.querySelector('.guide-btn-prev');
+                const nextBtn = this.tooltip.querySelector('.guide-btn-next');
+
+                prevBtn.style.display = stepIndex === 0 ? 'none' : 'inline-block';
+
+                if (stepIndex === this.steps.length - 1) {
+                    nextBtn.textContent = '완료';
+                    nextBtn.className = 'guide-btn guide-btn-finish';
+                } else {
+                    nextBtn.textContent = '다음';
+                    nextBtn.className = 'guide-btn guide-btn-next';
+                }
+
+                setTimeout(() => {
+                    this.tooltip.classList.add('active');
+                }, 100);
+            }
+
+            highlightElement(element) {
+                const rect = element.getBoundingClientRect();
+                this.highlight.style.display = 'block';
+                this.highlight.style.top = rect.top + 'px';
+                this.highlight.style.left = rect.left + 'px';
+                this.highlight.style.width = rect.width + 'px';
+                this.highlight.style.height = rect.height + 'px';
+            }
+
+            positionTooltip(target, step) {
+                const rect = target.getBoundingClientRect();
+                const tooltip = this.tooltip;
+                
+                tooltip.classList.remove('active');
+
+                setTimeout(() => {
+                    const tooltipRect = tooltip.getBoundingClientRect();
+                    let top, left;
+
+                    switch (step.position) {
+                        case 'right':
+                            top = rect.top + (rect.height / 2) - (tooltipRect.height / 2);
+                            left = rect.right + 20;
+                            break;
+                        case 'left':
+                            top = rect.top + (rect.height / 2) - (tooltipRect.height / 2);
+                            left = rect.left - tooltipRect.width - 20;
+                            break;
+                        case 'bottom':
+                            top = rect.bottom + 20;
+                            left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+                            break;
+                        case 'top':
+                            top = rect.top - tooltipRect.height - 20;
+                            left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+                            break;
+                    }
+
+                    const padding = 20;
+                    if (left < padding) left = padding;
+                    if (left + tooltipRect.width > window.innerWidth - padding) {
+                        left = window.innerWidth - tooltipRect.width - padding;
+                    }
+                    if (top < padding) top = padding;
+                    if (top + tooltipRect.height > window.innerHeight - padding) {
+                        top = window.innerHeight - tooltipRect.height - padding;
+                    }
+
+                    tooltip.style.top = top + 'px';
+                    tooltip.style.left = left + 'px';
+                }, 50);
+            }
         }
 
-        // 키보드 단축키
         document.addEventListener('keydown', function(e) {
-            // ESC: 패널 닫기
             if (e.key === 'Escape') {
                 if (bottomPanelOpen) toggleBottomPanel();
                 if (rightPanelOpen) toggleRightPanel();
             }
 
-            // Ctrl/Cmd + R: 새로고침
             if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
                 e.preventDefault();
                 loadGitHubData();
             }
 
-            // Ctrl/Cmd + F: 검색 포커스
             if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
                 e.preventDefault();
                 document.getElementById('driverSearch').focus();
             }
         });
 
-        // 윈도우 리사이즈 시 지도 크기 조정
         window.addEventListener('resize', function() {
             if (map) {
                 setTimeout(() => map.invalidateSize(), 300);
