@@ -1,15 +1,15 @@
 {
   "stats": {
     "totalOrders": 8773,
-    "completedDeliveries": 6,
+    "completedDeliveries": 21,
     "failedDeliveries": 0,
-    "inProgress": 8767,
-    "activeDrivers": 4,
-    "totalDrivers": 110,
-    "notPickupCount": 106,
+    "inProgress": 8752,
+    "activeDrivers": 11,
+    "totalDrivers": 120,
+    "notPickupCount": 109,
     "delayedCount": 0,
     "avgDeliveryTime": "약 45분",
-    "overallCompletionRate": 0.1
+    "overallCompletionRate": 0.2
   },
   "drivers": [
     {
@@ -26,8 +26,8 @@
       "region": "고양시",
       "fullRegion": "경기도 고양시 덕양구",
       "coordinates": [
-        37.66415636172091,
-        126.83802819204337
+        37.66241871816547,
+        126.82296203694673
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -38,7 +38,7 @@
       "boxId": 396312,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.974Z",
+      "lastUpdate": "2025-10-18T08:33:44.392Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -68,7 +68,7 @@
       "boxId": 396331,
       "lastAddr1": "경기도 고양시 일산동구 성석로 57",
       "lastAddr2": "우강프린스 103호",
-      "lastUpdate": "2025-10-18T08:28:41.977Z",
+      "lastUpdate": "2025-10-18T08:33:44.402Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -98,7 +98,7 @@
       "boxId": 396326,
       "lastAddr1": "경기도 고양시 일산동구 성석로 57",
       "lastAddr2": "우강프린스 103호",
-      "lastUpdate": "2025-10-18T08:28:41.977Z",
+      "lastUpdate": "2025-10-18T08:33:44.402Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -116,8 +116,8 @@
       "region": "광명시",
       "fullRegion": "경기도 광명시",
       "coordinates": [
-        37.47603415438538,
-        126.86534467906365
+        37.48070978303022,
+        126.86992895621935
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -128,7 +128,7 @@
       "boxId": 396283,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.977Z",
+      "lastUpdate": "2025-10-18T08:33:44.403Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -152,13 +152,13 @@
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "",
-      "acceptTime": "",
+      "acceptTime": "Invalid Date",
       "startTime": "",
       "typing": "",
       "boxId": 396294,
       "lastAddr1": "경기도 군포시 엘에스로 143 힐스테이트 금정역 201동 2712호",
       "lastAddr2": "경기 군포시 엘에스로 143 힐스테이트 금정역 201동 2712호",
-      "lastUpdate": "2025-10-18T08:28:41.977Z",
+      "lastUpdate": "2025-10-18T08:33:44.403Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -188,7 +188,7 @@
       "boxId": 396327,
       "lastAddr1": "경기도 고양시 덕양구 화신로 76",
       "lastAddr2": "108동 1601호",
-      "lastUpdate": "2025-10-18T08:28:41.977Z",
+      "lastUpdate": "2025-10-18T08:33:44.403Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -218,7 +218,7 @@
       "boxId": 396150,
       "lastAddr1": "경기도 남양주시 다산중앙로 113",
       "lastAddr2": "라페온빌 1104호",
-      "lastUpdate": "2025-10-18T08:28:41.977Z",
+      "lastUpdate": "2025-10-18T08:33:44.403Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -248,7 +248,7 @@
       "boxId": 396191,
       "lastAddr1": "경기도 남양주시 다산중앙로 113",
       "lastAddr2": "라페온빌 1104호",
-      "lastUpdate": "2025-10-18T08:28:41.977Z",
+      "lastUpdate": "2025-10-18T08:33:44.403Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -278,7 +278,7 @@
       "boxId": 396078,
       "lastAddr1": "서울특별시 구로구 고척로21나길 48-80",
       "lastAddr2": "1동 403호",
-      "lastUpdate": "2025-10-18T08:28:41.977Z",
+      "lastUpdate": "2025-10-18T08:33:44.403Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -308,7 +308,7 @@
       "boxId": 396149,
       "lastAddr1": "서울특별시 구로구 고척로21나길 48-80",
       "lastAddr2": "1동 403호",
-      "lastUpdate": "2025-10-18T08:28:41.977Z",
+      "lastUpdate": "2025-10-18T08:33:44.403Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -338,7 +338,7 @@
       "boxId": 396256,
       "lastAddr1": "서울특별시 구로구 고척로21나길 48-80",
       "lastAddr2": "1동 403호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -368,7 +368,7 @@
       "boxId": 396305,
       "lastAddr1": "경기도 성남시 분당구 성남대로779번길 52",
       "lastAddr2": "3층 엠디그린피부과",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -380,27 +380,27 @@
       "company": "주로지스분당",
       "phone": "010-4682-4484",
       "totalDeliveries": 19,
-      "completedDeliveries": 0,
+      "completedDeliveries": 1,
       "failedDeliveries": 0,
-      "inProgress": 19,
+      "inProgress": 18,
       "region": "성남시",
       "fullRegion": "경기도 성남시 분당구",
       "coordinates": [
-        37.36508,
-        127.11992
+        37.35492,
+        127.11821
       ],
-      "pickupStatus": "미픽업",
+      "pickupStatus": "픽업",
       "delayStatus": "정상",
-      "lastDeliveryTime": "",
+      "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "",
+      "typing": "-00:02:16",
       "boxId": 396339,
-      "lastAddr1": "경기도 성남시 분당구 정자로 143",
-      "lastAddr2": "한솔마을 204동 501호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
-      "completionRate": 0,
-      "status": "pending"
+      "lastAddr1": "경기도 성남시 분당구 돌마로 175",
+      "lastAddr2": "1202호",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
+      "completionRate": 5.3,
+      "status": "active"
     },
     {
       "id": "driver_014",
@@ -428,7 +428,7 @@
       "boxId": 396340,
       "lastAddr1": "경기도 성남시 분당구 분당수서로 477",
       "lastAddr2": "경기도 성남시 분당구 분당수서로 477 (정자동) 20층 HD한국조선해양",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -458,7 +458,7 @@
       "boxId": 396342,
       "lastAddr1": "경기도 성남시 분당구 성남대로172번길 12",
       "lastAddr2": "630호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -488,7 +488,7 @@
       "boxId": 396343,
       "lastAddr1": "경기도 성남시 분당구 양현로 220",
       "lastAddr2": "1101동 1502호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -518,7 +518,7 @@
       "boxId": 396344,
       "lastAddr1": "경기도 성남시 분당구 판교백현로 120",
       "lastAddr2": "310호 (하산운동)",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -530,27 +530,27 @@
       "company": "주로지스분당",
       "phone": "010-7925-3801",
       "totalDeliveries": 35,
-      "completedDeliveries": 0,
+      "completedDeliveries": 1,
       "failedDeliveries": 0,
-      "inProgress": 35,
+      "inProgress": 34,
       "region": "성남시",
       "fullRegion": "경기도 성남시 분당구",
       "coordinates": [
-        37.40665,
-        127.14835
+        37.41493,
+        127.12593
       ],
-      "pickupStatus": "미픽업",
+      "pickupStatus": "픽업",
       "delayStatus": "정상",
-      "lastDeliveryTime": "",
+      "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "",
+      "typing": "-00:00:55",
       "boxId": 396346,
-      "lastAddr1": "경기도 성남시 분당구 야탑로271번길 7",
-      "lastAddr2": "대원빌라302동 107호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
-      "completionRate": 0,
-      "status": "pending"
+      "lastAddr1": "경기도 성남시 분당구 장미로 55",
+      "lastAddr2": "102동 102호",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
+      "completionRate": 2.9,
+      "status": "active"
     },
     {
       "id": "driver_019",
@@ -560,27 +560,27 @@
       "company": "주로지스분당",
       "phone": "010-3750-1666",
       "totalDeliveries": 18,
-      "completedDeliveries": 0,
+      "completedDeliveries": 1,
       "failedDeliveries": 0,
-      "inProgress": 18,
+      "inProgress": 17,
       "region": "성남시",
       "fullRegion": "경기도 성남시 분당구",
       "coordinates": [
-        37.40254,
-        127.10083
+        37.40616,
+        127.11686
       ],
-      "pickupStatus": "미픽업",
+      "pickupStatus": "픽업",
       "delayStatus": "정상",
-      "lastDeliveryTime": "",
+      "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "",
+      "typing": "-00:02:27",
       "boxId": 396348,
-      "lastAddr1": "경기도 성남시 분당구 판교로 242 8층",
-      "lastAddr2": "경기 성남시 분당구 판교로 242 8층",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
-      "completionRate": 0,
-      "status": "pending"
+      "lastAddr1": "경기도 성남시 분당구 삼평동 713",
+      "lastAddr2": "423호",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
+      "completionRate": 5.6,
+      "status": "active"
     },
     {
       "id": "driver_020",
@@ -608,7 +608,7 @@
       "boxId": 396319,
       "lastAddr1": "경기도 성남시 수정구 고등공원로 19",
       "lastAddr2": "102동 305호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -619,10 +619,10 @@
       "workType": "BLUE",
       "company": "주로지스수정중원",
       "phone": "010-5843-4550",
-      "totalDeliveries": 89,
+      "totalDeliveries": 22,
       "completedDeliveries": 0,
       "failedDeliveries": 0,
-      "inProgress": 89,
+      "inProgress": 22,
       "region": "성남시",
       "fullRegion": "경기도 성남시 수정구",
       "coordinates": [
@@ -638,21 +638,81 @@
       "boxId": 396309,
       "lastAddr1": "경기도 성남시 수정구 고등공원로 19",
       "lastAddr2": "102동 305호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
       "id": "driver_022",
+      "name": "송일기",
+      "deliveryBox": "S분당-키67",
+      "workType": "BLUE",
+      "company": "주로지스수정중원",
+      "phone": "010-3735-7384",
+      "totalDeliveries": 22,
+      "completedDeliveries": 0,
+      "failedDeliveries": 0,
+      "inProgress": 22,
+      "region": "성남시",
+      "fullRegion": "경기도 성남시 수정구",
+      "coordinates": [
+        37.43193,
+        127.15628
+      ],
+      "pickupStatus": "미픽업",
+      "delayStatus": "정상",
+      "lastDeliveryTime": "",
+      "acceptTime": "Invalid Date",
+      "startTime": "Invalid Date",
+      "typing": "",
+      "boxId": 396376,
+      "lastAddr1": "경기도 성남시 중원구 둔촌대로349번길 6",
+      "lastAddr2": "1층(대문비번1355)",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
+      "completionRate": 0,
+      "status": "pending"
+    },
+    {
+      "id": "driver_023",
+      "name": "이현태",
+      "deliveryBox": "S분당-소95",
+      "workType": "BLUE",
+      "company": "주로지스수정중원",
+      "phone": "010-5065-5242",
+      "totalDeliveries": 45,
+      "completedDeliveries": 0,
+      "failedDeliveries": 0,
+      "inProgress": 45,
+      "region": "성남시",
+      "fullRegion": "경기도 성남시 수정구",
+      "coordinates": [
+        37.45461,
+        127.14526
+      ],
+      "pickupStatus": "미픽업",
+      "delayStatus": "정상",
+      "lastDeliveryTime": "",
+      "acceptTime": "Invalid Date",
+      "startTime": "Invalid Date",
+      "typing": "",
+      "boxId": 396381,
+      "lastAddr1": "경기도 성남시 수정구 수정로 319",
+      "lastAddr2": "113동 1105호",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
+      "completionRate": 0,
+      "status": "pending"
+    },
+    {
+      "id": "driver_024",
       "name": "정충서",
       "deliveryBox": "중원-보37",
       "workType": "BLUE",
       "company": "주로지스수정중원",
       "phone": "010-5843-4550",
-      "totalDeliveries": 98,
+      "totalDeliveries": 20,
       "completedDeliveries": 0,
       "failedDeliveries": 0,
-      "inProgress": 98,
+      "inProgress": 20,
       "region": "성남시",
       "fullRegion": "경기도 성남시 중원구",
       "coordinates": [
@@ -668,12 +728,102 @@
       "boxId": 396318,
       "lastAddr1": "경기도 성남시 수정구 고등공원로 19",
       "lastAddr2": "102동 305호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_023",
+      "id": "driver_025",
+      "name": "장성훈",
+      "deliveryBox": "S분당-부33",
+      "workType": "BLUE",
+      "company": "주로지스수정중원",
+      "phone": "010-4940-0324",
+      "totalDeliveries": 37,
+      "completedDeliveries": 0,
+      "failedDeliveries": 0,
+      "inProgress": 37,
+      "region": "성남시",
+      "fullRegion": "경기도 성남시 중원구",
+      "coordinates": [
+        37.4627,
+        127.17074
+      ],
+      "pickupStatus": "미픽업",
+      "delayStatus": "정상",
+      "lastDeliveryTime": "",
+      "acceptTime": "Invalid Date",
+      "startTime": "Invalid Date",
+      "typing": "",
+      "boxId": 396375,
+      "lastAddr1": "경기도 성남시 중원구 은행동 587-2",
+      "lastAddr2": "101호 (검정대문열고 계단 위)",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
+      "completionRate": 0,
+      "status": "pending"
+    },
+    {
+      "id": "driver_026",
+      "name": "송일기",
+      "deliveryBox": "S분당-키67",
+      "workType": "BLUE",
+      "company": "주로지스수정중원",
+      "phone": "010-3735-7384",
+      "totalDeliveries": 16,
+      "completedDeliveries": 0,
+      "failedDeliveries": 0,
+      "inProgress": 16,
+      "region": "성남시",
+      "fullRegion": "경기도 성남시 중원구",
+      "coordinates": [
+        37.43193,
+        127.15628
+      ],
+      "pickupStatus": "미픽업",
+      "delayStatus": "정상",
+      "lastDeliveryTime": "",
+      "acceptTime": "Invalid Date",
+      "startTime": "Invalid Date",
+      "typing": "",
+      "boxId": 396376,
+      "lastAddr1": "경기도 성남시 중원구 둔촌대로349번길 6",
+      "lastAddr2": "1층(대문비번1355)",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
+      "completionRate": 0,
+      "status": "pending"
+    },
+    {
+      "id": "driver_027",
+      "name": "정남훈",
+      "deliveryBox": "S분당-너84",
+      "workType": "BLUE",
+      "company": "주로지스수정중원",
+      "phone": "010-4696-2915",
+      "totalDeliveries": 25,
+      "completedDeliveries": 0,
+      "failedDeliveries": 0,
+      "inProgress": 25,
+      "region": "성남시",
+      "fullRegion": "경기도 성남시 중원구",
+      "coordinates": [
+        37.43669,
+        127.14313
+      ],
+      "pickupStatus": "미픽업",
+      "delayStatus": "정상",
+      "lastDeliveryTime": "",
+      "acceptTime": "Invalid Date",
+      "startTime": "Invalid Date",
+      "typing": "",
+      "boxId": 396379,
+      "lastAddr1": "경기도 성남시 중원구 광명로134번길 6-5",
+      "lastAddr2": "2층",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
+      "completionRate": 0,
+      "status": "pending"
+    },
+    {
+      "id": "driver_028",
       "name": "이하람",
       "deliveryBox": "권선-로51",
       "workType": "BLUE",
@@ -686,8 +836,8 @@
       "region": "수원시",
       "fullRegion": "경기도 수원시 권선구",
       "coordinates": [
-        37.260299985330825,
-        127.02104675582758
+        37.254889821390755,
+        127.02334240521859
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -698,12 +848,12 @@
       "boxId": 396297,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_024",
+      "id": "driver_029",
       "name": "김기태",
       "deliveryBox": "영통-바85",
       "workType": "BLUE",
@@ -728,12 +878,12 @@
       "boxId": 396301,
       "lastAddr1": "경기도 수원시 영통구 덕영대로 1410",
       "lastAddr2": "108동 701호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_025",
+      "id": "driver_030",
       "name": "윤종영",
       "deliveryBox": "S영통-키60",
       "workType": "BLUE",
@@ -758,42 +908,42 @@
       "boxId": 396360,
       "lastAddr1": "경기도 수원시 영통구 영통로 232",
       "lastAddr2": "803동 1801호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 4.3,
       "status": "active"
     },
     {
-      "id": "driver_026",
+      "id": "driver_031",
       "name": "임경섭",
       "deliveryBox": "S영통-포01",
       "workType": "BLUE",
       "company": "대운로직스영통",
       "phone": "010-2037-3075",
       "totalDeliveries": 19,
-      "completedDeliveries": 0,
+      "completedDeliveries": 3,
       "failedDeliveries": 0,
-      "inProgress": 19,
+      "inProgress": 16,
       "region": "수원시",
       "fullRegion": "경기도 수원시 영통구",
       "coordinates": [
-        37.26742,
-        127.08308
+        37.2674,
+        127.06953
       ],
-      "pickupStatus": "미픽업",
+      "pickupStatus": "픽업",
       "delayStatus": "정상",
-      "lastDeliveryTime": "",
+      "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "",
+      "typing": "-00:00:55",
       "boxId": 396370,
-      "lastAddr1": "경기도 수원시 영통구 봉영로1770번길 21",
-      "lastAddr2": "201-204",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
-      "completionRate": 0,
-      "status": "pending"
+      "lastAddr1": "경기도 수원시 영통구 삼성로320번길 35",
+      "lastAddr2": "영통아크로파크 102동 1302호",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
+      "completionRate": 15.8,
+      "status": "active"
     },
     {
-      "id": "driver_027",
+      "id": "driver_032",
       "name": "이하람",
       "deliveryBox": "장안-피74",
       "workType": "BLUE",
@@ -806,8 +956,8 @@
       "region": "수원시",
       "fullRegion": "경기도 수원시 장안구",
       "coordinates": [
-        37.25828776336478,
-        127.03480535355283
+        37.25853707912975,
+        127.0238196222665
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -818,12 +968,12 @@
       "boxId": 396291,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_028",
+      "id": "driver_033",
       "name": "이하람",
       "deliveryBox": "팔달-도58",
       "workType": "BLUE",
@@ -836,8 +986,8 @@
       "region": "수원시",
       "fullRegion": "경기도 수원시 팔달구",
       "coordinates": [
-        37.2643114517173,
-        127.03435168028393
+        37.25997149852178,
+        127.02208546087613
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -848,12 +998,12 @@
       "boxId": 396296,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_029",
+      "id": "driver_034",
       "name": "김상희",
       "deliveryBox": "남동구-다70",
       "workType": "BLUE",
@@ -866,8 +1016,8 @@
       "region": "시흥북",
       "fullRegion": "경기도 시흥북",
       "coordinates": [
-        37.57459834874398,
-        126.98134631566782
+        37.568213781142475,
+        126.97086935953222
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -878,21 +1028,21 @@
       "boxId": 396328,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_030",
+      "id": "driver_035",
       "name": "김병수",
       "deliveryBox": "동안-포43",
       "workType": "BLUE",
       "company": "대운로직스동안",
       "phone": "010-2956-4151",
-      "totalDeliveries": 143,
+      "totalDeliveries": 139,
       "completedDeliveries": 0,
       "failedDeliveries": 0,
-      "inProgress": 143,
+      "inProgress": 139,
       "region": "안양시",
       "fullRegion": "경기도 안양시 동안구",
       "coordinates": [
@@ -902,27 +1052,57 @@
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "",
-      "acceptTime": "",
+      "acceptTime": "Invalid Date",
       "startTime": "",
       "typing": "",
       "boxId": 396293,
       "lastAddr1": "경기도 안양시 동안구 평촌대로117번길 26-6",
       "lastAddr2": "202호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_031",
+      "id": "driver_036",
+      "name": "박재란",
+      "deliveryBox": "S안양-카39",
+      "workType": "BLUE",
+      "company": "대운로직스동안",
+      "phone": "010-9980-9940",
+      "totalDeliveries": 4,
+      "completedDeliveries": 0,
+      "failedDeliveries": 0,
+      "inProgress": 4,
+      "region": "안양시",
+      "fullRegion": "경기도 안양시 동안구",
+      "coordinates": [
+        37.39883,
+        126.93166
+      ],
+      "pickupStatus": "미픽업",
+      "delayStatus": "정상",
+      "lastDeliveryTime": "",
+      "acceptTime": "Invalid Date",
+      "startTime": "Invalid Date",
+      "typing": "",
+      "boxId": 396422,
+      "lastAddr1": "경기도 안양시 동안구 경수대로 947",
+      "lastAddr2": "102동 1602호",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
+      "completionRate": 0,
+      "status": "pending"
+    },
+    {
+      "id": "driver_037",
       "name": "김기태",
       "deliveryBox": "만안-히48",
       "workType": "BLUE",
       "company": "대운로직스만안",
       "phone": "010-3497-3289",
-      "totalDeliveries": 120,
+      "totalDeliveries": 101,
       "completedDeliveries": 0,
       "failedDeliveries": 0,
-      "inProgress": 120,
+      "inProgress": 101,
       "region": "안양시",
       "fullRegion": "경기도 안양시 만안구",
       "coordinates": [
@@ -932,27 +1112,57 @@
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "",
-      "acceptTime": "",
+      "acceptTime": "Invalid Date",
       "startTime": "",
       "typing": "",
       "boxId": 396289,
       "lastAddr1": "경기도 안양시 만안구 안양동 834-35",
       "lastAddr2": "103호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_032",
+      "id": "driver_038",
+      "name": "한보미",
+      "deliveryBox": "S안양-고61",
+      "workType": "BLUE",
+      "company": "대운로직스만안",
+      "phone": "010-3635-8401",
+      "totalDeliveries": 19,
+      "completedDeliveries": 0,
+      "failedDeliveries": 0,
+      "inProgress": 19,
+      "region": "안양시",
+      "fullRegion": "경기도 안양시 만안구",
+      "coordinates": [
+        37.38523550379085,
+        126.95942931718392
+      ],
+      "pickupStatus": "미픽업",
+      "delayStatus": "정상",
+      "lastDeliveryTime": "",
+      "acceptTime": "Invalid Date",
+      "startTime": "Invalid Date",
+      "typing": "",
+      "boxId": 396413,
+      "lastAddr1": "",
+      "lastAddr2": "",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
+      "completionRate": 0,
+      "status": "pending"
+    },
+    {
+      "id": "driver_039",
       "name": "채보금",
       "deliveryBox": "기흥-주19",
       "workType": "BLUE",
       "company": "주로지스기흥",
       "phone": "010-8115-4909",
-      "totalDeliveries": 173,
+      "totalDeliveries": 84,
       "completedDeliveries": 0,
       "failedDeliveries": 0,
-      "inProgress": 173,
+      "inProgress": 84,
       "region": "용인시",
       "fullRegion": "경기도 용인시 기흥구",
       "coordinates": [
@@ -962,18 +1172,108 @@
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "",
-      "acceptTime": "",
+      "acceptTime": "Invalid Date",
       "startTime": "",
       "typing": "",
       "boxId": 396308,
       "lastAddr1": "경기도 성남시 중원구 도촌남로 101",
       "lastAddr2": "710-1002",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_033",
+      "id": "driver_040",
+      "name": "고만성",
+      "deliveryBox": "S용인-허64",
+      "workType": "BLUE",
+      "company": "주로지스기흥",
+      "phone": "010-6343-1030",
+      "totalDeliveries": 37,
+      "completedDeliveries": 1,
+      "failedDeliveries": 0,
+      "inProgress": 36,
+      "region": "용인시",
+      "fullRegion": "경기도 용인시 기흥구",
+      "coordinates": [
+        37.29778,
+        127.11054
+      ],
+      "pickupStatus": "픽업",
+      "delayStatus": "정상",
+      "lastDeliveryTime": "Invalid Date",
+      "acceptTime": "Invalid Date",
+      "startTime": "Invalid Date",
+      "typing": "-00:00:02",
+      "boxId": 396399,
+      "lastAddr1": "경기도 용인시 기흥구 용구대로2360번길 14",
+      "lastAddr2": "1층",
+      "lastUpdate": "2025-10-18T08:33:44.404Z",
+      "completionRate": 2.7,
+      "status": "active"
+    },
+    {
+      "id": "driver_041",
+      "name": "송인섭",
+      "deliveryBox": "S용인-너11",
+      "workType": "BLUE",
+      "company": "주로지스기흥",
+      "phone": "010-8804-3004",
+      "totalDeliveries": 26,
+      "completedDeliveries": 0,
+      "failedDeliveries": 0,
+      "inProgress": 26,
+      "region": "용인시",
+      "fullRegion": "경기도 용인시 기흥구",
+      "coordinates": [
+        37.27456,
+        127.09274
+      ],
+      "pickupStatus": "미픽업",
+      "delayStatus": "정상",
+      "lastDeliveryTime": "",
+      "acceptTime": "Invalid Date",
+      "startTime": "Invalid Date",
+      "typing": "",
+      "boxId": 396402,
+      "lastAddr1": "경기도 용인시 기흥구 흥덕4로30번길 11",
+      "lastAddr2": "1307동 1501호",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
+      "completionRate": 0,
+      "status": "pending"
+    },
+    {
+      "id": "driver_042",
+      "name": "김셈",
+      "deliveryBox": "S용인-하84",
+      "workType": "BLUE",
+      "company": "주로지스기흥",
+      "phone": "010-9379-6584",
+      "totalDeliveries": 26,
+      "completedDeliveries": 0,
+      "failedDeliveries": 0,
+      "inProgress": 26,
+      "region": "용인시",
+      "fullRegion": "경기도 용인시 기흥구",
+      "coordinates": [
+        37.31977,
+        127.08589
+      ],
+      "pickupStatus": "미픽업",
+      "delayStatus": "정상",
+      "lastDeliveryTime": "",
+      "acceptTime": "Invalid Date",
+      "startTime": "Invalid Date",
+      "typing": "",
+      "boxId": 396403,
+      "lastAddr1": "경기도 용인시 수지구 정평로 41",
+      "lastAddr2": "605동 407호",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
+      "completionRate": 0,
+      "status": "pending"
+    },
+    {
+      "id": "driver_043",
       "name": "채은희",
       "deliveryBox": "수지-포82",
       "workType": "BLUE",
@@ -986,24 +1286,24 @@
       "region": "용인시",
       "fullRegion": "경기도 용인시 수지구",
       "coordinates": [
-        37.563768715058146,
-        126.98569251366763
+        37.57625119194533,
+        126.98007225032097
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "",
-      "acceptTime": "",
+      "acceptTime": "Invalid Date",
       "startTime": "",
       "typing": "",
       "boxId": 396323,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_034",
+      "id": "driver_044",
       "name": "이상진",
       "deliveryBox": "의정부-허21",
       "workType": "BLUE",
@@ -1016,8 +1316,8 @@
       "region": "의정부시",
       "fullRegion": "경기도 의정부시",
       "coordinates": [
-        37.73944717984369,
-        127.04146633884434
+        37.74213588494279,
+        127.03545582832064
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -1028,12 +1328,12 @@
       "boxId": 396307,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_035",
+      "id": "driver_045",
       "name": "서진영",
       "deliveryBox": "하남나-피52",
       "workType": "WHITE",
@@ -1058,12 +1358,12 @@
       "boxId": 396225,
       "lastAddr1": "경기도 하남시 미사강변중앙로 226",
       "lastAddr2": "546호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_036",
+      "id": "driver_046",
       "name": "임성섭",
       "deliveryBox": "화성가-허36",
       "workType": "YELLOW",
@@ -1088,12 +1388,12 @@
       "boxId": 396106,
       "lastAddr1": "경기도 화성시 진안동 697-19",
       "lastAddr2": "이룸하우스 503호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_037",
+      "id": "driver_047",
       "name": "임성섭",
       "deliveryBox": "화성가-저36",
       "workType": "YELLOW",
@@ -1118,12 +1418,12 @@
       "boxId": 396248,
       "lastAddr1": "경기도 화성시 진안동 697-19",
       "lastAddr2": "이룸하우스 503호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_038",
+      "id": "driver_048",
       "name": "이상훈",
       "deliveryBox": "화성나-무37",
       "workType": "BLUE",
@@ -1148,102 +1448,102 @@
       "boxId": 396189,
       "lastAddr1": "경기도 화성시 동탄오산로 29",
       "lastAddr2": "102동3601호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_039",
+      "id": "driver_049",
       "name": "하현미",
       "deliveryBox": "S동탄-지51",
       "workType": "BLUE",
       "company": "로지스탑화성나",
       "phone": "010-2931-6705",
       "totalDeliveries": 16,
-      "completedDeliveries": 2,
+      "completedDeliveries": 5,
       "failedDeliveries": 0,
-      "inProgress": 14,
+      "inProgress": 11,
       "region": "화성나",
       "fullRegion": "경기도 화성나",
       "coordinates": [
-        37.20141,
-        127.06066
+        37.20025,
+        127.06074
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:01:01",
+      "typing": "-00:01:26",
       "boxId": 396352,
       "lastAddr1": "경기도 화성시 동탄공원로1길 6-60",
-      "lastAddr2": "102동305호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
-      "completionRate": 12.5,
+      "lastAddr2": "117-104",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
+      "completionRate": 31.3,
       "status": "active"
     },
     {
-      "id": "driver_040",
+      "id": "driver_050",
       "name": "박은경",
       "deliveryBox": "S동탄-루09",
       "workType": "BLUE",
       "company": "로지스탑화성나",
       "phone": "010-9246-4911",
       "totalDeliveries": 11,
-      "completedDeliveries": 2,
+      "completedDeliveries": 5,
       "failedDeliveries": 0,
-      "inProgress": 9,
+      "inProgress": 6,
       "region": "화성나",
       "fullRegion": "경기도 화성나",
       "coordinates": [
-        37.20129,
-        127.05683
+        37.20355,
+        127.05791
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:00:57",
+      "typing": "-00:02:13",
       "boxId": 396353,
-      "lastAddr1": "경기도 화성시 동탄공원로 21-11",
-      "lastAddr2": "948동 1102호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
-      "completionRate": 18.2,
+      "lastAddr1": "경기도 화성시 동탄공원로 21-12",
+      "lastAddr2": "907동 1401호",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
+      "completionRate": 45.5,
       "status": "active"
     },
     {
-      "id": "driver_041",
+      "id": "driver_051",
       "name": "김민정",
       "deliveryBox": "S동탄-치89",
       "workType": "BLUE",
       "company": "로지스탑화성나",
       "phone": "010-2916-0139",
       "totalDeliveries": 15,
-      "completedDeliveries": 0,
+      "completedDeliveries": 1,
       "failedDeliveries": 0,
-      "inProgress": 15,
+      "inProgress": 14,
       "region": "화성나",
       "fullRegion": "경기도 화성나",
       "coordinates": [
-        37.2089,
-        127.0741
+        37.1992,
+        127.07373
       ],
-      "pickupStatus": "미픽업",
+      "pickupStatus": "픽업",
       "delayStatus": "정상",
-      "lastDeliveryTime": "",
+      "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "",
+      "typing": "-00:01:45",
       "boxId": 396354,
-      "lastAddr1": "경기도 화성시 동탄반석로 229",
-      "lastAddr2": "145동 1004호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
-      "completionRate": 0,
-      "status": "pending"
+      "lastAddr1": "경기도 화성시 동탄반석로 96",
+      "lastAddr2": "406동102호",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
+      "completionRate": 6.7,
+      "status": "active"
     },
     {
-      "id": "driver_042",
+      "id": "driver_052",
       "name": "최현정",
       "deliveryBox": "S동탄-너90",
       "workType": "BLUE",
@@ -1268,42 +1568,42 @@
       "boxId": 396355,
       "lastAddr1": "경기도 화성시 탄요1길 28-46",
       "lastAddr2": "133-101",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 9.1,
       "status": "active"
     },
     {
-      "id": "driver_043",
+      "id": "driver_053",
       "name": "김경숙",
       "deliveryBox": "S동탄-부08",
       "workType": "BLUE",
       "company": "로지스탑화성나",
       "phone": "010-2669-0968",
       "totalDeliveries": 17,
-      "completedDeliveries": 0,
+      "completedDeliveries": 1,
       "failedDeliveries": 0,
-      "inProgress": 17,
+      "inProgress": 16,
       "region": "화성나",
       "fullRegion": "경기도 화성나",
       "coordinates": [
-        37.1801,
-        127.10969
+        37.19752,
+        127.06661
       ],
-      "pickupStatus": "미픽업",
+      "pickupStatus": "픽업",
       "delayStatus": "정상",
-      "lastDeliveryTime": "",
+      "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "",
+      "typing": "-00:01:13",
       "boxId": 396356,
-      "lastAddr1": "경기도 화성시 동탄대로12길 64",
-      "lastAddr2": "1824동 1305호 (오산동,동탄2신도시금강펜테리움센트럴파크Ⅰ)",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
-      "completionRate": 0,
-      "status": "pending"
+      "lastAddr1": "경기도 화성시 동탄중앙로 119-14",
+      "lastAddr2": "502동 903호 (반송동 동탄 센트럴 포레스트)",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
+      "completionRate": 5.9,
+      "status": "active"
     },
     {
-      "id": "driver_044",
+      "id": "driver_054",
       "name": "임성섭",
       "deliveryBox": "화성다-라67",
       "workType": "YELLOW",
@@ -1328,12 +1628,12 @@
       "boxId": 396101,
       "lastAddr1": "경기도 화성시 진안동 697-19",
       "lastAddr2": "이룸하우스 503호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_045",
+      "id": "driver_055",
       "name": "박남기",
       "deliveryBox": "화성다-수61",
       "workType": "WHITE",
@@ -1352,18 +1652,18 @@
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "",
-      "acceptTime": "",
+      "acceptTime": "Invalid Date",
       "startTime": "",
       "typing": "",
       "boxId": 396252,
       "lastAddr1": "경기도 화성시 병점중앙로211번길 11-2",
       "lastAddr2": "305호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_046",
+      "id": "driver_056",
       "name": "임성섭",
       "deliveryBox": "화성다-어61",
       "workType": "YELLOW",
@@ -1388,12 +1688,12 @@
       "boxId": 396265,
       "lastAddr1": "경기도 화성시 진안동 697-19",
       "lastAddr2": "이룸하우스 503호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_047",
+      "id": "driver_057",
       "name": "김가영",
       "deliveryBox": "대덕-니17",
       "workType": "BLUE",
@@ -1406,8 +1706,8 @@
       "region": "대전광역시 대덕구",
       "fullRegion": "대전광역시 대덕구",
       "coordinates": [
-        37.562144717769456,
-        126.98181561304176
+        37.56875368196384,
+        126.98333604574987
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -1418,12 +1718,12 @@
       "boxId": 396316,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_048",
+      "id": "driver_058",
       "name": "김가영",
       "deliveryBox": "대전동구-니04",
       "workType": "BLUE",
@@ -1436,8 +1736,8 @@
       "region": "대전광역시 동구",
       "fullRegion": "대전광역시 동구",
       "coordinates": [
-        37.55815514690541,
-        126.9738785293882
+        37.55963520298065,
+        126.98793830222031
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -1448,12 +1748,12 @@
       "boxId": 396325,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_049",
+      "id": "driver_059",
       "name": "김평호",
       "deliveryBox": "대전서구-디90",
       "workType": "BLUE",
@@ -1478,12 +1778,12 @@
       "boxId": 396314,
       "lastAddr1": "대전 중구 옥계동 25-11",
       "lastAddr2": "1층",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_050",
+      "id": "driver_060",
       "name": "김가영",
       "deliveryBox": "유성-루27",
       "workType": "BLUE",
@@ -1496,8 +1796,8 @@
       "region": "대전광역시 유성구",
       "fullRegion": "대전광역시 유성구",
       "coordinates": [
-        37.5745160038969,
-        126.97371896050676
+        37.5747235389793,
+        126.98184115136569
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -1508,12 +1808,12 @@
       "boxId": 396322,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_051",
+      "id": "driver_061",
       "name": "김평호",
       "deliveryBox": "대전중구-투66",
       "workType": "BLUE",
@@ -1538,12 +1838,12 @@
       "boxId": 396329,
       "lastAddr1": "대전 중구 옥계동 25-11",
       "lastAddr2": "1층",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_052",
+      "id": "driver_062",
       "name": "박상용",
       "deliveryBox": "강남가-모43",
       "workType": "BLUE",
@@ -1568,12 +1868,12 @@
       "boxId": 396313,
       "lastAddr1": "서울특별시 강남구 도곡로37길 8",
       "lastAddr2": "304호",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_053",
+      "id": "driver_063",
       "name": "김동주",
       "deliveryBox": "강동-기38",
       "workType": "BLUE",
@@ -1592,18 +1892,18 @@
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "",
-      "acceptTime": "",
+      "acceptTime": "Invalid Date",
       "startTime": "",
       "typing": "",
       "boxId": 396298,
       "lastAddr1": "서울특별시 강동구 고덕로 333",
       "lastAddr2": ", 136동 702호 (고덕동, 고덕그라시움)",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_054",
+      "id": "driver_064",
       "name": "김부경",
       "deliveryBox": "강북-초71",
       "workType": "WHITE",
@@ -1628,12 +1928,12 @@
       "boxId": 396137,
       "lastAddr1": "서울특별시 서대문구 홍지문길 11",
       "lastAddr2": ", C동 201호 (홍은동, 대진하이츠빌라)",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_055",
+      "id": "driver_065",
       "name": "김부경",
       "deliveryBox": "강북-도61",
       "workType": "WHITE",
@@ -1658,12 +1958,12 @@
       "boxId": 396250,
       "lastAddr1": "서울특별시 서대문구 홍지문길 11",
       "lastAddr2": ", C동 201호 (홍은동, 대진하이츠빌라)",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.405Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_056",
+      "id": "driver_066",
       "name": "정택일",
       "deliveryBox": "관악가-포75",
       "workType": "BLUE",
@@ -1676,8 +1976,8 @@
       "region": "관악가",
       "fullRegion": "서울특별시 관악가",
       "coordinates": [
-        37.55690269772111,
-        126.98392569716088
+        37.576003814296854,
+        126.97742089840867
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -1688,12 +1988,12 @@
       "boxId": 396099,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.406Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_057",
+      "id": "driver_067",
       "name": "정택일",
       "deliveryBox": "관악가-투57",
       "workType": "BLUE",
@@ -1706,8 +2006,8 @@
       "region": "관악가",
       "fullRegion": "서울특별시 관악가",
       "coordinates": [
-        37.56225008518438,
-        126.98073132354686
+        37.571026691965336,
+        126.98619093266265
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -1718,12 +2018,12 @@
       "boxId": 396233,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.406Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_058",
+      "id": "driver_068",
       "name": "정택일",
       "deliveryBox": "관악나-초47",
       "workType": "BLUE",
@@ -1736,8 +2036,8 @@
       "region": "관악나",
       "fullRegion": "서울특별시 관악나",
       "coordinates": [
-        37.55965621557681,
-        126.9865939154454
+        37.57381594455013,
+        126.9716439755172
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -1748,12 +2048,12 @@
       "boxId": 396081,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.406Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_059",
+      "id": "driver_069",
       "name": "정택일",
       "deliveryBox": "관악나-구97",
       "workType": "BLUE",
@@ -1766,8 +2066,8 @@
       "region": "관악나",
       "fullRegion": "서울특별시 관악나",
       "coordinates": [
-        37.56088018320559,
-        126.98698691688752
+        37.5654539373071,
+        126.97465201195622
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -1778,12 +2078,12 @@
       "boxId": 396171,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.406Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_060",
+      "id": "driver_070",
       "name": "정택일",
       "deliveryBox": "관악나-노45",
       "workType": "BLUE",
@@ -1796,8 +2096,8 @@
       "region": "관악나",
       "fullRegion": "서울특별시 관악나",
       "coordinates": [
-        37.569204111128265,
-        126.96913021463052
+        37.558026937970865,
+        126.98116726667939
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -1808,12 +2108,12 @@
       "boxId": 396229,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.406Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_061",
+      "id": "driver_071",
       "name": "정택일",
       "deliveryBox": "관악다-카15",
       "workType": "BLUE",
@@ -1826,8 +2126,8 @@
       "region": "관악다",
       "fullRegion": "서울특별시 관악다",
       "coordinates": [
-        37.56082323124018,
-        126.97133923834954
+        37.57144449381059,
+        126.98644058986558
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -1838,12 +2138,12 @@
       "boxId": 396167,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.406Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_062",
+      "id": "driver_072",
       "name": "정택일",
       "deliveryBox": "관악다-허85",
       "workType": "BLUE",
@@ -1856,8 +2156,8 @@
       "region": "관악다",
       "fullRegion": "서울특별시 관악다",
       "coordinates": [
-        37.566450169052054,
-        126.98135497616859
+        37.574148243183714,
+        126.98382387394636
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -1868,12 +2168,12 @@
       "boxId": 396253,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.406Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_063",
+      "id": "driver_073",
       "name": "정택일",
       "deliveryBox": "관악라-모87",
       "workType": "BLUE",
@@ -1886,8 +2186,8 @@
       "region": "관악라",
       "fullRegion": "서울특별시 관악라",
       "coordinates": [
-        37.575225097719695,
-        126.97375980198476
+        37.56759803353787,
+        126.984277214483
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -1898,12 +2198,12 @@
       "boxId": 396126,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.406Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_064",
+      "id": "driver_074",
       "name": "정택일",
       "deliveryBox": "관악라-니03",
       "workType": "BLUE",
@@ -1916,8 +2216,8 @@
       "region": "관악라",
       "fullRegion": "서울특별시 관악라",
       "coordinates": [
-        37.562412515946896,
-        126.9846498371124
+        37.56618014752204,
+        126.97410543703285
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -1928,12 +2228,12 @@
       "boxId": 396241,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.406Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_065",
+      "id": "driver_075",
       "name": "정택일",
       "deliveryBox": "관악마-로01",
       "workType": "BLUE",
@@ -1946,8 +2246,8 @@
       "region": "관악마",
       "fullRegion": "서울특별시 관악마",
       "coordinates": [
-        37.556966872707825,
-        126.98528094113836
+        37.56647644970613,
+        126.98215795449794
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -1958,12 +2258,12 @@
       "boxId": 396236,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.978Z",
+      "lastUpdate": "2025-10-18T08:33:44.406Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_066",
+      "id": "driver_076",
       "name": "정택일",
       "deliveryBox": "관악바-조43",
       "workType": "BLUE",
@@ -1976,8 +2276,8 @@
       "region": "관악바",
       "fullRegion": "서울특별시 관악바",
       "coordinates": [
-        37.57649234474429,
-        126.98640205141689
+        37.55986723299303,
+        126.97458895919534
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -1988,12 +2288,12 @@
       "boxId": 396247,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.406Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_067",
+      "id": "driver_077",
       "name": "정택일",
       "deliveryBox": "관악사-아91",
       "workType": "BLUE",
@@ -2006,8 +2306,8 @@
       "region": "관악사",
       "fullRegion": "서울특별시 관악사",
       "coordinates": [
-        37.56205932360956,
-        126.98345331814727
+        37.569403921253915,
+        126.97325861429233
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -2018,12 +2318,12 @@
       "boxId": 396186,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.406Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_068",
+      "id": "driver_078",
       "name": "정택일",
       "deliveryBox": "관악아-바34",
       "workType": "BLUE",
@@ -2036,8 +2336,8 @@
       "region": "관악아",
       "fullRegion": "서울특별시 관악아",
       "coordinates": [
-        37.564519139508285,
-        126.97708659181698
+        37.562675321726466,
+        126.98662128706758
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -2048,12 +2348,12 @@
       "boxId": 396237,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.406Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_069",
+      "id": "driver_079",
       "name": "정택일",
       "deliveryBox": "관악자-초22",
       "workType": "BLUE",
@@ -2066,8 +2366,8 @@
       "region": "관악자",
       "fullRegion": "서울특별시 관악자",
       "coordinates": [
-        37.571015327616834,
-        126.98376534036832
+        37.55795507026285,
+        126.98579470472596
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -2078,12 +2378,12 @@
       "boxId": 396242,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.406Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_070",
+      "id": "driver_080",
       "name": "정택일",
       "deliveryBox": "관악차-치97",
       "workType": "BLUE",
@@ -2096,8 +2396,8 @@
       "region": "관악차",
       "fullRegion": "서울특별시 관악차",
       "coordinates": [
-        37.56793767567725,
-        126.97388685528342
+        37.56328356326703,
+        126.9859702385057
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -2108,12 +2408,12 @@
       "boxId": 396141,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.406Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_071",
+      "id": "driver_081",
       "name": "정택일",
       "deliveryBox": "관악차-버15",
       "workType": "BLUE",
@@ -2126,8 +2426,8 @@
       "region": "관악차",
       "fullRegion": "서울특별시 관악차",
       "coordinates": [
-        37.571746439223226,
-        126.98502411727591
+        37.56847107354099,
+        126.97003335379456
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -2138,12 +2438,12 @@
       "boxId": 396245,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.406Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_072",
+      "id": "driver_082",
       "name": "정택일",
       "deliveryBox": "관악카-우03",
       "workType": "BLUE",
@@ -2156,8 +2456,8 @@
       "region": "관악카",
       "fullRegion": "서울특별시 관악카",
       "coordinates": [
-        37.57397343247202,
-        126.98294345598879
+        37.56354568349826,
+        126.98046152609267
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -2168,12 +2468,12 @@
       "boxId": 396110,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.406Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_073",
+      "id": "driver_083",
       "name": "정택일",
       "deliveryBox": "관악카-토11",
       "workType": "BLUE",
@@ -2186,8 +2486,8 @@
       "region": "관악카",
       "fullRegion": "서울특별시 관악카",
       "coordinates": [
-        37.57171521719344,
-        126.97738416963071
+        37.57439546281685,
+        126.98118578439099
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -2198,12 +2498,12 @@
       "boxId": 396162,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_074",
+      "id": "driver_084",
       "name": "정택일",
       "deliveryBox": "관악카-버89",
       "workType": "BLUE",
@@ -2216,8 +2516,8 @@
       "region": "관악카",
       "fullRegion": "서울특별시 관악카",
       "coordinates": [
-        37.559933557908735,
-        126.97080697688463
+        37.57144889246825,
+        126.97758073717765
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -2228,12 +2528,12 @@
       "boxId": 396243,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_075",
+      "id": "driver_085",
       "name": "김가영",
       "deliveryBox": "광진-니01",
       "workType": "BLUE",
@@ -2258,12 +2558,12 @@
       "boxId": 396330,
       "lastAddr1": "인천광역시 남동구 구월로 192",
       "lastAddr2": "1113동 202호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_076",
+      "id": "driver_086",
       "name": "김가영",
       "deliveryBox": "구로-아24",
       "workType": "BLUE",
@@ -2276,8 +2576,8 @@
       "region": "구로구",
       "fullRegion": "서울특별시 구로구",
       "coordinates": [
-        37.498764125816784,
-        126.8878812790341
+        37.5040034015929,
+        126.88794944056747
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -2288,12 +2588,12 @@
       "boxId": 396288,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_077",
+      "id": "driver_087",
       "name": "강혁구",
       "deliveryBox": "금천-호94",
       "workType": "BLUE",
@@ -2318,12 +2618,12 @@
       "boxId": 396290,
       "lastAddr1": "서울특별시 금천구 시흥대로59길 35",
       "lastAddr2": ", A동 908호 (시흥동, 남서울건영아파트)",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_078",
+      "id": "driver_088",
       "name": "김수현",
       "deliveryBox": "노원-퍼23",
       "workType": "BLUE",
@@ -2336,8 +2636,8 @@
       "region": "노원구",
       "fullRegion": "서울특별시 노원구",
       "coordinates": [
-        37.657330024878036,
-        127.06584959868405
+        37.65051929825793,
+        127.05634338866325
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -2348,12 +2648,12 @@
       "boxId": 396302,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_079",
+      "id": "driver_089",
       "name": "김정후",
       "deliveryBox": "동대문-다47",
       "workType": "BLUE",
@@ -2378,12 +2678,12 @@
       "boxId": 396306,
       "lastAddr1": "서울특별시 동대문구 한천로58길 47",
       "lastAddr2": "105-104",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_080",
+      "id": "driver_090",
       "name": "우승완",
       "deliveryBox": "동작-투67",
       "workType": "BLUE",
@@ -2396,8 +2696,8 @@
       "region": "동작구",
       "fullRegion": "서울특별시 동작구",
       "coordinates": [
-        37.51153483441572,
-        126.94923656536471
+        37.515580405164656,
+        126.93989986193166
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -2408,12 +2708,12 @@
       "boxId": 396311,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_081",
+      "id": "driver_091",
       "name": "김태열",
       "deliveryBox": "마포-퍼51",
       "workType": "WHITE",
@@ -2438,12 +2738,12 @@
       "boxId": 396164,
       "lastAddr1": "서울특별시 서대문구 독립문로 10",
       "lastAddr2": "서울특별시 서대문구 독립문로 10 (영천동, 독립문삼호아파트) 105동 1607호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_082",
+      "id": "driver_092",
       "name": "이채윤",
       "deliveryBox": "마포-처83",
       "workType": "WHITE",
@@ -2468,12 +2768,12 @@
       "boxId": 396268,
       "lastAddr1": "서울특별시 마포구 백범로 152 공덕파크자이 201-1802",
       "lastAddr2": "서울 마포구 백범로 152 공덕파크자이 201-1802",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_083",
+      "id": "driver_093",
       "name": "오신성",
       "deliveryBox": "서대문-하10",
       "workType": "WHITE",
@@ -2498,12 +2798,12 @@
       "boxId": 396096,
       "lastAddr1": "서울특별시 서대문구 수색로8나길 24",
       "lastAddr2": ", 1층 (북가좌동)",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_084",
+      "id": "driver_094",
       "name": "정광현",
       "deliveryBox": "서대문-호93",
       "workType": "WHITE",
@@ -2528,12 +2828,12 @@
       "boxId": 396165,
       "lastAddr1": "서울특별시 은평구 은평로14길 9-6",
       "lastAddr2": ", 삼환빌라202호 (응암동)",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_085",
+      "id": "driver_095",
       "name": "정광현",
       "deliveryBox": "서대문-추84",
       "workType": "WHITE",
@@ -2558,12 +2858,12 @@
       "boxId": 396273,
       "lastAddr1": "서울특별시 은평구 은평로14길 9-6",
       "lastAddr2": ", 삼환빌라202호 (응암동)",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_086",
+      "id": "driver_096",
       "name": "오신성",
       "deliveryBox": "서대문-키21",
       "workType": "WHITE",
@@ -2588,12 +2888,12 @@
       "boxId": 396281,
       "lastAddr1": "서울특별시 서대문구 수색로8나길 24",
       "lastAddr2": ", 1층 (북가좌동)",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_087",
+      "id": "driver_097",
       "name": "정민주",
       "deliveryBox": "서초-티94",
       "workType": "WHITE",
@@ -2618,12 +2918,12 @@
       "boxId": 396158,
       "lastAddr1": "서울특별시 서초구 방배동 455-13",
       "lastAddr2": "201호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_088",
+      "id": "driver_098",
       "name": "정민주",
       "deliveryBox": "서초-터42",
       "workType": "WHITE",
@@ -2648,12 +2948,12 @@
       "boxId": 396214,
       "lastAddr1": "서울특별시 서초구 방배동 455-13",
       "lastAddr2": "201호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_089",
+      "id": "driver_099",
       "name": "김정후",
       "deliveryBox": "성동-치61",
       "workType": "BLUE",
@@ -2678,12 +2978,12 @@
       "boxId": 396303,
       "lastAddr1": "서울특별시 동대문구 한천로58길 47",
       "lastAddr2": "105-104",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_090",
+      "id": "driver_100",
       "name": "신덕순",
       "deliveryBox": "송파-바41",
       "workType": "BLUE",
@@ -2708,12 +3008,12 @@
       "boxId": 396310,
       "lastAddr1": "서울특별시 송파구 중대로 24",
       "lastAddr2": "303동 1105호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_091",
+      "id": "driver_101",
       "name": "노희자",
       "deliveryBox": "양천-하40",
       "workType": "BLUE",
@@ -2738,12 +3038,12 @@
       "boxId": 396304,
       "lastAddr1": "서울특별시 양천구 목동중앙로 143",
       "lastAddr2": "104동 1202호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_092",
+      "id": "driver_102",
       "name": "김범석",
       "deliveryBox": "영등포-라35",
       "workType": "BLUE",
@@ -2768,12 +3068,12 @@
       "boxId": 396121,
       "lastAddr1": "서울특별시 영등포구 문래로 180",
       "lastAddr2": "센트럴푸르지오시티 1011호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_093",
+      "id": "driver_103",
       "name": "김범석",
       "deliveryBox": "영등포-자98",
       "workType": "BLUE",
@@ -2798,12 +3098,12 @@
       "boxId": 396321,
       "lastAddr1": "서울특별시 영등포구 문래로 180",
       "lastAddr2": "센트럴푸르지오시티 1011호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_094",
+      "id": "driver_104",
       "name": "이경준",
       "deliveryBox": "은평-커27",
       "workType": "WHITE",
@@ -2828,12 +3128,12 @@
       "boxId": 396156,
       "lastAddr1": "서울특별시 은평구 서오릉로25가길 5-6",
       "lastAddr2": "힐타운 501호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_095",
+      "id": "driver_105",
       "name": "이경준",
       "deliveryBox": "은평-포42",
       "workType": "WHITE",
@@ -2858,12 +3158,12 @@
       "boxId": 396280,
       "lastAddr1": "서울특별시 은평구 서오릉로25가길 5-6",
       "lastAddr2": "힐타운 501호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_096",
+      "id": "driver_106",
       "name": "김가영",
       "deliveryBox": "중랑-비33",
       "workType": "BLUE",
@@ -2888,12 +3188,12 @@
       "boxId": 396315,
       "lastAddr1": "인천광역시 남동구 구월로 192",
       "lastAddr2": "1113동 202호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_097",
+      "id": "driver_107",
       "name": "고광주",
       "deliveryBox": "계양가-투43",
       "workType": "BLUE",
@@ -2918,12 +3218,12 @@
       "boxId": 396192,
       "lastAddr1": "인천광역시 서구 도요지로189번길 92",
       "lastAddr2": "인천광역시 서구 도요지로189번길 92 (검암동) 에바다빌A 401호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_098",
+      "id": "driver_108",
       "name": "고광주",
       "deliveryBox": "계양나-바01",
       "workType": "BLUE",
@@ -2948,12 +3248,12 @@
       "boxId": 396178,
       "lastAddr1": "인천광역시 서구 도요지로189번길 92",
       "lastAddr2": "인천광역시 서구 도요지로189번길 92 (검암동) 에바다빌A 401호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_099",
+      "id": "driver_109",
       "name": "고광주",
       "deliveryBox": "계양다-라51",
       "workType": "BLUE",
@@ -2978,12 +3278,12 @@
       "boxId": 396116,
       "lastAddr1": "인천광역시 서구 도요지로189번길 92",
       "lastAddr2": "인천광역시 서구 도요지로189번길 92 (검암동) 에바다빌A 401호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_100",
+      "id": "driver_110",
       "name": "고광주",
       "deliveryBox": "계양다-피87",
       "workType": "BLUE",
@@ -3008,12 +3308,12 @@
       "boxId": 396197,
       "lastAddr1": "인천광역시 서구 도요지로189번길 92",
       "lastAddr2": "인천광역시 서구 도요지로189번길 92 (검암동) 에바다빌A 401호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_101",
+      "id": "driver_111",
       "name": "고광주",
       "deliveryBox": "계양라-미20",
       "workType": "BLUE",
@@ -3038,12 +3338,12 @@
       "boxId": 396190,
       "lastAddr1": "인천광역시 서구 도요지로189번길 92",
       "lastAddr2": "인천광역시 서구 도요지로189번길 92 (검암동) 에바다빌A 401호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_102",
+      "id": "driver_112",
       "name": "고광주",
       "deliveryBox": "계양마-하10",
       "workType": "BLUE",
@@ -3068,12 +3368,12 @@
       "boxId": 396174,
       "lastAddr1": "인천광역시 서구 도요지로189번길 92",
       "lastAddr2": "인천광역시 서구 도요지로189번길 92 (검암동) 에바다빌A 401호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_103",
+      "id": "driver_113",
       "name": "고광주",
       "deliveryBox": "계양마-호35",
       "workType": "BLUE",
@@ -3098,12 +3398,12 @@
       "boxId": 396202,
       "lastAddr1": "인천광역시 서구 도요지로189번길 92",
       "lastAddr2": "인천광역시 서구 도요지로189번길 92 (검암동) 에바다빌A 401호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_104",
+      "id": "driver_114",
       "name": "김상희",
       "deliveryBox": "남동구-다70",
       "workType": "BLUE",
@@ -3116,8 +3416,8 @@
       "region": "인천",
       "fullRegion": "인천광역시 남동구",
       "coordinates": [
-        37.56898849887427,
-        126.97654418528934
+        37.572446874348685,
+        126.97685520036258
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -3128,12 +3428,12 @@
       "boxId": 396328,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_105",
+      "id": "driver_115",
       "name": "고광주",
       "deliveryBox": "서구-티46",
       "workType": "BLUE",
@@ -3158,12 +3458,12 @@
       "boxId": 396285,
       "lastAddr1": "인천광역시 서구 도요지로189번길 92",
       "lastAddr2": "인천광역시 서구 도요지로189번길 92 (검암동) 에바다빌A 401호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_106",
+      "id": "driver_116",
       "name": "김영석",
       "deliveryBox": "연수-아49",
       "workType": "BLUE",
@@ -3188,12 +3488,12 @@
       "boxId": 396320,
       "lastAddr1": "인천광역시 연수구 원인재로 88",
       "lastAddr2": "102동103호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_107",
+      "id": "driver_117",
       "name": "정충서",
       "deliveryBox": "임시-시57",
       "workType": "BLUE",
@@ -3218,12 +3518,12 @@
       "boxId": 396075,
       "lastAddr1": "경기도 성남시 수정구 고등공원로 19",
       "lastAddr2": "102동 305호",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_108",
+      "id": "driver_118",
       "name": "김상희",
       "deliveryBox": "아산-커14",
       "workType": "BLUE",
@@ -3236,8 +3536,8 @@
       "region": "충청남도 아산가",
       "fullRegion": "충청남도 아산가",
       "coordinates": [
-        37.57331509291506,
-        126.98521931790984
+        37.570075365697235,
+        126.97403552954134
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -3248,12 +3548,12 @@
       "boxId": 396324,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_109",
+      "id": "driver_119",
       "name": "김상희",
       "deliveryBox": "아산-커14",
       "workType": "BLUE",
@@ -3266,8 +3566,8 @@
       "region": "충청남도 아산나",
       "fullRegion": "충청남도 아산나",
       "coordinates": [
-        37.57204506016582,
-        126.98072286825143
+        37.57287734220493,
+        126.98501918666456
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -3278,12 +3578,12 @@
       "boxId": 396324,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     },
     {
-      "id": "driver_110",
+      "id": "driver_120",
       "name": "김상희",
       "deliveryBox": "천안-라69",
       "workType": "BLUE",
@@ -3296,8 +3596,8 @@
       "region": "충청남도 천안시",
       "fullRegion": "충청남도 천안시",
       "coordinates": [
-        37.561316428064586,
-        126.9864269462957
+        37.57561729094378,
+        126.97569037558712
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -3308,7 +3608,7 @@
       "boxId": 396317,
       "lastAddr1": "",
       "lastAddr2": "",
-      "lastUpdate": "2025-10-18T08:28:41.979Z",
+      "lastUpdate": "2025-10-18T08:33:44.407Z",
       "completionRate": 0,
       "status": "pending"
     }
@@ -3317,20 +3617,38 @@
     {
       "name": "화성나",
       "pending": 0,
-      "transit": 113,
-      "delivered": 5,
+      "transit": 105,
+      "delivered": 13,
       "delayed": 0,
-      "completionRate": 4.2,
+      "completionRate": 11,
       "driverCount": 6
     },
     {
       "name": "수원시",
       "pending": 0,
-      "transit": 562,
+      "transit": 559,
+      "delivered": 4,
+      "delayed": 0,
+      "completionRate": 0.7,
+      "driverCount": 6
+    },
+    {
+      "name": "성남시",
+      "pending": 0,
+      "transit": 430,
+      "delivered": 3,
+      "delayed": 0,
+      "completionRate": 0.7,
+      "driverCount": 16
+    },
+    {
+      "name": "용인시",
+      "pending": 0,
+      "transit": 316,
       "delivered": 1,
       "delayed": 0,
-      "completionRate": 0.2,
-      "driverCount": 6
+      "completionRate": 0.3,
+      "driverCount": 5
     },
     {
       "name": "고양시",
@@ -3387,15 +3705,6 @@
       "driverCount": 3
     },
     {
-      "name": "성남시",
-      "pending": 0,
-      "transit": 433,
-      "delivered": 0,
-      "delayed": 0,
-      "completionRate": 0,
-      "driverCount": 11
-    },
-    {
       "name": "시흥북",
       "pending": 0,
       "transit": 38,
@@ -3411,16 +3720,7 @@
       "delivered": 0,
       "delayed": 0,
       "completionRate": 0,
-      "driverCount": 2
-    },
-    {
-      "name": "용인시",
-      "pending": 0,
-      "transit": 317,
-      "delivered": 0,
-      "delayed": 0,
-      "completionRate": 0,
-      "driverCount": 2
+      "driverCount": 4
     },
     {
       "name": "의정부시",
@@ -3812,7 +4112,7 @@
   ],
   "deliveries": [
     {
-      "id": "QS2024-004371",
+      "id": "QS2024-066150",
       "driver": "신혁",
       "address": "경기도 고양시 덕양구",
       "status": "delivering",
@@ -3823,7 +4123,7 @@
       "completionRate": 0
     },
     {
-      "id": "QS2024-016278",
+      "id": "QS2024-044590",
       "driver": "김민수",
       "address": "경기도 고양시 일산동구 성석로 57",
       "status": "delivering",
@@ -3834,7 +4134,7 @@
       "completionRate": 0
     },
     {
-      "id": "QS2024-025684",
+      "id": "QS2024-025573",
       "driver": "김민수",
       "address": "경기도 고양시 일산동구 성석로 57",
       "status": "delivering",
@@ -3845,7 +4145,7 @@
       "completionRate": 0
     },
     {
-      "id": "QS2024-083379",
+      "id": "QS2024-085255",
       "driver": "김가영",
       "address": "경기도 광명시",
       "status": "delivering",
@@ -3856,7 +4156,7 @@
       "completionRate": 0
     },
     {
-      "id": "QS2024-059167",
+      "id": "QS2024-025665",
       "driver": "서경성",
       "address": "경기도 군포시 엘에스로 143 힐스테이트 금정역 201동 2712호",
       "status": "delivering",
@@ -3867,7 +4167,7 @@
       "completionRate": 0
     },
     {
-      "id": "QS2024-003920",
+      "id": "QS2024-070892",
       "driver": "신빈",
       "address": "경기도 고양시 덕양구 화신로 76",
       "status": "delivering",
@@ -3878,7 +4178,7 @@
       "completionRate": 0
     },
     {
-      "id": "QS2024-002293",
+      "id": "QS2024-023643",
       "driver": "박은영",
       "address": "경기도 남양주시 다산중앙로 113",
       "status": "delivering",
@@ -3889,7 +4189,7 @@
       "completionRate": 0
     },
     {
-      "id": "QS2024-034363",
+      "id": "QS2024-038608",
       "driver": "박은영",
       "address": "경기도 남양주시 다산중앙로 113",
       "status": "delivering",
@@ -3900,7 +4200,7 @@
       "completionRate": 0
     },
     {
-      "id": "QS2024-068464",
+      "id": "QS2024-012091",
       "driver": "김영우",
       "address": "서울특별시 구로구 고척로21나길 48-80",
       "status": "delivering",
@@ -3911,7 +4211,7 @@
       "completionRate": 0
     },
     {
-      "id": "QS2024-045294",
+      "id": "QS2024-077046",
       "driver": "김영우",
       "address": "서울특별시 구로구 고척로21나길 48-80",
       "status": "delivering",
@@ -3922,7 +4222,7 @@
       "completionRate": 0
     },
     {
-      "id": "QS2024-080815",
+      "id": "QS2024-045013",
       "driver": "김영우",
       "address": "서울특별시 구로구 고척로21나길 48-80",
       "status": "delivering",
@@ -3933,7 +4233,7 @@
       "completionRate": 0
     },
     {
-      "id": "QS2024-067441",
+      "id": "QS2024-019808",
       "driver": "정광미",
       "address": "경기도 성남시 분당구 성남대로779번길 52",
       "status": "delivering",
@@ -3944,18 +4244,18 @@
       "completionRate": 0
     },
     {
-      "id": "QS2024-007516",
+      "id": "QS2024-050423",
       "driver": "김용락",
-      "address": "경기도 성남시 분당구 정자로 143",
+      "address": "경기도 성남시 분당구 돌마로 175",
       "status": "delivering",
       "priority": "high",
-      "estimatedTime": "정보없음",
+      "estimatedTime": "Invalid Date",
       "phone": "010-4682-4484",
       "region": "성남시",
-      "completionRate": 0
+      "completionRate": 5.3
     },
     {
-      "id": "QS2024-078918",
+      "id": "QS2024-014703",
       "driver": "진서영",
       "address": "경기도 성남시 분당구 분당수서로 477",
       "status": "delivering",
@@ -3966,7 +4266,7 @@
       "completionRate": 0
     },
     {
-      "id": "QS2024-071605",
+      "id": "QS2024-022123",
       "driver": "박연주",
       "address": "경기도 성남시 분당구 성남대로172번길 12",
       "status": "delivering",
@@ -3980,10 +4280,10 @@
   "metadata": {
     "source": "Google Sheets - 자동_RAW (20컬럼)",
     "sheetId": "1dsuLd6iq8YULwuJ5KQFR4-eVEW1BRU6wmks_eS1VJ2w",
-    "lastSync": "2025-10-18T08:28:41.980Z",
-    "dataCount": 110,
+    "lastSync": "2025-10-18T08:33:44.410Z",
+    "dataCount": 120,
     "regionCount": 55,
-    "syncTimestamp": "2025. 10. 18. 오후 5:28:41",
+    "syncTimestamp": "2025. 10. 18. 오후 5:33:44",
     "columnStructure": "A-T (20 columns with lat/lng support)",
     "delayLogic": "완료율 100% 기사 지연 계산 제외 적용",
     "pickupLogic": "완료건수 우선 + 1970년 데이터 필터링",
