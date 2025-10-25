@@ -1,15 +1,15 @@
 {
   "stats": {
     "totalOrders": 8172,
-    "completedDeliveries": 7227,
+    "completedDeliveries": 7418,
     "failedDeliveries": 3,
-    "inProgress": 942,
-    "activeDrivers": 324,
+    "inProgress": 751,
+    "activeDrivers": 325,
     "totalDrivers": 329,
-    "notPickupCount": 5,
+    "notPickupCount": 4,
     "delayedCount": 0,
     "avgDeliveryTime": "약 45분",
-    "overallCompletionRate": 88.4
+    "overallCompletionRate": 90.8
   },
   "drivers": [
     {
@@ -38,7 +38,7 @@
       "boxId": 401852,
       "lastAddr1": "경기도 고양시 덕양구 화신로 76",
       "lastAddr2": "112동 1903호",
-      "lastUpdate": "2025-10-25T13:28:42.511Z",
+      "lastUpdate": "2025-10-25T13:33:42.657Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -50,27 +50,27 @@
       "company": "에이치비덕양",
       "phone": "010-7799-4941",
       "totalDeliveries": 54,
-      "completedDeliveries": 51,
+      "completedDeliveries": 54,
       "failedDeliveries": 0,
-      "inProgress": 3,
+      "inProgress": 0,
       "region": "고양시",
       "fullRegion": "경기도 고양시 덕양구",
       "coordinates": [
-        37.63752,
-        126.87216
+        37.64418,
+        126.88562
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:03:57",
+      "typing": "-00:04:09",
       "boxId": 401855,
-      "lastAddr1": "경기도 고양시 덕양구 삼원로 102",
-      "lastAddr2": "108동 1008호",
-      "lastUpdate": "2025-10-25T13:28:42.525Z",
-      "completionRate": 94.4,
-      "status": "active"
+      "lastAddr1": "경기도 고양시 덕양구 동산동 354-12",
+      "lastAddr2": "202호",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
+      "completionRate": 100,
+      "status": "completed"
     },
     {
       "id": "driver_003",
@@ -98,7 +98,7 @@
       "boxId": 401856,
       "lastAddr1": "경기도 고양시 덕양구 행신동 199",
       "lastAddr2": "샬롬빌 101호",
-      "lastUpdate": "2025-10-25T13:28:42.525Z",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 95.2,
       "status": "active"
     },
@@ -110,26 +110,26 @@
       "company": "에이치비덕양",
       "phone": "010-2821-1682",
       "totalDeliveries": 46,
-      "completedDeliveries": 31,
+      "completedDeliveries": 33,
       "failedDeliveries": 0,
-      "inProgress": 15,
+      "inProgress": 13,
       "region": "고양시",
       "fullRegion": "경기도 고양시 덕양구",
       "coordinates": [
-        37.63952,
-        126.83638
+        37.6361,
+        126.83532
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:37",
+      "typing": "-00:04:53",
       "boxId": 401857,
-      "lastAddr1": "경기도 고양시 덕양구 화정동 883-11",
-      "lastAddr2": "201호",
-      "lastUpdate": "2025-10-25T13:28:42.525Z",
-      "completionRate": 67.4,
+      "lastAddr1": "경기도 고양시 덕양구 백양로 126",
+      "lastAddr2": "1102동 1405호",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
+      "completionRate": 71.7,
       "status": "active"
     },
     {
@@ -140,26 +140,26 @@
       "company": "위로지구로광명",
       "phone": "010-7999-1552",
       "totalDeliveries": 41,
-      "completedDeliveries": 28,
+      "completedDeliveries": 30,
       "failedDeliveries": 0,
-      "inProgress": 13,
+      "inProgress": 11,
       "region": "광명시",
       "fullRegion": "경기도 광명시",
       "coordinates": [
-        37.47629,
-        126.86399
+        37.48042,
+        126.86521
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:40",
+      "typing": "-00:05:01",
       "boxId": 397727,
-      "lastAddr1": "경기도 광명시 오리로 887",
-      "lastAddr2": "보보스텔 312호",
-      "lastUpdate": "2025-10-25T13:28:42.526Z",
-      "completionRate": 68.3,
+      "lastAddr1": "경기도 광명시 시청로 50",
+      "lastAddr2": "113동 101호",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
+      "completionRate": 73.2,
       "status": "active"
     },
     {
@@ -170,26 +170,26 @@
       "company": "위로지구로광명",
       "phone": "010-5476-5341",
       "totalDeliveries": 44,
-      "completedDeliveries": 32,
+      "completedDeliveries": 34,
       "failedDeliveries": 0,
-      "inProgress": 12,
+      "inProgress": 10,
       "region": "광명시",
       "fullRegion": "경기도 광명시",
       "coordinates": [
-        37.46314,
-        126.88326
+        37.46555,
+        126.87978
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:07",
+      "typing": "-00:04:23",
       "boxId": 401890,
-      "lastAddr1": "경기도 광명시 하안로 284",
-      "lastAddr2": "1213동 1207호",
-      "lastUpdate": "2025-10-25T13:28:42.526Z",
-      "completionRate": 72.7,
+      "lastAddr1": "경기도 광명시 하안로 320",
+      "lastAddr2": "1012동 1504호",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
+      "completionRate": 77.3,
       "status": "active"
     },
     {
@@ -218,7 +218,7 @@
       "boxId": 401693,
       "lastAddr1": "경기도 군포시 공단로 149",
       "lastAddr2": "509호",
-      "lastUpdate": "2025-10-25T13:28:42.526Z",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -248,7 +248,7 @@
       "boxId": 401694,
       "lastAddr1": "경기도 군포시 금정동 40-16",
       "lastAddr2": "2층 202호",
-      "lastUpdate": "2025-10-25T13:28:42.526Z",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -278,7 +278,7 @@
       "boxId": 401695,
       "lastAddr1": "경기도 군포시 송부로291번길 29",
       "lastAddr2": "휴먼시아 204동 503호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -308,7 +308,7 @@
       "boxId": 401696,
       "lastAddr1": "경기도 군포시 산본천로 34",
       "lastAddr2": "631동 1804호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -320,26 +320,26 @@
       "company": "",
       "phone": "010-2356-8000",
       "totalDeliveries": 39,
-      "completedDeliveries": 30,
+      "completedDeliveries": 32,
       "failedDeliveries": 0,
-      "inProgress": 9,
+      "inProgress": 7,
       "region": "김포시",
       "fullRegion": "경기도 김포시",
       "coordinates": [
-        37.63555,
-        126.67785
+        37.63814,
+        126.6727
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:16",
+      "typing": "-00:04:39",
       "boxId": 397883,
-      "lastAddr1": "경기도 김포시 태장로 845",
-      "lastAddr2": "105동1103호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
-      "completionRate": 76.9,
+      "lastAddr1": "경기도 김포시 김포한강2로 103",
+      "lastAddr2": "513-2601",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
+      "completionRate": 82.1,
       "status": "active"
     },
     {
@@ -368,7 +368,7 @@
       "boxId": 400987,
       "lastAddr1": "경기도 김포시 김포한강4로 487",
       "lastAddr2": "102동 603호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -398,7 +398,7 @@
       "boxId": 401930,
       "lastAddr1": "경기도 김포시 중봉로 1-1",
       "lastAddr2": "302동 302호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -410,26 +410,26 @@
       "company": "에스비(김포)",
       "phone": "010-4092-4994",
       "totalDeliveries": 50,
-      "completedDeliveries": 35,
+      "completedDeliveries": 37,
       "failedDeliveries": 0,
-      "inProgress": 15,
+      "inProgress": 13,
       "region": "김포시",
       "fullRegion": "경기도 김포시",
       "coordinates": [
-        37.6051,
-        126.72854
+        37.60407,
+        126.72243
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:03:30",
+      "typing": "-00:03:42",
       "boxId": 401932,
-      "lastAddr1": "경기도 김포시 양도로 46",
-      "lastAddr2": "209동603호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
-      "completionRate": 70,
+      "lastAddr1": "경기도 김포시 풍무로 96",
+      "lastAddr2": "삼용아파트 101동 105호",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
+      "completionRate": 74,
       "status": "active"
     },
     {
@@ -440,27 +440,27 @@
       "company": "에스비(김포)",
       "phone": "010-7145-7210",
       "totalDeliveries": 31,
-      "completedDeliveries": 29,
+      "completedDeliveries": 31,
       "failedDeliveries": 0,
-      "inProgress": 2,
+      "inProgress": 0,
       "region": "김포시",
       "fullRegion": "경기도 김포시",
       "coordinates": [
-        37.64209,
-        126.62309
+        37.6405,
+        126.62958
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:05:46",
+      "typing": "-00:06:03",
       "boxId": 401933,
-      "lastAddr1": "경기도 김포시 김포한강8로 409",
-      "lastAddr2": "507-301",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
-      "completionRate": 93.5,
-      "status": "active"
+      "lastAddr1": "경기도 김포시 김포한강8로 365",
+      "lastAddr2": "102동 1204호",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
+      "completionRate": 100,
+      "status": "completed"
     },
     {
       "id": "driver_016",
@@ -476,8 +476,8 @@
       "region": "김포시",
       "fullRegion": "경기도 김포시",
       "coordinates": [
-        37.64209,
-        126.62309
+        37.6405,
+        126.62958
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -486,9 +486,9 @@
       "startTime": "Invalid Date",
       "typing": "",
       "boxId": 401941,
-      "lastAddr1": "경기도 김포시 김포한강8로 409",
-      "lastAddr2": "507-301",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastAddr1": "경기도 김포시 김포한강8로 365",
+      "lastAddr2": "102동 1204호",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -518,7 +518,7 @@
       "boxId": 401319,
       "lastAddr1": "경기도 남양주시 다산순환로 355",
       "lastAddr2": "503호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -548,7 +548,7 @@
       "boxId": 401413,
       "lastAddr1": "경기도 남양주시 다산순환로 355",
       "lastAddr2": "503호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -578,7 +578,7 @@
       "boxId": 401322,
       "lastAddr1": "경기도 부천시 원종로93번길 51",
       "lastAddr2": "201동 606호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -608,7 +608,7 @@
       "boxId": 401476,
       "lastAddr1": "경기도 부천시 원종로93번길 51",
       "lastAddr2": "201동 606호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -620,26 +620,26 @@
       "company": "",
       "phone": "010-3454-1081",
       "totalDeliveries": 33,
-      "completedDeliveries": 4,
+      "completedDeliveries": 8,
       "failedDeliveries": 0,
-      "inProgress": 29,
+      "inProgress": 25,
       "region": "부천다",
       "fullRegion": "경기도 부천다",
       "coordinates": [
-        37.4699,
-        126.79327
+        37.4655,
+        126.80113
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:00:59",
+      "typing": "-00:01:21",
       "boxId": 401352,
-      "lastAddr1": "경기도 부천시 소사구 소사로125번길 62",
-      "lastAddr2": "102동 1201호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
-      "completionRate": 12.1,
+      "lastAddr1": "경기도 부천시 소사구 소사로78번길 42",
+      "lastAddr2": "103동 306호",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
+      "completionRate": 24.2,
       "status": "active"
     },
     {
@@ -656,8 +656,8 @@
       "region": "부천다",
       "fullRegion": "경기도 부천다",
       "coordinates": [
-        37.4699,
-        126.79327
+        37.4655,
+        126.80113
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -666,9 +666,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:07:15",
       "boxId": 401479,
-      "lastAddr1": "경기도 부천시 소사구 소사로125번길 62",
-      "lastAddr2": "102동 1201호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastAddr1": "경기도 부천시 소사구 소사로78번길 42",
+      "lastAddr2": "103동 306호",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 50,
       "status": "active"
     },
@@ -680,27 +680,27 @@
       "company": "주로지스분당",
       "phone": "010-4682-4484",
       "totalDeliveries": 24,
-      "completedDeliveries": 23,
+      "completedDeliveries": 24,
       "failedDeliveries": 0,
-      "inProgress": 1,
+      "inProgress": 0,
       "region": "성남시",
       "fullRegion": "경기도 성남시 분당구",
       "coordinates": [
-        37.36427,
-        127.12147
+        37.36377,
+        127.12017
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:13:06",
+      "typing": "-00:13:57",
       "boxId": 401581,
-      "lastAddr1": "경기도 성남시 분당구 불정로 219",
-      "lastAddr2": "105동 701",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
-      "completionRate": 95.8,
-      "status": "active"
+      "lastAddr1": "경기도 성남시 분당구 정자로 143",
+      "lastAddr2": "201동 104호",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
+      "completionRate": 100,
+      "status": "completed"
     },
     {
       "id": "driver_024",
@@ -710,27 +710,27 @@
       "company": "주로지스분당",
       "phone": "010-8697-5488",
       "totalDeliveries": 23,
-      "completedDeliveries": 21,
+      "completedDeliveries": 23,
       "failedDeliveries": 0,
-      "inProgress": 2,
+      "inProgress": 0,
       "region": "성남시",
       "fullRegion": "경기도 성남시 분당구",
       "coordinates": [
-        37.37735,
-        127.1108
+        37.38012,
+        127.11805
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:14:06",
+      "typing": "-00:14:36",
       "boxId": 401582,
-      "lastAddr1": "경기도 성남시 분당구 황새울로 196",
-      "lastAddr2": "706호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
-      "completionRate": 91.3,
-      "status": "active"
+      "lastAddr1": "경기도 성남시 분당구 수내로 54",
+      "lastAddr2": "2317호",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
+      "completionRate": 100,
+      "status": "completed"
     },
     {
       "id": "driver_025",
@@ -758,7 +758,7 @@
       "boxId": 401584,
       "lastAddr1": "경기도 성남시 분당구 성남대로172번길 12",
       "lastAddr2": "203호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -770,26 +770,26 @@
       "company": "주로지스분당",
       "phone": "010-3338-5025",
       "totalDeliveries": 31,
-      "completedDeliveries": 15,
+      "completedDeliveries": 17,
       "failedDeliveries": 0,
-      "inProgress": 16,
+      "inProgress": 14,
       "region": "성남시",
       "fullRegion": "경기도 성남시 분당구",
       "coordinates": [
-        37.39278,
-        127.07676
+        37.39393,
+        127.06516
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:09:52",
+      "typing": "-00:10:42",
       "boxId": 401585,
-      "lastAddr1": "경기도 성남시 분당구 운중동 978",
-      "lastAddr2": "202호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
-      "completionRate": 48.4,
+      "lastAddr1": "경기도 성남시 분당구 산운로 37",
+      "lastAddr2": "209동 107호",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
+      "completionRate": 54.8,
       "status": "active"
     },
     {
@@ -818,7 +818,7 @@
       "boxId": 401586,
       "lastAddr1": "경기도 성남시 분당구 분당동 71",
       "lastAddr2": "122동 903호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 66.7,
       "status": "active"
     },
@@ -830,26 +830,26 @@
       "company": "주로지스분당",
       "phone": "010-7925-3801",
       "totalDeliveries": 30,
-      "completedDeliveries": 18,
+      "completedDeliveries": 19,
       "failedDeliveries": 0,
-      "inProgress": 12,
+      "inProgress": 11,
       "region": "성남시",
       "fullRegion": "경기도 성남시 분당구",
       "coordinates": [
-        37.41347,
-        127.13203
+        37.41385,
+        127.13665
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:07:05",
+      "typing": "-00:07:30",
       "boxId": 401587,
-      "lastAddr1": "경기도 성남시 분당구 장미로 102",
-      "lastAddr2": "303호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
-      "completionRate": 60,
+      "lastAddr1": "경기도 성남시 분당구 장미로 139",
+      "lastAddr2": "202동 702호",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
+      "completionRate": 63.3,
       "status": "active"
     },
     {
@@ -860,26 +860,26 @@
       "company": "주로지스분당",
       "phone": "010-2519-0064",
       "totalDeliveries": 10,
-      "completedDeliveries": 5,
+      "completedDeliveries": 6,
       "failedDeliveries": 0,
-      "inProgress": 5,
+      "inProgress": 4,
       "region": "성남시",
       "fullRegion": "경기도 성남시 분당구",
       "coordinates": [
-        37.38837,
-        127.08531
+        37.38942,
+        127.0873
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:16:17",
+      "typing": "-00:17:27",
       "boxId": 401588,
-      "lastAddr1": "경기도 성남시 분당구 판교로 20",
-      "lastAddr2": "301동 302호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
-      "completionRate": 50,
+      "lastAddr1": "경기도 성남시 분당구 판교로 30",
+      "lastAddr2": "203동 601호",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
+      "completionRate": 60,
       "status": "active"
     },
     {
@@ -908,7 +908,7 @@
       "boxId": 401589,
       "lastAddr1": "경기도 성남시 분당구 판교로319번길 14",
       "lastAddr2": "101동 103호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -938,7 +938,7 @@
       "boxId": 401591,
       "lastAddr1": "경기도 성남시 분당구 탄천상로 79",
       "lastAddr2": "101동 102호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -968,7 +968,7 @@
       "boxId": 401592,
       "lastAddr1": "경기도 성남시 분당구 서현로 170",
       "lastAddr2": "C동 1225호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -980,26 +980,26 @@
       "company": "주로지스분당",
       "phone": "010-9137-5877",
       "totalDeliveries": 26,
-      "completedDeliveries": 15,
+      "completedDeliveries": 16,
       "failedDeliveries": 0,
-      "inProgress": 11,
+      "inProgress": 10,
       "region": "성남시",
       "fullRegion": "경기도 성남시 분당구",
       "coordinates": [
-        37.36457,
-        127.13026
+        37.36519,
+        127.12892
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:11:11",
+      "typing": "-00:11:19",
       "boxId": 401593,
-      "lastAddr1": "경기도 성남시 분당구 수내동 116-2",
-      "lastAddr2": "104호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
-      "completionRate": 57.7,
+      "lastAddr1": "경기도 성남시 분당구 발이봉북로24번길 1",
+      "lastAddr2": "3층",
+      "lastUpdate": "2025-10-25T13:33:42.707Z",
+      "completionRate": 61.5,
       "status": "active"
     },
     {
@@ -1028,7 +1028,7 @@
       "boxId": 401644,
       "lastAddr1": "경기도 성남시 분당구 서현로 170",
       "lastAddr2": "C동 1225호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1058,7 +1058,7 @@
       "boxId": 401647,
       "lastAddr1": "경기도 성남시 분당구 판교로319번길 14",
       "lastAddr2": "101동 103호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1076,8 +1076,8 @@
       "region": "성남시",
       "fullRegion": "경기도 성남시 수정가",
       "coordinates": [
-        37.38837,
-        127.08531
+        37.38942,
+        127.0873
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -1086,9 +1086,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:05:44",
       "boxId": 401944,
-      "lastAddr1": "경기도 성남시 분당구 판교로 20",
-      "lastAddr2": "301동 302호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastAddr1": "경기도 성남시 분당구 판교로 30",
+      "lastAddr2": "203동 601호",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1118,7 +1118,7 @@
       "boxId": 401634,
       "lastAddr1": "경기도 성남시 중원구 시민로28번길 6",
       "lastAddr2": "101동 1110호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1148,7 +1148,7 @@
       "boxId": 401639,
       "lastAddr1": "경기도 성남시 수정구 수진동 2114",
       "lastAddr2": "2층",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1178,7 +1178,7 @@
       "boxId": 401697,
       "lastAddr1": "경기도 성남시 수정구 수진동 2114",
       "lastAddr2": "2층",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1208,7 +1208,7 @@
       "boxId": 401633,
       "lastAddr1": "경기도 성남시 중원구 순환로198번길 14",
       "lastAddr2": "401호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1238,7 +1238,7 @@
       "boxId": 401634,
       "lastAddr1": "경기도 성남시 중원구 시민로28번길 6",
       "lastAddr2": "101동 1110호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1268,7 +1268,7 @@
       "boxId": 401636,
       "lastAddr1": "경기도 성남시 중원구 금광로 40",
       "lastAddr2": "304동 1505호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1298,7 +1298,7 @@
       "boxId": 401652,
       "lastAddr1": "경기도 수원시 권선구 권선로669번길 24-20",
       "lastAddr2": "마크타워 504호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1328,7 +1328,7 @@
       "boxId": 401653,
       "lastAddr1": "경기도 수원시 권선구 경수대로302번길 22",
       "lastAddr2": "한양아파트 106동 601호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1358,7 +1358,7 @@
       "boxId": 401655,
       "lastAddr1": "경기도 수원시 권선구 서수원로 161-11",
       "lastAddr2": "101-404",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1388,7 +1388,7 @@
       "boxId": 401658,
       "lastAddr1": "경기도 수원시 권선구 구운중로11번길 48",
       "lastAddr2": "3층 302호 (구운동)",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1400,27 +1400,27 @@
       "company": "대운로직스장안팔달권선",
       "phone": "010-2382-5443",
       "totalDeliveries": 40,
-      "completedDeliveries": 38,
+      "completedDeliveries": 40,
       "failedDeliveries": 0,
-      "inProgress": 2,
+      "inProgress": 0,
       "region": "수원시",
       "fullRegion": "경기도 수원시 권선구",
       "coordinates": [
-        37.27227,
-        126.94053
+        37.26892,
+        126.94231
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:06:00",
+      "typing": "-00:06:18",
       "boxId": 401659,
-      "lastAddr1": "경기도 수원시 권선구 금곡로 46",
-      "lastAddr2": "513동 702호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
-      "completionRate": 95,
-      "status": "active"
+      "lastAddr1": "경기도 수원시 권선구 금곡로102번길 126",
+      "lastAddr2": "710동 102호",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
+      "completionRate": 100,
+      "status": "completed"
     },
     {
       "id": "driver_048",
@@ -1448,7 +1448,7 @@
       "boxId": 401663,
       "lastAddr1": "경기도 수원시 권선구 호매실로 103",
       "lastAddr2": "2102동 1703호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1478,7 +1478,7 @@
       "boxId": 399089,
       "lastAddr1": "경기도 수원시 영통구 덕영대로 1462-14",
       "lastAddr2": "116동 602호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 84.6,
       "status": "active"
     },
@@ -1508,7 +1508,7 @@
       "boxId": 401617,
       "lastAddr1": "경기도 수원시 영통구 덕영대로1484번길 21",
       "lastAddr2": "101-402",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 83.7,
       "status": "active"
     },
@@ -1538,7 +1538,7 @@
       "boxId": 401618,
       "lastAddr1": "경기도 수원시 영통구 청명남로50번길 13-11",
       "lastAddr2": "103호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1568,7 +1568,7 @@
       "boxId": 401619,
       "lastAddr1": "경기도 수원시 영통구 광교중앙로 145",
       "lastAddr2": "C1420호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1598,7 +1598,7 @@
       "boxId": 401620,
       "lastAddr1": "경기도 수원시 영통구 태장로82번길 32",
       "lastAddr2": "106-2202",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1610,26 +1610,26 @@
       "company": "대운로직스영통",
       "phone": "010-7165-9710",
       "totalDeliveries": 33,
-      "completedDeliveries": 23,
+      "completedDeliveries": 25,
       "failedDeliveries": 0,
-      "inProgress": 10,
+      "inProgress": 8,
       "region": "수원시",
       "fullRegion": "경기도 수원시 영통구",
       "coordinates": [
-        37.27052,
-        127.03978
+        37.26939,
+        127.05171
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:07:52",
+      "typing": "-00:08:30",
       "boxId": 401622,
-      "lastAddr1": "경기도 수원시 영통구 권광로260번길 36",
-      "lastAddr2": "115동 1104호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
-      "completionRate": 69.7,
+      "lastAddr1": "경기도 수원시 영통구 매봉로27번길 11",
+      "lastAddr2": "101-302",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
+      "completionRate": 75.8,
       "status": "active"
     },
     {
@@ -1658,7 +1658,7 @@
       "boxId": 401623,
       "lastAddr1": "경기도 수원시 영통구 광교호수공원로 277",
       "lastAddr2": "108동 406호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1670,26 +1670,26 @@
       "company": "대운로직스영통",
       "phone": "010-4210-0838",
       "totalDeliveries": 21,
-      "completedDeliveries": 10,
+      "completedDeliveries": 11,
       "failedDeliveries": 0,
-      "inProgress": 11,
+      "inProgress": 10,
       "region": "수원시",
       "fullRegion": "경기도 수원시 영통구",
       "coordinates": [
-        37.29308,
-        127.06485
+        37.28856,
+        127.06243
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:09:58",
+      "typing": "-00:11:55",
       "boxId": 401626,
-      "lastAddr1": "경기도 수원시 영통구 광교중앙로 247",
-      "lastAddr2": "3203동 1802호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
-      "completionRate": 47.6,
+      "lastAddr1": "경기도 수원시 영통구 센트럴파크로 33",
+      "lastAddr2": "101동 2001호",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
+      "completionRate": 52.4,
       "status": "active"
     },
     {
@@ -1718,7 +1718,7 @@
       "boxId": 401628,
       "lastAddr1": "경기도 수원시 영통구 청명북로 81",
       "lastAddr2": "401-602",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1748,7 +1748,7 @@
       "boxId": 401629,
       "lastAddr1": "경기도 수원시 영통구 광교중앙로 170",
       "lastAddr2": "B동 604호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 84.2,
       "status": "active"
     },
@@ -1778,7 +1778,7 @@
       "boxId": 401656,
       "lastAddr1": "경기도 수원시 장안구 경수대로976번길 22",
       "lastAddr2": "한일타운 131동 1505호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1808,7 +1808,7 @@
       "boxId": 401657,
       "lastAddr1": "경기도 수원시 장안구 장안로 211",
       "lastAddr2": "207-806",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1838,7 +1838,7 @@
       "boxId": 401660,
       "lastAddr1": "경기도 수원시 장안구 수성로157번길 60",
       "lastAddr2": "102동1803호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1868,7 +1868,7 @@
       "boxId": 401661,
       "lastAddr1": "경기도 수원시 장안구 서부로 2066",
       "lastAddr2": "신관A동 436호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1898,7 +1898,7 @@
       "boxId": 401651,
       "lastAddr1": "경기도 수원시 팔달구 권광로276번길 33-25",
       "lastAddr2": "902호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1928,7 +1928,7 @@
       "boxId": 401654,
       "lastAddr1": "경기도 수원시 팔달구 화산로6번길 15-6",
       "lastAddr2": "한라밸리 202호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1958,7 +1958,7 @@
       "boxId": 401655,
       "lastAddr1": "경기도 수원시 권선구 서수원로 161-11",
       "lastAddr2": "101-404",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -1988,7 +1988,7 @@
       "boxId": 401657,
       "lastAddr1": "경기도 수원시 장안구 장안로 211",
       "lastAddr2": "207-806",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2018,7 +2018,7 @@
       "boxId": 401662,
       "lastAddr1": "경기도 수원시 팔달구 중부대로223번길 4",
       "lastAddr2": "블루하우스 629호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2036,8 +2036,8 @@
       "region": "시흥북",
       "fullRegion": "경기도 시흥북",
       "coordinates": [
-        37.42895,
-        126.74833
+        37.43759,
+        126.75027
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -2046,9 +2046,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:04:47",
       "boxId": 401843,
-      "lastAddr1": "인천광역시 남동구 서창남순환로 55",
-      "lastAddr2": "502동 2102호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastAddr1": "인천광역시 남동구 장아산로 157",
+      "lastAddr2": "102동 501호",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2078,7 +2078,7 @@
       "boxId": 401284,
       "lastAddr1": "경기도 안산시 상록구 안산천남1로 100",
       "lastAddr2": "1003동 803호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2108,7 +2108,7 @@
       "boxId": 401431,
       "lastAddr1": "경기도 안산시 상록구 안산천남1로 100",
       "lastAddr2": "1003동 803호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2120,26 +2120,26 @@
       "company": "대운로직스동안",
       "phone": "010-7343-9673",
       "totalDeliveries": 28,
-      "completedDeliveries": 20,
+      "completedDeliveries": 23,
       "failedDeliveries": 0,
-      "inProgress": 8,
+      "inProgress": 5,
       "region": "안양시",
       "fullRegion": "경기도 안양시 동안구",
       "coordinates": [
-        37.40758,
-        126.94321
+        37.4031,
+        126.954
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:08:16",
+      "typing": "-00:09:34",
       "boxId": 400899,
-      "lastAddr1": "경기도 안양시 동안구 매곡로 23",
-      "lastAddr2": "평촌엘프라우드 1단지 118동 2503호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
-      "completionRate": 71.4,
+      "lastAddr1": "경기도 안양시 동안구 관양동 1383-12",
+      "lastAddr2": "알포메빌 2차 502호",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
+      "completionRate": 82.1,
       "status": "active"
     },
     {
@@ -2168,7 +2168,7 @@
       "boxId": 401682,
       "lastAddr1": "경기도 안양시 동안구 시민대로 280",
       "lastAddr2": "샤르망2차 709호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2198,7 +2198,7 @@
       "boxId": 401683,
       "lastAddr1": "경기도 안양시 만안구 경수대로 1193",
       "lastAddr2": "112동 104호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2228,7 +2228,7 @@
       "boxId": 401684,
       "lastAddr1": "경기도 안양시 동안구 부림로 52",
       "lastAddr2": "503동 403호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2240,26 +2240,26 @@
       "company": "대운로직스동안",
       "phone": "010-9247-5271",
       "totalDeliveries": 32,
-      "completedDeliveries": 29,
+      "completedDeliveries": 30,
       "failedDeliveries": 0,
-      "inProgress": 3,
+      "inProgress": 2,
       "region": "안양시",
       "fullRegion": "경기도 안양시 동안구",
       "coordinates": [
-        37.40399,
-        126.96646
+        37.40388,
+        126.96694
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:08:13",
+      "typing": "-00:08:19",
       "boxId": 401685,
-      "lastAddr1": "경기도 안양시 동안구 관양동 1465-26",
-      "lastAddr2": "302호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
-      "completionRate": 90.6,
+      "lastAddr1": "경기도 안양시 동안구 관악대로388번길 19-13",
+      "lastAddr2": "A동 202호",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
+      "completionRate": 93.8,
       "status": "active"
     },
     {
@@ -2288,7 +2288,7 @@
       "boxId": 401687,
       "lastAddr1": "경기도 안양시 동안구 귀인로190번길 61-33",
       "lastAddr2": "2층",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2318,7 +2318,7 @@
       "boxId": 401688,
       "lastAddr1": "경기도 안양시 동안구 흥안대로81번길 66",
       "lastAddr2": "302동 401호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2348,7 +2348,7 @@
       "boxId": 401691,
       "lastAddr1": "경기도 안양시 동안구 경수대로 769",
       "lastAddr2": "한스하임 316호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2378,7 +2378,7 @@
       "boxId": 401692,
       "lastAddr1": "경기도 안양시 동안구 동편로 110",
       "lastAddr2": "동편마을 315동 902호",
-      "lastUpdate": "2025-10-25T13:28:42.527Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 93.3,
       "status": "active"
     },
@@ -2408,7 +2408,7 @@
       "boxId": 401835,
       "lastAddr1": "경기도 안양시 동안구 동편로 110",
       "lastAddr2": "동편마을 315동 902호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2438,7 +2438,7 @@
       "boxId": 401849,
       "lastAddr1": "경기도 안양시 동안구 부림로 52",
       "lastAddr2": "503동 403호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2468,7 +2468,7 @@
       "boxId": 401534,
       "lastAddr1": "경기도 안양시 만안구 예술공원로 51",
       "lastAddr2": "106동 2307호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2498,7 +2498,7 @@
       "boxId": 401665,
       "lastAddr1": "경기도 안양시 만안구 삼봉로 66",
       "lastAddr2": "103동 902호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2528,7 +2528,7 @@
       "boxId": 401666,
       "lastAddr1": "경기도 안양시 만안구 안양로 186",
       "lastAddr2": "202동 2308호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2558,7 +2558,7 @@
       "boxId": 401667,
       "lastAddr1": "경기도 안양시 만안구 연현로79번길 105",
       "lastAddr2": "107동 303호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 5,
       "status": "active"
     },
@@ -2588,7 +2588,7 @@
       "boxId": 401759,
       "lastAddr1": "경기도 안양시 만안구 경수대로 1193",
       "lastAddr2": "112동 104호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2618,7 +2618,7 @@
       "boxId": 397648,
       "lastAddr1": "경기도 용인시 기흥구 흥덕2로117번길 14",
       "lastAddr2": "자연앤스위첸 609동 102호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2648,7 +2648,7 @@
       "boxId": 401597,
       "lastAddr1": "경기도 용인시 기흥구 마북로 186",
       "lastAddr2": "신창아파트 102동 310호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2678,7 +2678,7 @@
       "boxId": 401600,
       "lastAddr1": "경기도 용인시 기흥구 서천동 778",
       "lastAddr2": "301호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2708,7 +2708,7 @@
       "boxId": 401601,
       "lastAddr1": "경기도 용인시 기흥구 중부대로747번길 22-2",
       "lastAddr2": "상하동 에코타운 101동 401호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2738,7 +2738,7 @@
       "boxId": 401602,
       "lastAddr1": "경기도 용인시 기흥구 동백중앙로 55",
       "lastAddr2": "608호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2750,26 +2750,26 @@
       "company": "주로지스수지",
       "phone": "010-6439-6739",
       "totalDeliveries": 51,
-      "completedDeliveries": 41,
+      "completedDeliveries": 44,
       "failedDeliveries": 0,
-      "inProgress": 10,
+      "inProgress": 7,
       "region": "용인시",
       "fullRegion": "경기도 용인시 수지구",
       "coordinates": [
-        37.31546,
-        127.08412
+        37.31472,
+        127.08388
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:48",
+      "typing": "-00:05:03",
       "boxId": 399913,
-      "lastAddr1": "경기도 용인시 수지구 수지로 166",
-      "lastAddr2": "103동202호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 80.4,
+      "lastAddr1": "경기도 용인시 수지구 포은대로313번길 7-10",
+      "lastAddr2": "111동 415호",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
+      "completionRate": 86.3,
       "status": "active"
     },
     {
@@ -2798,7 +2798,7 @@
       "boxId": 401604,
       "lastAddr1": "경기도 용인시 수지구 성복2로 184",
       "lastAddr2": "205동 101호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 80,
       "status": "active"
     },
@@ -2828,7 +2828,7 @@
       "boxId": 401605,
       "lastAddr1": "경기도 용인시 수지구 현암로 3",
       "lastAddr2": "105-1201",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 70,
       "status": "active"
     },
@@ -2858,7 +2858,7 @@
       "boxId": 401607,
       "lastAddr1": "경기도 용인시 수지구 상현로 142",
       "lastAddr2": "1010동 504호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2888,7 +2888,7 @@
       "boxId": 401609,
       "lastAddr1": "경기도 용인시 수지구 동천로135번길 21",
       "lastAddr2": "1305동 703호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 45.8,
       "status": "active"
     },
@@ -2918,7 +2918,7 @@
       "boxId": 401816,
       "lastAddr1": "경기도 용인시 수지구 상현로 142",
       "lastAddr2": "1010동 504호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2936,8 +2936,8 @@
       "region": "용인시",
       "fullRegion": "경기도 용인시 수지구",
       "coordinates": [
-        37.31546,
-        127.08412
+        37.31472,
+        127.08388
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -2946,9 +2946,9 @@
       "startTime": "Invalid Date",
       "typing": "-01:00:22",
       "boxId": 401936,
-      "lastAddr1": "경기도 용인시 수지구 수지로 166",
-      "lastAddr2": "103동202호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastAddr1": "경기도 용인시 수지구 포은대로313번길 7-10",
+      "lastAddr2": "111동 415호",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2978,7 +2978,7 @@
       "boxId": 401725,
       "lastAddr1": "경기도 의정부시 호원동 119-74",
       "lastAddr2": "라벨르빌 2차 B동 202호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -2990,26 +2990,26 @@
       "company": "중앙의정부",
       "phone": "010-9281-6825",
       "totalDeliveries": 61,
-      "completedDeliveries": 33,
+      "completedDeliveries": 35,
       "failedDeliveries": 0,
-      "inProgress": 28,
+      "inProgress": 26,
       "region": "의정부시",
       "fullRegion": "경기도 의정부시",
       "coordinates": [
-        37.74441,
-        127.05707
+        37.7401,
+        127.05778
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:03:28",
+      "typing": "-00:03:41",
       "boxId": 401726,
-      "lastAddr1": "경기도 의정부시 추동로19번길 30",
-      "lastAddr2": "202호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 54.1,
+      "lastAddr1": "경기도 의정부시 능곡로 13",
+      "lastAddr2": "103-704",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
+      "completionRate": 57.4,
       "status": "active"
     },
     {
@@ -3020,26 +3020,26 @@
       "company": "중앙의정부",
       "phone": "010-4782-4901",
       "totalDeliveries": 81,
-      "completedDeliveries": 60,
+      "completedDeliveries": 63,
       "failedDeliveries": 0,
-      "inProgress": 21,
+      "inProgress": 18,
       "region": "의정부시",
       "fullRegion": "경기도 의정부시",
       "coordinates": [
-        37.7417,
-        127.09329
+        37.7434,
+        127.09375
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:02:58",
+      "typing": "-00:03:04",
       "boxId": 401727,
       "lastAddr1": "경기도 의정부시 용현로 143",
-      "lastAddr2": "105동 205호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 74.1,
+      "lastAddr2": "304동904호",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
+      "completionRate": 77.8,
       "status": "active"
     },
     {
@@ -3068,7 +3068,7 @@
       "boxId": 401728,
       "lastAddr1": "경기도 의정부시 서광로 210",
       "lastAddr2": "105동 1604호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3080,26 +3080,26 @@
       "company": "중앙의정부",
       "phone": "010-5233-7034",
       "totalDeliveries": 46,
-      "completedDeliveries": 43,
+      "completedDeliveries": 45,
       "failedDeliveries": 0,
-      "inProgress": 3,
+      "inProgress": 1,
       "region": "의정부시",
       "fullRegion": "경기도 의정부시",
       "coordinates": [
-        37.76338,
-        127.04151
+        37.76172,
+        127.03546
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:05:24",
+      "typing": "-00:05:41",
       "boxId": 401731,
-      "lastAddr1": "경기도 의정부시 본원로46번길 16",
-      "lastAddr2": "503동 909호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 93.5,
+      "lastAddr1": "경기도 의정부시 녹양동 400-6",
+      "lastAddr2": "303호",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
+      "completionRate": 97.8,
       "status": "active"
     },
     {
@@ -3128,7 +3128,7 @@
       "boxId": 401313,
       "lastAddr1": "경기도 화성시 병점중앙로169번길 10",
       "lastAddr2": "101동514호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3158,7 +3158,7 @@
       "boxId": 401495,
       "lastAddr1": "경기도 화성시 병점중앙로169번길 10",
       "lastAddr2": "101동514호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3170,26 +3170,26 @@
       "company": "로지스탑화성나",
       "phone": "010-8694-8520",
       "totalDeliveries": 68,
-      "completedDeliveries": 48,
+      "completedDeliveries": 51,
       "failedDeliveries": 0,
-      "inProgress": 20,
+      "inProgress": 17,
       "region": "화성나",
       "fullRegion": "경기도 화성나",
       "coordinates": [
-        37.1988,
-        127.11428
+        37.20302,
+        127.0726
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:15",
+      "typing": "-00:04:25",
       "boxId": 401556,
-      "lastAddr1": "경기도 화성시 동탄대로시범길 134",
-      "lastAddr2": "1503-3601",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 70.6,
+      "lastAddr1": "경기도 화성시 반송동 93-6",
+      "lastAddr2": "807호",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
+      "completionRate": 75,
       "status": "active"
     },
     {
@@ -3218,7 +3218,7 @@
       "boxId": 401610,
       "lastAddr1": "경기도 화성시 동탄지성로 42",
       "lastAddr2": "226동 1504호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3248,7 +3248,7 @@
       "boxId": 401611,
       "lastAddr1": "경기도 화성시 동탄공원로 21-12",
       "lastAddr2": "푸른마을 포스코 914동 1202호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3278,7 +3278,7 @@
       "boxId": 401612,
       "lastAddr1": "경기도 화성시 동탄반석로 41",
       "lastAddr2": "616동 103호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3308,7 +3308,7 @@
       "boxId": 401613,
       "lastAddr1": "경기도 화성시 동탄대로411번길 11",
       "lastAddr2": "헤리움 2차 811호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3338,7 +3338,7 @@
       "boxId": 401614,
       "lastAddr1": "경기도 화성시 동탄순환대로22길 46",
       "lastAddr2": "1252-1303",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3368,7 +3368,7 @@
       "boxId": 401780,
       "lastAddr1": "대전 대덕구 비래동로32번길 7",
       "lastAddr2": "2동 301호 대운주택",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3380,26 +3380,26 @@
       "company": "위로지유성구",
       "phone": "010-2282-3315",
       "totalDeliveries": 40,
-      "completedDeliveries": 25,
+      "completedDeliveries": 26,
       "failedDeliveries": 0,
-      "inProgress": 15,
+      "inProgress": 14,
       "region": "대전광역시 동구",
       "fullRegion": "대전광역시 동구",
       "coordinates": [
-        36.31747,
-        127.44433
+        36.31601,
+        127.44326
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:47",
+      "typing": "-00:04:58",
       "boxId": 401784,
-      "lastAddr1": "대전 동구 안샘로 11",
-      "lastAddr2": "410동 2002호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 62.5,
+      "lastAddr1": "대전 동구 대전로542번길 121",
+      "lastAddr2": "312동903호",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
+      "completionRate": 65,
       "status": "active"
     },
     {
@@ -3410,27 +3410,27 @@
       "company": "위로지유성구",
       "phone": "010-4242-9090",
       "totalDeliveries": 36,
-      "completedDeliveries": 35,
+      "completedDeliveries": 36,
       "failedDeliveries": 0,
-      "inProgress": 1,
+      "inProgress": 0,
       "region": "대전광역시 동구",
       "fullRegion": "대전광역시 동구",
       "coordinates": [
-        36.33597,
-        127.44764
+        36.33388,
+        127.44709
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:06:39",
+      "typing": "-00:06:48",
       "boxId": 401786,
-      "lastAddr1": "대전 동구 자양동 66-15",
-      "lastAddr2": "새롬빌 302호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 97.2,
-      "status": "active"
+      "lastAddr1": "대전 동구 자양동 139-11",
+      "lastAddr2": "까르띠에 402호",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
+      "completionRate": 100,
+      "status": "completed"
     },
     {
       "id": "driver_115",
@@ -3440,26 +3440,26 @@
       "company": "HJ대전서구",
       "phone": "010-7668-7640",
       "totalDeliveries": 43,
-      "completedDeliveries": 29,
+      "completedDeliveries": 30,
       "failedDeliveries": 0,
-      "inProgress": 14,
+      "inProgress": 13,
       "region": "대전광역시 서구",
       "fullRegion": "대전광역시 서구",
       "coordinates": [
-        36.29423,
-        127.34439
+        36.29251,
+        127.33926
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:05:31",
+      "typing": "-00:05:43",
       "boxId": 396534,
-      "lastAddr1": "대전 서구 구봉산북로 212",
-      "lastAddr2": "101동 1705호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 67.4,
+      "lastAddr1": "대전 서구 구봉산북로 165",
+      "lastAddr2": "316동 901호",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
+      "completionRate": 69.8,
       "status": "active"
     },
     {
@@ -3488,7 +3488,7 @@
       "boxId": 401021,
       "lastAddr1": "대전 중구 안영로 55",
       "lastAddr2": "강변아파트 102동202호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3500,26 +3500,26 @@
       "company": "HJ대전서구",
       "phone": "010-3808-0397",
       "totalDeliveries": 40,
-      "completedDeliveries": 37,
+      "completedDeliveries": 39,
       "failedDeliveries": 0,
-      "inProgress": 3,
+      "inProgress": 1,
       "region": "대전광역시 서구",
       "fullRegion": "대전광역시 서구",
       "coordinates": [
-        36.33109,
-        127.38364
+        36.33334,
+        127.38079
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:05:48",
+      "typing": "-00:06:11",
       "boxId": 401793,
       "lastAddr1": "대전 서구 갈마로 262",
-      "lastAddr2": "106-1706",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 92.5,
+      "lastAddr2": "118동1308호",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
+      "completionRate": 97.5,
       "status": "active"
     },
     {
@@ -3548,7 +3548,7 @@
       "boxId": 401795,
       "lastAddr1": "대전 서구 계백로1286번길 57",
       "lastAddr2": "주연빌 303호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3578,7 +3578,7 @@
       "boxId": 401798,
       "lastAddr1": "대전 서구 도안동로 234",
       "lastAddr2": "313동301호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 97.3,
       "status": "active"
     },
@@ -3608,7 +3608,7 @@
       "boxId": 401799,
       "lastAddr1": "대전 서구 둔산동 1083",
       "lastAddr2": "806호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3638,7 +3638,7 @@
       "boxId": 401802,
       "lastAddr1": "대전 서구 월평동 288-1",
       "lastAddr2": "스마트시티 701호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3650,26 +3650,26 @@
       "company": "위로지유성구",
       "phone": "010-2431-6398",
       "totalDeliveries": 40,
-      "completedDeliveries": 35,
+      "completedDeliveries": 37,
       "failedDeliveries": 0,
-      "inProgress": 5,
+      "inProgress": 3,
       "region": "대전광역시 유성구",
       "fullRegion": "대전광역시 유성구",
       "coordinates": [
-        36.34403,
-        127.31428
+        36.34416,
+        127.30051
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:05:56",
+      "typing": "-00:06:18",
       "boxId": 400068,
-      "lastAddr1": "대전 유성구 복용동 579-1",
-      "lastAddr2": "402호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 87.5,
+      "lastAddr1": "대전 유성구 학하남로 10",
+      "lastAddr2": "208동 402호",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
+      "completionRate": 92.5,
       "status": "active"
     },
     {
@@ -3698,7 +3698,7 @@
       "boxId": 401778,
       "lastAddr1": "대전 유성구 왕가봉로2번길 51",
       "lastAddr2": "베니스빌딩 404호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3728,7 +3728,7 @@
       "boxId": 401781,
       "lastAddr1": "대전 유성구 배울2로 61",
       "lastAddr2": "1002동 1301호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3740,26 +3740,26 @@
       "company": "위로지유성구",
       "phone": "010-9971-4484",
       "totalDeliveries": 44,
-      "completedDeliveries": 37,
+      "completedDeliveries": 41,
       "failedDeliveries": 0,
-      "inProgress": 7,
+      "inProgress": 3,
       "region": "대전광역시 유성구",
       "fullRegion": "대전광역시 유성구",
       "coordinates": [
-        36.33369,
-        127.34154
+        36.33149,
+        127.3355
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:27",
+      "typing": "-00:04:43",
       "boxId": 401785,
-      "lastAddr1": "대전 유성구 동서대로 725",
-      "lastAddr2": "1208동 403호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 84.1,
+      "lastAddr1": "대전 유성구 동서대로656번길 16-12",
+      "lastAddr2": "7블럭 207동 1401호",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
+      "completionRate": 93.2,
       "status": "active"
     },
     {
@@ -3788,7 +3788,7 @@
       "boxId": 400017,
       "lastAddr1": "대전 중구 평촌로 93",
       "lastAddr2": "108동 601호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3818,7 +3818,7 @@
       "boxId": 401011,
       "lastAddr1": "대전 중구 문화동 231-9",
       "lastAddr2": "그레이스빌 401호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3848,7 +3848,7 @@
       "boxId": 401019,
       "lastAddr1": "대전 중구 부사동 414-2",
       "lastAddr2": "새출발축복의집",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3878,7 +3878,7 @@
       "boxId": 401021,
       "lastAddr1": "대전 중구 안영로 55",
       "lastAddr2": "강변아파트 102동202호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3890,27 +3890,27 @@
       "company": "로지스탑강남가",
       "phone": "010-5823-7050",
       "totalDeliveries": 43,
-      "completedDeliveries": 41,
+      "completedDeliveries": 43,
       "failedDeliveries": 0,
-      "inProgress": 2,
+      "inProgress": 0,
       "region": "강남가",
       "fullRegion": "서울특별시 강남가",
       "coordinates": [
-        37.49434,
-        127.04822
+        37.49218,
+        127.04928
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:05:13",
+      "typing": "-00:05:29",
       "boxId": 400790,
-      "lastAddr1": "서울특별시 강남구 도곡로 306",
-      "lastAddr2": "105-2102",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 95.3,
-      "status": "active"
+      "lastAddr1": "서울특별시 강남구 선릉로 221",
+      "lastAddr2": ", 410동 902호 (도곡동, 도곡렉슬아파트)",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
+      "completionRate": 100,
+      "status": "completed"
     },
     {
       "id": "driver_131",
@@ -3938,7 +3938,7 @@
       "boxId": 401540,
       "lastAddr1": "서울특별시 강남구 선릉로129길 3-6",
       "lastAddr2": ", 601호 (논현동)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.708Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -3950,26 +3950,26 @@
       "company": "로지스탑강남가",
       "phone": "010-5551-9032",
       "totalDeliveries": 56,
-      "completedDeliveries": 49,
+      "completedDeliveries": 52,
       "failedDeliveries": 0,
-      "inProgress": 7,
+      "inProgress": 4,
       "region": "강남가",
       "fullRegion": "서울특별시 강남가",
       "coordinates": [
-        37.49256,
-        127.03213
+        37.49734,
+        127.03009
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:02",
+      "typing": "-00:04:15",
       "boxId": 401788,
-      "lastAddr1": "서울특별시 강남구 역삼로4길 16",
-      "lastAddr2": "309호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 87.5,
+      "lastAddr1": "서울특별시 강남구 테헤란로4길 15",
+      "lastAddr2": "910",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 92.9,
       "status": "active"
     },
     {
@@ -3998,7 +3998,7 @@
       "boxId": 401789,
       "lastAddr1": "서울특별시 강남구 영동대로138길 12",
       "lastAddr2": "102동 3401호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4028,7 +4028,7 @@
       "boxId": 401790,
       "lastAddr1": "서울특별시 강남구 압구정로 151",
       "lastAddr2": ", 120동 404호 (압구정동, 현대아파트)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4058,7 +4058,7 @@
       "boxId": 401791,
       "lastAddr1": "서울특별시 강남구 선릉로86길 31",
       "lastAddr2": "1723호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4070,26 +4070,26 @@
       "company": "직영강동(유닛선택용)",
       "phone": "010-4441-5502",
       "totalDeliveries": 44,
-      "completedDeliveries": 23,
+      "completedDeliveries": 27,
       "failedDeliveries": 0,
-      "inProgress": 21,
+      "inProgress": 17,
       "region": "강동구",
       "fullRegion": "서울특별시 강동구",
       "coordinates": [
-        37.53667,
-        127.12404
+        37.53499,
+        127.12406
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:02:42",
+      "typing": "-00:02:58",
       "boxId": 389482,
-      "lastAddr1": "서울특별시 강동구 성내동 46-6",
-      "lastAddr2": "301호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 52.3,
+      "lastAddr1": "서울특별시 강동구 성내동 132-3",
+      "lastAddr2": "1층 고요케이크",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 61.4,
       "status": "active"
     },
     {
@@ -4100,26 +4100,26 @@
       "company": "직영강동(유닛선택용)",
       "phone": "010-5338-3692",
       "totalDeliveries": 8,
-      "completedDeliveries": 5,
+      "completedDeliveries": 6,
       "failedDeliveries": 0,
-      "inProgress": 3,
+      "inProgress": 2,
       "region": "강동구",
       "fullRegion": "서울특별시 강동구",
       "coordinates": [
-        37.52169,
-        127.135
+        37.524,
+        127.13655
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:22:56",
+      "typing": "-00:25:57",
       "boxId": 397228,
       "lastAddr1": "서울특별시 강동구 양재대로 1300",
-      "lastAddr2": "301-2903 (둔촌동, 올림픽파크포레온)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 62.5,
+      "lastAddr2": "201동 2003호 (둔촌동, 올림픽파크포레온)",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 75,
       "status": "active"
     },
     {
@@ -4148,7 +4148,7 @@
       "boxId": 399156,
       "lastAddr1": "서울특별시 강동구 고덕로 333",
       "lastAddr2": "122동 204호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 83.3,
       "status": "active"
     },
@@ -4178,7 +4178,7 @@
       "boxId": 399161,
       "lastAddr1": "서울특별시 강동구 천중로43길 20",
       "lastAddr2": "오케이빌라 16동 B101호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4190,27 +4190,27 @@
       "company": "직영강동(유닛선택용)",
       "phone": "010-9511-8609",
       "totalDeliveries": 7,
-      "completedDeliveries": 5,
+      "completedDeliveries": 7,
       "failedDeliveries": 0,
-      "inProgress": 2,
+      "inProgress": 0,
       "region": "강동구",
       "fullRegion": "서울특별시 강동구",
       "coordinates": [
-        37.5564,
-        127.14014
+        37.55307,
+        127.1398
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:20:41",
+      "typing": "-00:24:49",
       "boxId": 399934,
-      "lastAddr1": "서울특별시 강동구 고덕로 131",
-      "lastAddr2": "135동 301호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 71.4,
-      "status": "active"
+      "lastAddr1": "서울특별시 강동구 고덕로 130",
+      "lastAddr2": "118동 1503호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 100,
+      "status": "completed"
     },
     {
       "id": "driver_141",
@@ -4238,7 +4238,7 @@
       "boxId": 401671,
       "lastAddr1": "서울특별시 강동구 고덕로98길 160",
       "lastAddr2": ", 1409-308 (상일동, 강동리엔파크14단지)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 94.4,
       "status": "active"
     },
@@ -4268,7 +4268,7 @@
       "boxId": 401675,
       "lastAddr1": "서울특별시 강동구 명일로 110",
       "lastAddr2": "402호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4280,27 +4280,27 @@
       "company": "직영강동(유닛선택용)",
       "phone": "010-8210-2520",
       "totalDeliveries": 10,
-      "completedDeliveries": 9,
+      "completedDeliveries": 10,
       "failedDeliveries": 0,
-      "inProgress": 1,
+      "inProgress": 0,
       "region": "강동구",
       "fullRegion": "서울특별시 강동구",
       "coordinates": [
-        37.57321,
-        127.17632
+        37.57282,
+        127.17453
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:23:46",
+      "typing": "-00:24:49",
       "boxId": 401676,
       "lastAddr1": "서울특별시 강동구 아리수로93다길 80",
-      "lastAddr2": "503동509호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 90,
-      "status": "active"
+      "lastAddr2": "501동 701호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 100,
+      "status": "completed"
     },
     {
       "id": "driver_144",
@@ -4328,7 +4328,7 @@
       "boxId": 401679,
       "lastAddr1": "서울특별시 강동구 천호동 458-3",
       "lastAddr2": "715호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4340,26 +4340,26 @@
       "company": "직영강동(유닛선택용)",
       "phone": "010-5188-9433",
       "totalDeliveries": 35,
-      "completedDeliveries": 23,
+      "completedDeliveries": 26,
       "failedDeliveries": 0,
-      "inProgress": 12,
+      "inProgress": 9,
       "region": "강동구",
       "fullRegion": "서울특별시 강동구",
       "coordinates": [
-        37.54768,
-        127.13394
+        37.54849,
+        127.13476
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:06:38",
+      "typing": "-00:07:04",
       "boxId": 401681,
-      "lastAddr1": "서울특별시 강동구 암사동 489-67",
-      "lastAddr2": "201호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 65.7,
+      "lastAddr1": "서울특별시 강동구 상암로23길 27",
+      "lastAddr2": ", 201호 (암사동)",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 74.3,
       "status": "active"
     },
     {
@@ -4388,7 +4388,7 @@
       "boxId": 401349,
       "lastAddr1": "서울특별시 강서구 화곡로 289",
       "lastAddr2": "604호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4418,7 +4418,7 @@
       "boxId": 401435,
       "lastAddr1": "서울특별시 강서구 화곡로 289",
       "lastAddr2": "604호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4430,26 +4430,26 @@
       "company": "위로지관악용산",
       "phone": "010-2563-7120",
       "totalDeliveries": 40,
-      "completedDeliveries": 33,
+      "completedDeliveries": 36,
       "failedDeliveries": 0,
-      "inProgress": 7,
+      "inProgress": 4,
       "region": "관악가",
       "fullRegion": "서울특별시 관악가",
       "coordinates": [
-        37.45968,
-        126.91839
+        37.45848,
+        126.92108
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:53",
+      "typing": "-00:05:20",
       "boxId": 400935,
       "lastAddr1": "서울특별시 관악구 난곡로 55",
-      "lastAddr2": "202동1004호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 82.5,
+      "lastAddr2": "220동 601호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 90,
       "status": "active"
     },
     {
@@ -4460,26 +4460,26 @@
       "company": "위로지관악용산",
       "phone": "010-2888-8854",
       "totalDeliveries": 16,
-      "completedDeliveries": 10,
+      "completedDeliveries": 15,
       "failedDeliveries": 0,
-      "inProgress": 6,
+      "inProgress": 1,
       "region": "관악가",
       "fullRegion": "서울특별시 관악가",
       "coordinates": [
-        37.48376,
-        126.90459
+        37.47977,
+        126.90054
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:11:04",
+      "typing": "-00:11:53",
       "boxId": 401820,
-      "lastAddr1": "서울특별시 관악구 조원로 25",
-      "lastAddr2": "관악힐스테이트뉴포레107동2205호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 62.5,
+      "lastAddr1": "서울특별시 관악구 신림동 1667-1",
+      "lastAddr2": "405호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 93.8,
       "status": "active"
     },
     {
@@ -4496,8 +4496,8 @@
       "region": "관악나",
       "fullRegion": "서울특별시 관악나",
       "coordinates": [
-        37.48376,
-        126.90459
+        37.47977,
+        126.90054
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -4506,9 +4506,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:10:36",
       "boxId": 401820,
-      "lastAddr1": "서울특별시 관악구 조원로 25",
-      "lastAddr2": "관악힐스테이트뉴포레107동2205호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastAddr1": "서울특별시 관악구 신림동 1667-1",
+      "lastAddr2": "405호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4538,7 +4538,7 @@
       "boxId": 401827,
       "lastAddr1": "서울특별시 관악구 신림동 1574-21",
       "lastAddr2": "304호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4550,26 +4550,26 @@
       "company": "위로지관악용산",
       "phone": "010-5322-2087",
       "totalDeliveries": 22,
-      "completedDeliveries": 4,
+      "completedDeliveries": 5,
       "failedDeliveries": 0,
-      "inProgress": 18,
+      "inProgress": 17,
       "region": "관악나",
       "fullRegion": "서울특별시 관악나",
       "coordinates": [
-        37.47483,
-        126.96056
+        37.47524,
+        126.9594
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:07:48",
+      "typing": "-00:08:12",
       "boxId": 401830,
-      "lastAddr1": "서울특별시 관악구 낙성대로3길 21-11",
-      "lastAddr2": "205호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 18.2,
+      "lastAddr1": "서울특별시 관악구 낙성대로 37",
+      "lastAddr2": ", 낙성대현대2차 202동 804호 (봉천동, 낙성대현대아파트)",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 22.7,
       "status": "active"
     },
     {
@@ -4586,8 +4586,8 @@
       "region": "관악다",
       "fullRegion": "서울특별시 관악다",
       "coordinates": [
-        37.48376,
-        126.90459
+        37.47977,
+        126.90054
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -4596,9 +4596,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:04:33",
       "boxId": 401820,
-      "lastAddr1": "서울특별시 관악구 조원로 25",
-      "lastAddr2": "관악힐스테이트뉴포레107동2205호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastAddr1": "서울특별시 관악구 신림동 1667-1",
+      "lastAddr2": "405호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4628,7 +4628,7 @@
       "boxId": 401833,
       "lastAddr1": "서울특별시 관악구 봉천로 312",
       "lastAddr2": "407호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4658,7 +4658,7 @@
       "boxId": 401939,
       "lastAddr1": "서울특별시 관악구 봉천로 312",
       "lastAddr2": "407호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4670,27 +4670,27 @@
       "company": "위로지관악용산",
       "phone": "010-9762-9712",
       "totalDeliveries": 13,
-      "completedDeliveries": 0,
+      "completedDeliveries": 2,
       "failedDeliveries": 0,
-      "inProgress": 13,
+      "inProgress": 11,
       "region": "관악마",
       "fullRegion": "서울특별시 관악마",
       "coordinates": [
-        37.49014,
-        126.9577
+        37.48965,
+        126.95398
       ],
-      "pickupStatus": "미픽업",
+      "pickupStatus": "픽업",
       "delayStatus": "정상",
-      "lastDeliveryTime": "",
+      "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "",
+      "typing": "-00:17:04",
       "boxId": 401832,
-      "lastAddr1": "서울특별시 관악구 관악로38길 7-4",
-      "lastAddr2": "3층",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 0,
-      "status": "pending"
+      "lastAddr1": "서울특별시 관악구 관악로 285",
+      "lastAddr2": "107동 305호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 15.4,
+      "status": "active"
     },
     {
       "id": "driver_157",
@@ -4718,7 +4718,7 @@
       "boxId": 401833,
       "lastAddr1": "서울특별시 관악구 봉천로 312",
       "lastAddr2": "407호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4736,8 +4736,8 @@
       "region": "관악마",
       "fullRegion": "서울특별시 관악마",
       "coordinates": [
-        37.49014,
-        126.9577
+        37.48965,
+        126.95398
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -4746,9 +4746,9 @@
       "startTime": "Invalid Date",
       "typing": "",
       "boxId": 401945,
-      "lastAddr1": "서울특별시 관악구 관악로38길 7-4",
-      "lastAddr2": "3층",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastAddr1": "서울특별시 관악구 관악로 285",
+      "lastAddr2": "107동 305호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -4766,8 +4766,8 @@
       "region": "관악바",
       "fullRegion": "서울특별시 관악바",
       "coordinates": [
-        37.49014,
-        126.9577
+        37.48965,
+        126.95398
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -4776,9 +4776,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:07:33",
       "boxId": 401832,
-      "lastAddr1": "서울특별시 관악구 관악로38길 7-4",
-      "lastAddr2": "3층",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastAddr1": "서울특별시 관악구 관악로 285",
+      "lastAddr2": "107동 305호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4796,8 +4796,8 @@
       "region": "관악바",
       "fullRegion": "서울특별시 관악바",
       "coordinates": [
-        37.49014,
-        126.9577
+        37.48965,
+        126.95398
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -4806,9 +4806,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:48:40",
       "boxId": 401928,
-      "lastAddr1": "서울특별시 관악구 관악로38길 7-4",
-      "lastAddr2": "3층",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastAddr1": "서울특별시 관악구 관악로 285",
+      "lastAddr2": "107동 305호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4826,8 +4826,8 @@
       "region": "관악바",
       "fullRegion": "서울특별시 관악바",
       "coordinates": [
-        37.49014,
-        126.9577
+        37.48965,
+        126.95398
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -4836,9 +4836,9 @@
       "startTime": "Invalid Date",
       "typing": "-02:12:16",
       "boxId": 401938,
-      "lastAddr1": "서울특별시 관악구 관악로38길 7-4",
-      "lastAddr2": "3층",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastAddr1": "서울특별시 관악구 관악로 285",
+      "lastAddr2": "107동 305호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4856,8 +4856,8 @@
       "region": "관악바",
       "fullRegion": "서울특별시 관악바",
       "coordinates": [
-        37.49014,
-        126.9577
+        37.48965,
+        126.95398
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -4866,9 +4866,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:49:23",
       "boxId": 401945,
-      "lastAddr1": "서울특별시 관악구 관악로38길 7-4",
-      "lastAddr2": "3층",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastAddr1": "서울특별시 관악구 관악로 285",
+      "lastAddr2": "107동 305호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4898,7 +4898,7 @@
       "boxId": 401827,
       "lastAddr1": "서울특별시 관악구 신림동 1574-21",
       "lastAddr2": "304호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4928,7 +4928,7 @@
       "boxId": 401821,
       "lastAddr1": "서울특별시 관악구 관악로11길 37",
       "lastAddr2": "바누스타운105호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4958,7 +4958,7 @@
       "boxId": 401821,
       "lastAddr1": "서울특별시 관악구 관악로11길 37",
       "lastAddr2": "바누스타운105호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -4970,26 +4970,26 @@
       "company": "위로지관악용산",
       "phone": "010-6324-0160",
       "totalDeliveries": 12,
-      "completedDeliveries": 7,
+      "completedDeliveries": 8,
       "failedDeliveries": 0,
-      "inProgress": 5,
+      "inProgress": 4,
       "region": "관악차",
       "fullRegion": "서울특별시 관악차",
       "coordinates": [
-        37.4754,
-        126.97531
+        37.47579,
+        126.97877
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:18:49",
+      "typing": "-00:19:36",
       "boxId": 401828,
-      "lastAddr1": "서울특별시 관악구 남현2길 37-5",
-      "lastAddr2": "301호 현관 1234",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 58.3,
+      "lastAddr1": "서울특별시 관악구 남현1길 24",
+      "lastAddr2": "507호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 66.7,
       "status": "active"
     },
     {
@@ -5006,8 +5006,8 @@
       "region": "관악차",
       "fullRegion": "서울특별시 관악차",
       "coordinates": [
-        37.47483,
-        126.96056
+        37.47524,
+        126.9594
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -5016,9 +5016,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:06:31",
       "boxId": 401830,
-      "lastAddr1": "서울특별시 관악구 낙성대로3길 21-11",
-      "lastAddr2": "205호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastAddr1": "서울특별시 관악구 낙성대로 37",
+      "lastAddr2": ", 낙성대현대2차 202동 804호 (봉천동, 낙성대현대아파트)",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5036,8 +5036,8 @@
       "region": "관악카",
       "fullRegion": "서울특별시 관악카",
       "coordinates": [
-        37.4754,
-        126.97531
+        37.47579,
+        126.97877
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -5046,9 +5046,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:04:42",
       "boxId": 401828,
-      "lastAddr1": "서울특별시 관악구 남현2길 37-5",
-      "lastAddr2": "301호 현관 1234",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastAddr1": "서울특별시 관악구 남현1길 24",
+      "lastAddr2": "507호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5078,7 +5078,7 @@
       "boxId": 400791,
       "lastAddr1": "서울특별시 광진구 광나루로 545",
       "lastAddr2": "107동 804호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5108,7 +5108,7 @@
       "boxId": 401803,
       "lastAddr1": "서울특별시 광진구 군자동 504",
       "lastAddr2": "106동 204호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5120,26 +5120,26 @@
       "company": "위로지광진중랑",
       "phone": "010-7599-0373",
       "totalDeliveries": 53,
-      "completedDeliveries": 40,
+      "completedDeliveries": 42,
       "failedDeliveries": 0,
-      "inProgress": 13,
+      "inProgress": 11,
       "region": "광진구",
       "fullRegion": "서울특별시 광진구",
       "coordinates": [
-        37.5495,
-        127.10893
+        37.547,
+        127.10459
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:14",
+      "typing": "-00:04:30",
       "boxId": 401807,
-      "lastAddr1": "서울특별시 광진구 아차산로78길 10",
-      "lastAddr2": ", 101동 210호 (광장동, 워커힐푸르지오)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 75.5,
+      "lastAddr1": "서울특별시 광진구 아차산로 599",
+      "lastAddr2": "107동 1103호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 79.2,
       "status": "active"
     },
     {
@@ -5150,26 +5150,26 @@
       "company": "위로지광진중랑",
       "phone": "010-3494-6491",
       "totalDeliveries": 52,
-      "completedDeliveries": 37,
+      "completedDeliveries": 39,
       "failedDeliveries": 0,
-      "inProgress": 15,
+      "inProgress": 13,
       "region": "광진구",
       "fullRegion": "서울특별시 광진구",
       "coordinates": [
-        37.54152,
-        127.08342
+        37.53782,
+        127.0865
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:17",
+      "typing": "-00:04:30",
       "boxId": 401808,
-      "lastAddr1": "서울특별시 광진구 구의동 254-56",
-      "lastAddr2": "A동 201호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 71.2,
+      "lastAddr1": "서울특별시 광진구 구의동 246-1",
+      "lastAddr2": "202호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 75,
       "status": "active"
     },
     {
@@ -5180,26 +5180,26 @@
       "company": "위로지광진중랑",
       "phone": "010-3161-3692",
       "totalDeliveries": 64,
-      "completedDeliveries": 62,
+      "completedDeliveries": 63,
       "failedDeliveries": 0,
-      "inProgress": 2,
+      "inProgress": 1,
       "region": "광진구",
       "fullRegion": "서울특별시 광진구",
       "coordinates": [
-        37.53295,
-        127.08083
+        37.53235,
+        127.08045
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:02:49",
+      "typing": "-00:02:51",
       "boxId": 401812,
-      "lastAddr1": "서울특별시 광진구 자양동 634-14",
-      "lastAddr2": "101호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 96.9,
+      "lastAddr1": "서울특별시 광진구 뚝섬로57가길 57",
+      "lastAddr2": "302호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 98.4,
       "status": "active"
     },
     {
@@ -5210,26 +5210,26 @@
       "company": "위로지구로광명",
       "phone": "010-7497-5907",
       "totalDeliveries": 62,
-      "completedDeliveries": 48,
+      "completedDeliveries": 51,
       "failedDeliveries": 0,
-      "inProgress": 14,
+      "inProgress": 11,
       "region": "구로구",
       "fullRegion": "서울특별시 구로구",
       "coordinates": [
-        37.50208,
-        126.89179
+        37.50283,
+        126.89116
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:03:01",
+      "typing": "-00:03:12",
       "boxId": 401889,
-      "lastAddr1": "서울특별시 구로구 공원로6길 25",
-      "lastAddr2": "701",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 77.4,
+      "lastAddr1": "서울특별시 구로구 공원로8길 30-12",
+      "lastAddr2": "102동 304호 (구로동)",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 82.3,
       "status": "active"
     },
     {
@@ -5240,26 +5240,26 @@
       "company": "위로지구로광명",
       "phone": "010-9016-2474",
       "totalDeliveries": 47,
-      "completedDeliveries": 38,
+      "completedDeliveries": 42,
       "failedDeliveries": 0,
-      "inProgress": 9,
+      "inProgress": 5,
       "region": "구로구",
       "fullRegion": "서울특별시 구로구",
       "coordinates": [
-        37.50062,
-        126.84322
+        37.4983,
+        126.85635
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:02",
+      "typing": "-00:04:24",
       "boxId": 401891,
-      "lastAddr1": "서울특별시 구로구 고척로 85",
-      "lastAddr2": "101동 1504호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 80.9,
+      "lastAddr1": "서울특별시 구로구 경서로 7",
+      "lastAddr2": "108호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 89.4,
       "status": "active"
     },
     {
@@ -5270,26 +5270,26 @@
       "company": "위로지구로광명",
       "phone": "010-6469-0553",
       "totalDeliveries": 45,
-      "completedDeliveries": 31,
+      "completedDeliveries": 36,
       "failedDeliveries": 0,
-      "inProgress": 14,
+      "inProgress": 9,
       "region": "구로구",
       "fullRegion": "서울특별시 구로구",
       "coordinates": [
-        37.48802,
-        126.89284
+        37.48996,
+        126.89472
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:25",
+      "typing": "-00:04:39",
       "boxId": 401896,
-      "lastAddr1": "서울특별시 구로구 디지털로31길 90",
-      "lastAddr2": "113동 1003호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 68.9,
+      "lastAddr1": "서울특별시 구로구 도림로22길 8",
+      "lastAddr2": "102동 406호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 80,
       "status": "active"
     },
     {
@@ -5318,7 +5318,7 @@
       "boxId": 401551,
       "lastAddr1": "서울특별시 금천구 독산동 1156",
       "lastAddr2": "롯데캐슬골드파크타워960 1214호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5330,26 +5330,26 @@
       "company": "로지스탑금천",
       "phone": "010-4056-0912",
       "totalDeliveries": 53,
-      "completedDeliveries": 31,
+      "completedDeliveries": 35,
       "failedDeliveries": 0,
-      "inProgress": 22,
+      "inProgress": 18,
       "region": "금천구",
       "fullRegion": "서울특별시 금천구",
       "coordinates": [
-        37.47091,
-        126.89287
+        37.47217,
+        126.89298
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:03:37",
+      "typing": "-00:03:49",
       "boxId": 401899,
-      "lastAddr1": "서울특별시 금천구 두산로9길 12",
-      "lastAddr2": ", 해담 308호 (열쇠6789종) (독산동)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 58.5,
+      "lastAddr1": "서울특별시 금천구 가산로3길 45",
+      "lastAddr2": "414호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 66,
       "status": "active"
     },
     {
@@ -5360,9 +5360,9 @@
       "company": "로지스탑금천",
       "phone": "010-2085-5384",
       "totalDeliveries": 11,
-      "completedDeliveries": 9,
+      "completedDeliveries": 10,
       "failedDeliveries": 0,
-      "inProgress": 2,
+      "inProgress": 1,
       "region": "금천구",
       "fullRegion": "서울특별시 금천구",
       "coordinates": [
@@ -5374,12 +5374,12 @@
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:16:13",
+      "typing": "-00:16:22",
       "boxId": 401900,
       "lastAddr1": "서울특별시 금천구 가산디지털2로 169-23",
-      "lastAddr2": "1818호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 81.8,
+      "lastAddr2": "모비우스타워 기숙사 420호",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 90.9,
       "status": "active"
     },
     {
@@ -5408,7 +5408,7 @@
       "boxId": 401902,
       "lastAddr1": "서울특별시 금천구 금하로 793",
       "lastAddr2": "1단지 102동 1602호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5438,7 +5438,7 @@
       "boxId": 401903,
       "lastAddr1": "서울특별시 금천구 독산로 345",
       "lastAddr2": ", 더뷰 903호 (종1234) (독산동)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5468,7 +5468,7 @@
       "boxId": 401904,
       "lastAddr1": "서울특별시 금천구 독산동 196-21",
       "lastAddr2": "202호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5498,7 +5498,7 @@
       "boxId": 401949,
       "lastAddr1": "서울특별시 금천구 독산동 1156",
       "lastAddr2": "롯데캐슬골드파크타워960 1214호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5528,7 +5528,7 @@
       "boxId": 401735,
       "lastAddr1": "서울특별시 노원구 한글비석로 384",
       "lastAddr2": "506호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5558,7 +5558,7 @@
       "boxId": 401736,
       "lastAddr1": "서울특별시 노원구 한글비석로46가길 34",
       "lastAddr2": "8동 1108호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5588,7 +5588,7 @@
       "boxId": 401737,
       "lastAddr1": "서울특별시 노원구 덕릉로 753",
       "lastAddr2": "102동 207호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5600,26 +5600,26 @@
       "company": "로지스탑노원",
       "phone": "010-2277-8860",
       "totalDeliveries": 34,
-      "completedDeliveries": 29,
+      "completedDeliveries": 30,
       "failedDeliveries": 0,
-      "inProgress": 5,
+      "inProgress": 4,
       "region": "노원구",
       "fullRegion": "서울특별시 노원구",
       "coordinates": [
-        37.62596,
-        127.05096
+        37.62514,
+        127.05055
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:06:18",
+      "typing": "-00:06:30",
       "boxId": 401738,
       "lastAddr1": "서울특별시 노원구 월계로45길 21",
-      "lastAddr2": "104동 804호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 85.3,
+      "lastAddr2": "102-1202",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 88.2,
       "status": "active"
     },
     {
@@ -5648,7 +5648,7 @@
       "boxId": 401739,
       "lastAddr1": "서울특별시 노원구 동일로 1127",
       "lastAddr2": "102동 1005호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5678,7 +5678,7 @@
       "boxId": 401740,
       "lastAddr1": "서울특별시 노원구 노원로 62",
       "lastAddr2": "304동 701호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5708,7 +5708,7 @@
       "boxId": 401741,
       "lastAddr1": "서울특별시 노원구 공릉로 430",
       "lastAddr2": "102동 905호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5738,7 +5738,7 @@
       "boxId": 401742,
       "lastAddr1": "서울특별시 노원구 화랑로 815",
       "lastAddr2": "삼육대학교 브니엘관 택배실 (4층칸) (공릉동)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5768,7 +5768,7 @@
       "boxId": 401743,
       "lastAddr1": "서울특별시 노원구 동일로231길 72",
       "lastAddr2": "501동 503호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5798,7 +5798,7 @@
       "boxId": 401744,
       "lastAddr1": "서울특별시 노원구 노원로 564",
       "lastAddr2": "상계주공10단지 1027동 514호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5828,7 +5828,7 @@
       "boxId": 401745,
       "lastAddr1": "서울특별시 노원구 노원로 62",
       "lastAddr2": "310동 503호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5840,27 +5840,27 @@
       "company": "엔알성동동대문",
       "phone": "010-5659-4621",
       "totalDeliveries": 23,
-      "completedDeliveries": 21,
+      "completedDeliveries": 23,
       "failedDeliveries": 0,
-      "inProgress": 2,
+      "inProgress": 0,
       "region": "동대문구",
       "fullRegion": "서울특별시 동대문구",
       "coordinates": [
-        37.56815,
-        127.06049
+        37.56556,
+        127.05821
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:09:20",
+      "typing": "-00:09:55",
       "boxId": 399223,
-      "lastAddr1": "서울특별시 동대문구 답십리로56길 105",
-      "lastAddr2": "105동 301호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 91.3,
-      "status": "active"
+      "lastAddr1": "서울특별시 동대문구 황물로15나길 3",
+      "lastAddr2": "2층 (답십리동)",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
+      "completionRate": 100,
+      "status": "completed"
     },
     {
       "id": "driver_196",
@@ -5888,7 +5888,7 @@
       "boxId": 401760,
       "lastAddr1": "서울특별시 동대문구 한천로58길 47",
       "lastAddr2": "114동2201호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5918,7 +5918,7 @@
       "boxId": 401761,
       "lastAddr1": "서울특별시 동대문구 고산자로 568",
       "lastAddr2": "1515호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5948,7 +5948,7 @@
       "boxId": 401762,
       "lastAddr1": "서울특별시 동대문구 장안동 105-11",
       "lastAddr2": "1층",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -5978,7 +5978,7 @@
       "boxId": 401764,
       "lastAddr1": "서울특별시 동대문구 청계천로 483",
       "lastAddr2": "311호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6008,7 +6008,7 @@
       "boxId": 401765,
       "lastAddr1": "서울특별시 성동구 뚝섬로 310",
       "lastAddr2": "102동 802호 (성수동1가, 한진타운아파트)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.709Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6038,7 +6038,7 @@
       "boxId": 401768,
       "lastAddr1": "서울특별시 성동구 고산자로10길 9",
       "lastAddr2": "성동구립도서관 안심택배함",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6068,7 +6068,7 @@
       "boxId": 401769,
       "lastAddr1": "서울특별시 동대문구 휘경로17길 13-5",
       "lastAddr2": ", 401호 (이문동, 아라하우스)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6080,26 +6080,26 @@
       "company": "엔알성동동대문",
       "phone": "010-3992-2682",
       "totalDeliveries": 37,
-      "completedDeliveries": 24,
+      "completedDeliveries": 25,
       "failedDeliveries": 0,
-      "inProgress": 13,
+      "inProgress": 12,
       "region": "동대문구",
       "fullRegion": "서울특별시 동대문구",
       "coordinates": [
-        37.60237,
-        127.06102
+        37.60092,
+        127.0615
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:05:48",
+      "typing": "-00:05:55",
       "boxId": 401770,
-      "lastAddr1": "서울특별시 동대문구 이문로35길 12",
-      "lastAddr2": "123동 103호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 64.9,
+      "lastAddr1": "서울특별시 동대문구 이문동 257-42",
+      "lastAddr2": "102동 1602호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 67.6,
       "status": "active"
     },
     {
@@ -6110,26 +6110,26 @@
       "company": "엔알성동동대문",
       "phone": "010-4948-4914",
       "totalDeliveries": 47,
-      "completedDeliveries": 33,
+      "completedDeliveries": 36,
       "failedDeliveries": 0,
-      "inProgress": 14,
+      "inProgress": 11,
       "region": "동대문구",
       "fullRegion": "서울특별시 동대문구",
       "coordinates": [
-        37.58963,
-        127.04109
+        37.58426,
+        127.04866
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:38",
+      "typing": "-00:05:00",
       "boxId": 401771,
-      "lastAddr1": "서울특별시 동대문구 제기로21길 63-8",
-      "lastAddr2": ", 202호 (청량리동)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 70.2,
+      "lastAddr1": "서울특별시 동대문구 청량리동 51-19",
+      "lastAddr2": "2층",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 76.6,
       "status": "active"
     },
     {
@@ -6140,26 +6140,26 @@
       "company": "엔알성동동대문",
       "phone": "010-7249-0403",
       "totalDeliveries": 42,
-      "completedDeliveries": 32,
+      "completedDeliveries": 33,
       "failedDeliveries": 0,
-      "inProgress": 10,
+      "inProgress": 9,
       "region": "동대문구",
       "fullRegion": "서울특별시 동대문구",
       "coordinates": [
-        37.57815,
-        127.03119
+        37.57719,
+        127.02947
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:05:15",
+      "typing": "-00:05:29",
       "boxId": 401773,
-      "lastAddr1": "서울특별시 동대문구 왕산로 71",
-      "lastAddr2": ", 1403호 (용두동)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 76.2,
+      "lastAddr1": "서울특별시 동대문구 왕산로 52",
+      "lastAddr2": "101동1010호 (신설동역대우아이빌)",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 78.6,
       "status": "active"
     },
     {
@@ -6188,7 +6188,7 @@
       "boxId": 401877,
       "lastAddr1": "서울특별시 동대문구 한천로58길 47",
       "lastAddr2": "114동2201호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6218,7 +6218,7 @@
       "boxId": 401898,
       "lastAddr1": "서울특별시 동대문구 한천로58길 47",
       "lastAddr2": "114동2201호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6248,7 +6248,7 @@
       "boxId": 401954,
       "lastAddr1": "서울특별시 동대문구 한천로58길 47",
       "lastAddr2": "114동2201호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6260,27 +6260,27 @@
       "company": "수완동작",
       "phone": "010-9690-9981",
       "totalDeliveries": 9,
-      "completedDeliveries": 8,
+      "completedDeliveries": 9,
       "failedDeliveries": 0,
-      "inProgress": 1,
+      "inProgress": 0,
       "region": "동작구",
       "fullRegion": "서울특별시 동작구",
       "coordinates": [
-        37.49277,
-        126.92359
+        37.49135,
+        126.92439
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:23:35",
+      "typing": "-00:23:59",
       "boxId": 401878,
-      "lastAddr1": "서울특별시 동작구 보라매로5길 23",
-      "lastAddr2": "12층 1202호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 88.9,
-      "status": "active"
+      "lastAddr1": "서울특별시 동작구 보라매로5가길 16",
+      "lastAddr2": "1006호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 100,
+      "status": "completed"
     },
     {
       "id": "driver_210",
@@ -6308,7 +6308,7 @@
       "boxId": 401879,
       "lastAddr1": "서울특별시 동작구 상도로 346-1",
       "lastAddr2": "114동 1404호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6338,7 +6338,7 @@
       "boxId": 401880,
       "lastAddr1": "서울특별시 동작구 여의대방로44길 10",
       "lastAddr2": "102동 103호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6368,7 +6368,7 @@
       "boxId": 401881,
       "lastAddr1": "서울특별시 동작구 양녕로22마길 36",
       "lastAddr2": "B동 402호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6398,7 +6398,7 @@
       "boxId": 401882,
       "lastAddr1": "서울특별시 동작구 흑석한강로 12",
       "lastAddr2": "106동 304호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6428,7 +6428,7 @@
       "boxId": 401883,
       "lastAddr1": "서울특별시 동작구 대방동 1-6",
       "lastAddr2": "303호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6458,7 +6458,7 @@
       "boxId": 401884,
       "lastAddr1": "서울특별시 동작구 동작대로33가길 22",
       "lastAddr2": "501호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6488,7 +6488,7 @@
       "boxId": 401885,
       "lastAddr1": "서울특별시 동작구 국사봉길 178",
       "lastAddr2": "101동 205호 (상도동, 상도1차 갑을명가아파트)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6518,7 +6518,7 @@
       "boxId": 401886,
       "lastAddr1": "서울특별시 동작구 상도로53길 8",
       "lastAddr2": ", 327동 301호 (상도동, 래미안상도3차아파트)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6548,7 +6548,7 @@
       "boxId": 401887,
       "lastAddr1": "서울특별시 동작구 사당로9가길 82",
       "lastAddr2": ", 101동 1401호 (사당동, 경남아너스빌 아파트)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6566,8 +6566,8 @@
       "region": "동작구",
       "fullRegion": "서울특별시 동작구",
       "coordinates": [
-        37.49277,
-        126.92359
+        37.49135,
+        126.92439
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -6576,9 +6576,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:24:33",
       "boxId": 401907,
-      "lastAddr1": "서울특별시 동작구 보라매로5길 23",
-      "lastAddr2": "12층 1202호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastAddr1": "서울특별시 동작구 보라매로5가길 16",
+      "lastAddr2": "1006호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6596,8 +6596,8 @@
       "region": "동작구",
       "fullRegion": "서울특별시 동작구",
       "coordinates": [
-        37.49277,
-        126.92359
+        37.49135,
+        126.92439
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -6606,9 +6606,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:09:41",
       "boxId": 401927,
-      "lastAddr1": "서울특별시 동작구 보라매로5길 23",
-      "lastAddr2": "12층 1202호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastAddr1": "서울특별시 동작구 보라매로5가길 16",
+      "lastAddr2": "1006호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6626,8 +6626,8 @@
       "region": "마포구",
       "fullRegion": "서울특별시 마포구",
       "coordinates": [
-        37.54603,
-        126.95121
+        37.54578,
+        126.94908
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -6636,9 +6636,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:22:53",
       "boxId": 401266,
-      "lastAddr1": "서울특별시 마포구 마포대로 115-8",
-      "lastAddr2": "102동 403호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastAddr1": "서울특별시 마포구 백범로31길 7",
+      "lastAddr2": "103동 1802호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 57.1,
       "status": "active"
     },
@@ -6668,7 +6668,7 @@
       "boxId": 401291,
       "lastAddr1": "서울특별시 마포구 양화로 183",
       "lastAddr2": "620호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6698,7 +6698,7 @@
       "boxId": 401354,
       "lastAddr1": "서울특별시 마포구 월드컵로3길 14",
       "lastAddr2": "오피스텔 1008호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6728,7 +6728,7 @@
       "boxId": 401520,
       "lastAddr1": "서울특별시 마포구 월드컵로3길 14",
       "lastAddr2": "오피스텔 1008호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6740,26 +6740,26 @@
       "company": "",
       "phone": "010-8143-3643",
       "totalDeliveries": 35,
-      "completedDeliveries": 20,
+      "completedDeliveries": 22,
       "failedDeliveries": 0,
-      "inProgress": 15,
+      "inProgress": 13,
       "region": "마포구",
       "fullRegion": "서울특별시 마포구",
       "coordinates": [
-        37.54603,
-        126.95121
+        37.54578,
+        126.94908
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:45",
+      "typing": "-00:05:02",
       "boxId": 401524,
-      "lastAddr1": "서울특별시 마포구 마포대로 115-8",
-      "lastAddr2": "102동 403호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 57.1,
+      "lastAddr1": "서울특별시 마포구 백범로31길 7",
+      "lastAddr2": "103동 1802호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 62.9,
       "status": "active"
     },
     {
@@ -6788,7 +6788,7 @@
       "boxId": 401530,
       "lastAddr1": "서울특별시 마포구 양화로 183",
       "lastAddr2": "620호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6800,26 +6800,26 @@
       "company": "",
       "phone": "010-8723-6103",
       "totalDeliveries": 29,
-      "completedDeliveries": 25,
+      "completedDeliveries": 26,
       "failedDeliveries": 0,
-      "inProgress": 4,
+      "inProgress": 3,
       "region": "서대문구",
       "fullRegion": "서울특별시 서대문구",
       "coordinates": [
-        37.57905,
-        126.91672
+        37.57972,
+        126.92388
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:05:35",
+      "typing": "-00:05:49",
       "boxId": 401288,
-      "lastAddr1": "서울특별시 서대문구 증가로 191",
-      "lastAddr2": "101동 402호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 86.2,
+      "lastAddr1": "서울특별시 서대문구 거북골로 34",
+      "lastAddr2": "명지대 인문캠퍼스 생활관 6층",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 89.7,
       "status": "active"
     },
     {
@@ -6830,26 +6830,26 @@
       "company": "",
       "phone": "010-8915-5180",
       "totalDeliveries": 34,
-      "completedDeliveries": 16,
+      "completedDeliveries": 18,
       "failedDeliveries": 0,
-      "inProgress": 18,
+      "inProgress": 16,
       "region": "서대문구",
       "fullRegion": "서울특별시 서대문구",
       "coordinates": [
-        37.56426,
-        126.96105
+        37.56433,
+        126.96451
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:22",
+      "typing": "-00:04:52",
       "boxId": 401329,
-      "lastAddr1": "서울특별시 서대문구 경기대로9길 60",
-      "lastAddr2": "401호 (충정로3가, 동호아파트)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 47.1,
+      "lastAddr1": "서울특별시 서대문구 충정로2가 180-5",
+      "lastAddr2": "라인빌딩 504호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 52.9,
       "status": "active"
     },
     {
@@ -6860,26 +6860,26 @@
       "company": "",
       "phone": "010-8723-6103",
       "totalDeliveries": 14,
-      "completedDeliveries": 8,
+      "completedDeliveries": 9,
       "failedDeliveries": 0,
-      "inProgress": 6,
+      "inProgress": 5,
       "region": "서대문구",
       "fullRegion": "서울특별시 서대문구",
       "coordinates": [
-        37.57905,
-        126.91672
+        37.57972,
+        126.92388
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:10:46",
+      "typing": "-00:12:20",
       "boxId": 401528,
-      "lastAddr1": "서울특별시 서대문구 증가로 191",
-      "lastAddr2": "101동 402호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 57.1,
+      "lastAddr1": "서울특별시 서대문구 거북골로 34",
+      "lastAddr2": "명지대 인문캠퍼스 생활관 6층",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 64.3,
       "status": "active"
     },
     {
@@ -6890,26 +6890,26 @@
       "company": "",
       "phone": "010-2223-8291",
       "totalDeliveries": 32,
-      "completedDeliveries": 28,
+      "completedDeliveries": 30,
       "failedDeliveries": 0,
-      "inProgress": 4,
+      "inProgress": 2,
       "region": "서대문구",
       "fullRegion": "서울특별시 서대문구",
       "coordinates": [
-        37.58351,
-        126.94718
+        37.58127,
+        126.94988
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:57",
+      "typing": "-00:05:28",
       "boxId": 401531,
-      "lastAddr1": "서울특별시 서대문구 통일로25길 30",
-      "lastAddr2": "105동 1001호",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
-      "completionRate": 87.5,
+      "lastAddr1": "서울특별시 서대문구 통일로 339",
+      "lastAddr2": "103동 1702호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 93.8,
       "status": "active"
     },
     {
@@ -6926,8 +6926,8 @@
       "region": "서대문구",
       "fullRegion": "서울특별시 서대문구",
       "coordinates": [
-        37.56426,
-        126.96105
+        37.56433,
+        126.96451
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -6936,9 +6936,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:22:07",
       "boxId": 401538,
-      "lastAddr1": "서울특별시 서대문구 경기대로9길 60",
-      "lastAddr2": "401호 (충정로3가, 동호아파트)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastAddr1": "서울특별시 서대문구 충정로2가 180-5",
+      "lastAddr2": "라인빌딩 504호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 71.4,
       "status": "active"
     },
@@ -6956,8 +6956,8 @@
       "region": "서대문구",
       "fullRegion": "서울특별시 서대문구",
       "coordinates": [
-        37.56426,
-        126.96105
+        37.56433,
+        126.96451
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -6966,9 +6966,9 @@
       "startTime": "Invalid Date",
       "typing": "-01:14:42",
       "boxId": 401563,
-      "lastAddr1": "서울특별시 서대문구 경기대로9길 60",
-      "lastAddr2": "401호 (충정로3가, 동호아파트)",
-      "lastUpdate": "2025-10-25T13:28:42.528Z",
+      "lastAddr1": "서울특별시 서대문구 충정로2가 180-5",
+      "lastAddr2": "라인빌딩 504호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -6980,26 +6980,26 @@
       "company": "엔알성동동대문",
       "phone": "010-8520-8864",
       "totalDeliveries": 33,
-      "completedDeliveries": 27,
+      "completedDeliveries": 28,
       "failedDeliveries": 0,
-      "inProgress": 6,
+      "inProgress": 5,
       "region": "성동구",
       "fullRegion": "서울특별시 성동구",
       "coordinates": [
-        37.55945,
-        127.02983
+        37.55987,
+        127.02977
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:06:59",
+      "typing": "-00:07:07",
       "boxId": 400784,
-      "lastAddr1": "서울특별시 성동구 행당동 303-3",
-      "lastAddr2": "402호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 81.8,
+      "lastAddr1": "서울특별시 성동구 행당동 302-22",
+      "lastAddr2": "502호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 84.8,
       "status": "active"
     },
     {
@@ -7028,7 +7028,7 @@
       "boxId": 401761,
       "lastAddr1": "서울특별시 동대문구 고산자로 568",
       "lastAddr2": "1515호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7058,7 +7058,7 @@
       "boxId": 401764,
       "lastAddr1": "서울특별시 동대문구 청계천로 483",
       "lastAddr2": "311호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7088,7 +7088,7 @@
       "boxId": 401765,
       "lastAddr1": "서울특별시 성동구 뚝섬로 310",
       "lastAddr2": "102동 802호 (성수동1가, 한진타운아파트)",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7100,26 +7100,26 @@
       "company": "엔알성동동대문",
       "phone": "010-8760-6859",
       "totalDeliveries": 30,
-      "completedDeliveries": 22,
+      "completedDeliveries": 23,
       "failedDeliveries": 0,
-      "inProgress": 8,
+      "inProgress": 7,
       "region": "성동구",
       "fullRegion": "서울특별시 성동구",
       "coordinates": [
-        37.54857,
-        127.02008
+        37.55049,
+        127.02038
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:07:44",
+      "typing": "-00:08:00",
       "boxId": 401767,
-      "lastAddr1": "서울특별시 성동구 장터3길 3",
-      "lastAddr2": "302호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 73.3,
+      "lastAddr1": "서울특별시 성동구 금호산8길 5",
+      "lastAddr2": "101동 202호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 76.7,
       "status": "active"
     },
     {
@@ -7148,7 +7148,7 @@
       "boxId": 401768,
       "lastAddr1": "서울특별시 성동구 고산자로10길 9",
       "lastAddr2": "성동구립도서관 안심택배함",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7178,7 +7178,7 @@
       "boxId": 401341,
       "lastAddr1": "서울특별시 성북구 한천로101길 54",
       "lastAddr2": "101동 702호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7208,7 +7208,7 @@
       "boxId": 401492,
       "lastAddr1": "서울특별시 성북구 한천로101길 54",
       "lastAddr2": "101동 702호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7238,7 +7238,7 @@
       "boxId": 397795,
       "lastAddr1": "서울특별시 송파구 동남로11길 26-12",
       "lastAddr2": ", 302호 (가락동)",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7268,7 +7268,7 @@
       "boxId": 397796,
       "lastAddr1": "서울특별시 송파구 올림픽로 99",
       "lastAddr2": "124동 1704호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7280,27 +7280,27 @@
       "company": "직영송파(유닛선택용)",
       "phone": "010-2463-0558",
       "totalDeliveries": 9,
-      "completedDeliveries": 8,
+      "completedDeliveries": 9,
       "failedDeliveries": 0,
-      "inProgress": 1,
+      "inProgress": 0,
       "region": "송파구",
       "fullRegion": "서울특별시 송파구",
       "coordinates": [
-        37.47856,
-        127.13051
+        37.48078,
+        127.13191
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:17:53",
+      "typing": "-00:18:30",
       "boxId": 400095,
-      "lastAddr1": "서울특별시 송파구 충민로4길 19",
-      "lastAddr2": "704동 405호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 88.9,
-      "status": "active"
+      "lastAddr1": "서울특별시 송파구 충민로6길 14",
+      "lastAddr2": "604동 1803호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 100,
+      "status": "completed"
     },
     {
       "id": "driver_244",
@@ -7310,26 +7310,26 @@
       "company": "직영송파(유닛선택용)",
       "phone": "010-9488-3525",
       "totalDeliveries": 29,
-      "completedDeliveries": 15,
+      "completedDeliveries": 16,
       "failedDeliveries": 0,
-      "inProgress": 14,
+      "inProgress": 13,
       "region": "송파구",
       "fullRegion": "서울특별시 송파구",
       "coordinates": [
-        37.51616,
-        127.11146
+        37.51552,
+        127.1111
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:02:55",
+      "typing": "-00:03:22",
       "boxId": 400673,
-      "lastAddr1": "서울특별시 송파구 방이동 42",
-      "lastAddr2": "웰리지더테라스 1812호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 51.7,
+      "lastAddr1": "서울특별시 송파구 오금로11길 37",
+      "lastAddr2": "1220호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 55.2,
       "status": "active"
     },
     {
@@ -7340,26 +7340,26 @@
       "company": "직영송파(유닛선택용)",
       "phone": "010-9203-7464",
       "totalDeliveries": 12,
-      "completedDeliveries": 6,
+      "completedDeliveries": 8,
       "failedDeliveries": 0,
-      "inProgress": 6,
+      "inProgress": 4,
       "region": "송파구",
       "fullRegion": "서울특별시 송파구",
       "coordinates": [
-        37.51053,
-        127.15545
+        37.50787,
+        127.16145
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:07:16",
+      "typing": "-00:08:14",
       "boxId": 401698,
-      "lastAddr1": "경기도 하남시 감일중앙로 80",
-      "lastAddr2": "104동603호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 50,
+      "lastAddr1": "경기도 하남시 감일순환로 35",
+      "lastAddr2": "1008동 803호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 66.7,
       "status": "active"
     },
     {
@@ -7388,7 +7388,7 @@
       "boxId": 401699,
       "lastAddr1": "서울특별시 송파구 오금로32길 5",
       "lastAddr2": "203동 1203호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7400,26 +7400,26 @@
       "company": "직영송파(유닛선택용)",
       "phone": "010-5785-8945",
       "totalDeliveries": 13,
-      "completedDeliveries": 7,
+      "completedDeliveries": 8,
       "failedDeliveries": 0,
-      "inProgress": 6,
+      "inProgress": 5,
       "region": "송파구",
       "fullRegion": "서울특별시 송파구",
       "coordinates": [
-        37.50542,
-        127.08214
+        37.50543,
+        127.0811
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:11:17",
+      "typing": "-00:12:35",
       "boxId": 401707,
-      "lastAddr1": "서울특별시 송파구 백제고분로12길 3-20",
-      "lastAddr2": "드림빌 302호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 53.8,
+      "lastAddr1": "서울특별시 송파구 백제고분로12길 7-1",
+      "lastAddr2": ", 403호 (잠실동, 르보암하우스)",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 61.5,
       "status": "active"
     },
     {
@@ -7448,7 +7448,7 @@
       "boxId": 401708,
       "lastAddr1": "서울특별시 송파구 성내천로 103",
       "lastAddr2": "102동 1106호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7460,26 +7460,26 @@
       "company": "직영송파(유닛선택용)",
       "phone": "010-6324-3551",
       "totalDeliveries": 49,
-      "completedDeliveries": 45,
+      "completedDeliveries": 47,
       "failedDeliveries": 0,
-      "inProgress": 4,
+      "inProgress": 2,
       "region": "송파구",
       "fullRegion": "서울특별시 송파구",
       "coordinates": [
-        37.5296,
-        127.11068
+        37.52512,
+        127.10943
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:22",
+      "typing": "-00:04:29",
       "boxId": 401709,
-      "lastAddr1": "서울특별시 송파구 강동대로 13",
-      "lastAddr2": "서울아산병원패밀리타운아파트 A동 1214호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 91.8,
+      "lastAddr1": "서울특별시 송파구 올림픽로43길 88",
+      "lastAddr2": "B동 1414호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 95.9,
       "status": "active"
     },
     {
@@ -7508,7 +7508,7 @@
       "boxId": 401710,
       "lastAddr1": "서울특별시 송파구 올림픽로4길 15",
       "lastAddr2": "13동 1503호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7538,7 +7538,7 @@
       "boxId": 401711,
       "lastAddr1": "서울특별시 송파구 올림픽로 212",
       "lastAddr2": "C동 3608호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7568,7 +7568,7 @@
       "boxId": 401716,
       "lastAddr1": "서울특별시 송파구 잠실로 62",
       "lastAddr2": "332동 201호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 44.4,
       "status": "active"
     },
@@ -7580,26 +7580,26 @@
       "company": "직영송파(유닛선택용)",
       "phone": "010-4733-4614",
       "totalDeliveries": 41,
-      "completedDeliveries": 20,
+      "completedDeliveries": 23,
       "failedDeliveries": 0,
-      "inProgress": 21,
+      "inProgress": 18,
       "region": "송파구",
       "fullRegion": "서울특별시 송파구",
       "coordinates": [
-        37.49789,
-        127.09868
+        37.50014,
+        127.09933
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:02:35",
+      "typing": "-00:02:50",
       "boxId": 401717,
-      "lastAddr1": "서울특별시 송파구 가락로2길 6",
-      "lastAddr2": ", 201호 (석촌동)",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 48.8,
+      "lastAddr1": "서울특별시 송파구 삼학사로8길 22-1",
+      "lastAddr2": "지3호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 56.1,
       "status": "active"
     },
     {
@@ -7628,7 +7628,7 @@
       "boxId": 401718,
       "lastAddr1": "서울특별시 송파구 성내천로37길 37",
       "lastAddr2": "109동 1004호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7658,7 +7658,7 @@
       "boxId": 401719,
       "lastAddr1": "서울특별시 송파구 법원로4길 5",
       "lastAddr2": "1346호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7676,8 +7676,8 @@
       "region": "송파구",
       "fullRegion": "서울특별시 송파구",
       "coordinates": [
-        37.50941,
-        127.11862
+        37.51323,
+        127.11523
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -7686,9 +7686,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:04:17",
       "boxId": 401720,
-      "lastAddr1": "서울특별시 송파구 가락로34길 5-24",
-      "lastAddr2": "리더스빌 301호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastAddr1": "서울특별시 송파구 방이동 151-23",
+      "lastAddr2": "102호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7718,7 +7718,7 @@
       "boxId": 401721,
       "lastAddr1": "서울특별시 송파구 송이로31길 8-18",
       "lastAddr2": ", 201호 (문정동, 연화팰리스)",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7748,7 +7748,7 @@
       "boxId": 401722,
       "lastAddr1": "서울특별시 송파구 백제고분로45길 3-25",
       "lastAddr2": "203호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7778,7 +7778,7 @@
       "boxId": 401876,
       "lastAddr1": "서울특별시 송파구 올림픽로 99",
       "lastAddr2": "124동 1704호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7796,8 +7796,8 @@
       "region": "송파구",
       "fullRegion": "서울특별시 송파구",
       "coordinates": [
-        37.5296,
-        127.11068
+        37.52512,
+        127.10943
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -7806,9 +7806,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:22:17",
       "boxId": 401897,
-      "lastAddr1": "서울특별시 송파구 강동대로 13",
-      "lastAddr2": "서울아산병원패밀리타운아파트 A동 1214호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastAddr1": "서울특별시 송파구 올림픽로43길 88",
+      "lastAddr2": "B동 1414호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 40,
       "status": "active"
     },
@@ -7826,8 +7826,8 @@
       "region": "송파구",
       "fullRegion": "서울특별시 송파구",
       "coordinates": [
-        37.50542,
-        127.08214
+        37.50543,
+        127.0811
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -7836,9 +7836,9 @@
       "startTime": "Invalid Date",
       "typing": "-01:08:17",
       "boxId": 401948,
-      "lastAddr1": "서울특별시 송파구 백제고분로12길 3-20",
-      "lastAddr2": "드림빌 302호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastAddr1": "서울특별시 송파구 백제고분로12길 7-1",
+      "lastAddr2": ", 403호 (잠실동, 르보암하우스)",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 50,
       "status": "active"
     },
@@ -7856,8 +7856,8 @@
       "region": "송파구",
       "fullRegion": "서울특별시 송파구",
       "coordinates": [
-        37.5296,
-        127.11068
+        37.52512,
+        127.10943
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -7866,9 +7866,9 @@
       "startTime": "Invalid Date",
       "typing": "",
       "boxId": 401953,
-      "lastAddr1": "서울특별시 송파구 강동대로 13",
-      "lastAddr2": "서울아산병원패밀리타운아파트 A동 1214호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastAddr1": "서울특별시 송파구 올림픽로43길 88",
+      "lastAddr2": "B동 1414호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -7898,7 +7898,7 @@
       "boxId": 401955,
       "lastAddr1": "서울특별시 송파구 동남로11길 26-12",
       "lastAddr2": ", 302호 (가락동)",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -7910,26 +7910,26 @@
       "company": "직영송파(유닛선택용)",
       "phone": "010-2901-0916",
       "totalDeliveries": 16,
-      "completedDeliveries": 9,
+      "completedDeliveries": 13,
       "failedDeliveries": 0,
-      "inProgress": 7,
+      "inProgress": 3,
       "region": "송파구",
       "fullRegion": "서울특별시 송파구",
       "coordinates": [
-        37.50941,
-        127.11862
+        37.51323,
+        127.11523
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:02:00",
+      "typing": "-00:02:51",
       "boxId": 401956,
-      "lastAddr1": "서울특별시 송파구 가락로34길 5-24",
-      "lastAddr2": "리더스빌 301호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 56.3,
+      "lastAddr1": "서울특별시 송파구 방이동 151-23",
+      "lastAddr2": "102호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 81.3,
       "status": "active"
     },
     {
@@ -7940,26 +7940,26 @@
       "company": "로지스탑양천",
       "phone": "010-6653-2298",
       "totalDeliveries": 181,
-      "completedDeliveries": 173,
+      "completedDeliveries": 177,
       "failedDeliveries": 0,
-      "inProgress": 8,
+      "inProgress": 4,
       "region": "양천구",
       "fullRegion": "서울특별시 양천구",
       "coordinates": [
-        37.52627,
-        126.85035
+        37.53363,
+        126.82908
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:01:16",
+      "typing": "-00:01:19",
       "boxId": 401570,
-      "lastAddr1": "서울특별시 양천구 오목로23길 25",
-      "lastAddr2": "나동 501호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 95.6,
+      "lastAddr1": "서울특별시 양천구 남부순환로54길 5",
+      "lastAddr2": "신월3동주민센터 여성안심택배보관함",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 97.8,
       "status": "active"
     },
     {
@@ -7970,26 +7970,26 @@
       "company": "",
       "phone": "010-2712-2061",
       "totalDeliveries": 36,
-      "completedDeliveries": 20,
+      "completedDeliveries": 23,
       "failedDeliveries": 0,
-      "inProgress": 16,
+      "inProgress": 13,
       "region": "영등포구",
       "fullRegion": "서울특별시 영등포구",
       "coordinates": [
-        37.49751,
-        126.91551
+        37.49924,
+        126.91863
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:03:43",
+      "typing": "-00:04:02",
       "boxId": 401369,
-      "lastAddr1": "서울특별시 영등포구 신길동 4465",
-      "lastAddr2": "302호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 55.6,
+      "lastAddr1": "서울특별시 영등포구 신풍로24길 7",
+      "lastAddr2": "6층",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 63.9,
       "status": "active"
     },
     {
@@ -8000,26 +8000,26 @@
       "company": "",
       "phone": "010-7649-8456",
       "totalDeliveries": 33,
-      "completedDeliveries": 26,
+      "completedDeliveries": 31,
       "failedDeliveries": 0,
-      "inProgress": 7,
+      "inProgress": 2,
       "region": "영등포구",
       "fullRegion": "서울특별시 영등포구",
       "coordinates": [
-        37.50978,
-        126.92252
+        37.50083,
+        126.91938
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:50",
+      "typing": "-00:05:15",
       "boxId": 401370,
-      "lastAddr1": "서울특별시 영등포구 신길동 1219",
-      "lastAddr2": "304호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 78.8,
+      "lastAddr1": "서울특별시 영등포구 신길동 619-12",
+      "lastAddr2": "103호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 93.9,
       "status": "active"
     },
     {
@@ -8036,8 +8036,8 @@
       "region": "영등포구",
       "fullRegion": "서울특별시 영등포구",
       "coordinates": [
-        37.49751,
-        126.91551
+        37.49924,
+        126.91863
       ],
       "pickupStatus": "미픽업",
       "delayStatus": "정상",
@@ -8046,9 +8046,9 @@
       "startTime": "Invalid Date",
       "typing": "",
       "boxId": 401440,
-      "lastAddr1": "서울특별시 영등포구 신길동 4465",
-      "lastAddr2": "302호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastAddr1": "서울특별시 영등포구 신풍로24길 7",
+      "lastAddr2": "6층",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 0,
       "status": "pending"
     },
@@ -8060,27 +8060,27 @@
       "company": "",
       "phone": "010-7649-8456",
       "totalDeliveries": 3,
-      "completedDeliveries": 2,
+      "completedDeliveries": 3,
       "failedDeliveries": 0,
-      "inProgress": 1,
+      "inProgress": 0,
       "region": "영등포구",
       "fullRegion": "서울특별시 영등포구",
       "coordinates": [
-        37.50978,
-        126.92252
+        37.50083,
+        126.91938
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:21:57",
+      "typing": "-00:56:04",
       "boxId": 401460,
-      "lastAddr1": "서울특별시 영등포구 신길동 1219",
-      "lastAddr2": "304호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 66.7,
-      "status": "active"
+      "lastAddr1": "서울특별시 영등포구 신길동 619-12",
+      "lastAddr2": "103호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 100,
+      "status": "completed"
     },
     {
       "id": "driver_270",
@@ -8108,7 +8108,7 @@
       "boxId": 401267,
       "lastAddr1": "서울특별시 용산구 한강대로 95",
       "lastAddr2": "A동 902호 (한강로2가, 래미안용산 더 센트럴)",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8138,7 +8138,7 @@
       "boxId": 401488,
       "lastAddr1": "서울특별시 용산구 이태원동 251-12",
       "lastAddr2": "3층",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8168,7 +8168,7 @@
       "boxId": 401500,
       "lastAddr1": "서울특별시 용산구 한강대로 95",
       "lastAddr2": "A동 902호 (한강로2가, 래미안용산 더 센트럴)",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8180,26 +8180,26 @@
       "company": "",
       "phone": "010-9195-7309",
       "totalDeliveries": 19,
-      "completedDeliveries": 6,
+      "completedDeliveries": 8,
       "failedDeliveries": 0,
-      "inProgress": 13,
+      "inProgress": 11,
       "region": "은평구",
       "fullRegion": "서울특별시 은평구",
       "coordinates": [
-        37.63317,
-        126.92222
+        37.63111,
+        126.92044
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:07:15",
+      "typing": "-00:09:33",
       "boxId": 401281,
-      "lastAddr1": "서울특별시 은평구 진관1로 21-10",
-      "lastAddr2": "123동 903호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 31.6,
+      "lastAddr1": "서울특별시 은평구 진관1로 21-9",
+      "lastAddr2": "110동 1004호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 42.1,
       "status": "active"
     },
     {
@@ -8210,26 +8210,26 @@
       "company": "",
       "phone": "010-9974-8791",
       "totalDeliveries": 28,
-      "completedDeliveries": 18,
+      "completedDeliveries": 22,
       "failedDeliveries": 0,
-      "inProgress": 10,
+      "inProgress": 6,
       "region": "은평구",
       "fullRegion": "서울특별시 은평구",
       "coordinates": [
-        37.5903,
-        126.90557
+        37.58484,
+        126.90446
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:05:42",
+      "typing": "-00:06:11",
       "boxId": 401310,
-      "lastAddr1": "서울특별시 은평구 증산로15길 67-6",
-      "lastAddr2": "홍은맨션 303호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 64.3,
+      "lastAddr1": "서울특별시 은평구 증산로5길 37-9",
+      "lastAddr2": "303호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 78.6,
       "status": "active"
     },
     {
@@ -8258,7 +8258,7 @@
       "boxId": 401378,
       "lastAddr1": "서울특별시 은평구 연서로35길 36-6",
       "lastAddr2": "3층",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8270,26 +8270,26 @@
       "company": "",
       "phone": "010-9981-2064",
       "totalDeliveries": 34,
-      "completedDeliveries": 21,
+      "completedDeliveries": 22,
       "failedDeliveries": 0,
-      "inProgress": 13,
+      "inProgress": 12,
       "region": "은평구",
       "fullRegion": "서울특별시 은평구",
       "coordinates": [
-        37.60028,
-        126.92889
+        37.59905,
+        126.93138
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:21",
+      "typing": "-00:04:39",
       "boxId": 401405,
-      "lastAddr1": "서울특별시 은평구 은평로14길 11-1",
-      "lastAddr2": "301호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 61.8,
+      "lastAddr1": "서울특별시 은평구 은평로 220",
+      "lastAddr2": "111-504",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 64.7,
       "status": "active"
     },
     {
@@ -8318,7 +8318,7 @@
       "boxId": 401415,
       "lastAddr1": "서울특별시 은평구 연서로35길 36-6",
       "lastAddr2": "3층",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8336,8 +8336,8 @@
       "region": "은평구",
       "fullRegion": "서울특별시 은평구",
       "coordinates": [
-        37.60028,
-        126.92889
+        37.59905,
+        126.93138
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -8346,9 +8346,9 @@
       "startTime": "Invalid Date",
       "typing": "-01:09:27",
       "boxId": 401521,
-      "lastAddr1": "서울특별시 은평구 은평로14길 11-1",
-      "lastAddr2": "301호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastAddr1": "서울특별시 은평구 은평로 220",
+      "lastAddr2": "111-504",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 50,
       "status": "active"
     },
@@ -8366,8 +8366,8 @@
       "region": "은평구",
       "fullRegion": "서울특별시 은평구",
       "coordinates": [
-        37.63317,
-        126.92222
+        37.63111,
+        126.92044
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -8376,9 +8376,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:07:57",
       "boxId": 401535,
-      "lastAddr1": "서울특별시 은평구 진관1로 21-10",
-      "lastAddr2": "123동 903호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastAddr1": "서울특별시 은평구 진관1로 21-9",
+      "lastAddr2": "110동 1004호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 71.4,
       "status": "active"
     },
@@ -8396,8 +8396,8 @@
       "region": "은평구",
       "fullRegion": "서울특별시 은평구",
       "coordinates": [
-        37.5903,
-        126.90557
+        37.58484,
+        126.90446
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -8406,9 +8406,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:17:03",
       "boxId": 401546,
-      "lastAddr1": "서울특별시 은평구 증산로15길 67-6",
-      "lastAddr2": "홍은맨션 303호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastAddr1": "서울특별시 은평구 증산로5길 37-9",
+      "lastAddr2": "303호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8438,7 +8438,7 @@
       "boxId": 401804,
       "lastAddr1": "서울특별시 중랑구 신내로 51",
       "lastAddr2": "101동 514호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8468,7 +8468,7 @@
       "boxId": 401805,
       "lastAddr1": "서울특별시 중랑구 망우로 275",
       "lastAddr2": "507호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 97.6,
       "status": "active"
     },
@@ -8480,9 +8480,9 @@
       "company": "위로지광진중랑",
       "phone": "010-6361-8925",
       "totalDeliveries": 51,
-      "completedDeliveries": 50,
+      "completedDeliveries": 51,
       "failedDeliveries": 0,
-      "inProgress": 1,
+      "inProgress": 0,
       "region": "중랑구",
       "fullRegion": "서울특별시 중랑구",
       "coordinates": [
@@ -8494,13 +8494,13 @@
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:36",
+      "typing": "-00:04:43",
       "boxId": 401806,
       "lastAddr1": "서울특별시 중랑구 용마산로 670",
-      "lastAddr2": "204동 1001호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 98,
-      "status": "active"
+      "lastAddr2": "201동 701호",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
+      "completionRate": 100,
+      "status": "completed"
     },
     {
       "id": "driver_284",
@@ -8528,7 +8528,7 @@
       "boxId": 401863,
       "lastAddr1": "인천광역시 계양구 오류동 180",
       "lastAddr2": "6동405호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8558,7 +8558,7 @@
       "boxId": 401862,
       "lastAddr1": "인천광역시 계양구 장제로853번길 6",
       "lastAddr2": "경동쉐르빌 402호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8588,7 +8588,7 @@
       "boxId": 401864,
       "lastAddr1": "인천광역시 계양구 살라리로 13",
       "lastAddr2": "103-1203호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 75.8,
       "status": "active"
     },
@@ -8618,7 +8618,7 @@
       "boxId": 401859,
       "lastAddr1": "인천광역시 계양구 주부토로472번길 36",
       "lastAddr2": "104동 312호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8648,7 +8648,7 @@
       "boxId": 401867,
       "lastAddr1": "인천광역시 계양구 아나지로247번길 22",
       "lastAddr2": "101동 1405호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8678,7 +8678,7 @@
       "boxId": 400983,
       "lastAddr1": "인천광역시 남동구 용천로152번길 13",
       "lastAddr2": "메트로캐슬802호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.710Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8690,27 +8690,27 @@
       "company": "위로지남동구시흥북",
       "phone": "010-9596-8371",
       "totalDeliveries": 44,
-      "completedDeliveries": 43,
+      "completedDeliveries": 44,
       "failedDeliveries": 0,
-      "inProgress": 1,
+      "inProgress": 0,
       "region": "인천",
       "fullRegion": "인천광역시 남동구",
       "coordinates": [
-        37.45164,
-        126.70427
+        37.45408,
+        126.72042
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:49",
+      "typing": "-00:05:08",
       "boxId": 401840,
-      "lastAddr1": "인천광역시 남동구 미래로 17",
-      "lastAddr2": "이노스페이스4층",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 97.7,
-      "status": "active"
+      "lastAddr1": "인천광역시 남동구 호구포로800번길 21-7",
+      "lastAddr2": "601호",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
+      "completionRate": 100,
+      "status": "completed"
     },
     {
       "id": "driver_291",
@@ -8738,7 +8738,7 @@
       "boxId": 401842,
       "lastAddr1": "인천광역시 남동구 구월말로85번길 9",
       "lastAddr2": "A동 302호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8750,26 +8750,26 @@
       "company": "위로지남동구시흥북",
       "phone": "010-7590-8591",
       "totalDeliveries": 20,
-      "completedDeliveries": 14,
+      "completedDeliveries": 18,
       "failedDeliveries": 0,
-      "inProgress": 6,
+      "inProgress": 2,
       "region": "인천",
       "fullRegion": "인천광역시 남동구",
       "coordinates": [
-        37.42895,
-        126.74833
+        37.43759,
+        126.75027
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:11:37",
+      "typing": "-00:12:14",
       "boxId": 401843,
-      "lastAddr1": "인천광역시 남동구 서창남순환로 55",
-      "lastAddr2": "502동 2102호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 70,
+      "lastAddr1": "인천광역시 남동구 장아산로 157",
+      "lastAddr2": "102동 501호",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
+      "completionRate": 90,
       "status": "active"
     },
     {
@@ -8786,8 +8786,8 @@
       "region": "인천",
       "fullRegion": "인천광역시 남동구",
       "coordinates": [
-        37.4699,
-        126.79327
+        37.4655,
+        126.80113
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -8796,9 +8796,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:04:27",
       "boxId": 401845,
-      "lastAddr1": "경기도 부천시 소사구 소사로125번길 62",
-      "lastAddr2": "102동 1201호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastAddr1": "경기도 부천시 소사구 소사로78번길 42",
+      "lastAddr2": "103동 306호",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8828,7 +8828,7 @@
       "boxId": 401920,
       "lastAddr1": "인천광역시 동구 새천년로38번길 11",
       "lastAddr2": "207-202",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8840,26 +8840,26 @@
       "company": "중앙미추홀구",
       "phone": "010-2243-8546",
       "totalDeliveries": 34,
-      "completedDeliveries": 22,
+      "completedDeliveries": 23,
       "failedDeliveries": 0,
-      "inProgress": 12,
+      "inProgress": 11,
       "region": "인천",
       "fullRegion": "인천광역시 미추홀구",
       "coordinates": [
-        37.4385,
-        126.67341
+        37.44055,
+        126.67236
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:05:33",
+      "typing": "-00:06:09",
       "boxId": 400306,
-      "lastAddr1": "인천광역시 미추홀구 소성로 240",
-      "lastAddr2": "1동 609호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 64.7,
+      "lastAddr1": "인천광역시 미추홀구 학익동 125-1",
+      "lastAddr2": "신동아아파트 2차 6동 1102호",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
+      "completionRate": 67.6,
       "status": "active"
     },
     {
@@ -8888,7 +8888,7 @@
       "boxId": 401024,
       "lastAddr1": "인천광역시 미추홀구 용정공원로 33",
       "lastAddr2": "인천 sk 스카이뷰 120동 2805호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8918,7 +8918,7 @@
       "boxId": 401922,
       "lastAddr1": "인천광역시 미추홀구 경인로142번길 22-7",
       "lastAddr2": "2층",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8948,7 +8948,7 @@
       "boxId": 401924,
       "lastAddr1": "인천광역시 미추홀구 인하로266번길 49-5",
       "lastAddr2": "401호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -8978,7 +8978,7 @@
       "boxId": 401925,
       "lastAddr1": "인천광역시 미추홀구 경인로325번길 27",
       "lastAddr2": "202동 1202호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9008,7 +9008,7 @@
       "boxId": 401926,
       "lastAddr1": "인천광역시 미추홀구 석정로323번길 18",
       "lastAddr2": "도화주택304호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 43.8,
       "status": "active"
     },
@@ -9038,7 +9038,7 @@
       "boxId": 401154,
       "lastAddr1": "인천광역시 서구 완정로 208",
       "lastAddr2": "105-405",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9068,7 +9068,7 @@
       "boxId": 401543,
       "lastAddr1": "인천광역시 서구 모월곶로 41",
       "lastAddr2": "104동 802호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9098,7 +9098,7 @@
       "boxId": 401858,
       "lastAddr1": "인천광역시 서구 이음5로 39",
       "lastAddr2": "3011동 603호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9128,7 +9128,7 @@
       "boxId": 401862,
       "lastAddr1": "인천광역시 계양구 장제로853번길 6",
       "lastAddr2": "경동쉐르빌 402호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9140,26 +9140,26 @@
       "company": "낭만의모험서구계양",
       "phone": "010-7676-0306",
       "totalDeliveries": 33,
-      "completedDeliveries": 29,
+      "completedDeliveries": 31,
       "failedDeliveries": 0,
-      "inProgress": 4,
+      "inProgress": 2,
       "region": "인천",
       "fullRegion": "인천광역시 서구",
       "coordinates": [
-        37.51052,
-        126.66953
+        37.51175,
+        126.67462
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:06:24",
+      "typing": "-00:06:40",
       "boxId": 401865,
-      "lastAddr1": "인천광역시 서구 신석로 71",
-      "lastAddr2": "103동 404호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 87.9,
+      "lastAddr1": "인천광역시 서구 신석로111번길 22",
+      "lastAddr2": "205호",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
+      "completionRate": 93.9,
       "status": "active"
     },
     {
@@ -9170,27 +9170,27 @@
       "company": "낭만의모험서구계양",
       "phone": "010-5556-1159",
       "totalDeliveries": 38,
-      "completedDeliveries": 34,
+      "completedDeliveries": 38,
       "failedDeliveries": 0,
-      "inProgress": 4,
+      "inProgress": 0,
       "region": "인천",
       "fullRegion": "인천광역시 서구",
       "coordinates": [
-        37.60015,
-        126.69851
+        37.59614,
+        126.69651
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:04:05",
+      "typing": "-00:04:22",
       "boxId": 401866,
-      "lastAddr1": "인천광역시 서구 고산후로183번길 4",
-      "lastAddr2": "401호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 89.5,
-      "status": "active"
+      "lastAddr1": "인천광역시 서구 원당대로839번길 34",
+      "lastAddr2": "703동 1501호",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
+      "completionRate": 100,
+      "status": "completed"
     },
     {
       "id": "driver_307",
@@ -9218,7 +9218,7 @@
       "boxId": 401869,
       "lastAddr1": "인천광역시 서구 청라커낼로288번길 26",
       "lastAddr2": "지하1층 b108호 여운",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9248,7 +9248,7 @@
       "boxId": 401870,
       "lastAddr1": "인천광역시 서구 가정로 387",
       "lastAddr2": "108동 1101호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9260,26 +9260,26 @@
       "company": "낭만의모험서구계양",
       "phone": "010-6326-0721",
       "totalDeliveries": 14,
-      "completedDeliveries": 11,
+      "completedDeliveries": 13,
       "failedDeliveries": 0,
-      "inProgress": 3,
+      "inProgress": 1,
       "region": "인천",
       "fullRegion": "인천광역시 서구",
       "coordinates": [
-        37.59656,
-        126.67049
+        37.59762,
+        126.67274
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:15:03",
+      "typing": "-00:16:02",
       "boxId": 401871,
-      "lastAddr1": "인천광역시 서구 완정로34번길 9",
-      "lastAddr2": "116동 403호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 78.6,
+      "lastAddr1": "인천광역시 서구 완정로34번길 20",
+      "lastAddr2": "106동 1103호",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
+      "completionRate": 92.9,
       "status": "active"
     },
     {
@@ -9290,26 +9290,26 @@
       "company": "낭만의모험서구계양",
       "phone": "010-8773-8865",
       "totalDeliveries": 32,
-      "completedDeliveries": 28,
+      "completedDeliveries": 29,
       "failedDeliveries": 0,
-      "inProgress": 4,
+      "inProgress": 3,
       "region": "인천",
       "fullRegion": "인천광역시 서구",
       "coordinates": [
-        37.52067,
-        126.67474
+        37.51725,
+        126.67411
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:06:39",
+      "typing": "-00:06:47",
       "boxId": 401872,
-      "lastAddr1": "인천광역시 서구 가정로394번길 11-26",
-      "lastAddr2": "1층",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 87.5,
+      "lastAddr1": "인천광역시 서구 원창로 222-2",
+      "lastAddr2": "2층",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
+      "completionRate": 90.6,
       "status": "active"
     },
     {
@@ -9338,7 +9338,7 @@
       "boxId": 401874,
       "lastAddr1": "인천광역시 서구 에코로 65",
       "lastAddr2": "101동 2713호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9356,8 +9356,8 @@
       "region": "인천",
       "fullRegion": "인천광역시 서구",
       "coordinates": [
-        37.60015,
-        126.69851
+        37.59614,
+        126.69651
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -9366,9 +9366,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:39:19",
       "boxId": 401946,
-      "lastAddr1": "인천광역시 서구 고산후로183번길 4",
-      "lastAddr2": "401호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastAddr1": "인천광역시 서구 원당대로839번길 34",
+      "lastAddr2": "703동 1501호",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9380,27 +9380,27 @@
       "company": "창대hc",
       "phone": "010-3335-3228",
       "totalDeliveries": 30,
-      "completedDeliveries": 28,
+      "completedDeliveries": 30,
       "failedDeliveries": 0,
-      "inProgress": 2,
+      "inProgress": 0,
       "region": "인천",
       "fullRegion": "인천광역시 연수구",
       "coordinates": [
-        37.40096,
-        126.62883
+        37.40343,
+        126.62741
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:06:31",
+      "typing": "-00:06:58",
       "boxId": 397870,
-      "lastAddr1": "인천광역시 연수구 송도동 30-2",
-      "lastAddr2": "103동 1405호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 93.3,
-      "status": "active"
+      "lastAddr1": "인천광역시 연수구 인천타워대로 393",
+      "lastAddr2": "102동1704호",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
+      "completionRate": 100,
+      "status": "completed"
     },
     {
       "id": "driver_314",
@@ -9410,26 +9410,26 @@
       "company": "창대hc",
       "phone": "010-7740-5642",
       "totalDeliveries": 49,
-      "completedDeliveries": 31,
+      "completedDeliveries": 34,
       "failedDeliveries": 0,
-      "inProgress": 18,
+      "inProgress": 15,
       "region": "인천",
       "fullRegion": "인천광역시 연수구",
       "coordinates": [
-        37.38794,
-        126.65852
+        37.37399,
+        126.66723
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:03:46",
+      "typing": "-00:04:09",
       "boxId": 399401,
-      "lastAddr1": "인천광역시 연수구 해돋이로6번길 7",
-      "lastAddr2": "아이파크 107동 301호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 63.3,
+      "lastAddr1": "인천광역시 연수구 송도문화로 119",
+      "lastAddr2": "IGC 게스트하우스 1904호",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
+      "completionRate": 69.4,
       "status": "active"
     },
     {
@@ -9458,7 +9458,7 @@
       "boxId": 401547,
       "lastAddr1": "인천광역시 연수구 예술로20번길 45-12",
       "lastAddr2": "나동 301호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9488,7 +9488,7 @@
       "boxId": 401914,
       "lastAddr1": "인천광역시 연수구 아트센터대로168번길 101",
       "lastAddr2": "B동 527호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9518,7 +9518,7 @@
       "boxId": 401915,
       "lastAddr1": "인천광역시 연수구 먼우금로 126",
       "lastAddr2": "211동 601호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9548,7 +9548,7 @@
       "boxId": 401920,
       "lastAddr1": "인천광역시 동구 새천년로38번길 11",
       "lastAddr2": "207-202",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9578,7 +9578,7 @@
       "boxId": 401753,
       "lastAddr1": "충남 아산시 신창면 순천향로15번길 25",
       "lastAddr2": "신창캐슬 405호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9590,26 +9590,26 @@
       "company": "위로지천안아산나",
       "phone": "010-5592-4460",
       "totalDeliveries": 13,
-      "completedDeliveries": 6,
+      "completedDeliveries": 7,
       "failedDeliveries": 1,
-      "inProgress": 6,
+      "inProgress": 5,
       "region": "충청남도 아산가",
       "fullRegion": "충청남도 아산가",
       "coordinates": [
-        36.79114,
-        127.01686
+        36.79137,
+        127.01566
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:18:17",
+      "typing": "-00:19:25",
       "boxId": 401756,
-      "lastAddr1": "충남 아산시 문화로 257-24",
-      "lastAddr2": "208동 1503호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 46.2,
+      "lastAddr1": "충남 아산시 문화로 257-17",
+      "lastAddr2": "101동201호",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
+      "completionRate": 53.8,
       "status": "active"
     },
     {
@@ -9620,26 +9620,26 @@
       "company": "위로지천안아산나",
       "phone": "010-5938-5939",
       "totalDeliveries": 45,
-      "completedDeliveries": 36,
+      "completedDeliveries": 41,
       "failedDeliveries": 0,
-      "inProgress": 9,
+      "inProgress": 4,
       "region": "충청남도 아산나",
       "fullRegion": "충청남도 아산나",
       "coordinates": [
-        36.78639,
-        127.11117
+        36.79384,
+        127.10808
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:05:16",
+      "typing": "-00:05:32",
       "boxId": 401755,
-      "lastAddr1": "충남 아산시 배방읍 장재로 27",
-      "lastAddr2": "1112동 1502호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 80,
+      "lastAddr1": "충남 아산시 배방읍 광장로 210",
+      "lastAddr2": "109동 903호",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
+      "completionRate": 91.1,
       "status": "active"
     },
     {
@@ -9656,8 +9656,8 @@
       "region": "충청남도 아산나",
       "fullRegion": "충청남도 아산나",
       "coordinates": [
-        36.79114,
-        127.01686
+        36.79137,
+        127.01566
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
@@ -9666,9 +9666,9 @@
       "startTime": "Invalid Date",
       "typing": "-00:05:37",
       "boxId": 401756,
-      "lastAddr1": "충남 아산시 문화로 257-24",
-      "lastAddr2": "208동 1503호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastAddr1": "충남 아산시 문화로 257-17",
+      "lastAddr2": "101동201호",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9680,26 +9680,26 @@
       "company": "위로지천안아산나",
       "phone": "010-9321-5397",
       "totalDeliveries": 43,
-      "completedDeliveries": 29,
+      "completedDeliveries": 30,
       "failedDeliveries": 0,
-      "inProgress": 14,
+      "inProgress": 13,
       "region": "충청남도 천안시",
       "fullRegion": "충청남도 천안시",
       "coordinates": [
-        36.78145,
-        127.13892
+        36.76951,
+        127.1357
       ],
       "pickupStatus": "픽업",
       "delayStatus": "정상",
       "lastDeliveryTime": "Invalid Date",
       "acceptTime": "Invalid Date",
       "startTime": "Invalid Date",
-      "typing": "-00:05:39",
+      "typing": "-00:05:52",
       "boxId": 397830,
-      "lastAddr1": "충남 천안시 동남구 풍세로 769-28",
-      "lastAddr2": "214동 1004호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
-      "completionRate": 67.4,
+      "lastAddr1": "충남 천안시 동남구 풍세로 678-22",
+      "lastAddr2": "103동 1005호",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
+      "completionRate": 69.8,
       "status": "active"
     },
     {
@@ -9728,7 +9728,7 @@
       "boxId": 401088,
       "lastAddr1": "충남 천안시 서북구 두정동 24-4",
       "lastAddr2": "오차드빌 404호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9758,7 +9758,7 @@
       "boxId": 401090,
       "lastAddr1": "충남 천안시 서북구 원두정5길 15",
       "lastAddr2": "세븐일레븐 2층 202호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9788,7 +9788,7 @@
       "boxId": 401747,
       "lastAddr1": "충남 천안시 서북구 성정중4길 24",
       "lastAddr2": "리치빌 401호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9818,7 +9818,7 @@
       "boxId": 401752,
       "lastAddr1": "충남 천안시 서북구 공원로 176",
       "lastAddr2": "306동 4603호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9848,7 +9848,7 @@
       "boxId": 401754,
       "lastAddr1": "충남 천안시 서북구 직산읍 삼은4길 18-23",
       "lastAddr2": "204동 704호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     },
@@ -9878,7 +9878,7 @@
       "boxId": 401834,
       "lastAddr1": "충남 천안시 서북구 두정동 24-4",
       "lastAddr2": "오차드빌 404호",
-      "lastUpdate": "2025-10-25T13:28:42.529Z",
+      "lastUpdate": "2025-10-25T13:33:42.711Z",
       "completionRate": 100,
       "status": "completed"
     }
@@ -9887,199 +9887,199 @@
     {
       "name": "인천",
       "pending": 0,
-      "transit": 80,
-      "delivered": 849,
+      "transit": 60,
+      "delivered": 869,
       "delayed": 0,
-      "completionRate": 91.4,
+      "completionRate": 93.5,
       "driverCount": 35
     },
     {
       "name": "수원시",
       "pending": 0,
-      "transit": 35,
-      "delivered": 583,
+      "transit": 30,
+      "delivered": 588,
       "delayed": 0,
-      "completionRate": 94.3,
+      "completionRate": 95.1,
       "driverCount": 25
     },
     {
       "name": "송파구",
       "pending": 0,
-      "transit": 84,
-      "delivered": 326,
+      "transit": 70,
+      "delivered": 340,
       "delayed": 0,
-      "completionRate": 79.5,
+      "completionRate": 82.9,
       "driverCount": 24
     },
     {
       "name": "성남시",
       "pending": 0,
-      "transit": 49,
-      "delivered": 300,
+      "transit": 41,
+      "delivered": 308,
       "delayed": 0,
-      "completionRate": 86,
+      "completionRate": 88.3,
       "driverCount": 20
     },
     {
       "name": "용인시",
       "pending": 0,
-      "transit": 29,
-      "delivered": 274,
+      "transit": 26,
+      "delivered": 277,
       "delayed": 0,
-      "completionRate": 90.4,
+      "completionRate": 91.4,
       "driverCount": 12
     },
     {
       "name": "동작구",
       "pending": 0,
-      "transit": 1,
-      "delivered": 273,
+      "transit": 0,
+      "delivered": 274,
       "delayed": 0,
-      "completionRate": 99.6,
+      "completionRate": 100,
       "driverCount": 12
     },
     {
       "name": "광진구",
       "pending": 0,
-      "transit": 30,
-      "delivered": 242,
+      "transit": 25,
+      "delivered": 247,
       "delayed": 0,
-      "completionRate": 89,
+      "completionRate": 90.8,
       "driverCount": 5
     },
     {
       "name": "강동구",
       "pending": 0,
-      "transit": 46,
-      "delivered": 226,
+      "transit": 35,
+      "delivered": 237,
       "delayed": 0,
-      "completionRate": 83.1,
+      "completionRate": 87.1,
       "driverCount": 10
     },
     {
       "name": "노원구",
       "pending": 0,
-      "transit": 5,
-      "delivered": 224,
+      "transit": 4,
+      "delivered": 225,
       "delayed": 0,
-      "completionRate": 97.8,
+      "completionRate": 98.3,
       "driverCount": 11
     },
     {
       "name": "안양시",
       "pending": 0,
-      "transit": 31,
-      "delivered": 218,
+      "transit": 27,
+      "delivered": 222,
       "delayed": 0,
-      "completionRate": 87.6,
+      "completionRate": 89.2,
       "driverCount": 16
     },
     {
       "name": "동대문구",
       "pending": 0,
-      "transit": 39,
-      "delivered": 209,
+      "transit": 32,
+      "delivered": 216,
       "delayed": 0,
-      "completionRate": 84.3,
+      "completionRate": 87.1,
       "driverCount": 14
-    },
-    {
-      "name": "충청남도 천안시",
-      "pending": 0,
-      "transit": 14,
-      "delivered": 205,
-      "delayed": 0,
-      "completionRate": 93.6,
-      "driverCount": 7
     },
     {
       "name": "강남가",
       "pending": 0,
-      "transit": 9,
-      "delivered": 204,
+      "transit": 4,
+      "delivered": 209,
       "delayed": 0,
-      "completionRate": 95.8,
+      "completionRate": 98.1,
       "driverCount": 6
+    },
+    {
+      "name": "충청남도 천안시",
+      "pending": 0,
+      "transit": 13,
+      "delivered": 206,
+      "delayed": 0,
+      "completionRate": 94.1,
+      "driverCount": 7
     },
     {
       "name": "대전광역시 서구",
       "pending": 0,
-      "transit": 17,
-      "delivered": 188,
+      "transit": 14,
+      "delivered": 191,
       "delayed": 1,
-      "completionRate": 91.3,
+      "completionRate": 92.7,
       "driverCount": 7
     },
     {
       "name": "의정부시",
       "pending": 0,
-      "transit": 52,
-      "delivered": 183,
+      "transit": 45,
+      "delivered": 190,
       "delayed": 0,
-      "completionRate": 77.9,
+      "completionRate": 80.9,
       "driverCount": 5
     },
     {
       "name": "성동구",
       "pending": 0,
-      "transit": 14,
-      "delivered": 179,
+      "transit": 12,
+      "delivered": 181,
       "delayed": 0,
-      "completionRate": 92.7,
+      "completionRate": 93.8,
       "driverCount": 6
     },
     {
       "name": "양천구",
       "pending": 0,
-      "transit": 8,
-      "delivered": 173,
+      "transit": 4,
+      "delivered": 177,
       "delayed": 0,
-      "completionRate": 95.6,
+      "completionRate": 97.8,
       "driverCount": 1
-    },
-    {
-      "name": "고양시",
-      "pending": 0,
-      "transit": 20,
-      "delivered": 158,
-      "delayed": 0,
-      "completionRate": 88.8,
-      "driverCount": 4
     },
     {
       "name": "김포시",
       "pending": 0,
-      "transit": 27,
-      "delivered": 158,
+      "transit": 21,
+      "delivered": 164,
       "delayed": 0,
-      "completionRate": 85.4,
+      "completionRate": 88.6,
       "driverCount": 6
+    },
+    {
+      "name": "고양시",
+      "pending": 0,
+      "transit": 15,
+      "delivered": 163,
+      "delayed": 0,
+      "completionRate": 91.6,
+      "driverCount": 4
     },
     {
       "name": "대전광역시 유성구",
       "pending": 0,
-      "transit": 12,
-      "delivered": 136,
+      "transit": 6,
+      "delivered": 142,
       "delayed": 0,
-      "completionRate": 91.9,
+      "completionRate": 95.9,
       "driverCount": 4
     },
     {
       "name": "중랑구",
       "pending": 0,
-      "transit": 1,
-      "delivered": 134,
+      "transit": 0,
+      "delivered": 135,
       "delayed": 1,
-      "completionRate": 98.5,
+      "completionRate": 99.3,
       "driverCount": 3
     },
     {
       "name": "구로구",
       "pending": 0,
-      "transit": 37,
-      "delivered": 117,
+      "transit": 25,
+      "delivered": 129,
       "delayed": 0,
-      "completionRate": 76,
+      "completionRate": 83.8,
       "driverCount": 3
     },
     {
@@ -10094,38 +10094,47 @@
     {
       "name": "마포구",
       "pending": 0,
-      "transit": 18,
-      "delivered": 102,
+      "transit": 16,
+      "delivered": 104,
       "delayed": 0,
-      "completionRate": 85,
+      "completionRate": 86.7,
       "driverCount": 6
     },
     {
       "name": "화성나",
       "pending": 0,
-      "transit": 20,
-      "delivered": 100,
+      "transit": 17,
+      "delivered": 103,
       "delayed": 0,
-      "completionRate": 83.3,
+      "completionRate": 85.8,
       "driverCount": 6
     },
     {
       "name": "은평구",
       "pending": 0,
-      "transit": 43,
-      "delivered": 96,
+      "transit": 36,
+      "delivered": 103,
       "delayed": 0,
-      "completionRate": 69.1,
+      "completionRate": 74.1,
       "driverCount": 8
     },
     {
       "name": "서대문구",
       "pending": 0,
-      "transit": 34,
+      "transit": 28,
+      "delivered": 89,
+      "delayed": 0,
+      "completionRate": 76.1,
+      "driverCount": 6
+    },
+    {
+      "name": "금천구",
+      "pending": 0,
+      "transit": 19,
       "delivered": 83,
       "delayed": 0,
-      "completionRate": 70.9,
-      "driverCount": 6
+      "completionRate": 81.4,
+      "driverCount": 7
     },
     {
       "name": "대전광역시 중구",
@@ -10137,21 +10146,21 @@
       "driverCount": 4
     },
     {
-      "name": "금천구",
-      "pending": 0,
-      "transit": 24,
-      "delivered": 78,
-      "delayed": 0,
-      "completionRate": 76.5,
-      "driverCount": 7
-    },
-    {
       "name": "충청남도 아산나",
       "pending": 0,
-      "transit": 9,
-      "delivered": 69,
+      "transit": 4,
+      "delivered": 74,
       "delayed": 0,
-      "completionRate": 88.5,
+      "completionRate": 94.9,
+      "driverCount": 2
+    },
+    {
+      "name": "광명시",
+      "pending": 0,
+      "transit": 21,
+      "delivered": 64,
+      "delayed": 0,
+      "completionRate": 75.3,
       "driverCount": 2
     },
     {
@@ -10164,31 +10173,31 @@
       "driverCount": 3
     },
     {
-      "name": "광명시",
-      "pending": 0,
-      "transit": 25,
-      "delivered": 60,
-      "delayed": 0,
-      "completionRate": 70.6,
-      "driverCount": 2
-    },
-    {
       "name": "대전광역시 동구",
       "pending": 0,
-      "transit": 16,
-      "delivered": 60,
+      "transit": 14,
+      "delivered": 62,
       "delayed": 0,
-      "completionRate": 78.9,
+      "completionRate": 81.6,
       "driverCount": 2
     },
     {
       "name": "영등포구",
       "pending": 0,
-      "transit": 25,
-      "delivered": 48,
+      "transit": 16,
+      "delivered": 57,
       "delayed": 0,
-      "completionRate": 65.8,
+      "completionRate": 78.1,
       "driverCount": 4
+    },
+    {
+      "name": "관악가",
+      "pending": 0,
+      "transit": 5,
+      "delivered": 51,
+      "delayed": 0,
+      "completionRate": 91.1,
+      "driverCount": 2
     },
     {
       "name": "화성가",
@@ -10216,15 +10225,6 @@
       "delayed": 0,
       "completionRate": 100,
       "driverCount": 1
-    },
-    {
-      "name": "관악가",
-      "pending": 0,
-      "transit": 13,
-      "delivered": 43,
-      "delayed": 0,
-      "completionRate": 76.8,
-      "driverCount": 2
     },
     {
       "name": "성북구",
@@ -10281,6 +10281,15 @@
       "driverCount": 1
     },
     {
+      "name": "충청남도 아산가",
+      "pending": 0,
+      "transit": 5,
+      "delivered": 35,
+      "delayed": 1,
+      "completionRate": 85.4,
+      "driverCount": 2
+    },
+    {
       "name": "시흥북",
       "pending": 0,
       "transit": 0,
@@ -10308,15 +10317,6 @@
       "driverCount": 4
     },
     {
-      "name": "충청남도 아산가",
-      "pending": 0,
-      "transit": 6,
-      "delivered": 34,
-      "delayed": 1,
-      "completionRate": 82.9,
-      "driverCount": 2
-    },
-    {
       "name": "안산시",
       "pending": 0,
       "transit": 0,
@@ -10328,28 +10328,28 @@
     {
       "name": "관악차",
       "pending": 0,
-      "transit": 5,
-      "delivered": 31,
+      "transit": 4,
+      "delivered": 32,
       "delayed": 0,
-      "completionRate": 86.1,
+      "completionRate": 88.9,
       "driverCount": 2
     },
     {
       "name": "관악나",
       "pending": 0,
-      "transit": 18,
-      "delivered": 28,
+      "transit": 17,
+      "delivered": 29,
       "delayed": 0,
-      "completionRate": 60.9,
+      "completionRate": 63,
       "driverCount": 3
     },
     {
       "name": "관악마",
       "pending": 0,
-      "transit": 15,
-      "delivered": 25,
+      "transit": 13,
+      "delivered": 27,
       "delayed": 0,
-      "completionRate": 62.5,
+      "completionRate": 67.5,
       "driverCount": 3
     },
     {
@@ -10373,16 +10373,16 @@
     {
       "name": "부천다",
       "pending": 0,
-      "transit": 31,
-      "delivered": 6,
+      "transit": 27,
+      "delivered": 10,
       "delayed": 0,
-      "completionRate": 16.2,
+      "completionRate": 27,
       "driverCount": 2
     }
   ],
   "deliveries": [
     {
-      "id": "QS2024-089300",
+      "id": "QS2024-095544",
       "driver": "신빈",
       "address": "경기도 고양시 덕양구 화신로 76",
       "status": "completed",
@@ -10393,18 +10393,18 @@
       "completionRate": 100
     },
     {
-      "id": "QS2024-099039",
+      "id": "QS2024-075522",
       "driver": "장정길",
-      "address": "경기도 고양시 덕양구 삼원로 102",
-      "status": "delivering",
+      "address": "경기도 고양시 덕양구 동산동 354-12",
+      "status": "completed",
       "priority": "normal",
       "estimatedTime": "Invalid Date",
       "phone": "010-7799-4941",
       "region": "고양시",
-      "completionRate": 94.4
+      "completionRate": 100
     },
     {
-      "id": "QS2024-023406",
+      "id": "QS2024-054543",
       "driver": "김삼수",
       "address": "경기도 고양시 덕양구 행신동 199",
       "status": "delivering",
@@ -10415,40 +10415,40 @@
       "completionRate": 95.2
     },
     {
-      "id": "QS2024-082387",
+      "id": "QS2024-057677",
       "driver": "박찬영",
-      "address": "경기도 고양시 덕양구 화정동 883-11",
+      "address": "경기도 고양시 덕양구 백양로 126",
       "status": "delivering",
       "priority": "high",
       "estimatedTime": "Invalid Date",
       "phone": "010-2821-1682",
       "region": "고양시",
-      "completionRate": 67.4
+      "completionRate": 71.7
     },
     {
-      "id": "QS2024-065320",
+      "id": "QS2024-085486",
       "driver": "이윤희",
-      "address": "경기도 광명시 오리로 887",
+      "address": "경기도 광명시 시청로 50",
       "status": "delivering",
       "priority": "high",
       "estimatedTime": "Invalid Date",
       "phone": "010-7999-1552",
       "region": "광명시",
-      "completionRate": 68.3
+      "completionRate": 73.2
     },
     {
-      "id": "QS2024-093815",
+      "id": "QS2024-015704",
       "driver": "윤영철",
-      "address": "경기도 광명시 하안로 284",
+      "address": "경기도 광명시 하안로 320",
       "status": "delivering",
-      "priority": "high",
+      "priority": "normal",
       "estimatedTime": "Invalid Date",
       "phone": "010-5476-5341",
       "region": "광명시",
-      "completionRate": 72.7
+      "completionRate": 77.3
     },
     {
-      "id": "QS2024-076424",
+      "id": "QS2024-099305",
       "driver": "남애숙",
       "address": "경기도 군포시 공단로 149",
       "status": "completed",
@@ -10459,7 +10459,7 @@
       "completionRate": 100
     },
     {
-      "id": "QS2024-056557",
+      "id": "QS2024-082852",
       "driver": "오중환",
       "address": "경기도 군포시 금정동 40-16",
       "status": "completed",
@@ -10470,7 +10470,7 @@
       "completionRate": 100
     },
     {
-      "id": "QS2024-014500",
+      "id": "QS2024-048556",
       "driver": "서경성",
       "address": "경기도 군포시 송부로291번길 29",
       "status": "completed",
@@ -10481,7 +10481,7 @@
       "completionRate": 100
     },
     {
-      "id": "QS2024-022731",
+      "id": "QS2024-085438",
       "driver": "김자인",
       "address": "경기도 군포시 산본천로 34",
       "status": "completed",
@@ -10492,18 +10492,18 @@
       "completionRate": 100
     },
     {
-      "id": "QS2024-079060",
+      "id": "QS2024-097522",
       "driver": "조민기",
-      "address": "경기도 김포시 태장로 845",
+      "address": "경기도 김포시 김포한강2로 103",
       "status": "delivering",
       "priority": "normal",
       "estimatedTime": "Invalid Date",
       "phone": "010-2356-8000",
       "region": "김포시",
-      "completionRate": 76.9
+      "completionRate": 82.1
     },
     {
-      "id": "QS2024-042153",
+      "id": "QS2024-071515",
       "driver": "최상호",
       "address": "경기도 김포시 김포한강4로 487",
       "status": "completed",
@@ -10514,7 +10514,7 @@
       "completionRate": 100
     },
     {
-      "id": "QS2024-067321",
+      "id": "QS2024-012219",
       "driver": "박철민",
       "address": "경기도 김포시 중봉로 1-1",
       "status": "completed",
@@ -10525,35 +10525,35 @@
       "completionRate": 100
     },
     {
-      "id": "QS2024-030195",
+      "id": "QS2024-020645",
       "driver": "김태형",
-      "address": "경기도 김포시 양도로 46",
+      "address": "경기도 김포시 풍무로 96",
       "status": "delivering",
       "priority": "high",
       "estimatedTime": "Invalid Date",
       "phone": "010-4092-4994",
       "region": "김포시",
-      "completionRate": 70
+      "completionRate": 74
     },
     {
-      "id": "QS2024-039563",
+      "id": "QS2024-014225",
       "driver": "박철훈",
-      "address": "경기도 김포시 김포한강8로 409",
-      "status": "delivering",
+      "address": "경기도 김포시 김포한강8로 365",
+      "status": "completed",
       "priority": "normal",
       "estimatedTime": "Invalid Date",
       "phone": "010-7145-7210",
       "region": "김포시",
-      "completionRate": 93.5
+      "completionRate": 100
     }
   ],
   "metadata": {
     "source": "Google Sheets - 자동_RAW (20컬럼)",
     "sheetId": "1dsuLd6iq8YULwuJ5KQFR4-eVEW1BRU6wmks_eS1VJ2w",
-    "lastSync": "2025-10-25T13:28:42.534Z",
+    "lastSync": "2025-10-25T13:33:42.713Z",
     "dataCount": 329,
     "regionCount": 55,
-    "syncTimestamp": "2025. 10. 25. 오후 10:28:42",
+    "syncTimestamp": "2025. 10. 25. 오후 10:33:42",
     "columnStructure": "A-T (20 columns with lat/lng support)",
     "delayLogic": "완료율 100% 기사 지연 계산 제외 적용",
     "pickupLogic": "완료건수 우선 + 1970년 데이터 필터링",
